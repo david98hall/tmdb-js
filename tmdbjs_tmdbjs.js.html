@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>tmdbjs/tmdbjs.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdbjs_search_search.html">tmdbjs/search/search</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_search_search.html#.search">search</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_search_search.html#~searchPage">searchPage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_search_search.html#~searchPages">searchPages</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdbjs_sections_movie.html">tmdbjs/sections/movie</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_sections_movie.html#.movie">movie</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_sections_movie.html#.movies">movies</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdbjs_sections_tv_show.html">tmdbjs/sections/tv_show</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_sections_tv_show.html#.tvShow">tvShow</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_sections_tv_show.html#.tvShows">tvShows</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdbjs_tmdbjs.html">tmdbjs/tmdbjs</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_tmdbjs.html#.tmdb">tmdb</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-utils_http_utils.html">utils/http_utils</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_http_utils.html#.httpRequest">httpRequest</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_http_utils.html#.parseHttpRequest">parseHttpRequest</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html">utils/tmdb_utils</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.createLoginSession">createLoginSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.createSession">createSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.getRequestToken">getRequestToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.getSectionData">getSectionData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.getSectionDetails">getSectionDetails</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">tmdbjs/tmdbjs.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const movieSection = require('./sections/movie');
+const tvShow = require('./sections/tv_show').tvShow;
+const search = require('./search/search').search;
+const defaultLanguage = 'en-US';
+
+/**
+ * A module containing functions for all API sections of TMDB.
+ * @module
+ */
+
+/**
+ * The JavaScript wrapper for The Movie Database (TMDB).
+ * @param {string} apiKey The API key to the TMDB API.
+ * @param {string} language The natural language of queries.
+ */
+exports.tmdb = (apiKey, language = defaultLanguage) => {
+    var tmdb = () => {
+    }
+
+    /**
+     * Can get movie data from the TMDB API.
+     * @param {Number} id The ID of the movie.
+     */
+    tmdb.movie = id => movieSection.movie(apiKey, language, id);
+
+    /**
+     * Can get data about movies in general from the TMDB API.
+     */
+    tmdb.movies = () => movieSection.movies(apiKey, language);
+
+    /**
+     * Can get TV show data from the TMDB API.
+     * @param {Number} id The ID of the TV show.
+     */
+    tmdb.tvShow = id => tvShow(apiKey, language, id);
+
+    /**
+     * The language of TMDB GET requests. The default value is "en-US".
+     * @param {Number} startPage 
+     * The page to start searching from.
+     * @param {Number} pageCount 
+     * The number of pages to search.
+     * An object for searching for data in TMDB.
+     * @param {string} language 
+     * @param {Boolean} includeAdult 
+     * If adult content should be included in the search results.
+     */
+    tmdb.search = (
+        startPage = 1, 
+        pageCount = 1,
+        language = defaultLanguage, 
+        includeAdult = true
+    ) => search(apiKey, language, startPage, pageCount, includeAdult);
+
+    return tmdb;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sat Jul 04 2020 00:17:28 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

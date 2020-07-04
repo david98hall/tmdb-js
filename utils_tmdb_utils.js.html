@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>utils/tmdb_utils.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdbjs_search_search.html">tmdbjs/search/search</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_search_search.html#.search">search</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_search_search.html#~searchPage">searchPage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_search_search.html#~searchPages">searchPages</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdbjs_sections_movie.html">tmdbjs/sections/movie</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_sections_movie.html#.movie">movie</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_sections_movie.html#.movies">movies</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdbjs_sections_tv_show.html">tmdbjs/sections/tv_show</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_sections_tv_show.html#.tvShow">tvShow</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_sections_tv_show.html#.tvShows">tvShows</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdbjs_tmdbjs.html">tmdbjs/tmdbjs</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdbjs_tmdbjs.html#.tmdb">tmdb</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-utils_http_utils.html">utils/http_utils</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_http_utils.html#.httpRequest">httpRequest</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_http_utils.html#.parseHttpRequest">parseHttpRequest</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html">utils/tmdb_utils</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.createLoginSession">createLoginSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.createSession">createSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.getRequestToken">getRequestToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.getSectionData">getSectionData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils_tmdb_utils.html#.getSectionDetails">getSectionDetails</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">utils/tmdb_utils.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const open = require('open');
+const httpUtils = require('./http_utils');
+const httpMethod = httpUtils.httpMethod;
+const baseUrl = "https://api.themoviedb.org/3/";
+
+/**
+ * A module containing TMDB utility functions, et cetera.
+ * @module
+ */
+
+/**
+ * Gets specific data from a section in TMDB as a JSON object.
+ * @function
+ * @param {string} sectionType The section from where data will be retrieved
+ * @param {string} sectionId The id of the section on TMDB.
+ * @param {string} dataType The type of data to retrieve.
+ * @param {string} apiKey The API key to the TMDB API.
+ * @param {string} language The natural language of the GET request.
+ * @returns A Promise.
+ */
+exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, language = null) {
+
+    // Create the url, based on this function's parameters
+    var url = baseUrl + sectionType + "/" + sectionId;
+
+    // If specified, add the data type to the url. 
+    // Otherwise, all section details will be retrieved
+    if (dataType &amp;&amp; dataType.length > 0) {
+        url += dataType;
+    }
+
+    url += "?api_key=" + apiKey;
+
+    if (language) {
+        url += "&amp;language=" + language
+    }
+
+    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse);
+};
+
+/**
+ * Gets all details about a section in TMDB as a JSON object.
+ * @function
+ * @param {string} sectionType The section from where data will be retrieved
+ * @param {string} sectionId The id of the section on TMDB.
+ * @param {string} apiKey The API key to the TMDB API.
+ * @param {string} language The language of TMDB GET requests.
+ * @returns A Promise.
+ */
+exports.getSectionDetails = function(sectionType, sectionId, apiKey, language) {
+    return this.getSectionData(sectionType, sectionId, null, apiKey, language);
+}
+
+/**
+ * Gets a request token from TMDB.
+ * @param {string} apiKey The API key to TMDB.
+ * @returns A Promise.
+ */
+exports.getRequestToken = async function(apiKey) {
+    
+    // GET a request token
+    var requestTokenUrl = baseUrl + "authentication/token/new?api_key=" + apiKey;
+    var tokenRequestResult = 
+        await httpUtils.parseHttpRequest(requestTokenUrl, httpMethod.GET, JSON.parse);
+    return tokenRequestResult.request_token;
+}
+
+/**
+ * Creates a session with login at TMDB.
+ * @param {string} apiKey The API key to TMDB.
+ * @param {string} username The username to use to create a session.
+ * @param {string} password The password to use to create a session.
+ * @param {string} permissionApp 
+ * The name of the web browser app to use when the 
+ * end-user has to approve the request token.
+ * @returns
+ * A Promise of a boolean value which is true if the login session creation was a success.
+ */
+exports.createLoginSession = async function(apiKey, username, password, permissionApp = "chrome") {
+
+    var requestToken = await this.getRequestToken(apiKey);
+
+    await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
+
+    // Create a session
+    var sessionUrl = baseUrl + "authentication/token/validate_with_login?api_key=" + apiKey;
+    var sessionResponse = await httpUtils.parseHttpRequest(
+        sessionUrl, 
+        httpMethod.POST, 
+        JSON.parse, 
+        "application/json;charset=UTF-8",
+        JSON.stringify({
+            "username": username,
+            "password": password,
+            "request_token": requestToken
+        }));
+
+    // Return true if the session creation was successful
+    return sessionResponse &amp;&amp; sessionResponse.success;
+}
+
+/**
+ * Creates a session at TMDB.
+ * @param {string} apiKey The API key to TMDB.
+ * @param {string} permissionApp 
+ * The name of the web browser app to use when the 
+ * end-user has to approve the request token.
+ * @returns
+ * A Promise of a session ID.
+ */
+exports.createSession = async function(apiKey, permissionApp = "chrome") {
+
+    var requestToken = await this.getRequestToken(apiKey);
+
+    await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
+
+    // Create a session
+    var sessionUrl = baseUrl + "authentication/session/new?api_key=" + apiKey;
+    var sessionResponse = await httpUtils.parseHttpRequest(
+        sessionUrl, 
+        httpMethod.POST, 
+        JSON.parse, 
+        "application/json;charset=UTF-8",
+        JSON.stringify({ "request_token": requestToken }));
+    
+    if (!sessionResponse || !sessionResponse.success) {
+        return undefined;
+    }
+
+    // Return true if the session creation was successful
+    return sessionResponse.session_id;
+}
+
+/**
+ * The different types of sections available at TMDB.
+ */
+exports.sections = Object.freeze({
+    ACCOUNT: 'account',
+    COLLECTION: 'collection',
+    COMPANY: 'company',
+    CREDIT: 'credit',
+    KEYWORD: 'keyword',
+    LIST: 'list',
+    MOVIE: 'movie',
+    NETWORK: 'network',
+    PERSON: 'person',
+    REVIEW: 'review',
+    TV_SHOW: 'tv',
+});
+
+/**
+ * The different types of data available at TMDB.
+ */
+exports.dataTypes = Object.freeze({
+    ACCOUNT_STATES: 'account_states',
+    ALTERNATIVE_TITLES: 'alternative_titles',
+    CHANGES: 'changes',
+    CONTENT_RATINGS: 'content_ratings',
+    CREDITS: 'credits',
+    EPISODE_GROUPS: 'episode_groups',
+    EXTERNAL_IDS: 'external_ids',
+    IMAGES: 'images',
+    KEYWORDS: 'keywords',
+    LATEST: 'latest',
+    LISTS: 'lists',
+    NOW_PLAYING: 'now_playing',
+    POPULAR: 'popular',
+    RECOMMENDATIONS: 'recommendations',
+    RELEASE_DATES: 'release_dates',
+    REVIEWS: 'reviews',
+    SCREENED_THEATRICALLY: "screened_theatrically",
+    SIMILAR_MOVIES: 'similar_movies',
+    SIMILAR_TV_SHOWS: "similar_tv_shows",
+    TOP_RATED: 'top_rated',
+    TRANSLATIONS: 'translations',
+    TV_AIRING_TODAY: 'tv_airing_today',
+    TV_ON_THE_AIR: 'tv_on_the_air',
+    UPCOMING: 'upcoming',
+    VIDEOS: 'videos',
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sat Jul 04 2020 00:17:28 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
