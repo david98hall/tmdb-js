@@ -1,0 +1,38 @@
+{
+  "name": "tmdb-js",
+  "version": "v0.0.9-alpha",
+  "description": "A JavaScript wrapper package for The Movie Database API.",
+  "main": "src/tmdbjs/tmdbjs.js",
+  "scripts": {
+    "test": "mocha test/test.js",
+    "prepare": "npm install xmlhttprequest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david98hall/tmdb-js.git"
+  },
+  "keywords": [
+    "The",
+    "Movie",
+    "Database",
+    "TMDB",
+    "tmdb",
+    "movie",
+    "tv",
+    "media",
+    "database",
+    "wrapper"
+  ],
+  "author": "David Hall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/david98hall/tmdb-js/issues"
+  },
+  "homepage": "https://github.com/david98hall/tmdb-js#readme",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "open": "^7.0.4"
+  }
+}
