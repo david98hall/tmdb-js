@@ -1,3 +1,5 @@
+const httpUtils = require('../../utils/http_utils');
+const httpMethod = httpUtils.httpMethod;
 const tmdb_utils = require('../../utils/tmdb_utils');
 const sections = tmdb_utils.sections;
 const dataTypes = tmdb_utils.dataTypes;
@@ -17,6 +19,7 @@ exports.movie = (apiKey, language, id) => {
     var movie = () => {
     }
 
+    //#region Getters
     /**
      * Gets all details about the movie in question.
      */
@@ -109,6 +112,78 @@ exports.movie = (apiKey, language, id) => {
      */
     movie.getLists = () =>
         tmdb_utils.getSectionData(sections.MOVIE, id, dataTypes.LISTS, apiKey, language)
+    //#endregion
+
+    //#region Rating functions
+    const notBothSessionIdsMsg = "Can't use both a session ID and a guest session ID!";
+    const noSessionIdMsg = "Can't perform action without some sort of a session ID.";
+
+    /**
+     * Rates the movie in question
+     * @param {Number} rating The rating, in the range [0.5, 10].
+     * @param {string} sessionId The session ID. Use this or the guest session ID.
+     * @param {string} guestSessionId The guest session ID. Use this or the session ID.
+     * @returns A Promise of a boolean value, which will be true if the rating was successful.
+     */
+    movie.rate = async (rating, sessionId = null, guestSessionId = null) => {
+
+        if (sessionId && guestSessionId) {
+            throw notBothSessionIdsMsg;
+        }
+
+        var rateUrl = tmdb_utils.baseUrl + `movie/${id}/rating?api_key=${apiKey}`;
+
+        if (sessionId) {
+            rateUrl += "&session_id=" + sessionId;
+        } else if (guestSessionId) {
+            rateUrl += "&guest_session_id=" + guestSessionId;
+        } else {
+            throw noSessionIdMsg;
+        }        
+
+        var response = await httpUtils.parseHttpRequest(
+            rateUrl,
+            httpMethod.POST,
+            JSON.parse,
+            httpUtils.jsonContentType,
+
+            // Ensure that the rating is in the acceptable range
+            JSON.stringify({ "value": Math.min(Math.max(0.5, rating), 10) }));
+
+        return response && response.status_code == 12;
+    }
+
+    /**
+     * Deletes the rating from the movie in question.
+     * @param {string} sessionId The session ID. Use this or the guest session ID.
+     * @param {string} guestSessionId The guest session ID. Use this or the session ID.
+     * @returns A Promise of a boolean value, which will be true if the deletion was successful.
+     */
+    movie.deleteRating = async (sessionId = null, guestSessionId = null) => {
+
+        if (sessionId && guestSessionId) {
+            throw notBothSessionIdsMsg;
+        }
+
+        var rateUrl = tmdb_utils.baseUrl + `movie/${id}/rating?api_key=${apiKey}`;
+
+        if (sessionId) {
+            rateUrl += "&session_id=" + sessionId;
+        } else if (guestSessionId) {
+            rateUrl += "&guest_session_id=" + guestSessionId;
+        } else {
+            throw noSessionIdMsg;
+        }
+
+        var response = await httpUtils.parseHttpRequest(
+            rateUrl,
+            httpMethod.DELETE,
+            JSON.parse,
+            httpUtils.jsonContentType);
+
+        return response && response.status_code == 13;
+    }
+    //#endregion
 
     return movie;
 }

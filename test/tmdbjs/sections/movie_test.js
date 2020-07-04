@@ -1,5 +1,6 @@
 const assert = require('assert');
 const tmdbjs = require('../../../src/tmdbjs/tmdbjs');
+const tmdbTestUtils = require('../utils/tmdb_test_utils');
 
 exports.runTest = apiKey => {
 
@@ -24,7 +25,20 @@ exports.runTest = apiKey => {
         });
     });
 
-    describe('Movie POST query tests', () => {
-        // TODO [David Hall, 2020-06-28]: Test all POST query methods
-    });
+    // Don't test non-deterministic functions on the CI
+    if (!process.env.CI) {
+
+        describe('Movie session query tests', () => {
+        
+            it('Should rate and unrate a movie', async () => {
+                var sessionId = await tmdbTestUtils.getSessionId();
+                assert.ok(sessionId);
+
+                var movie = tmdb.movie(16869);
+                assert.ok(await movie.rate(10, sessionId));
+                assert.ok(await movie.deleteRating(sessionId));
+            });
+    
+        });
+    }
 }

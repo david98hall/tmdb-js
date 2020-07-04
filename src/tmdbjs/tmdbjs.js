@@ -1,6 +1,8 @@
 const movieSection = require('./sections/movie');
 const tvShow = require('./sections/tv_show').tvShow;
 const search = require('./search/search').search;
+const authentication = require('./sections/authentication').authentication;
+const tmdbUtils = require('../utils/tmdb_utils');
 const defaultLanguage = 'en-US';
 
 /**
@@ -17,6 +19,11 @@ exports.tmdb = (apiKey, language = defaultLanguage) => {
     var tmdb = () => {
     }
 
+    /**
+     * Handles authentication methods of TMDB.
+     */
+    tmdb.authentication = () => authentication(apiKey);
+    
     /**
      * Can get movie data from the TMDB API.
      * @param {Number} id The ID of the movie.

@@ -5,6 +5,13 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
  * @module
  */
 
+const jsonContentTypeValue = "application/json;charset=utf-8";
+
+/**
+ * JSON Content-Type value.
+ */
+exports.jsonContentType = jsonContentTypeValue;
+
 /**
  * All different types of HTTP request methods.
  */
@@ -35,7 +42,7 @@ exports.httpRequest = (url, method, contentType = null, requestBody = null) =>
             reject(new Error(`There was an error when doing a ${method} request!`));
         };
         xhr.onload = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
+            if (xhr.readyState == 4 && isMethodSuccess(method, xhr.status)) {
                 resolve(xhr.responseText);
             } else {
                 rejectFun();
@@ -50,6 +57,18 @@ exports.httpRequest = (url, method, contentType = null, requestBody = null) =>
         xhr.send(requestBody);
 });
 
+function isMethodSuccess(method, httpStatus) {
+    switch(method) {
+        case "GET": 
+        case "DELETE": 
+            return httpStatus == 200;
+        case "POST": 
+            return httpStatus == 201;
+        default:
+            return false;
+    }
+}
+
 /**
  * Makes an HTTP request on the given URL and parses the result.
  * @param {string} url The URL.
@@ -58,13 +77,13 @@ exports.httpRequest = (url, method, contentType = null, requestBody = null) =>
  * The function used to parse the request result.
  * @param {string} contentType The content type of the request
  * @param {string} requestBody The body of the request
- * @returns A Promise.
+ * @returns A Promise of a parsed response.
  */
 exports.parseHttpRequest = async function(url, method, parseFun, contentType = null, requestBody = null) {
     try {
         // Await the HTTP request and return its parsed results
-        const result = await this.httpRequest(url, method, contentType, requestBody);
-        return parseFun(result);
+        const response = await this.httpRequest(url, method, contentType, requestBody);
+        return parseFun(response);
     }
     catch (error) {
         console.log(error);

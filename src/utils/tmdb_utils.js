@@ -1,12 +1,17 @@
 const open = require('open');
 const httpUtils = require('./http_utils');
 const httpMethod = httpUtils.httpMethod;
-const baseUrl = "https://api.themoviedb.org/3/";
+const baseUrlValue = "https://api.themoviedb.org/3/";
 
 /**
  * A module containing TMDB utility functions, et cetera.
  * @module
  */
+
+ /**
+  * The TMDB API base URL.
+  */
+exports.baseUrl = baseUrlValue;
 
 /**
  * Gets specific data from a section in TMDB as a JSON object.
@@ -21,7 +26,7 @@ const baseUrl = "https://api.themoviedb.org/3/";
 exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, language = null) {
 
     // Create the url, based on this function's parameters
-    var url = baseUrl + sectionType + "/" + sectionId;
+    var url = baseUrlValue + sectionType + "/" + sectionId;
 
     // If specified, add the data type to the url. 
     // Otherwise, all section details will be retrieved
@@ -59,7 +64,7 @@ exports.getSectionDetails = function(sectionType, sectionId, apiKey, language) {
 exports.getRequestToken = async function(apiKey) {
     
     // GET a request token
-    var requestTokenUrl = baseUrl + "authentication/token/new?api_key=" + apiKey;
+    var requestTokenUrl = baseUrlValue + "authentication/token/new?api_key=" + apiKey;
     var tokenRequestResult = 
         await httpUtils.parseHttpRequest(requestTokenUrl, httpMethod.GET, JSON.parse);
     return tokenRequestResult.request_token;
@@ -70,25 +75,20 @@ exports.getRequestToken = async function(apiKey) {
  * @param {string} apiKey The API key to TMDB.
  * @param {string} username The username to use to create a session.
  * @param {string} password The password to use to create a session.
- * @param {string} permissionApp 
- * The name of the web browser app to use when the 
- * end-user has to approve the request token.
  * @returns
  * A Promise of a boolean value which is true if the login session creation was a success.
  */
-exports.createLoginSession = async function(apiKey, username, password, permissionApp = "chrome") {
+exports.createLoginSession = async function(apiKey, username, password) {
 
     var requestToken = await this.getRequestToken(apiKey);
 
-    await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
-
     // Create a session
-    var sessionUrl = baseUrl + "authentication/token/validate_with_login?api_key=" + apiKey;
+    var sessionUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
     var sessionResponse = await httpUtils.parseHttpRequest(
         sessionUrl, 
-        httpMethod.POST, 
+        httpMethod.POST,
         JSON.parse, 
-        "application/json;charset=UTF-8",
+        httpUtils.jsonContentType,
         JSON.stringify({
             "username": username,
             "password": password,
@@ -115,12 +115,12 @@ exports.createSession = async function(apiKey, permissionApp = "chrome") {
     await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
 
     // Create a session
-    var sessionUrl = baseUrl + "authentication/session/new?api_key=" + apiKey;
+    var sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey;
     var sessionResponse = await httpUtils.parseHttpRequest(
         sessionUrl, 
         httpMethod.POST, 
         JSON.parse, 
-        "application/json;charset=UTF-8",
+        httpUtils.jsonContentType,
         JSON.stringify({ "request_token": requestToken }));
     
     if (!sessionResponse || !sessionResponse.success) {
@@ -129,6 +129,36 @@ exports.createSession = async function(apiKey, permissionApp = "chrome") {
 
     // Return true if the session creation was successful
     return sessionResponse.session_id;
+}
+
+/**
+ * Creates a guest session at TMDB and returns the session ID.
+ * @param {string} apiKey The TMDB API key.
+ * @returns A Promise of a guest session ID.
+ */
+exports.createGuestSession = async (apiKey) => {
+    var sessionUrl = baseUrlValue + "authentication/guest_session/new?api_key=" + apiKey;
+    var sessionResponse = await httpUtils.parseHttpRequest(sessionUrl, httpMethod.GET, JSON.parse);
+    return sessionResponse.guest_session_id;
+}
+
+/**
+ * Deletes (log outs of) a session.
+ * @param {*} apiKey The TMDB API key.
+ * @param {*} sessionId The ID of the session to delete.
+ * @returns 
+ * A Promise of a boolean value, which will be true if the deletion is successful.
+ */
+exports.deleteSession = async (apiKey, sessionId) => {
+    var sessionUrl = baseUrlValue + "authentication/session?api_key=" + apiKey;
+    var sessionResponse = await httpUtils.parseHttpRequest(
+        sessionUrl,
+        httpMethod.DELETE,
+        JSON.parse,
+        httpUtils.jsonContentType,
+        JSON.stringify({ "session_id": sessionId }));
+
+    return sessionResponse.success;
 }
 
 /**

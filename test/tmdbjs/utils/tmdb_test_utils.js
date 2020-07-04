@@ -30,6 +30,12 @@ exports.getLoginInformation = async () => {
     }
 };
 
+exports.getSessionId = async () => {
+    return process.env.TMDB_SESSION_ID
+        ? process.env.TMDB_SESSION_ID
+        : (await getCredentialsJSON()).session_id;
+};
+
 /**
  * Gets the credentials JSON from the file system.
  */
