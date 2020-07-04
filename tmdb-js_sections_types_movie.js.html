@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>utils/tmdb_utils.js - Documentation</title>
+    <title>tmdb-js/sections/types/movie.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">utils/tmdb_utils.js</h1>
+    <h1 class="page-title">tmdb-js/sections/types/movie.js</h1>
     
 
     
@@ -39,213 +39,271 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**@module utils */
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-const open = require('open');
-const httpUtils = require('./http_utils');
+// HTTP utilities
+const httpUtils = require('../../../utils/http_utils');
 const httpMethod = httpUtils.httpMethod;
-const baseUrlValue = "https://api.themoviedb.org/3/";
 
- /**
-  * The TMDB API base URL.
-  */
-exports.baseUrl = baseUrlValue;
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+const dataTypes = tmdbUtils.dataTypes;
 
-/**
- * Gets specific data from a section in TMDB as a JSON object.
- * @function
- * @param {string} sectionType The section from where data will be retrieved
- * @param {string} sectionId The id of the section on TMDB.
- * @param {string} dataType The type of data to retrieve.
- * @param {string} apiKey The API key to the TMDB API.
- * @param {string} language The natural language of the GET request.
- * @returns A Promise.
- */
-exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, language = null) {
-
-    // Create the url, based on this function's parameters
-    var url = baseUrlValue + sectionType + "/" + sectionId;
-
-    // If specified, add the data type to the url. 
-    // Otherwise, all section details will be retrieved
-    if (dataType &amp;&amp; dataType.length > 0) {
-        url += dataType;
-    }
-
-    url += "?api_key=" + apiKey;
-
-    if (language) {
-        url += "&amp;language=" + language
-    }
-
-    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse);
-};
+// Sections
+const section = require('../section');
+const Section = section.Section;
+const Subsection = section.Subsection;
 
 /**
- * Gets all details about a section in TMDB as a JSON object.
- * @function
- * @param {string} sectionType The section from where data will be retrieved
- * @param {string} sectionId The id of the section on TMDB.
- * @param {string} apiKey The API key to the TMDB API.
- * @param {string} language The language of TMDB GET requests.
- * @returns A Promise.
+ * Can get and handle movie data on TMDB.
  */
-exports.getSectionDetails = function(sectionType, sectionId, apiKey, language) {
-    return this.getSectionData(sectionType, sectionId, null, apiKey, language);
+exports.MovieSubsection = class extends Subsection {
+
+    /**
+     * Sets properties.
+     * @param {string} apiKey The TMDB API key.
+     * @param {Number} movieId The id of the movie.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(apiKey, movieId, language = "en-US") {
+        super(apiKey, sections.MOVIE, movieId, language);
+    }
+
+    /**
+     * Gets all details about the movie in question.
+     * @returns A Promise of movie details.
+     */
+    getDetails() {
+        return tmdbUtils.getSectionDetails(
+            this._section, this._subSectionId, this._apiKey, this._language);
+    }
+
+    // TODO [David Hall, 2020-07-05]: getAccountStates
+
+    /**
+     * Gets the alternative titles of the movie in question.
+     * @returns A Promise of alternative titles.
+     */
+    getAlternativeTitles() {
+        return this._getSectionData(dataTypes.ALTERNATIVE_TITLES);
+    }
+
+    /**
+     * Gets the changes of the movie in question.
+     * @returns A Promise of movie changes.
+     */
+    getChanges() {
+        return this._getSectionData(dataTypes.CHANGES);
+    }
+        
+    /**
+     * Gets the credits of the movie in question.
+     * @returns A Promise of movie credits.
+     */
+    getCredits() {
+        return this._getSectionData(dataTypes.CREDITS);
+    }
+
+    /**
+     * Gets the external IDs of the movie in question.
+     * @returns A Promise of external IDs.
+     */
+    getExternalIds() { 
+        return this._getSectionData(dataTypes.EXTERNAL_IDS);
+    }
+
+    /**
+     * Gets the images of the movie in question.
+     * @returns A Promise of movie images.
+     */
+    getImages() {
+        return this._getSectionData(dataTypes.IMAGES);
+    }
+
+    /**
+     * Gets the keywords of the movie in question.
+     * @returns A Promise of movie keywords.
+     */
+    getKeywords() {
+        return this._getSectionData(dataTypes.KEYWORDS);
+    }
+
+    /**
+     * Gets the release dates of the movie in question.
+     * @returns A Promise of movie release dates.
+     */
+    getReleaseDates() {
+        return this._getSectionData(dataTypes.RELEASE_DATES);
+    }
+
+    /**
+     * Gets the videos of the movie in question.
+     * @returns A Promise of movie videos.
+     */
+    getVideos() {
+        return this._getSectionData(dataTypes.VIDEOS);
+    }
+
+    /**
+     * Gets the translations of the movie in question.
+     * @returns A Promise of movie translations.
+     */ 
+    getTranslations() {
+        return this._getSectionData(dataTypes.TRANSLATIONS);
+    }
+
+    /**
+     * Gets the recommendations based on the movie in question.
+     * @returns A Promise of recommendations.
+     */
+    getRecommendations() {
+        return this._getSectionData(dataTypes.RECOMMENDATIONS);
+    }
+
+    /**
+     * Gets the similar movies to the movie in question.
+     * @returns A Promise of similar movies.
+     */
+    getSimilarMovies() {
+        return this._getSectionData(dataTypes.SIMILAR_MOVIES);
+    }
+
+    /**
+     * Gets the reviews of the movie in question.
+     * @returns A Promise of movie reviews.
+     */
+    getReviews() {
+        return this._getSectionData(dataTypes.REVIEWS);
+    }
+
+    /**
+     * Gets the lists of the movie in question.
+     * @returns A Promise of lists.
+     */
+    getLists() {
+        return this._getSectionData(dataTypes.LISTS);
+    }
+
+    #notBothSessionIdsMsg = "Can't use both a session ID and a guest session ID!";
+    #noSessionIdMsg = "Can't perform action without some sort of a session ID.";
+
+    /**
+     * Rates the movie in question
+     * @param {Number} rating The rating, in the range [0.5, 10].
+     * @param {string} sessionId The session ID. Use this or the guest session ID.
+     * @param {string} guestSessionId The guest session ID. Use this or the session ID.
+     * @returns A Promise of a boolean value, which will be true if the rating was successful.
+     */
+    async rate(rating, sessionId = null, guestSessionId = null) {
+
+        if (sessionId &amp;&amp; guestSessionId) {
+            throw this.#notBothSessionIdsMsg;
+        }
+
+        var rateUrl = tmdbUtils.baseUrl + `movie/${this._subSectionId}/rating?api_key=${this._apiKey}`;
+
+        if (sessionId) {
+            rateUrl += "&amp;session_id=" + sessionId;
+        } else if (guestSessionId) {
+            rateUrl += "&amp;guest_session_id=" + guestSessionId;
+        } else {
+            throw this.#noSessionIdMsg;
+        }        
+
+        var response = await httpUtils.parseHttpRequest(
+            rateUrl,
+            httpMethod.POST,
+            JSON.parse,
+            httpUtils.jsonContentType,
+
+            // Ensure that the rating is in the acceptable range
+            JSON.stringify({ "value": Math.min(Math.max(0.5, rating), 10) }));
+
+        return response &amp;&amp; response.status_code == 12;
+    }
+
+    /**
+     * Deletes the rating from the movie in question.
+     * @param {string} sessionId The session ID. Use this or the guest session ID.
+     * @param {string} guestSessionId The guest session ID. Use this or the session ID.
+     * @returns A Promise of a boolean value, which will be true if the deletion was successful.
+     */
+    async deleteRating(sessionId = null, guestSessionId = null) {
+
+        if (sessionId &amp;&amp; guestSessionId) {
+            throw this.#notBothSessionIdsMsg;
+        }
+
+        var rateUrl = tmdbUtils.baseUrl + `movie/${this._subSectionId}/rating?api_key=${this._apiKey}`;
+
+        if (sessionId) {
+            rateUrl += "&amp;session_id=" + sessionId;
+        } else if (guestSessionId) {
+            rateUrl += "&amp;guest_session_id=" + guestSessionId;
+        } else {
+            throw this.#noSessionIdMsg;
+        }
+
+        var response = await httpUtils.parseHttpRequest(
+            rateUrl,
+            httpMethod.DELETE,
+            JSON.parse,
+            httpUtils.jsonContentType);
+
+        return response &amp;&amp; response.status_code == 13;
+    }
+
 }
 
 /**
- * Gets a request token from TMDB.
- * @param {string} apiKey The API key to TMDB.
- * @returns A Promise.
+ * Can get data about movies in general from the TMDB API.
  */
-exports.getRequestToken = async function(apiKey) {
+exports.MovieSection = class extends Section {
     
-    // GET a request token
-    var requestTokenUrl = baseUrlValue + "authentication/token/new?api_key=" + apiKey;
-    var tokenRequestResult = 
-        await httpUtils.parseHttpRequest(requestTokenUrl, httpMethod.GET, JSON.parse);
-    return tokenRequestResult.request_token;
-}
-
-/**
- * Creates a session with login at TMDB.
- * @param {string} apiKey The API key to TMDB.
- * @param {string} username The username to use to create a session.
- * @param {string} password The password to use to create a session.
- * @returns
- * A Promise of a boolean value which is true if the login session creation was a success.
- */
-exports.createLoginSession = async function(apiKey, username, password) {
-
-    var requestToken = await this.getRequestToken(apiKey);
-
-    // Create a session
-    var sessionUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl, 
-        httpMethod.POST,
-        JSON.parse, 
-        httpUtils.jsonContentType,
-        JSON.stringify({
-            "username": username,
-            "password": password,
-            "request_token": requestToken
-        }));
-
-    // Return true if the session creation was successful
-    return sessionResponse &amp;&amp; sessionResponse.success;
-}
-
-/**
- * Creates a session at TMDB.
- * @param {string} apiKey The API key to TMDB.
- * @param {string} permissionApp 
- * The name of the web browser app to use when the 
- * end-user has to approve the request token.
- * @returns
- * A Promise of a session ID.
- */
-exports.createSession = async function(apiKey, permissionApp = "chrome") {
-
-    var requestToken = await this.getRequestToken(apiKey);
-
-    await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
-
-    // Create a session
-    var sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl, 
-        httpMethod.POST, 
-        JSON.parse, 
-        httpUtils.jsonContentType,
-        JSON.stringify({ "request_token": requestToken }));
-    
-    if (!sessionResponse || !sessionResponse.success) {
-        return undefined;
+    /**
+     * Sets properties.
+     * @param {string} apiKey The TMDB API key.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(apiKey, language = "en-US") {
+        super(apiKey, sections.MOVIE, language);
     }
 
-    // Return true if the session creation was successful
-    return sessionResponse.session_id;
-}
+    /**
+     * Gets a MovieSubsection, based on the passed ID.
+     * @param {Number} movieId The movie ID.
+     * @returns A MovieSubsection.
+     */
+    getMovie(movieId) {
+        return new exports.MovieSubsection(this._apiKey, movieId, this._language);
+    }
 
-/**
- * Creates a guest session at TMDB and returns the session ID.
- * @param {string} apiKey The TMDB API key.
- * @returns A Promise of a guest session ID.
- */
-exports.createGuestSession = async (apiKey) => {
-    var sessionUrl = baseUrlValue + "authentication/guest_session/new?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(sessionUrl, httpMethod.GET, JSON.parse);
-    return sessionResponse.guest_session_id;
-}
+    /**
+     * Gets the latest movies.
+     */
+    // TODO [David Hall, 2020-07-05] getLatest method
 
-/**
- * Deletes (log outs of) a session.
- * @param {*} apiKey The TMDB API key.
- * @param {*} sessionId The ID of the session to delete.
- * @returns 
- * A Promise of a boolean value, which will be true if the deletion is successful.
- */
-exports.deleteSession = async (apiKey, sessionId) => {
-    var sessionUrl = baseUrlValue + "authentication/session?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl,
-        httpMethod.DELETE,
-        JSON.parse,
-        httpUtils.jsonContentType,
-        JSON.stringify({ "session_id": sessionId }));
+    /**
+     * Gets a list of movies currently playing in theatres.
+     */
+    // TODO [David Hall, 2020-07-05] getNowPlaying method
 
-    return sessionResponse.success;
-}
+    /**
+     * Gets popular movies.
+     */
+    // TODO [David Hall, 2020-07-05] getPopular method
 
-/**
- * The different types of sections available at TMDB.
- */
-exports.sections = Object.freeze({
-    ACCOUNT: 'account',
-    COLLECTION: 'collection',
-    COMPANY: 'company',
-    CREDIT: 'credit',
-    KEYWORD: 'keyword',
-    LIST: 'list',
-    MOVIE: 'movie',
-    NETWORK: 'network',
-    PERSON: 'person',
-    REVIEW: 'review',
-    TV_SHOW: 'tv',
-});
+    /**
+     * Gets top rated movies.
+     */
+    // TODO [David Hall, 2020-07-05] getTopRated method
 
-/**
- * The different types of data available at TMDB.
- */
-exports.dataTypes = Object.freeze({
-    ACCOUNT_STATES: 'account_states',
-    ALTERNATIVE_TITLES: 'alternative_titles',
-    CHANGES: 'changes',
-    CONTENT_RATINGS: 'content_ratings',
-    CREDITS: 'credits',
-    EPISODE_GROUPS: 'episode_groups',
-    EXTERNAL_IDS: 'external_ids',
-    IMAGES: 'images',
-    KEYWORDS: 'keywords',
-    LATEST: 'latest',
-    LISTS: 'lists',
-    NOW_PLAYING: 'now_playing',
-    POPULAR: 'popular',
-    RECOMMENDATIONS: 'recommendations',
-    RELEASE_DATES: 'release_dates',
-    REVIEWS: 'reviews',
-    SCREENED_THEATRICALLY: "screened_theatrically",
-    SIMILAR_MOVIES: 'similar_movies',
-    SIMILAR_TV_SHOWS: "similar_tv_shows",
-    TOP_RATED: 'top_rated',
-    TRANSLATIONS: 'translations',
-    TV_AIRING_TODAY: 'tv_airing_today',
-    TV_ON_THE_AIR: 'tv_on_the_air',
-    UPCOMING: 'upcoming',
-    VIDEOS: 'videos',
-});</code></pre>
+    /**
+     * Gets upcoming movies.
+     */
+    // TODO [David Hall, 2020-07-05] getUpcoming method
+}</code></pre>
         </article>
     </section>
 

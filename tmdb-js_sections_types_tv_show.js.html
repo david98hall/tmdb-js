@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>utils/tmdb_utils.js - Documentation</title>
+    <title>tmdb-js/sections/types/tv_show.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">utils/tmdb_utils.js</h1>
+    <h1 class="page-title">tmdb-js/sections/types/tv_show.js</h1>
     
 
     
@@ -39,213 +39,190 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**@module utils */
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-const open = require('open');
-const httpUtils = require('./http_utils');
-const httpMethod = httpUtils.httpMethod;
-const baseUrlValue = "https://api.themoviedb.org/3/";
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+const dataTypes = tmdbUtils.dataTypes;
 
- /**
-  * The TMDB API base URL.
-  */
-exports.baseUrl = baseUrlValue;
-
-/**
- * Gets specific data from a section in TMDB as a JSON object.
- * @function
- * @param {string} sectionType The section from where data will be retrieved
- * @param {string} sectionId The id of the section on TMDB.
- * @param {string} dataType The type of data to retrieve.
- * @param {string} apiKey The API key to the TMDB API.
- * @param {string} language The natural language of the GET request.
- * @returns A Promise.
- */
-exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, language = null) {
-
-    // Create the url, based on this function's parameters
-    var url = baseUrlValue + sectionType + "/" + sectionId;
-
-    // If specified, add the data type to the url. 
-    // Otherwise, all section details will be retrieved
-    if (dataType &amp;&amp; dataType.length > 0) {
-        url += dataType;
-    }
-
-    url += "?api_key=" + apiKey;
-
-    if (language) {
-        url += "&amp;language=" + language
-    }
-
-    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse);
-};
+// Sections
+const section = require('../section');
+const Section = section.Section;
+const Subsection = section.Subsection;
 
 /**
- * Gets all details about a section in TMDB as a JSON object.
- * @function
- * @param {string} sectionType The section from where data will be retrieved
- * @param {string} sectionId The id of the section on TMDB.
- * @param {string} apiKey The API key to the TMDB API.
- * @param {string} language The language of TMDB GET requests.
- * @returns A Promise.
+ * Can get and handle TV show data on TMDB.
  */
-exports.getSectionDetails = function(sectionType, sectionId, apiKey, language) {
-    return this.getSectionData(sectionType, sectionId, null, apiKey, language);
+exports.TvShowSubsection = class extends Subsection {
+
+    /**
+     * Sets properties.
+     * @param {string} apiKey The TMDB API key.
+     * @param {Number} tvShowId The id of the TV show.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(apiKey, tvShowId, language = "en-US") {
+        super(apiKey, sections.TV_SHOW, tvShowId, language);
+    }
+
+    /**
+     * Gets all details about the TV show in question.
+     */
+    getDetails() {
+        return tmdbUtils.getSectionDetails(
+            sections.TV_SHOW, this._subSectionId, this._apiKey, this._language);
+    }
+
+    // TODO [David Hall, 2020-07-05]: getAccountStates
+
+    /**
+     * Gets the alternative titles of the TV show in question.
+     */
+    getAlternativeTitles() {
+        return this._getSectionData(dataTypes.ALTERNATIVE_TITLES);
+    }
+
+    /**
+     * Gets the changes of the TV show in question.
+     */
+    getChanges() {
+        return this._getSectionData(dataTypes.CHANGES);
+    }
+
+    /**
+     * Gets the content ratings of the TV show in question.
+     */
+    getContentRatings() {
+        return this._getSectionData(dataTypes.CONTENT_RATINGS);
+    }
+
+    /**
+     * Gets the credits of the TV show in question.
+     */
+    getCredits() {
+        return this._getSectionData(dataTypes.CREDITS);
+    }
+
+    /**
+     * Gets the episode groups of the TV show in question.
+     */
+    getEpisodeGroups() {
+        return this._getSectionData(dataTypes.EPISODE_GROUPS);
+    }
+
+    /**
+     * Gets the external IDs of the TV show in question.
+     */
+    getExternalIds() {
+        return this._getSectionData(dataTypes.EXTERNAL_IDS);
+    }
+
+    /**
+     * Gets the images of the TV show in question.
+     */
+    getImages() {
+        return this._getSectionData(dataTypes.IMAGES);
+    }
+
+    /**
+     * Gets the keywords of the TV show in question.
+     */
+    getKeywords() {
+        return this._getSectionData(dataTypes.KEYWORDS);
+    }
+
+    /**
+     * Gets the recommendations based on the TV show in question.
+     */
+    getRecommendations() {
+        return this._getSectionData(dataTypes.RECOMMENDATIONS);
+    }
+
+    /**
+     * Gets the reviews of the TV show in question.
+     */
+    getReviews() {
+        return this._getSectionData(dataTypes.REVIEWS);
+    }
+
+    /**
+     * Gets the a list of seasons or episodes of the TV show in question that were screened theatrically.
+     */
+    getScreenedTheatrically() {
+        return this._getSectionData(dataTypes.SCREENED_THEATRICALLY);
+    }
+
+    /**
+     * Gets the similar TV shows to the TV show in question.
+     */
+    getSimilarTvShows() {
+        return this._getSectionData(dataTypes.SIMILAR_TV_SHOWS);
+    }
+
+    /**
+     * Gets the translations of the TV show in question.
+     */ 
+    getTranslations() {
+        return this._getSectionData(dataTypes.TRANSLATIONS);
+    }
+
+    /**
+     * Gets the videos of the TV show in question.
+     */
+    getVideos() {
+        return this._getSectionData(dataTypes.VIDEOS);
+    }
 }
 
 /**
- * Gets a request token from TMDB.
- * @param {string} apiKey The API key to TMDB.
- * @returns A Promise.
+ * Can get data about TV shows in general from the TMDB API.
  */
-exports.getRequestToken = async function(apiKey) {
+exports.TvShowSection = class extends Section {
     
-    // GET a request token
-    var requestTokenUrl = baseUrlValue + "authentication/token/new?api_key=" + apiKey;
-    var tokenRequestResult = 
-        await httpUtils.parseHttpRequest(requestTokenUrl, httpMethod.GET, JSON.parse);
-    return tokenRequestResult.request_token;
-}
-
-/**
- * Creates a session with login at TMDB.
- * @param {string} apiKey The API key to TMDB.
- * @param {string} username The username to use to create a session.
- * @param {string} password The password to use to create a session.
- * @returns
- * A Promise of a boolean value which is true if the login session creation was a success.
- */
-exports.createLoginSession = async function(apiKey, username, password) {
-
-    var requestToken = await this.getRequestToken(apiKey);
-
-    // Create a session
-    var sessionUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl, 
-        httpMethod.POST,
-        JSON.parse, 
-        httpUtils.jsonContentType,
-        JSON.stringify({
-            "username": username,
-            "password": password,
-            "request_token": requestToken
-        }));
-
-    // Return true if the session creation was successful
-    return sessionResponse &amp;&amp; sessionResponse.success;
-}
-
-/**
- * Creates a session at TMDB.
- * @param {string} apiKey The API key to TMDB.
- * @param {string} permissionApp 
- * The name of the web browser app to use when the 
- * end-user has to approve the request token.
- * @returns
- * A Promise of a session ID.
- */
-exports.createSession = async function(apiKey, permissionApp = "chrome") {
-
-    var requestToken = await this.getRequestToken(apiKey);
-
-    await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
-
-    // Create a session
-    var sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl, 
-        httpMethod.POST, 
-        JSON.parse, 
-        httpUtils.jsonContentType,
-        JSON.stringify({ "request_token": requestToken }));
-    
-    if (!sessionResponse || !sessionResponse.success) {
-        return undefined;
+    /**
+     * Sets properties.
+     * @param {string} apiKey The TMDB API key.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(apiKey, language = "en-US") {
+        super(apiKey, sections.TV_SHOW, language);
     }
 
-    // Return true if the session creation was successful
-    return sessionResponse.session_id;
-}
+    /**
+     * Gets a TvShowSubsection, based on the passed ID.
+     * @param {Number} tvShowId The TV show ID.
+     * @returns A TvShowSubsection.
+     */
+    getTvShow(tvShowId) {
+        return new exports.TvShowSubsection(this._apiKey, tvShowId, this._language);
+    }
 
-/**
- * Creates a guest session at TMDB and returns the session ID.
- * @param {string} apiKey The TMDB API key.
- * @returns A Promise of a guest session ID.
- */
-exports.createGuestSession = async (apiKey) => {
-    var sessionUrl = baseUrlValue + "authentication/guest_session/new?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(sessionUrl, httpMethod.GET, JSON.parse);
-    return sessionResponse.guest_session_id;
-}
+    /**
+     * Gets the latest TV shows.
+     */
+    // TODO [David Hall, 2020-07-05]: getLatest
 
-/**
- * Deletes (log outs of) a session.
- * @param {*} apiKey The TMDB API key.
- * @param {*} sessionId The ID of the session to delete.
- * @returns 
- * A Promise of a boolean value, which will be true if the deletion is successful.
- */
-exports.deleteSession = async (apiKey, sessionId) => {
-    var sessionUrl = baseUrlValue + "authentication/session?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl,
-        httpMethod.DELETE,
-        JSON.parse,
-        httpUtils.jsonContentType,
-        JSON.stringify({ "session_id": sessionId }));
+    /**
+     * Gets TV shows airing today.
+     */
+    // TODO [David Hall, 2020-07-05]: getTvAiringToday
 
-    return sessionResponse.success;
-}
+    /**
+     * Gets TV shows currently on the air.
+     */
+    // TODO [David Hall, 2020-07-05]: getTvOnTheAir
 
-/**
- * The different types of sections available at TMDB.
- */
-exports.sections = Object.freeze({
-    ACCOUNT: 'account',
-    COLLECTION: 'collection',
-    COMPANY: 'company',
-    CREDIT: 'credit',
-    KEYWORD: 'keyword',
-    LIST: 'list',
-    MOVIE: 'movie',
-    NETWORK: 'network',
-    PERSON: 'person',
-    REVIEW: 'review',
-    TV_SHOW: 'tv',
-});
+    /**
+     * Gets popular TV shows.
+     */
+    // TODO [David Hall, 2020-07-05]: getPopular
 
-/**
- * The different types of data available at TMDB.
- */
-exports.dataTypes = Object.freeze({
-    ACCOUNT_STATES: 'account_states',
-    ALTERNATIVE_TITLES: 'alternative_titles',
-    CHANGES: 'changes',
-    CONTENT_RATINGS: 'content_ratings',
-    CREDITS: 'credits',
-    EPISODE_GROUPS: 'episode_groups',
-    EXTERNAL_IDS: 'external_ids',
-    IMAGES: 'images',
-    KEYWORDS: 'keywords',
-    LATEST: 'latest',
-    LISTS: 'lists',
-    NOW_PLAYING: 'now_playing',
-    POPULAR: 'popular',
-    RECOMMENDATIONS: 'recommendations',
-    RELEASE_DATES: 'release_dates',
-    REVIEWS: 'reviews',
-    SCREENED_THEATRICALLY: "screened_theatrically",
-    SIMILAR_MOVIES: 'similar_movies',
-    SIMILAR_TV_SHOWS: "similar_tv_shows",
-    TOP_RATED: 'top_rated',
-    TRANSLATIONS: 'translations',
-    TV_AIRING_TODAY: 'tv_airing_today',
-    TV_ON_THE_AIR: 'tv_on_the_air',
-    UPCOMING: 'upcoming',
-    VIDEOS: 'videos',
-});</code></pre>
+    /**
+     * Gets top rated TV shows.
+     */
+    // TODO [David Hall, 2020-07-05]: getTopRated
+}</code></pre>
         </article>
     </section>
 
