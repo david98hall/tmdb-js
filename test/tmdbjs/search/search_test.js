@@ -1,9 +1,9 @@
 const assert = require('assert');
-const tmdbjs = require('../../../src/tmdbjs/tmdbjs');
+const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 
 exports.runTest = apiKey => {
 
-    var tmdb = tmdbjs.tmdb(apiKey);
+    var tmdb = new Tmdb(apiKey);
 
     describe('Search query tests.', () => {
 
@@ -12,7 +12,7 @@ exports.runTest = apiKey => {
         it('Should find multi search data.', done => {
     
             // Perform a multi search
-            tmdb.search().multi("Batman").then(pages => {
+            tmdb.getSearcher().multiSearch("Batman").then(pages => {
 
                 // Assert the results
                 assert.equal(pages.length, 1);
@@ -29,7 +29,7 @@ exports.runTest = apiKey => {
         it('Should find multi search data of several pages.', done => {
     
             // Perform a multi search
-            tmdb.search(1, 10).multi("Batman").then(pages => {
+            tmdb.getSearcher().multiSearch("Batman", 1, 10).then(pages => {
 
                 // Assert the results
                 assert.ok(pages.length > 1);

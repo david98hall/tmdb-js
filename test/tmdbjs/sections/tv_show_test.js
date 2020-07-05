@@ -1,11 +1,12 @@
 const assert = require('assert');
-const tmdbjs = require('../../../src/tmdbjs/tmdbjs');
+const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
+// const tmdbTestUtils = require('../utils/tmdb_test_utils');
 
 exports.runTest = apiKey => {
 
-    var tmdb = tmdbjs.tmdb(apiKey);
+    var tmdb = new Tmdb(apiKey);
 
-    describe('Specific TV show GET query tests', () => {
+    describe('TV show GET query tests', () => {
 
         // TODO [David Hall, 2020-06-27]: Test all specific GET query methods
 
@@ -14,7 +15,7 @@ exports.runTest = apiKey => {
             // Look for TV show data
             var tvShow = {id: 66732, name: "Stranger Things"};
             
-            tmdb.tvShow(tvShow.id).getDetails().then(json => {
+            tmdb.getTvShows().getTvShow(tvShow.id).getDetails().then(json => {
 
                 // Assert the results
                 assert.equal(json.name, tvShow.name);
@@ -28,9 +29,9 @@ exports.runTest = apiKey => {
             // Look for TV show data
             var tvShow = {id: 34, name: "Skenet bedrar"};
             
-            var tmdbSwedish = tmdbjs.tmdb(apiKey, "sv-SE");
+            var tmdbSwedish = new Tmdb(apiKey, "sv-SE");
 
-            tmdbSwedish.tvShow(tvShow.id).getDetails().then(json => {
+            tmdbSwedish.getTvShows().getTvShow(tvShow.id).getDetails().then(json => {
                 // Assert the results
                 assert.equal(json.name, tvShow.name);
 

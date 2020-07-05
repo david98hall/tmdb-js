@@ -1,10 +1,6 @@
 const httpUtils = require('../../utils/http_utils');
 const httpMethod = httpUtils.httpMethod;
-
-/**
- * A module containing functions for searching for data in TMDB.
- * @module
- */
+const TmdbQuerier = require('../api/tmdb_querier').TmdbQuerier;
 
 /**
  * @param {string} apiKey The API key to the TMDB API.
@@ -16,22 +12,39 @@ const httpMethod = httpUtils.httpMethod;
  * The number of search result pages to return data from.
  * @param {Boolean} includeAdult true if adult content will be included.
  */
-exports.search = (apiKey, language, startPage, pageCount, includeAdult) => {
-    var search = () => {
+exports.Searcher = class extends TmdbQuerier {
 
+    /**
+     * Sets properties.
+     * @param {string} apiKey A TMDB API key.    
+     * @param {string} language The natural language of search queries. The default is "en-US". 
+     */
+    constructor(apiKey, language = "en-US") {
+        super(apiKey, language);
     }
 
-    // TODO [David Hall, 2020-06-27]: Add support for all search queries
+    // TODO [David Hall, 2020-07-05]: Add support for all search queries
 
     /**
      * Gets data from a multi search in TMDB.
      * @param {string} searchTerm The search term (query).
+     * @param {Number} startPage 
+     * The first search result page to return data from. The default is 1.
+     * @param {Number} pageCount 
+     * The number of search result pages to return data from. The default is 1.
+     * @param {Boolean} includeAdult 
+     * true if adult content will be included. The default is true.
      */
-    search.multi = searchTerm => searchPages(
-        searchTerm, searchType.MULTI, apiKey, 
-        startPage, pageCount, includeAdult, language);
-
-    return search;
+    multiSearch(searchTerm, startPage = 1, pageCount = 1, includeAdult = true) {
+        return searchPages(
+            searchTerm, 
+            searchType.MULTI, 
+            this._apiKey, 
+            startPage, 
+            pageCount, 
+            includeAdult, 
+            this._language);
+    }
 }
 
 /**

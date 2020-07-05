@@ -1,10 +1,10 @@
 const assert = require('assert');
-const tmdbjs = require('../../../src/tmdbjs/tmdbjs');
+const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 const tmdbTestUtils = require('../utils/tmdb_test_utils');
 
 exports.runTest = apiKey => {
 
-    var tmdb = tmdbjs.tmdb(apiKey);
+    var tmdb = new Tmdb(apiKey);
 
     describe('Movie GET query tests', () => {
 
@@ -15,7 +15,7 @@ exports.runTest = apiKey => {
             // Look for movie data
             var movie = {id: 76341, title: "Mad Max: Fury Road"};
             
-            tmdb.movie(movie.id).getDetails().then(json => {
+            tmdb.getMovies().getMovie(movie.id).getDetails().then(json => {
               
                 // Assert the results
                 assert.equal(json.title, movie.title);
@@ -30,11 +30,11 @@ exports.runTest = apiKey => {
 
         describe('Movie session query tests', () => {
         
-            it('Should rate and unrate a movie', async () => {
+            xit('Should rate and unrate a movie', async () => {
                 var sessionId = await tmdbTestUtils.getSessionId();
                 assert.ok(sessionId);
 
-                var movie = tmdb.movie(16869);
+                var movie = tmdb.getMovies().getMovie(16869);
                 assert.ok(await movie.rate(10, sessionId));
                 assert.ok(await movie.deleteRating(sessionId));
             });
