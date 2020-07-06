@@ -1,7 +1,9 @@
+/**@module tmdb-js */
+
 const MovieSection = require('./sections/types/movie').MovieSection;
 const TvShowSection = require('./sections/types/tv_show').TvShowSection;
 const Searcher = require('./search/searcher').Searcher;
-const Authenticator = require('./authentication/authenticator').Authenticator;
+const Authenticator = require('./authentication/authentication').Authenticator;
 const TmdbQuerier = require('./api/tmdb_querier').TmdbQuerier;
 
 /**

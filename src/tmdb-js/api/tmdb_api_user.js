@@ -1,3 +1,5 @@
+/**@module tmdb-js/api */
+
 /**
  * A user of the TMBD API.
  */

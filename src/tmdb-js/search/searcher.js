@@ -1,3 +1,5 @@
+/**@module tmdb-js/search */
+
 const httpUtils = require('../../utils/http_utils');
 const httpMethod = httpUtils.httpMethod;
 const TmdbQuerier = require('../api/tmdb_querier').TmdbQuerier;

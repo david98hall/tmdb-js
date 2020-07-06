@@ -1,10 +1,7 @@
+/**@module tmdb-js/authentication */
+
 const tmdbUtils = require('../../utils/tmdb_utils');
 const TmdbApiUser = require('../api/tmdb_api_user').TmdbApiUser;
-
-/**
- * A module containing authentication methods.
- * @module
- */
 
  /**
   * Handles authentication methods of TMDB.

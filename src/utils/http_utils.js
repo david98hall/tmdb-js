@@ -1,10 +1,6 @@
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-   
-/**
- * A module containing HTTP utility functions, et cetera.
- * @module
- */
+/**@module utils */
 
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const jsonContentTypeValue = "application/json;charset=utf-8";
 
 /**

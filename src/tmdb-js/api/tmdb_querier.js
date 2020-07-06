@@ -1,3 +1,5 @@
+/**@module tmdb-js/api */
+
 const TmdbApiUser = require('./tmdb_api_user').TmdbApiUser;
 
 /**

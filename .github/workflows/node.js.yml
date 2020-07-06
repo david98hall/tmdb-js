@@ -48,7 +48,8 @@ jobs:
           output_dir: ./out
           recurse: true
           # config_file: conf.json
-          template: minami
+          # template: minami
+          template: better-docs
           front_page: README.md
 
       - name: Deploy

@@ -1,12 +1,9 @@
+/**@module utils */
+
 const open = require('open');
 const httpUtils = require('./http_utils');
 const httpMethod = httpUtils.httpMethod;
 const baseUrlValue = "https://api.themoviedb.org/3/";
-
-/**
- * A module containing TMDB utility functions, et cetera.
- * @module
- */
 
  /**
   * The TMDB API base URL.

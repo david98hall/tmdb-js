@@ -1,3 +1,5 @@
+/**@module tmdb-js/sections/types */
+
 // HTTP utilities
 const httpUtils = require('../../../utils/http_utils');
 const httpMethod = httpUtils.httpMethod;
@@ -8,8 +10,9 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const Section = require('../section').Section;
-const Subsection = require('../subsection').Subsection;
+const section = require('../section');
+const Section = section.Section;
+const Subsection = section.Subsection;
 
 /**
  * Can get and handle movie data on TMDB.
