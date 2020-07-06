@@ -1,38 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Searcher - Documentation</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Searcher</title>
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
-<body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
 
-<label for="nav-trigger" class="overlay"></label>
 
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js.Tmdb.html">Tmdb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js.Tmdb.html#getAuthenticator">getAuthenticator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js.Tmdb.html#getMovies">getMovies</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js.Tmdb.html#getSearcher">getSearcher</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js.Tmdb.html#getTvShows">getTvShows</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_authentication.Authenticator.html#createGuestSession">createGuestSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_authentication.Authenticator.html#createSession">createSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_authentication.Authenticator.html#deleteSession">deleteSession</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_search.Searcher.html">Searcher</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_search.Searcher.html#multiSearch">multiSearch</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_sections.Section.html">Section</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSection.html#getMovie">getMovie</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#deleteRating">deleteRating</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getAlternativeTitles">getAlternativeTitles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getChanges">getChanges</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getCredits">getCredits</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getDetails">getDetails</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getExternalIds">getExternalIds</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getImages">getImages</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getKeywords">getKeywords</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getLists">getLists</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getRecommendations">getRecommendations</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getReleaseDates">getReleaseDates</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getReviews">getReviews</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getSimilarMovies">getSimilarMovies</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getTranslations">getTranslations</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#getVideos">getVideos</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.MovieSubsection.html#rate">rate</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSection.html#getTvShow">getTvShow</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getAlternativeTitles">getAlternativeTitles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getChanges">getChanges</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getContentRatings">getContentRatings</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getCredits">getCredits</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getDetails">getDetails</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getEpisodeGroups">getEpisodeGroups</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getExternalIds">getExternalIds</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getImages">getImages</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getKeywords">getKeywords</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getRecommendations">getRecommendations</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getReviews">getReviews</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getScreenedTheatrically">getScreenedTheatrically</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getSimilarTvShows">getSimilarTvShows</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getTranslations">getTranslations</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getVideos">getVideos</a></span></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdb-js.html">tmdb-js</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdb-js_api.html">tmdb-js/api</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdb-js_search.html">tmdb-js/search</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_search.html#~searchPage">searchPage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-tmdb-js_search.html#~searchPages">searchPages</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-utils.html">utils</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.createGuestSession">createGuestSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.createLoginSession">createLoginSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.createSession">createSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.deleteSession">deleteSession</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.getRequestToken">getRequestToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.getSectionData">getSectionData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.getSectionDetails">getSectionDetails</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.httpRequest">httpRequest</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-utils.html#.parseHttpRequest">parseHttpRequest</a></span></li>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">Searcher</h1>
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
 
-    
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>Searcher</h1>
+                </header>
+                
 
 
 
@@ -41,11 +85,8 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-tmdb-js_search.html">tmdb-js/search</a>.</span>
-        
-        Searcher
-        </h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="module-tmdb-js_search.html">tmdb-js/search</a>.</span>Searcher<span class="signature">(apiKey, language)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -54,18 +95,128 @@
     <div class="container-overview">
     
         
-<div class="section-method">
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
 
     
+    <h4 class="name" id="Searcher">
+        <a class="href-link" href="#Searcher">#</a>
+        
+        <span class="code-name">
+            
+                new Searcher<span class="signature">(apiKey, language)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
 
-    <h4 class="name" id="Searcher"><span class="type-signature"></span>new Searcher<span class="signature">(apiKey, language)</span><span class="type-signature"></span></h4>
-
+    
+    
+    <div class="description">
+        Sets properties.
+    </div>
     
 
 
 
-<div class="description">
-    Sets properties.
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">A TMDB API key.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>language</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          en-US
+      
+      </td>
+  
+
+  <td class="description last">The natural language of search queries. The default is "en-US".</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
 
@@ -97,18 +248,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_search_searcher.js.html">tmdb-js/search/searcher.js</a>, <a href="tmdb-js_search_searcher.js.html#line24">line 24</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="tmdb-js_search_searcher.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_search_searcher.js.html">tmdb-js/search/searcher.js</a>, <a href="tmdb-js_search_searcher.js.html#line24">line 24</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -120,113 +272,31 @@
 
 
 
-    <h5>Parameters:</h5>
-    
 
-<table class="params">
-    <thead>
-    <tr>
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
         
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">
-                A TMDB API key.
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>language</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    en-US
-                
-                </td>
-            
-
-            <td class="description last">
-                The natural language of search queries. The default is "en-US".
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
     
     </div>
+    
+    
+
+    
+
+    
 
     
 
@@ -234,29 +304,191 @@
 
     
 
-     
-
     
 
     
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
 
     
-        <h3 class="subsection-title">Methods</h3>
+    <h4 class="name" id="multiSearch">
+        <a class="href-link" href="#multiSearch">#</a>
+        
+        <span class="code-name">
+            
+                multiSearch<span class="signature">(searchTerm, startPage, pageCount, includeAdult)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets data from a multi search in TMDB.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>searchTerm</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The search term (query).</td>
+</tr>
+
 
         
+
             
-<div class="section-method">
+<tr class="deep-level-0">
+  
+      <td class="name"><code>startPage</code></td>
+  
 
-    
-
-    <h4 class="name" id="multiSearch"><span class="type-signature"></span>multiSearch<span class="signature">(searchTerm, startPage, pageCount, includeAdult)</span><span class="type-signature"></span></h4>
-
-    
-
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
 
 
-<div class="description">
-    Gets data from a multi search in TMDB.
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          1
+      
+      </td>
+  
+
+  <td class="description last">The first search result page to return data from. The default is 1.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>pageCount</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          1
+      
+      </td>
+  
+
+  <td class="description last">The number of search result pages to return data from. The default is 1.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>includeAdult</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Boolean</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          true
+      
+      </td>
+  
+
+  <td class="description last">true if adult content will be included. The default is true.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
 
@@ -288,18 +520,19 @@
     
 
     
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_search_searcher.js.html">tmdb-js/search/searcher.js</a>, <a href="tmdb-js_search_searcher.js.html#line40">line 40</a>
-    </li></ul></dd>
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="tmdb-js_search_searcher.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_search_searcher.js.html">tmdb-js/search/searcher.js</a>, <a href="tmdb-js_search_searcher.js.html#line40">line 40</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -307,162 +540,6 @@
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>searchTerm</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">
-                The search term (query).
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>startPage</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    1
-                
-                </td>
-            
-
-            <td class="description last">
-                The first search result page to return data from. The default is 1.
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pageCount</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    1
-                
-                </td>
-            
-
-            <td class="description last">
-                The number of search result pages to return data from. The default is 1.
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>includeAdult</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Boolean</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    true
-                
-                </td>
-            
-
-            <td class="description last">
-                true if adult content will be included. The default is true.
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -480,7 +557,9 @@
 
 
 </div>
-        
+            
+            </div>
+        </div>
     
 
     
@@ -493,15 +572,25 @@
 
 
 
-</div>
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
 
-<br class="clear">
-
-<footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Mon Jul 06 2020 19:56:30 GMT+0000 (Coordinated Universal Time) using the Minami theme.
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
 </body>
 </html>
