@@ -1,41 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
-    <meta charset="utf-8">
-    <title>Tmdb - Documentation</title>
-    
-    
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-    <script src="scripts/nav.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Tmdb</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
-<body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
 
-<label for="nav-trigger" class="overlay"></label>
 
-<nav >
-    
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getAuthenticator">getAuthenticator</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getMovies">getMovies</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getSearcher">getSearcher</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getTvShows">getTvShows</a></li></ul></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#createGuestSession">createGuestSession</a></li><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#createSession">createSession</a></li><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#deleteSession">deleteSession</a></li></ul></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_search.Searcher.html#multiSearch">multiSearch</a></li></ul></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSection.html#getMovie">getMovie</a></li></ul></li><li><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#deleteRating">deleteRating</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getAlternativeTitles">getAlternativeTitles</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getChanges">getChanges</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getCredits">getCredits</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getDetails">getDetails</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getExternalIds">getExternalIds</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getImages">getImages</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getKeywords">getKeywords</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getLists">getLists</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getRecommendations">getRecommendations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getReleaseDates">getReleaseDates</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getReviews">getReviews</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getSimilarMovies">getSimilarMovies</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getTranslations">getTranslations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getVideos">getVideos</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#rate">rate</a></li></ul></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSection.html#getTvShow">getTvShow</a></li></ul></li><li><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getAlternativeTitles">getAlternativeTitles</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getChanges">getChanges</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getContentRatings">getContentRatings</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getCredits">getCredits</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getDetails">getDetails</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getEpisodeGroups">getEpisodeGroups</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getExternalIds">getExternalIds</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getImages">getImages</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getKeywords">getKeywords</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getRecommendations">getRecommendations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getReviews">getReviews</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getScreenedTheatrically">getScreenedTheatrically</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getSimilarTvShows">getSimilarTvShows</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getTranslations">getTranslations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getVideos">getVideos</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_search.html#~searchPage">searchPage</a></li><li data-type='method'><a href="module-tmdb-js_search.html#~searchPages">searchPages</a></li></ul></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li></li><li><a href="module-utils.html">utils</a><ul class='methods'><li data-type='method'><a href="module-utils.html#.createGuestSession">createGuestSession</a></li><li data-type='method'><a href="module-utils.html#.createLoginSession">createLoginSession</a></li><li data-type='method'><a href="module-utils.html#.createSession">createSession</a></li><li data-type='method'><a href="module-utils.html#.deleteSession">deleteSession</a></li><li data-type='method'><a href="module-utils.html#.getRequestToken">getRequestToken</a></li><li data-type='method'><a href="module-utils.html#.getSectionData">getSectionData</a></li><li data-type='method'><a href="module-utils.html#.getSectionDetails">getSectionDetails</a></li><li data-type='method'><a href="module-utils.html#.httpRequest">httpRequest</a></li><li data-type='method'><a href="module-utils.html#.parseHttpRequest">parseHttpRequest</a></li></ul></li><li></li></ul>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">Tmdb</h1>
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
 
-    
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>Tmdb</h1>
+                </header>
+                
 
 
 
@@ -44,83 +85,45 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-tmdb-js.html">tmdb-js</a>.</span>
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="module-tmdb-js.html">tmdb-js</a>.</span>Tmdb<span class="signature">(apiKey, language)</span><span class="type-signature"></span></h2>
         
-        Tmdb
-        </h2>
-        
-            <div class="class-description usertext">Can handle and get TMDB data.</div>
+            <div class="class-description">Can handle and get TMDB data.</div>
         
     
 </header>
 
 <article>
+    <div class="container-overview">
     
-        <div class="container-overview">
         
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="Tmdb">
+        <a class="href-link" href="#Tmdb">#</a>
+        
+        <span class="code-name">
             
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Tmdb"><span class="type-signature"></span>new Tmdb<span class="signature">(apiKey, language)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line19">line 19</a>
-    </li></ul></dd>
+                new Tmdb<span class="signature">(apiKey, language)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-
     
-
+    <div class="description">
+        Sets properties.
+    </div>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Sets properties.
-</div>
-
-
 
 
 
@@ -132,134 +135,92 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The TMDB API key.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>language</code></td>
+  
 
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">The TMDB API key.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>language</code></td>
-            
-
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
-                <td class="default">
-                
-                    <code>en-US</code>
-                
-                </td>
-            
+  
+      <td class="default">
+      
+          en-US
+      
+      </td>
+  
 
-            <td class="description last">The natural language of queries, the default is "en-US".</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <td class="description last">The natural language of queries, the default is "en-US".</td>
+</tr>
 
 
         
-        </div>
-    
+        </tbody>
+    </table>
+</div>
 
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="getAuthenticator"><span class="type-signature"></span>getAuthenticator<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -267,11 +228,6 @@
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line27">line 27</a>
-    </li></ul></dd>
-    
 
     
 
@@ -294,13 +250,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="tmdb-js_tmdb-js.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line19">line 19</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -308,46 +270,80 @@
 
 
 
-<div class="description usertext">
-    Gets an Authenticator instance which can 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getAuthenticator">
+        <a class="href-link" href="#getAuthenticator">#</a>
+        
+        <span class="code-name">
+            
+                getAuthenticator<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets an Authenticator instance which can 
 be used to handle TMDB authentications.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
+    </div>
     
 
-    <h4 class="name" id="getMovies"><span class="type-signature"></span>getMovies<span class="signature">()</span><span class="type-signature"></span></h4>
 
-    
+
+
+
+
+
+
+
 
 
 
@@ -355,11 +351,6 @@ be used to handle TMDB authentications.
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line35">line 35</a>
-    </li></ul></dd>
-    
 
     
 
@@ -382,13 +373,19 @@ be used to handle TMDB authentications.
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="tmdb-js_tmdb-js.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line27">line 27</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -396,46 +393,55 @@ be used to handle TMDB authentications.
 
 
 
-<div class="description usertext">
-    Gets a MovieSection instance which can be used 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getMovies">
+        <a class="href-link" href="#getMovies">#</a>
+        
+        <span class="code-name">
+            
+                getMovies<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets a MovieSection instance which can be used 
 to handle and get movie data on TMDB.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
+    </div>
     
 
-    <h4 class="name" id="getSearcher"><span class="type-signature"></span>getSearcher<span class="signature">()</span><span class="type-signature"></span></h4>
 
-    
+
+
+
+
+
+
+
 
 
 
@@ -443,11 +449,6 @@ to handle and get movie data on TMDB.
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line50">line 50</a>
-    </li></ul></dd>
-    
 
     
 
@@ -470,13 +471,19 @@ to handle and get movie data on TMDB.
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="tmdb-js_tmdb-js.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line35">line 35</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -484,45 +491,54 @@ to handle and get movie data on TMDB.
 
 
 
-<div class="description usertext">
-    Gets a Searcher instance which can be used to search TMDB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
             
+                <div class="member">
+
 
     
-
-    <h4 class="name" id="getTvShows"><span class="type-signature"></span>getTvShows<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getSearcher">
+        <a class="href-link" href="#getSearcher">#</a>
+        
+        <span class="code-name">
+            
+                getSearcher<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
 
     
+    
+    <div class="description">
+        Gets a Searcher instance which can be used to search TMDB.
+    </div>
+    
+
+
+
+
+
+
+
+
+
 
 
 
@@ -530,11 +546,6 @@ to handle and get movie data on TMDB.
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line43">line 43</a>
-    </li></ul></dd>
-    
 
     
 
@@ -557,13 +568,19 @@ to handle and get movie data on TMDB.
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="tmdb-js_tmdb-js.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line50">line 50</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -571,39 +588,124 @@ to handle and get movie data on TMDB.
 
 
 
-<div class="description usertext">
-    Gets a TvShowSection instance which can be used 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getTvShows">
+        <a class="href-link" href="#getTvShows">#</a>
+        
+        <span class="code-name">
+            
+                getTvShows<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets a TvShowSection instance which can be used 
 to handle and get TV show data on TMDB.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_tmdb-js.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_tmdb-js.js.html">tmdb-js/tmdb-js.js</a>, <a href="tmdb-js_tmdb-js.js.html#line43">line 43</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+            
+            </div>
+        </div>
     
 
     
@@ -616,21 +718,25 @@ to handle and get TV show data on TMDB.
 
 
 
-    
-    
-</div>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Mon Jul 06 2020 20:38:04 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/polyfill.js"></script>
-<script src="scripts/linenumber.js"></script>
-
-
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
 
 </body>
 </html>

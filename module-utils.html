@@ -1,41 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
-    <meta charset="utf-8">
-    <title>utils - Documentation</title>
-    
-    
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-    <script src="scripts/nav.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> utils</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
-<body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
 
-<label for="nav-trigger" class="overlay"></label>
 
-<nav >
-    
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getAuthenticator">getAuthenticator</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getMovies">getMovies</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getSearcher">getSearcher</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getTvShows">getTvShows</a></li></ul></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#createGuestSession">createGuestSession</a></li><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#createSession">createSession</a></li><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#deleteSession">deleteSession</a></li></ul></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_search.Searcher.html#multiSearch">multiSearch</a></li></ul></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSection.html#getMovie">getMovie</a></li></ul></li><li><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#deleteRating">deleteRating</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getAlternativeTitles">getAlternativeTitles</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getChanges">getChanges</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getCredits">getCredits</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getDetails">getDetails</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getExternalIds">getExternalIds</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getImages">getImages</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getKeywords">getKeywords</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getLists">getLists</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getRecommendations">getRecommendations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getReleaseDates">getReleaseDates</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getReviews">getReviews</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getSimilarMovies">getSimilarMovies</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getTranslations">getTranslations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getVideos">getVideos</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#rate">rate</a></li></ul></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSection.html#getTvShow">getTvShow</a></li></ul></li><li><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getAlternativeTitles">getAlternativeTitles</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getChanges">getChanges</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getContentRatings">getContentRatings</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getCredits">getCredits</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getDetails">getDetails</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getEpisodeGroups">getEpisodeGroups</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getExternalIds">getExternalIds</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getImages">getImages</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getKeywords">getKeywords</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getRecommendations">getRecommendations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getReviews">getReviews</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getScreenedTheatrically">getScreenedTheatrically</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getSimilarTvShows">getSimilarTvShows</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getTranslations">getTranslations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getVideos">getVideos</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_search.html#~searchPage">searchPage</a></li><li data-type='method'><a href="module-tmdb-js_search.html#~searchPages">searchPages</a></li></ul></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li></li><li><a href="module-utils.html">utils</a><ul class='methods'><li data-type='method'><a href="module-utils.html#.createGuestSession">createGuestSession</a></li><li data-type='method'><a href="module-utils.html#.createLoginSession">createLoginSession</a></li><li data-type='method'><a href="module-utils.html#.createSession">createSession</a></li><li data-type='method'><a href="module-utils.html#.deleteSession">deleteSession</a></li><li data-type='method'><a href="module-utils.html#.getRequestToken">getRequestToken</a></li><li data-type='method'><a href="module-utils.html#.getSectionData">getSectionData</a></li><li data-type='method'><a href="module-utils.html#.getSectionDetails">getSectionDetails</a></li><li data-type='method'><a href="module-utils.html#.httpRequest">httpRequest</a></li><li data-type='method'><a href="module-utils.html#.parseHttpRequest">parseHttpRequest</a></li></ul></li><li></li></ul>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">utils</h1>
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
 
-    
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Module</p>
+                    <h1>utils</h1>
+                </header>
+                
 
 
 
@@ -49,84 +90,50 @@
 </header>
 
 <article>
+    <div class="container-overview">
     
-        <div class="container-overview">
         
-            
-
-            
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
 
         
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
             
-<h4 class="name" id=".baseUrl"><span class="type-signature">(static) </span>baseUrl<span class="type-signature"></span></h4>
+                <div class="member">
 
-
-
-
-
-<dl class="details">
-
+<h4 class="name" id=".baseUrl">
+    <a class="href-link" href="#.baseUrl">#</a>
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line11">line 11</a>
-    </li></ul></dd>
+        
+            <span class='tag'>static</span>
+        
     
-
+    <span class="code-name">
+        baseUrl
+    </span>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
+</h4>
 
 
 
 
-
-<div class="description usertext">
+<div class="description">
     The TMDB API base URL.
 </div>
 
@@ -134,25 +141,9 @@
 
 
 
-
-
-
-        
-            
-<h4 class="name" id=".dataTypes"><span class="type-signature">(static) </span>dataTypes<span class="type-signature"></span></h4>
-
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line181">line 181</a>
-    </li></ul></dd>
-    
 
     
 
@@ -175,13 +166,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line11">line 11</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -189,7 +186,27 @@
 
 
 
-<div class="description usertext">
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".dataTypes">
+    <a class="href-link" href="#.dataTypes">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        dataTypes
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
     The different types of data available at TMDB.
 </div>
 
@@ -197,25 +214,9 @@
 
 
 
-
-
-
-        
-            
-<h4 class="name" id=".httpMethod"><span class="type-signature">(static) </span>httpMethod<span class="type-signature"></span></h4>
-
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line14">line 14</a>
-    </li></ul></dd>
-    
 
     
 
@@ -238,13 +239,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line181">line 181</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -252,7 +259,27 @@
 
 
 
-<div class="description usertext">
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".httpMethod">
+    <a class="href-link" href="#.httpMethod">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        httpMethod
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
     All different types of HTTP request methods.
 </div>
 
@@ -260,25 +287,9 @@
 
 
 
-
-
-
-        
-            
-<h4 class="name" id=".jsonContentType"><span class="type-signature">(static) </span>jsonContentType<span class="type-signature"></span></h4>
-
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
 
     
 
@@ -301,13 +312,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_http_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line14">line 14</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -315,7 +332,27 @@
 
 
 
-<div class="description usertext">
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".jsonContentType">
+    <a class="href-link" href="#.jsonContentType">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        jsonContentType
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
     JSON Content-Type value.
 </div>
 
@@ -323,25 +360,9 @@
 
 
 
-
-
-
-        
-            
-<h4 class="name" id=".sections"><span class="type-signature">(static) </span>sections<span class="type-signature"></span></h4>
-
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line164">line 164</a>
-    </li></ul></dd>
-    
 
     
 
@@ -364,13 +385,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_http_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line9">line 9</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -378,7 +405,27 @@
 
 
 
-<div class="description usertext">
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".sections">
+    <a class="href-link" href="#.sections">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        sections
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
     The different types of sections available at TMDB.
 </div>
 
@@ -386,35 +433,9 @@
 
 
 
-
-
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id=".createGuestSession"><span class="type-signature">(static) </span>createGuestSession<span class="signature">(apiKey)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line136">line 136</a>
-    </li></ul></dd>
-    
 
     
 
@@ -437,13 +458,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line164">line 164</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -451,11 +478,42 @@
 
 
 
-<div class="description usertext">
-    Creates a guest session at TMDB and returns the session ID.
 </div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
 
 
+    
+    <h4 class="name" id=".createGuestSession">
+        <a class="href-link" href="#.createGuestSession">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createGuestSession<span class="signature">(apiKey)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Creates a guest session at TMDB and returns the session ID.
+    </div>
+    
 
 
 
@@ -467,88 +525,55 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The TMDB API key.</td>
-        </tr>
+  <td class="description last">The TMDB API key.</td>
+</tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a guest session ID.
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".createLoginSession"><span class="type-signature">(static) </span>createLoginSession<span class="signature">(apiKey, username, password)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -556,11 +581,6 @@
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line78">line 78</a>
-    </li></ul></dd>
-    
 
     
 
@@ -583,13 +603,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line136">line 136</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -597,11 +623,66 @@
 
 
 
-<div class="description usertext">
-    Creates a session with login at TMDB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a guest session ID.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createLoginSession">
+        <a class="href-link" href="#.createLoginSession">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createLoginSession<span class="signature">(apiKey, username, password)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Creates a session with login at TMDB.
+    </div>
+    
 
 
 
@@ -613,134 +694,105 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The API key to TMDB.</td>
-        </tr>
+  <td class="description last">The API key to TMDB.</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>username</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The username to use to create a session.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The password to use to create a session.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a boolean value which is true if the login session creation was a success.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>username</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The username to use to create a session.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>password</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The password to use to create a session.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".createSession"><span class="type-signature">(static) </span>createSession<span class="signature">(apiKey, permissionApp)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -748,11 +800,6 @@
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line108">line 108</a>
-    </li></ul></dd>
-    
 
     
 
@@ -775,13 +822,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line78">line 78</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -789,11 +842,66 @@
 
 
 
-<div class="description usertext">
-    Creates a session at TMDB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a boolean value which is true if the login session creation was a success.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createSession">
+        <a class="href-link" href="#.createSession">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createSession<span class="signature">(apiKey, permissionApp)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Creates a session at TMDB.
+    </div>
+    
 
 
 
@@ -805,112 +913,81 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">The API key to TMDB.</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
+        <tbody>
+        
 
-        <tr>
             
-                <td class="name"><code>permissionApp</code></td>
-            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
 
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The API key to TMDB.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>permissionApp</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
 
-            <td class="description last">The name of the web browser app to use when the 
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The name of the web browser app to use when the 
 end-user has to approve the request token.</td>
-        </tr>
+</tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a session ID.
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".deleteSession"><span class="type-signature">(static) </span>deleteSession<span class="signature">(apiKey, sessionId)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -918,11 +995,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line149">line 149</a>
-    </li></ul></dd>
-    
 
     
 
@@ -945,13 +1017,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line108">line 108</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -959,11 +1037,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Deletes (log outs of) a session.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a session ID.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".deleteSession">
+        <a class="href-link" href="#.deleteSession">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                deleteSession<span class="signature">(apiKey, sessionId)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Deletes (log outs of) a session.
+    </div>
+    
 
 
 
@@ -975,111 +1108,80 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">*</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The TMDB API key.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sessionId</code></td>
+  
 
-            
-
-            <td class="description last">The TMDB API key.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sessionId</code></td>
-            
-
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">*</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The ID of the session to delete.</td>
-        </tr>
+  <td class="description last">The ID of the session to delete.</td>
+</tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a boolean value, which will be true if the deletion is successful.
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getRequestToken"><span class="type-signature">(static) </span>getRequestToken<span class="signature">(apiKey)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -1087,11 +1189,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line61">line 61</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1114,13 +1211,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line149">line 149</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1128,11 +1231,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Gets a request token from TMDB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a boolean value, which will be true if the deletion is successful.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getRequestToken">
+        <a class="href-link" href="#.getRequestToken">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getRequestToken<span class="signature">(apiKey)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets a request token from TMDB.
+    </div>
+    
 
 
 
@@ -1144,88 +1302,55 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The API key to TMDB.</td>
-        </tr>
+  <td class="description last">The API key to TMDB.</td>
+</tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise.
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getSectionData"><span class="type-signature">(static) </span>getSectionData<span class="signature">(sectionType, sectionId, dataType, apiKey, language)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -1233,11 +1358,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line23">line 23</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1260,13 +1380,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line61">line 61</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1274,11 +1400,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Gets specific data from a section in TMDB as a JSON object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getSectionData">
+        <a class="href-link" href="#.getSectionData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getSectionData<span class="signature">(sectionType, sectionId, dataType, apiKey, language)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets specific data from a section in TMDB as a JSON object.
+    </div>
+    
 
 
 
@@ -1290,180 +1471,155 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>sectionType</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sectionType</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The section from where data will be retrieved</td>
-        </tr>
+  <td class="description last">The section from where data will be retrieved</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>sectionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id of the section on TMDB.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dataType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The type of data to retrieve.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The API key to the TMDB API.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>language</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The natural language of the GET request.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sectionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The id of the section on TMDB.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>dataType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The type of data to retrieve.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The API key to the TMDB API.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>language</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The natural language of the GET request.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getSectionDetails"><span class="type-signature">(static) </span>getSectionDetails<span class="signature">(sectionType, sectionId, apiKey, language)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -1471,11 +1627,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line52">line 52</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1498,13 +1649,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line23">line 23</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1512,11 +1669,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Gets all details about a section in TMDB as a JSON object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getSectionDetails">
+        <a class="href-link" href="#.getSectionDetails">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getSectionDetails<span class="signature">(sectionType, sectionId, apiKey, language)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets all details about a section in TMDB as a JSON object.
+    </div>
+    
 
 
 
@@ -1528,157 +1740,130 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>sectionType</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sectionType</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The section from where data will be retrieved</td>
-        </tr>
+  <td class="description last">The section from where data will be retrieved</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>sectionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id of the section on TMDB.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The API key to the TMDB API.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>language</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The language of TMDB GET requests.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sectionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The id of the section on TMDB.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The API key to the TMDB API.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>language</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The language of TMDB GET requests.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".httpRequest"><span class="type-signature">(static) </span>httpRequest<span class="signature">(url, method, contentType, requestBody)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -1686,11 +1871,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line33">line 33</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1713,13 +1893,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line52">line 52</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1727,11 +1913,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Makes an HTTP request to the passed url, based on the passed method and request body.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".httpRequest">
+        <a class="href-link" href="#.httpRequest">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                httpRequest<span class="signature">(url, method, contentType, requestBody)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes an HTTP request to the passed url, based on the passed method and request body.
+    </div>
+    
 
 
 
@@ -1743,147 +1984,130 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>url</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The URL to make a request to.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The request method.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>contentType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The contentType</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>requestBody</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The body of the request.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <td class="description last">The URL to make a request to.</td>
+</tr>
 
 
         
+
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>method</code></td>
+  
 
-    
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
 
-    <h4 class="name" id=".parseHttpRequest"><span class="type-signature">(static) </span>parseHttpRequest<span class="signature">(url, method, parseFun, contentType, requestBody)</span><span class="type-signature"></span></h4>
 
-    
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The request method.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>contentType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The contentType</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>requestBody</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The body of the request.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
 
 
 
@@ -1891,11 +2115,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line78">line 78</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1918,13 +2137,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_http_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line33">line 33</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -1932,11 +2157,49 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Makes an HTTP request on the given URL and parses the result.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
+            
+                <div class="member">
 
 
+    
+    <h4 class="name" id=".parseHttpRequest">
+        <a class="href-link" href="#.parseHttpRequest">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                parseHttpRequest<span class="signature">(url, method, parseFun, contentType, requestBody)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes an HTTP request on the given URL and parses the result.
+    </div>
+    
 
 
 
@@ -1948,173 +2211,241 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>url</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The URL.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>method</code></td>
+  
 
-            
-
-            <td class="description last">The URL.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The request method.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>parseFun</code></td>
+  
 
-            
-
-            <td class="description last">The request method.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parseFun</code></td>
-            
-
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">function</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The function used to parse the request result.</td>
-        </tr>
+  <td class="description last">The function used to parse the request result.</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>contentType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The content type of the request</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>requestBody</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The body of the request</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a parsed response.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>contentType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The content type of the request</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>requestBody</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The body of the request</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
 
 
+
+
+<dl class="details">
+
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utils_http_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line78">line 78</a>
+            </span>
+        </p>
+    
+</dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a parsed response.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
     
 
     
@@ -2139,84 +2470,50 @@ end-user has to approve the request token.</td>
 </header>
 
 <article>
+    <div class="container-overview">
     
-        <div class="container-overview">
         
-            
-
-            
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
 
         
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
             
-<h4 class="name" id=".baseUrl"><span class="type-signature">(static) </span>baseUrl<span class="type-signature"></span></h4>
+                <div class="member">
 
-
-
-
-
-<dl class="details">
-
+<h4 class="name" id=".baseUrl">
+    <a class="href-link" href="#.baseUrl">#</a>
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line11">line 11</a>
-    </li></ul></dd>
+        
+            <span class='tag'>static</span>
+        
     
-
+    <span class="code-name">
+        baseUrl
+    </span>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
+</h4>
 
 
 
 
-
-<div class="description usertext">
+<div class="description">
     The TMDB API base URL.
 </div>
 
@@ -2224,25 +2521,9 @@ end-user has to approve the request token.</td>
 
 
 
-
-
-
-        
-            
-<h4 class="name" id=".dataTypes"><span class="type-signature">(static) </span>dataTypes<span class="type-signature"></span></h4>
-
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line181">line 181</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2265,13 +2546,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line11">line 11</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -2279,7 +2566,27 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".dataTypes">
+    <a class="href-link" href="#.dataTypes">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        dataTypes
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
     The different types of data available at TMDB.
 </div>
 
@@ -2287,25 +2594,9 @@ end-user has to approve the request token.</td>
 
 
 
-
-
-
-        
-            
-<h4 class="name" id=".httpMethod"><span class="type-signature">(static) </span>httpMethod<span class="type-signature"></span></h4>
-
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line14">line 14</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2328,13 +2619,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line181">line 181</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -2342,7 +2639,27 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".httpMethod">
+    <a class="href-link" href="#.httpMethod">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        httpMethod
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
     All different types of HTTP request methods.
 </div>
 
@@ -2350,25 +2667,9 @@ end-user has to approve the request token.</td>
 
 
 
-
-
-
-        
-            
-<h4 class="name" id=".jsonContentType"><span class="type-signature">(static) </span>jsonContentType<span class="type-signature"></span></h4>
-
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2391,13 +2692,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_http_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line14">line 14</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -2405,7 +2712,27 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".jsonContentType">
+    <a class="href-link" href="#.jsonContentType">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        jsonContentType
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
     JSON Content-Type value.
 </div>
 
@@ -2413,25 +2740,9 @@ end-user has to approve the request token.</td>
 
 
 
-
-
-
-        
-            
-<h4 class="name" id=".sections"><span class="type-signature">(static) </span>sections<span class="type-signature"></span></h4>
-
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line164">line 164</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2454,13 +2765,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_http_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line9">line 9</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -2468,7 +2785,27 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".sections">
+    <a class="href-link" href="#.sections">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        sections
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
     The different types of sections available at TMDB.
 </div>
 
@@ -2476,35 +2813,9 @@ end-user has to approve the request token.</td>
 
 
 
-
-
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id=".createGuestSession"><span class="type-signature">(static) </span>createGuestSession<span class="signature">(apiKey)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line136">line 136</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2527,13 +2838,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line164">line 164</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -2541,11 +2858,42 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Creates a guest session at TMDB and returns the session ID.
 </div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
 
 
+    
+    <h4 class="name" id=".createGuestSession">
+        <a class="href-link" href="#.createGuestSession">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createGuestSession<span class="signature">(apiKey)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Creates a guest session at TMDB and returns the session ID.
+    </div>
+    
 
 
 
@@ -2557,88 +2905,55 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The TMDB API key.</td>
-        </tr>
+  <td class="description last">The TMDB API key.</td>
+</tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a guest session ID.
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".createLoginSession"><span class="type-signature">(static) </span>createLoginSession<span class="signature">(apiKey, username, password)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -2646,11 +2961,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line78">line 78</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2673,13 +2983,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line136">line 136</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -2687,11 +3003,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Creates a session with login at TMDB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a guest session ID.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createLoginSession">
+        <a class="href-link" href="#.createLoginSession">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createLoginSession<span class="signature">(apiKey, username, password)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Creates a session with login at TMDB.
+    </div>
+    
 
 
 
@@ -2703,134 +3074,105 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The API key to TMDB.</td>
-        </tr>
+  <td class="description last">The API key to TMDB.</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>username</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The username to use to create a session.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The password to use to create a session.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a boolean value which is true if the login session creation was a success.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>username</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The username to use to create a session.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>password</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The password to use to create a session.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".createSession"><span class="type-signature">(static) </span>createSession<span class="signature">(apiKey, permissionApp)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -2838,11 +3180,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line108">line 108</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2865,13 +3202,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line78">line 78</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -2879,11 +3222,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Creates a session at TMDB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a boolean value which is true if the login session creation was a success.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".createSession">
+        <a class="href-link" href="#.createSession">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                createSession<span class="signature">(apiKey, permissionApp)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Creates a session at TMDB.
+    </div>
+    
 
 
 
@@ -2895,112 +3293,81 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
 
-            <td class="description last">The API key to TMDB.</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
+        <tbody>
+        
 
-        <tr>
             
-                <td class="name"><code>permissionApp</code></td>
-            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
 
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The API key to TMDB.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>permissionApp</code></td>
+  
 
-            
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
 
-            <td class="description last">The name of the web browser app to use when the 
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The name of the web browser app to use when the 
 end-user has to approve the request token.</td>
-        </tr>
+</tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a session ID.
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".deleteSession"><span class="type-signature">(static) </span>deleteSession<span class="signature">(apiKey, sessionId)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -3008,11 +3375,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line149">line 149</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3035,13 +3397,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line108">line 108</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -3049,11 +3417,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Deletes (log outs of) a session.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a session ID.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".deleteSession">
+        <a class="href-link" href="#.deleteSession">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                deleteSession<span class="signature">(apiKey, sessionId)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Deletes (log outs of) a session.
+    </div>
+    
 
 
 
@@ -3065,111 +3488,80 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">*</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The TMDB API key.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sessionId</code></td>
+  
 
-            
-
-            <td class="description last">The TMDB API key.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sessionId</code></td>
-            
-
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">*</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The ID of the session to delete.</td>
-        </tr>
+  <td class="description last">The ID of the session to delete.</td>
+</tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a boolean value, which will be true if the deletion is successful.
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getRequestToken"><span class="type-signature">(static) </span>getRequestToken<span class="signature">(apiKey)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -3177,11 +3569,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line61">line 61</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3204,13 +3591,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line149">line 149</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -3218,11 +3611,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Gets a request token from TMDB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a boolean value, which will be true if the deletion is successful.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getRequestToken">
+        <a class="href-link" href="#.getRequestToken">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getRequestToken<span class="signature">(apiKey)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets a request token from TMDB.
+    </div>
+    
 
 
 
@@ -3234,88 +3682,55 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The API key to TMDB.</td>
-        </tr>
+  <td class="description last">The API key to TMDB.</td>
+</tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise.
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getSectionData"><span class="type-signature">(static) </span>getSectionData<span class="signature">(sectionType, sectionId, dataType, apiKey, language)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -3323,11 +3738,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line23">line 23</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3350,13 +3760,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line61">line 61</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -3364,11 +3780,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Gets specific data from a section in TMDB as a JSON object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getSectionData">
+        <a class="href-link" href="#.getSectionData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getSectionData<span class="signature">(sectionType, sectionId, dataType, apiKey, language)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets specific data from a section in TMDB as a JSON object.
+    </div>
+    
 
 
 
@@ -3380,180 +3851,155 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>sectionType</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sectionType</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The section from where data will be retrieved</td>
-        </tr>
+  <td class="description last">The section from where data will be retrieved</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>sectionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id of the section on TMDB.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dataType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The type of data to retrieve.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The API key to the TMDB API.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>language</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The natural language of the GET request.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sectionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The id of the section on TMDB.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>dataType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The type of data to retrieve.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The API key to the TMDB API.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>language</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The natural language of the GET request.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getSectionDetails"><span class="type-signature">(static) </span>getSectionDetails<span class="signature">(sectionType, sectionId, apiKey, language)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -3561,11 +4007,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line52">line 52</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3588,13 +4029,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line23">line 23</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -3602,11 +4049,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Gets all details about a section in TMDB as a JSON object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getSectionDetails">
+        <a class="href-link" href="#.getSectionDetails">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getSectionDetails<span class="signature">(sectionType, sectionId, apiKey, language)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets all details about a section in TMDB as a JSON object.
+    </div>
+    
 
 
 
@@ -3618,157 +4120,130 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>sectionType</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sectionType</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The section from where data will be retrieved</td>
-        </tr>
+  <td class="description last">The section from where data will be retrieved</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>sectionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id of the section on TMDB.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The API key to the TMDB API.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>language</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The language of TMDB GET requests.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sectionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The id of the section on TMDB.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The API key to the TMDB API.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>language</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The language of TMDB GET requests.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".httpRequest"><span class="type-signature">(static) </span>httpRequest<span class="signature">(url, method, contentType, requestBody)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
@@ -3776,11 +4251,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line33">line 33</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3803,13 +4273,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_tmdb_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_tmdb_utils.js.html">utils/tmdb_utils.js</a>, <a href="utils_tmdb_utils.js.html#line52">line 52</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -3817,11 +4293,66 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Makes an HTTP request to the passed url, based on the passed method and request body.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".httpRequest">
+        <a class="href-link" href="#.httpRequest">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                httpRequest<span class="signature">(url, method, contentType, requestBody)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes an HTTP request to the passed url, based on the passed method and request body.
+    </div>
+    
 
 
 
@@ -3833,147 +4364,130 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>url</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The URL to make a request to.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The request method.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>contentType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The contentType</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>requestBody</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The body of the request.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <td class="description last">The URL to make a request to.</td>
+</tr>
 
 
         
+
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>method</code></td>
+  
 
-    
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
 
-    <h4 class="name" id=".parseHttpRequest"><span class="type-signature">(static) </span>parseHttpRequest<span class="signature">(url, method, parseFun, contentType, requestBody)</span><span class="type-signature"></span></h4>
 
-    
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The request method.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>contentType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The contentType</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>requestBody</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The body of the request.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
 
 
 
@@ -3981,11 +4495,6 @@ end-user has to approve the request token.</td>
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line78">line 78</a>
-    </li></ul></dd>
-    
 
     
 
@@ -4008,13 +4517,19 @@ end-user has to approve the request token.</td>
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="utils_http_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line33">line 33</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -4022,11 +4537,49 @@ end-user has to approve the request token.</td>
 
 
 
-<div class="description usertext">
-    Makes an HTTP request on the given URL and parses the result.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
+            
+                <div class="member">
 
 
+    
+    <h4 class="name" id=".parseHttpRequest">
+        <a class="href-link" href="#.parseHttpRequest">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                parseHttpRequest<span class="signature">(url, method, parseFun, contentType, requestBody)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Makes an HTTP request on the given URL and parses the result.
+    </div>
+    
 
 
 
@@ -4038,173 +4591,241 @@ end-user has to approve the request token.</td>
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>url</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The URL.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>method</code></td>
+  
 
-            
-
-            <td class="description last">The URL.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The request method.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>parseFun</code></td>
+  
 
-            
-
-            <td class="description last">The request method.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parseFun</code></td>
-            
-
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">function</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
+  
 
-            <td class="description last">The function used to parse the request result.</td>
-        </tr>
+  <td class="description last">The function used to parse the request result.</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>contentType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The content type of the request</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>requestBody</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The body of the request</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a parsed response.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>contentType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The content type of the request</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>requestBody</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The body of the request</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
 
 
+
+
+<dl class="details">
+
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utils_http_utils.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_http_utils.js.html">utils/http_utils.js</a>, <a href="utils_http_utils.js.html#line78">line 78</a>
+            </span>
+        </p>
+    
+</dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a parsed response.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
     
 
     
@@ -4217,21 +4838,25 @@ end-user has to approve the request token.</td>
 
 
 
-    
-    
-</div>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Mon Jul 06 2020 20:38:04 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/polyfill.js"></script>
-<script src="scripts/linenumber.js"></script>
-
-
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
 
 </body>
 </html>

@@ -1,41 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
-    <meta charset="utf-8">
-    <title>MovieSubsection - Documentation</title>
-    
-    
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-    <script src="scripts/nav.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> MovieSubsection</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
-<body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
 
-<label for="nav-trigger" class="overlay"></label>
 
-<nav >
-    
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getAuthenticator">getAuthenticator</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getMovies">getMovies</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getSearcher">getSearcher</a></li><li data-type='method'><a href="module-tmdb-js.Tmdb.html#getTvShows">getTvShows</a></li></ul></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#createGuestSession">createGuestSession</a></li><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#createSession">createSession</a></li><li data-type='method'><a href="module-tmdb-js_authentication.Authenticator.html#deleteSession">deleteSession</a></li></ul></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_search.Searcher.html#multiSearch">multiSearch</a></li></ul></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSection.html#getMovie">getMovie</a></li></ul></li><li><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#deleteRating">deleteRating</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getAlternativeTitles">getAlternativeTitles</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getChanges">getChanges</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getCredits">getCredits</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getDetails">getDetails</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getExternalIds">getExternalIds</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getImages">getImages</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getKeywords">getKeywords</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getLists">getLists</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getRecommendations">getRecommendations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getReleaseDates">getReleaseDates</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getReviews">getReviews</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getSimilarMovies">getSimilarMovies</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getTranslations">getTranslations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#getVideos">getVideos</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.MovieSubsection.html#rate">rate</a></li></ul></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSection.html#getTvShow">getTvShow</a></li></ul></li><li><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getAlternativeTitles">getAlternativeTitles</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getChanges">getChanges</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getContentRatings">getContentRatings</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getCredits">getCredits</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getDetails">getDetails</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getEpisodeGroups">getEpisodeGroups</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getExternalIds">getExternalIds</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getImages">getImages</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getKeywords">getKeywords</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getRecommendations">getRecommendations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getReviews">getReviews</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getScreenedTheatrically">getScreenedTheatrically</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getSimilarTvShows">getSimilarTvShows</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getTranslations">getTranslations</a></li><li data-type='method'><a href="module-tmdb-js_sections_types.TvShowSubsection.html#getVideos">getVideos</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a><ul class='methods'><li data-type='method'><a href="module-tmdb-js_search.html#~searchPage">searchPage</a></li><li data-type='method'><a href="module-tmdb-js_search.html#~searchPages">searchPages</a></li></ul></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li></li><li><a href="module-utils.html">utils</a><ul class='methods'><li data-type='method'><a href="module-utils.html#.createGuestSession">createGuestSession</a></li><li data-type='method'><a href="module-utils.html#.createLoginSession">createLoginSession</a></li><li data-type='method'><a href="module-utils.html#.createSession">createSession</a></li><li data-type='method'><a href="module-utils.html#.deleteSession">deleteSession</a></li><li data-type='method'><a href="module-utils.html#.getRequestToken">getRequestToken</a></li><li data-type='method'><a href="module-utils.html#.getSectionData">getSectionData</a></li><li data-type='method'><a href="module-utils.html#.getSectionDetails">getSectionDetails</a></li><li data-type='method'><a href="module-utils.html#.httpRequest">httpRequest</a></li><li data-type='method'><a href="module-utils.html#.parseHttpRequest">parseHttpRequest</a></li></ul></li><li></li></ul>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">MovieSubsection</h1>
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
 
-    
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>MovieSubsection</h1>
+                </header>
+                
 
 
 
@@ -44,83 +85,45 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a>.</span>
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a>.</span>MovieSubsection<span class="signature">(apiKey, movieId, language)</span><span class="type-signature"></span></h2>
         
-        MovieSubsection
-        </h2>
-        
-            <div class="class-description usertext">Can get and handle movie data on TMDB.</div>
+            <div class="class-description">Can get and handle movie data on TMDB.</div>
         
     
 </header>
 
 <article>
+    <div class="container-overview">
     
-        <div class="container-overview">
         
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="MovieSubsection">
+        <a class="href-link" href="#MovieSubsection">#</a>
+        
+        <span class="code-name">
             
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="MovieSubsection"><span class="type-signature"></span>new MovieSubsection<span class="signature">(apiKey, movieId, language)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line28">line 28</a>
-    </li></ul></dd>
+                new MovieSubsection<span class="signature">(apiKey, movieId, language)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
 
     
-
     
-
+    <div class="description">
+        Sets properties.
+    </div>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Sets properties.
-</div>
-
-
 
 
 
@@ -132,161 +135,451 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
+            <th>Type</th>
+
             
-                
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>apiKey</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">string</span>
 
 
-            
-            </td>
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The TMDB API key.</td>
+</tr>
+
+
+        
 
             
+<tr class="deep-level-0">
+  
+      <td class="name"><code>movieId</code></td>
+  
 
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">The TMDB API key.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>movieId</code></td>
-            
-
-            <td class="type">
-            
-                
+  <td class="type">
+  
+      
 <span class="param-type">Number</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
-                <td class="default">
-                
-                </td>
-            
+  
+      <td class="default">
+      
+      </td>
+  
 
-            <td class="description last">The id of the movie.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>language</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>en-US</code>
-                
-                </td>
-            
-
-            <td class="description last">The language of queries, the default is "en-US".</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <td class="description last">The id of the movie.</td>
+</tr>
 
 
         
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>language</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          en-US
+      
+      </td>
+  
+
+  <td class="description last">The language of queries, the default is "en-US".</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line28">line 28</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="deleteRating">
+        <a class="href-link" href="#deleteRating">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                deleteRating<span class="signature">(sessionId, guestSessionId)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Deletes the rating from the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sessionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last">The session ID. Use this or the guest session ID.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>guestSessionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last">The guest session ID. Use this or the session ID.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line191">line 191</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a boolean value, which will be true if the deletion was successful.</div>
+    
+    
+</div>
+
+                
         </div>
-    
+    </div>
 
-    
 
-    
 
-    
-    
-    
 
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
+</div>
             
+                <div class="member">
+
 
     
-
-    <h4 class="name" id="deleteRating"><span class="type-signature">(async) </span>deleteRating<span class="signature">(sessionId, guestSessionId)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getAlternativeTitles">
+        <a class="href-link" href="#getAlternativeTitles">#</a>
+        
+        <span class="code-name">
+            
+                getAlternativeTitles<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
 
     
+    
+    <div class="description">
+        Gets the alternative titles of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
 
 
 
@@ -294,11 +587,6 @@
 <dl class="details">
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line191">line 191</a>
-    </li></ul></dd>
-    
 
     
 
@@ -321,13 +609,19 @@
     
 
     
-
     
 
     
 
     
 
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line47">line 47</a>
+            </span>
+        </p>
     
 </dl>
 
@@ -335,11 +629,1548 @@
 
 
 
-<div class="description usertext">
-    Deletes the rating from the movie in question.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of alternative titles.</div>
+    
+    
 </div>
 
+                
+        </div>
+    </div>
 
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getChanges">
+        <a class="href-link" href="#getChanges">#</a>
+        
+        <span class="code-name">
+            
+                getChanges<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the changes of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line55">line 55</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie changes.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getCredits">
+        <a class="href-link" href="#getCredits">#</a>
+        
+        <span class="code-name">
+            
+                getCredits<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the credits of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line63">line 63</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie credits.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getDetails">
+        <a class="href-link" href="#getDetails">#</a>
+        
+        <span class="code-name">
+            
+                getDetails<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets all details about the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line36">line 36</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie details.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getExternalIds">
+        <a class="href-link" href="#getExternalIds">#</a>
+        
+        <span class="code-name">
+            
+                getExternalIds<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the external IDs of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line71">line 71</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of external IDs.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getImages">
+        <a class="href-link" href="#getImages">#</a>
+        
+        <span class="code-name">
+            
+                getImages<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the images of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line79">line 79</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie images.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getKeywords">
+        <a class="href-link" href="#getKeywords">#</a>
+        
+        <span class="code-name">
+            
+                getKeywords<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the keywords of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line87">line 87</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie keywords.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getLists">
+        <a class="href-link" href="#getLists">#</a>
+        
+        <span class="code-name">
+            
+                getLists<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the lists of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line143">line 143</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of lists.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getRecommendations">
+        <a class="href-link" href="#getRecommendations">#</a>
+        
+        <span class="code-name">
+            
+                getRecommendations<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the recommendations based on the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line119">line 119</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of recommendations.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getReleaseDates">
+        <a class="href-link" href="#getReleaseDates">#</a>
+        
+        <span class="code-name">
+            
+                getReleaseDates<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the release dates of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line95">line 95</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie release dates.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getReviews">
+        <a class="href-link" href="#getReviews">#</a>
+        
+        <span class="code-name">
+            
+                getReviews<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the reviews of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line135">line 135</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie reviews.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getSimilarMovies">
+        <a class="href-link" href="#getSimilarMovies">#</a>
+        
+        <span class="code-name">
+            
+                getSimilarMovies<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the similar movies to the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line127">line 127</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of similar movies.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getTranslations">
+        <a class="href-link" href="#getTranslations">#</a>
+        
+        <span class="code-name">
+            
+                getTranslations<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the translations of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line111">line 111</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie translations.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getVideos">
+        <a class="href-link" href="#getVideos">#</a>
+        
+        <span class="code-name">
+            
+                getVideos<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Gets the videos of the movie in question.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line103">line 103</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of movie videos.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="rate">
+        <a class="href-link" href="#rate">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                rate<span class="signature">(rating, sessionId, guestSessionId)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Rates the movie in question
+    </div>
+    
 
 
 
@@ -351,1686 +2182,209 @@
 
     <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+<div class="table-container">
+    <table class="params table">
+        <thead>
         <tr>
             
-                <td class="name"><code>sessionId</code></td>
+            <th>Name</th>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
+            <th>Type</th>
 
             
 
             
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
+            <th>Default</th>
             
 
-            <td class="description last">The session ID. Use this or the guest session ID.</td>
+            <th class="last">Description</th>
         </tr>
+        </thead>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>guestSessionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
+        <tbody>
+        
 
             
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last">The guest session ID. Use this or the session ID.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of a boolean value, which will be true if the deletion was successful.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getAlternativeTitles"><span class="type-signature"></span>getAlternativeTitles<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line47">line 47</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the alternative titles of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of alternative titles.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getChanges"><span class="type-signature"></span>getChanges<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line55">line 55</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the changes of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie changes.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getCredits"><span class="type-signature"></span>getCredits<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line63">line 63</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the credits of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie credits.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getDetails"><span class="type-signature"></span>getDetails<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line36">line 36</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets all details about the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie details.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getExternalIds"><span class="type-signature"></span>getExternalIds<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line71">line 71</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the external IDs of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of external IDs.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getImages"><span class="type-signature"></span>getImages<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line79">line 79</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the images of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie images.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getKeywords"><span class="type-signature"></span>getKeywords<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line87">line 87</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the keywords of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie keywords.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getLists"><span class="type-signature"></span>getLists<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line143">line 143</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the lists of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of lists.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getRecommendations"><span class="type-signature"></span>getRecommendations<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line119">line 119</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the recommendations based on the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of recommendations.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getReleaseDates"><span class="type-signature"></span>getReleaseDates<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line95">line 95</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the release dates of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie release dates.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getReviews"><span class="type-signature"></span>getReviews<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line135">line 135</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the reviews of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie reviews.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getSimilarMovies"><span class="type-signature"></span>getSimilarMovies<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line127">line 127</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the similar movies to the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of similar movies.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getTranslations"><span class="type-signature"></span>getTranslations<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line111">line 111</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the translations of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie translations.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getVideos"><span class="type-signature"></span>getVideos<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line103">line 103</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Gets the videos of the movie in question.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    A Promise of movie videos.
-</div>
-
-
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="rate"><span class="type-signature">(async) </span>rate<span class="signature">(rating, sessionId, guestSessionId)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line157">line 157</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    Rates the movie in question
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>rating</code></td>
-            
-
-            <td class="type">
-            
-                
+<tr class="deep-level-0">
+  
+      <td class="name"><code>rating</code></td>
+  
+
+  <td class="type">
+  
+      
 <span class="param-type">Number</span>
 
 
-            
-            </td>
+  
+  </td>
 
-            
+  
 
-            
-                <td class="default">
-                
-                </td>
-            
+  
+      <td class="default">
+      
+      </td>
+  
 
-            <td class="description last">The rating, in the range [0.5, 10].</td>
-        </tr>
+  <td class="description last">The rating, in the range [0.5, 10].</td>
+</tr>
 
-    
-
-        <tr>
-            
-                <td class="name"><code>sessionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last">The session ID. Use this or the guest session ID.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>guestSessionId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last">The guest session ID. Use this or the session ID.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    A Promise of a boolean value, which will be true if the rating was successful.
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sessionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last">The session ID. Use this or the guest session ID.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>guestSessionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last">The guest session ID. Use this or the session ID.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
 
 
+
+
+<dl class="details">
+
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_movie.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_movie.js.html">tmdb-js/sections/types/movie.js</a>, <a href="tmdb-js_sections_types_movie.js.html#line157">line 157</a>
+            </span>
+        </p>
+    
+</dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>A Promise of a boolean value, which will be true if the rating was successful.</div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
     
 
     
@@ -2043,21 +2397,25 @@
 
 
 
-    
-    
-</div>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Mon Jul 06 2020 20:38:04 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/polyfill.js"></script>
-<script src="scripts/linenumber.js"></script>
-
-
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
 
 </body>
 </html>
