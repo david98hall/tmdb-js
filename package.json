@@ -1,11 +1,10 @@
 {
   "name": "tmdb-js",
-  "version": "v0.0.9-alpha",
+  "version": "v0.1.2-alpha",
   "description": "A JavaScript wrapper package for The Movie Database API.",
   "main": "src/tmdbjs/tmdbjs.js",
   "scripts": {
-    "test": "mocha test/test.js",
-    "prepare": "npm install xmlhttprequest"
+    "test": "mocha test/test.js"
   },
   "repository": {
     "type": "git",
