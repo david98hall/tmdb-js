@@ -107,7 +107,7 @@ exports.baseUrl = baseUrlValue;
  * @param {string} language The natural language of the GET request.
  * @returns A Promise.
  */
-exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, language = null) {
+exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, language) {
 
     // Create the url, based on this function's parameters
     var url = baseUrlValue + sectionType + "/" + sectionId;
@@ -119,13 +119,27 @@ exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, lang
     }
 
     url += "?api_key=" + apiKey;
+    url += "&amp;language=" + language
 
-    if (language) {
-        url += "&amp;language=" + language
-    }
-
-    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse);
+    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
 };
+
+/**
+ * Gets general data about the section.
+ * @param {string} sectionType The section type.
+ * @param {string} dataType The type of data to retrieve.
+ * @param {string} apiKey The TMDB API key.
+ * @param {string} language The language of the retrieved data.
+ */
+exports.getGeneralSectionData = function(sectionType, dataType, apiKey, language) {
+
+    // Create the url, based on this function's arguments
+    var url = baseUrlValue + sectionType + "/" + dataType;
+    url += "?api_key=" + apiKey;
+    url += "&amp;language=" + language
+
+    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
+}
 
 /**
  * Gets all details about a section in TMDB as a JSON object.
@@ -243,6 +257,29 @@ exports.deleteSession = async (apiKey, sessionId) => {
         JSON.stringify({ "session_id": sessionId }));
 
     return sessionResponse.success;
+}
+
+/**
+ * Appends the non-null session ID to the base URL. 
+ * Both IDs can't be null or non-null at the same time (XOR).
+ * @param {string} baseUrl The base URL to append the non-null ID on.
+ * @param {string} sessionId The session ID.
+ * @param {string} guestSessionId The guest session ID.
+ */
+exports.appendSessionId = (baseUrl, sessionId = null, guestSessionId = null) => {
+    if (sessionId &amp;&amp; guest_session_id) {
+        throw "A session ID and a guest session ID can't be used together."
+    }
+    
+    if (sessionId) {
+        return baseUrl + "&amp;session_id=" + sessionId;
+    }
+
+    if (guestSessionId) {
+        return baseUrl + "&amp;guest_session_id=" + guestSessionId;
+    }
+
+    throw "Both sessionId and guestSessionId are null or undefined."
 }
 
 /**
