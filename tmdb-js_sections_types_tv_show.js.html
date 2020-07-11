@@ -120,7 +120,21 @@ exports.TvShowSubsection = class extends Subsection {
             sections.TV_SHOW, this._subSectionId, this._apiKey, this._language);
     }
 
-    // TODO [David Hall, 2020-07-05]: getAccountStates
+    /**
+     * Gets the account states on the TV show in question.
+     * Only one of the IDs is allowed to be null or non-null in the same method call.
+     * @param {string} sessionId The session ID.
+     * @param {string} guestSessionId The guest session ID.
+     */
+    getAccountStates(sessionId = null, guestSessionId = null) {
+        return tmdbUtils.getSessionSectionData(
+            this._section,
+            this._subSectionId,
+            dataTypes.ACCOUNT_STATES,
+            this._language,
+            sessionId,
+            guestSessionId);
+    }
 
     /**
      * Gets the alternative titles of the TV show in question.
@@ -247,27 +261,42 @@ exports.TvShowSection = class extends Section {
     /**
      * Gets the latest TV shows.
      */
-    // TODO [David Hall, 2020-07-05]: getLatest
+    getLatest() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.LATEST, this._apiKey, this._language);
+    }
 
     /**
      * Gets TV shows airing today.
      */
-    // TODO [David Hall, 2020-07-05]: getTvAiringToday
+    getTvAiringToday() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.TV_AIRING_TODAY, this._apiKey, this._language);
+    }
 
     /**
      * Gets TV shows currently on the air.
      */
-    // TODO [David Hall, 2020-07-05]: getTvOnTheAir
+    getTvOnTheAir() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.TV_ON_THE_AIR, this._apiKey, this._language);
+    }
 
     /**
      * Gets popular TV shows.
      */
-    // TODO [David Hall, 2020-07-05]: getPopular
+    getPopular() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.POPULAR, this._apiKey, this._language);
+    }
 
     /**
      * Gets top rated TV shows.
      */
-    // TODO [David Hall, 2020-07-05]: getTopRated
+    getTopRated() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.TOP_RATED, this._apiKey, this._language);
+    }
 }</code></pre>
         </article>
     </section>

@@ -131,15 +131,14 @@ exports.MovieSubsection = class extends Subsection {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      */
-    async getAccountStates(sessionId = null, guestSessionId = null) {
-        var accountStatesUrl = tmdbUtils.baseUrl + `movie/${this._subSectionId}/account_states?api_key=${this._apiKey}`;
-        accountStatesUrl = tmdbUtils.appendSessionId(accountStatesUrl, sessionId, guestSessionId);
-
-        return await httpUtils.parseHttpRequest(
-            accountStatesUrl,
-            httpMethod.GET,
-            JSON.parse,
-            httpUtils.jsonContentType);
+    getAccountStates(sessionId = null, guestSessionId = null) {
+        return tmdbUtils.getSessionSectionData(
+            this._section,
+            this._subSectionId,
+            dataTypes.ACCOUNT_STATES,
+            this._language,
+            sessionId,
+            guestSessionId);
     }
 
     /**
