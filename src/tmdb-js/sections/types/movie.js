@@ -38,7 +38,22 @@ exports.MovieSubsection = class extends Subsection {
             this._section, this._subSectionId, this._apiKey, this._language);
     }
 
-    // TODO [David Hall, 2020-07-05]: getAccountStates
+    /**
+     * Gets the account states on the movie in question.
+     * Only one of the IDs is allowed to be null or non-null in the same method call.
+     * @param {string} sessionId The session ID.
+     * @param {string} guestSessionId The guest session ID.
+     */
+    async getAccountStates(sessionId = null, guestSessionId = null) {
+        var accountStatesUrl = tmdbUtils.baseUrl + `movie/${this._subSectionId}/account_states?api_key=${this._apiKey}`;
+        accountStatesUrl = tmdbUtils.appendSessionId(accountStatesUrl, sessionId, guestSessionId);
+
+        return await httpUtils.parseHttpRequest(
+            accountStatesUrl,
+            httpMethod.GET,
+            JSON.parse,
+            httpUtils.jsonContentType);
+    }
 
     /**
      * Gets the alternative titles of the movie in question.
@@ -144,9 +159,6 @@ exports.MovieSubsection = class extends Subsection {
         return this._getSectionData(dataTypes.LISTS);
     }
 
-    #notBothSessionIdsMsg = "Can't use both a session ID and a guest session ID!";
-    #noSessionIdMsg = "Can't perform action without some sort of a session ID.";
-
     /**
      * Rates the movie in question
      * @param {Number} rating The rating, in the range [0.5, 10].
@@ -156,19 +168,8 @@ exports.MovieSubsection = class extends Subsection {
      */
     async rate(rating, sessionId = null, guestSessionId = null) {
 
-        if (sessionId && guestSessionId) {
-            throw this.#notBothSessionIdsMsg;
-        }
-
         var rateUrl = tmdbUtils.baseUrl + `movie/${this._subSectionId}/rating?api_key=${this._apiKey}`;
-
-        if (sessionId) {
-            rateUrl += "&session_id=" + sessionId;
-        } else if (guestSessionId) {
-            rateUrl += "&guest_session_id=" + guestSessionId;
-        } else {
-            throw this.#noSessionIdMsg;
-        }        
+        rateUrl = tmdbUtils.appendSessionId(rateUrl, sessionId, guestSessionId);
 
         var response = await httpUtils.parseHttpRequest(
             rateUrl,
@@ -189,20 +190,9 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of a boolean value, which will be true if the deletion was successful.
      */
     async deleteRating(sessionId = null, guestSessionId = null) {
-
-        if (sessionId && guestSessionId) {
-            throw this.#notBothSessionIdsMsg;
-        }
-
+        
         var rateUrl = tmdbUtils.baseUrl + `movie/${this._subSectionId}/rating?api_key=${this._apiKey}`;
-
-        if (sessionId) {
-            rateUrl += "&session_id=" + sessionId;
-        } else if (guestSessionId) {
-            rateUrl += "&guest_session_id=" + guestSessionId;
-        } else {
-            throw this.#noSessionIdMsg;
-        }
+        rateUrl = tmdbUtils.appendSessionId(rateUrl, sessionId, guestSessionId);
 
         var response = await httpUtils.parseHttpRequest(
             rateUrl,
@@ -212,7 +202,6 @@ exports.MovieSubsection = class extends Subsection {
 
         return response && response.status_code == 13;
     }
-
 }
 
 /**
@@ -241,25 +230,40 @@ exports.MovieSection = class extends Section {
     /**
      * Gets the latest movies.
      */
-    // TODO [David Hall, 2020-07-05] getLatest method
+    getLatest() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.LATEST, this._apiKey, this._language);
+    }
 
     /**
      * Gets a list of movies currently playing in theatres.
      */
-    // TODO [David Hall, 2020-07-05] getNowPlaying method
+    getNowPlaying() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.NOW_PLAYING, this._apiKey, this._language);
+    }
 
     /**
      * Gets popular movies.
      */
-    // TODO [David Hall, 2020-07-05] getPopular method
+    getPopular() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.POPULAR, this._apiKey, this._language);
+    }
 
     /**
      * Gets top rated movies.
      */
-    // TODO [David Hall, 2020-07-05] getTopRated method
+    getTopRated() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.TOP_RATED, this._apiKey, this._language);
+    }
 
     /**
      * Gets upcoming movies.
      */
-    // TODO [David Hall, 2020-07-05] getUpcoming method
+    getUpcoming() {
+        return tmdbUtils
+            .getGeneralSectionData(this._section, dataTypes.UPCOMING, this._apiKey, this._language);
+    }
 }
