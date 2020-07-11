@@ -68,6 +68,30 @@ exports.getSectionDetails = function(sectionType, sectionId, apiKey, language) {
 }
 
 /**
+ * Gets a session's section data.
+ * Both IDs can't be null or non-null at the same time (XOR).
+ * @param {string} sectionType The section from where data will be retrieved
+ * @param {string} subSectionId The id of the sub section on TMDB.
+ * @param {string} dataType The type of data to retrieve.
+ * @param {string} apiKey The API key to the TMDB API.
+ * @param {string} language The natural language of the GET request.
+ * @param {string} sessionId The session ID.
+ * @param {string} guestSessionId The guest session ID.
+ */
+exports.getSessionSectionData = async function(sectionType, subSectionId, dataType, language, sessionId = null, guestSessionId = null) {
+    var url = 
+        tmdbUtils.baseUrl + `${sectionType}/${subSectionId}/${dataType}`;
+        url += `?api_key=${this._apiKey}&language=${language}`;
+        url = tmdbUtils.appendSessionId(url, sessionId, guestSessionId);
+
+    return await httpUtils.parseHttpRequest(
+        url,
+        httpMethod.GET,
+        JSON.parse,
+        httpUtils.jsonContentType);
+}
+
+/**
  * Gets a request token from TMDB.
  * @param {string} apiKey The API key to TMDB.
  * @returns A Promise.
@@ -155,8 +179,8 @@ exports.createGuestSession = async (apiKey) => {
 
 /**
  * Deletes (log outs of) a session.
- * @param {*} apiKey The TMDB API key.
- * @param {*} sessionId The ID of the session to delete.
+ * @param {string} apiKey The TMDB API key.
+ * @param {string} sessionId The ID of the session to delete.
  * @returns 
  * A Promise of a boolean value, which will be true if the deletion is successful.
  */
