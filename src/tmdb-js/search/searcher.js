@@ -25,6 +25,16 @@ exports.Searcher = class extends TmdbQuerier {
         super(apiKey, language);
     }
 
+    /**
+     * Gets data from a company search in TMDB.
+     * @param {string} searchTerm The search term (query).
+     * @param {Number} startPage 
+     * The first search result page to return data from. The default is 1.
+     * @param {Number} pageCount 
+     * The number of search result pages to return data from. The default is 1.
+     * @param {Boolean} includeAdult 
+     * true if adult content will be included. The default is true.
+     */
     searchCompanies(searchTerm, startPage = 1, pageCount = 1) {
         return searchPages(
             searchTerm, 
@@ -36,6 +46,16 @@ exports.Searcher = class extends TmdbQuerier {
             this._language);
     }
 
+    /**
+     * Gets data from a collection search in TMDB.
+     * @param {string} searchTerm The search term (query).
+     * @param {Number} startPage 
+     * The first search result page to return data from. The default is 1.
+     * @param {Number} pageCount 
+     * The number of search result pages to return data from. The default is 1.
+     * @param {Boolean} includeAdult 
+     * true if adult content will be included. The default is true.
+     */
     searchCollections(searchTerm, startPage = 1, pageCount = 1) {
         return searchPages(
             searchTerm, 
@@ -47,6 +67,16 @@ exports.Searcher = class extends TmdbQuerier {
             this._language);
     }
 
+    /**
+     * Gets data from a keyword search in TMDB.
+     * @param {string} searchTerm The search term (query).
+     * @param {Number} startPage 
+     * The first search result page to return data from. The default is 1.
+     * @param {Number} pageCount 
+     * The number of search result pages to return data from. The default is 1.
+     * @param {Boolean} includeAdult 
+     * true if adult content will be included. The default is true.
+     */
     searchKeywords(searchTerm, startPage = 1, pageCount = 1) {
         return searchPages(
             searchTerm, 
@@ -58,6 +88,16 @@ exports.Searcher = class extends TmdbQuerier {
             this._language);
     }
 
+    /**
+     * Gets data from a movie search in TMDB.
+     * @param {string} searchTerm The search term (query).
+     * @param {Number} startPage 
+     * The first search result page to return data from. The default is 1.
+     * @param {Number} pageCount 
+     * The number of search result pages to return data from. The default is 1.
+     * @param {Boolean} includeAdult 
+     * true if adult content will be included. The default is true.
+     */
     searchMovies(searchTerm,
                  startPage = 1,
                  pageCount = 1,
@@ -113,6 +153,16 @@ exports.Searcher = class extends TmdbQuerier {
             this._language);
     }
 
+    /**
+     * Gets data from a people search in TMDB.
+     * @param {string} searchTerm The search term (query).
+     * @param {Number} startPage 
+     * The first search result page to return data from. The default is 1.
+     * @param {Number} pageCount 
+     * The number of search result pages to return data from. The default is 1.
+     * @param {Boolean} includeAdult 
+     * true if adult content will be included. The default is true.
+     */
     searchPeople(searchTerm,
         startPage = 1,
         pageCount = 1,
@@ -136,6 +186,16 @@ exports.Searcher = class extends TmdbQuerier {
             additionalInfo);
     }
 
+    /**
+     * Gets data from a TV show search in TMDB.
+     * @param {string} searchTerm The search term (query).
+     * @param {Number} startPage 
+     * The first search result page to return data from. The default is 1.
+     * @param {Number} pageCount 
+     * The number of search result pages to return data from. The default is 1.
+     * @param {Boolean} includeAdult 
+     * true if adult content will be included. The default is true.
+     */
     searchTvShows(searchTerm,
         startPage = 1,
         pageCount = 1,
@@ -185,7 +245,7 @@ const searchType = {
  * @param {Boolean} includeAdult true if adult content will be included.
  * @param {string} language 
  * The language of the search results. Default value is "en-US".
- * @param {string} additionalInfo
+ * @param {Object} additionalInfo
  * Additional info to add to the search query.
  */
 async function searchPages(searchTerm, searchType, apiKey, startPage, 
@@ -233,7 +293,7 @@ async function searchPages(searchTerm, searchType, apiKey, startPage,
  * @param {Boolean} includeAdult true if adult content will be included.
  * @param {string} language 
  * The language of the search results. Default value is "en-US".
- * @param {string} additionalInfo
+ * @param {Object} additionalInfo
  * Additional info to add to the search query.
  */
 function searchPage(searchTerm, searchType, apiKey, 
