@@ -25,7 +25,72 @@ exports.Searcher = class extends TmdbQuerier {
         super(apiKey, language);
     }
 
-    // TODO [David Hall, 2020-07-05]: Add support for all search queries
+    searchCompanies(searchTerm, startPage = 1, pageCount = 1) {
+        return searchPages(
+            searchTerm, 
+            searchType.COMPANIES, 
+            this._apiKey, 
+            startPage, 
+            pageCount, 
+            false,
+            this._language);
+    }
+
+    searchCollections(searchTerm, startPage = 1, pageCount = 1) {
+        return searchPages(
+            searchTerm, 
+            searchType.COLLECTIONS, 
+            this._apiKey, 
+            startPage, 
+            pageCount, 
+            false,
+            this._language);
+    }
+
+    searchKeywords(searchTerm, startPage = 1, pageCount = 1) {
+        return searchPages(
+            searchTerm, 
+            searchType.KEYWORDS, 
+            this._apiKey,
+            startPage, 
+            pageCount, 
+            false,
+            this._language);
+    }
+
+    searchMovies(searchTerm,
+                 startPage = 1,
+                 pageCount = 1,
+                 includeAdult = true,
+                 region = "",
+                 year = "",
+                 primaryReleaseYear = "") {
+        
+        // Additional optional query info
+        var additionalInfo = {};
+        
+        if (region.length > 0) {
+            additionalInfo["region"] = region;
+        }
+        
+        if (year.length > 0) {
+            additionalInfo["year"] = year;
+        }
+
+        if (primaryReleaseYear.length > 0) {
+            additionalInfo["primary_release_year"] = primaryReleaseYear;
+        }
+
+        return searchPages(
+            searchTerm, 
+            searchType.MOVIES, 
+            this._apiKey,
+            startPage, 
+            pageCount, 
+            includeAdult,
+            this._language,
+            additionalInfo);
+    }
 
     /**
      * Gets data from a multi search in TMDB.
@@ -47,13 +112,65 @@ exports.Searcher = class extends TmdbQuerier {
             includeAdult, 
             this._language);
     }
+
+    searchPeople(searchTerm,
+        startPage = 1,
+        pageCount = 1,
+        includeAdult = true,
+        region = "") {
+
+        // Additional optional query info
+        var additionalInfo = {};
+        if (region.length > 0) {
+            additionalInfo["region"] = region;
+        }
+
+        return searchPages(
+            searchTerm, 
+            searchType.PEOPLE, 
+            this._apiKey,
+            startPage, 
+            pageCount, 
+            includeAdult,
+            this._language,
+            additionalInfo);
+    }
+
+    searchTvShows(searchTerm,
+        startPage = 1,
+        pageCount = 1,
+        includeAdult = true,
+        firstAirDateYear = "") {
+
+        // Additional optional query info
+        var additionalInfo = {};
+        if (firstAirDateYear.length > 0) {
+            additionalInfo["first_air_date_year"] = firstAirDateYear;
+        }
+
+        return searchPages(
+            searchTerm, 
+            searchType.TV_SHOWS, 
+            this._apiKey,
+            startPage, 
+            pageCount, 
+            includeAdult,
+            this._language,
+            additionalInfo);
+    }
 }
 
 /**
  * All different search types on TMDB.
  */
 const searchType = {
-    MULTI: 'multi'
+    COMPANIES: 'company',
+    COLLECTIONS: 'collection',
+    KEYWORDS: 'keyword',
+    MOVIES: 'movie',
+    MULTI: 'multi',
+    PEOPLE: 'person',
+    TV_SHOWS: 'tv'
 }
 
 /**
@@ -68,9 +185,11 @@ const searchType = {
  * @param {Boolean} includeAdult true if adult content will be included.
  * @param {string} language 
  * The language of the search results. Default value is "en-US".
+ * @param {string} additionalInfo
+ * Additional info to add to the search query.
  */
 async function searchPages(searchTerm, searchType, apiKey, startPage, 
-    pageCount, includeAdult = true, language = "en-US") {
+    pageCount, includeAdult = true, language = "en-US", additionalInfo = {}) {
     
         // Throw an error if the page related parameters are invalid
         if (startPage < 1 || pageCount < 1) {
@@ -80,7 +199,7 @@ async function searchPages(searchTerm, searchType, apiKey, startPage,
         // Search the first page in order to get the total number of pages.
         // Used to interrupt when there are no pages left to search.
         var firstPage = await searchPage(searchTerm, searchType, apiKey, 
-            startPage, includeAdult, language);
+            startPage, includeAdult, language, additionalInfo);
 
         // The page count is 1, no more pages should thus be searched
         if (pageCount == 1) 
@@ -95,7 +214,7 @@ async function searchPages(searchTerm, searchType, apiKey, startPage,
             var page = startPage + index;
             var promise = searchPage(
                 searchTerm, searchType, apiKey, 
-                page, includeAdult, language);
+                page, includeAdult, language, additionalInfo);
             promises.push(promise);
         }
         
@@ -114,9 +233,11 @@ async function searchPages(searchTerm, searchType, apiKey, startPage,
  * @param {Boolean} includeAdult true if adult content will be included.
  * @param {string} language 
  * The language of the search results. Default value is "en-US".
+ * @param {string} additionalInfo
+ * Additional info to add to the search query.
  */
 function searchPage(searchTerm, searchType, apiKey, 
-    page = 1, includeAdult = true, language = "en-US") {
+    page = 1, includeAdult = true, language = "en-US", additionalInfo = {}) {
 
         // Create the url, based on this function's parameters
         const baseUrl = "https://api.themoviedb.org/3/search/";
@@ -126,6 +247,12 @@ function searchPage(searchTerm, searchType, apiKey,
         url += "&query=" + encodeURI(searchTerm);
         url += "&page=" + page;
         url += "&include_adult=" + includeAdult;
+        
+        // Add any additional info to the query
+        var additionalInfoQuery = "";
+        Object.keys(additionalInfo)
+              .forEach(key => additionalInfoQuery += `&${key}=${additionalInfo[key]}`)
+        url += additionalInfoQuery;
 
         return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse);
 }
