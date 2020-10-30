@@ -147,7 +147,7 @@ exports.deleteSession = async (apiKey, sessionId) => {
  * @param {string} guestSessionId The guest session ID.
  */
 exports.appendSessionId = (baseUrl, sessionId = null, guestSessionId = null) => {
-    if (sessionId && guest_session_id) {
+    if (sessionId && guestSessionId) {
         throw "A session ID and a guest session ID can't be used together."
     }
     

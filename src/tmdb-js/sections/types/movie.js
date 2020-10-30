@@ -31,9 +31,6 @@ exports.Movie = class extends Section {
      * @returns A Promise of movie details.
      */
     getDetails() {
-
-        console.log(this.toString());
-
         return this.getQueryResult();
     }
 
