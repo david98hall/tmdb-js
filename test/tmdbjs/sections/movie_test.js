@@ -18,7 +18,7 @@ exports.runTest = apiKey => {
             tmdb.getMovies().getMovie(movie.id).getDetails().then(json => {
               
                 // Assert the results
-                assert.equal(json.title, movie.title);
+                assert.strictEqual(json.title, movie.title);
                 
                 setImmediate(done);
             })

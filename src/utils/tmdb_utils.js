@@ -13,85 +13,26 @@ exports.baseUrl = baseUrlValue;
 /**
  * Gets specific data from a section in TMDB as a JSON object.
  * @function
- * @param {string} sectionType The section from where data will be retrieved
- * @param {string} sectionId The id of the section on TMDB.
- * @param {string} dataType The type of data to retrieve.
- * @param {string} apiKey The API key to the TMDB API.
+ * @param {Object} sectionUrl The url of the section from where data will be retrieved.
+ * @param {string} apiKey The TMDB API key.
  * @param {string} language The natural language of the GET request.
+ * @param {string} sessionId The session ID (only needed in certain cases).
+ * @param {string} guestSessionId The guest session ID (only needed in certain cases).
  * @returns A Promise.
  */
-exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, language) {
+exports.getSectionData = function(sectionUrl, apiKey, language, sessionId = null, guestSessionId = null) {
 
     // Create the url, based on this function's parameters
-    var url = baseUrlValue + sectionType + "/" + sectionId;
-
-    // If specified, add the data type to the url. 
-    // Otherwise, all section details will be retrieved
-    if (dataType && dataType.length > 0) {
-        url += dataType;
-    }
-
+    var url = baseUrlValue + sectionUrl;
     url += "?api_key=" + apiKey;
     url += "&language=" + language
+
+    if (sessionId || guestSessionId) {
+        url = tmdbUtils.appendSessionId(url, sessionId, guestSessionId);
+    }
 
     return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
 };
-
-/**
- * Gets general data about the section.
- * @param {string} sectionType The section type.
- * @param {string} dataType The type of data to retrieve.
- * @param {string} apiKey The TMDB API key.
- * @param {string} language The language of the retrieved data.
- * @param {string} dataId The ID of the data (used in certain cases, e.g. for episode groups).
- */
-exports.getGeneralSectionData = function(sectionType, dataType, apiKey, language, dataId = "") {
-
-    // Create the url, based on this function's arguments
-    var url = baseUrlValue + sectionType + "/" + dataType;
-    url += dataId;
-    url += "?api_key=" + apiKey;
-    url += "&language=" + language
-
-    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
-}
-
-/**
- * Gets all details about a section in TMDB as a JSON object.
- * @function
- * @param {string} sectionType The section from where data will be retrieved
- * @param {string} sectionId The id of the section on TMDB.
- * @param {string} apiKey The API key to the TMDB API.
- * @param {string} language The language of TMDB GET requests.
- * @returns A Promise.
- */
-exports.getSectionDetails = function(sectionType, sectionId, apiKey, language) {
-    return this.getSectionData(sectionType, sectionId, null, apiKey, language);
-}
-
-/**
- * Gets a session's section data.
- * Both IDs can't be null or non-null at the same time (XOR).
- * @param {string} sectionType The section from where data will be retrieved
- * @param {string} subSectionId The id of the sub section on TMDB.
- * @param {string} dataType The type of data to retrieve.
- * @param {string} apiKey The API key to the TMDB API.
- * @param {string} language The natural language of the GET request.
- * @param {string} sessionId The session ID.
- * @param {string} guestSessionId The guest session ID.
- */
-exports.getSessionSectionData = async function(sectionType, subSectionId, dataType, language, sessionId = null, guestSessionId = null) {
-    var url = 
-        tmdbUtils.baseUrl + `${sectionType}/${subSectionId}/${dataType}`;
-        url += `?api_key=${this._apiKey}&language=${language}`;
-        url = tmdbUtils.appendSessionId(url, sessionId, guestSessionId);
-
-    return await httpUtils.parseHttpRequest(
-        url,
-        httpMethod.GET,
-        JSON.parse,
-        httpUtils.jsonContentType);
-}
 
 /**
  * Gets a request token from TMDB.
@@ -206,7 +147,7 @@ exports.deleteSession = async (apiKey, sessionId) => {
  * @param {string} guestSessionId The guest session ID.
  */
 exports.appendSessionId = (baseUrl, sessionId = null, guestSessionId = null) => {
-    if (sessionId && guest_session_id) {
+    if (sessionId && guestSessionId) {
         throw "A session ID and a guest session ID can't be used together."
     }
     
@@ -247,6 +188,7 @@ exports.dataTypes = Object.freeze({
     CHANGES: 'changes',
     CONTENT_RATINGS: 'content_ratings',
     CREDITS: 'credits',
+    EPISODE: "episode",
     EPISODE_GROUPS: 'episode_groups',
     EXTERNAL_IDS: 'external_ids',
     IMAGES: 'images',
@@ -259,6 +201,7 @@ exports.dataTypes = Object.freeze({
     RELEASE_DATES: 'release_dates',
     REVIEWS: 'reviews',
     SCREENED_THEATRICALLY: "screened_theatrically",
+    SEASON: 'season',
     SIMILAR_MOVIES: 'similar_movies',
     SIMILAR_TV_SHOWS: "similar_tv_shows",
     TOP_RATED: 'top_rated',

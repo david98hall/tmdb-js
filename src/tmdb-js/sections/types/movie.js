@@ -10,32 +10,28 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const section = require('../section');
-const Section = section.Section;
-const Subsection = section.Subsection;
+const Section = require('../section').Section;
 
 /**
  * Can get and handle movie data on TMDB.
  */
-exports.MovieSubsection = class extends Subsection {
+exports.Movie = class extends Section {
 
     /**
      * Sets properties.
-     * @param {string} apiKey The TMDB API key.
-     * @param {Number} movieId The id of the movie.
-     * @param {string} language The language of queries, the default is "en-US".
+     * @param {Number} id The id of the movie.
+     * @param {MovieSection} movieSection The parent MovieSection.
      */
-    constructor(apiKey, movieId, language = "en-US") {
-        super(apiKey, sections.MOVIE, movieId, language);
+    constructor(id, movieSection) {
+        super(id, movieSection);
     }
 
     /**
-     * Gets all details about the movie in question.
+     * Gets all details about this movie.
      * @returns A Promise of movie details.
      */
     getDetails() {
-        return tmdbUtils.getSectionDetails(
-            this._section, this._subSectionId, this._apiKey, this._language);
+        return this.getQueryResult();
     }
 
     /**
@@ -45,13 +41,8 @@ exports.MovieSubsection = class extends Subsection {
      * @param {string} guestSessionId The guest session ID.
      */
     getAccountStates(sessionId = null, guestSessionId = null) {
-        return tmdbUtils.getSessionSectionData(
-            this._section,
-            this._subSectionId,
-            dataTypes.ACCOUNT_STATES,
-            this._language,
-            sessionId,
-            guestSessionId);
+        var childSection = new Section(dataTypes.ACCOUNT_STATES, this);
+        return childSection.getQueryResult(sessionId, guestSessionId);
     }
 
     /**
@@ -59,7 +50,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of alternative titles.
      */
     getAlternativeTitles() {
-        return this._getSectionData(dataTypes.ALTERNATIVE_TITLES);
+        var childSection = new Section(dataTypes.ALTERNATIVE_TITLES, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -67,7 +59,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of movie changes.
      */
     getChanges() {
-        return this._getSectionData(dataTypes.CHANGES);
+        var childSection = new Section(dataTypes.CHANGES, this);
+        return childSection.getQueryResult();
     }
         
     /**
@@ -75,7 +68,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of movie credits.
      */
     getCredits() {
-        return this._getSectionData(dataTypes.CREDITS);
+        var childSection = new Section(dataTypes.CREDITS, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -83,7 +77,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of external IDs.
      */
     getExternalIds() { 
-        return this._getSectionData(dataTypes.EXTERNAL_IDS);
+        var childSection = new Section(dataTypes.EXTERNAL_IDS, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -91,7 +86,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of movie images.
      */
     getImages() {
-        return this._getSectionData(dataTypes.IMAGES);
+        var childSection = new Section(dataTypes.IMAGES, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -99,7 +95,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of movie keywords.
      */
     getKeywords() {
-        return this._getSectionData(dataTypes.KEYWORDS);
+        var childSection = new Section(dataTypes.KEYWORDS, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -107,7 +104,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of movie release dates.
      */
     getReleaseDates() {
-        return this._getSectionData(dataTypes.RELEASE_DATES);
+        var childSection = new Section(dataTypes.RELEASE_DATES, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -115,7 +113,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of movie videos.
      */
     getVideos() {
-        return this._getSectionData(dataTypes.VIDEOS);
+        var childSection = new Section(dataTypes.VIDEOS, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -123,7 +122,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of movie translations.
      */ 
     getTranslations() {
-        return this._getSectionData(dataTypes.TRANSLATIONS);
+        var childSection = new Section(dataTypes.TRANSLATIONS, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -131,7 +131,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of recommendations.
      */
     getRecommendations() {
-        return this._getSectionData(dataTypes.RECOMMENDATIONS);
+        var childSection = new Section(dataTypes.RECOMMENDATIONS, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -139,7 +140,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of similar movies.
      */
     getSimilarMovies() {
-        return this._getSectionData(dataTypes.SIMILAR_MOVIES);
+        var childSection = new Section(dataTypes.SIMILAR_MOVIES, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -147,7 +149,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of movie reviews.
      */
     getReviews() {
-        return this._getSectionData(dataTypes.REVIEWS);
+        var childSection = new Section(dataTypes.REVIEWS, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -155,7 +158,8 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of lists.
      */
     getLists() {
-        return this._getSectionData(dataTypes.LISTS);
+        var childSection = new Section(dataTypes.LISTS, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -166,8 +170,7 @@ exports.MovieSubsection = class extends Subsection {
      * @returns A Promise of a boolean value, which will be true if the rating was successful.
      */
     async rate(rating, sessionId = null, guestSessionId = null) {
-
-        var rateUrl = tmdbUtils.baseUrl + `movie/${this._subSectionId}/rating?api_key=${this._apiKey}`;
+        var rateUrl = tmdbUtils.baseUrl + this.toString() + `/rating?api_key=${this._apiKey}`;
         rateUrl = tmdbUtils.appendSessionId(rateUrl, sessionId, guestSessionId);
 
         var response = await httpUtils.parseHttpRequest(
@@ -190,7 +193,7 @@ exports.MovieSubsection = class extends Subsection {
      */
     async deleteRating(sessionId = null, guestSessionId = null) {
         
-        var rateUrl = tmdbUtils.baseUrl + `movie/${this._subSectionId}/rating?api_key=${this._apiKey}`;
+        var rateUrl = tmdbUtils.baseUrl + this.toString() + `/rating?api_key=${this._apiKey}`;
         rateUrl = tmdbUtils.appendSessionId(rateUrl, sessionId, guestSessionId);
 
         var response = await httpUtils.parseHttpRequest(
@@ -214,55 +217,55 @@ exports.MovieSection = class extends Section {
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
-        super(apiKey, sections.MOVIE, language);
+        super(sections.MOVIE, undefined, apiKey, language);
     }
 
     /**
      * Gets a MovieSubsection, based on the passed ID.
-     * @param {Number} movieId The movie ID.
+     * @param {Number} id The ID of the movie.
      * @returns A MovieSubsection.
      */
-    getMovie(movieId) {
-        return new exports.MovieSubsection(this._apiKey, movieId, this._language);
+    getMovie(id) {
+        return new exports.Movie(id, this);
     }
 
     /**
      * Gets the latest movies.
      */
     getLatest() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.LATEST, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.LATEST, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets a list of movies currently playing in theatres.
      */
     getNowPlaying() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.NOW_PLAYING, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.NOW_PLAYING, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets popular movies.
      */
     getPopular() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.POPULAR, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.POPULAR, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets top rated movies.
      */
     getTopRated() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.TOP_RATED, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.TOP_RATED, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets upcoming movies.
      */
     getUpcoming() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.UPCOMING, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.UPCOMING, this);
+        return childSection.getQueryResult();
     }
 }

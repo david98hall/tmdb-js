@@ -18,7 +18,7 @@ exports.runTest = apiKey => {
             tmdb.getTvShows().getTvShow(tvShow.id).getDetails().then(json => {
 
                 // Assert the results
-                assert.equal(json.name, tvShow.name);
+                assert.strictEqual(json.name, tvShow.name);
 
                 setImmediate(done);
             });
@@ -33,7 +33,7 @@ exports.runTest = apiKey => {
 
             tmdbSwedish.getTvShows().getTvShow(tvShow.id).getDetails().then(json => {
                 // Assert the results
-                assert.equal(json.name, tvShow.name);
+                assert.strictEqual(json.name, tvShow.name);
 
                 setImmediate(done);
             });

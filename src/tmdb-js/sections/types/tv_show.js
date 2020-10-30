@@ -8,29 +8,27 @@ const dataTypes = tmdbUtils.dataTypes;
 // Sections
 const section = require('../section');
 const Section = section.Section;
-const Subsection = section.Subsection;
 
 /**
  * Can get and handle TV show data on TMDB.
  */
-exports.TvShowSubsection = class extends Subsection {
+exports.TvShow = class extends Section {
 
     /**
      * Sets properties.
-     * @param {string} apiKey The TMDB API key.
-     * @param {Number} tvShowId The id of the TV show.
-     * @param {string} language The language of queries, the default is "en-US".
+     * @param {Number} id The ID of the TV show.
+     * @param {TvShowSection} tvShowSection The parent TV show section.
      */
-    constructor(apiKey, tvShowId, language = "en-US") {
-        super(apiKey, sections.TV_SHOW, tvShowId, language);
+    constructor(id, tvShowSection) {
+        super(id, tvShowSection);
     }
 
     /**
-     * Gets all details about the TV show in question.
+     * Gets all details about this TV show.
+     * @returns A Promise of TV show details.
      */
     getDetails() {
-        return tmdbUtils.getSectionDetails(
-            sections.TV_SHOW, this._subSectionId, this._apiKey, this._language);
+        return this.getQueryResult();
     }
 
     /**
@@ -40,111 +38,173 @@ exports.TvShowSubsection = class extends Subsection {
      * @param {string} guestSessionId The guest session ID.
      */
     getAccountStates(sessionId = null, guestSessionId = null) {
-        return tmdbUtils.getSessionSectionData(
-            this._section,
-            this._subSectionId,
-            dataTypes.ACCOUNT_STATES,
-            this._language,
-            sessionId,
-            guestSessionId);
+        var childSection = new Section(dataTypes.ACCOUNT_STATES, this);
+        return childSection.getQueryResult(sessionId, guestSessionId);
     }
 
     /**
      * Gets the alternative titles of the TV show in question.
      */
     getAlternativeTitles() {
-        return this._getSectionData(dataTypes.ALTERNATIVE_TITLES);
+        var childSection = new Section(dataTypes.ALTERNATIVE_TITLES, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the changes of the TV show in question.
      */
     getChanges() {
-        return this._getSectionData(dataTypes.CHANGES);
+        var childSection = new Section(dataTypes.CHANGES, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the content ratings of the TV show in question.
      */
     getContentRatings() {
-        return this._getSectionData(dataTypes.CONTENT_RATINGS);
+        var childSection = new Section(dataTypes.CONTENT_RATINGS, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the credits of the TV show in question.
      */
     getCredits() {
-        return this._getSectionData(dataTypes.CREDITS);
+        var childSection = new Section(dataTypes.CREDITS, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the episode groups of the TV show in question.
      */
     getEpisodeGroups() {
-        return this._getSectionData(dataTypes.EPISODE_GROUPS);
+        var childSection = new Section(dataTypes.EPISODE_GROUPS, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the external IDs of the TV show in question.
      */
     getExternalIds() {
-        return this._getSectionData(dataTypes.EXTERNAL_IDS);
+        var childSection = new Section(dataTypes.EXTERNAL_IDS, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the images of the TV show in question.
      */
     getImages() {
-        return this._getSectionData(dataTypes.IMAGES);
+        var childSection = new Section(dataTypes.IMAGES, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the keywords of the TV show in question.
      */
     getKeywords() {
-        return this._getSectionData(dataTypes.KEYWORDS);
+        var childSection = new Section(dataTypes.KEYWORDS, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the recommendations based on the TV show in question.
      */
     getRecommendations() {
-        return this._getSectionData(dataTypes.RECOMMENDATIONS);
+        var childSection = new Section(dataTypes.RECOMMENDATIONS, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the reviews of the TV show in question.
      */
     getReviews() {
-        return this._getSectionData(dataTypes.REVIEWS);
+        var childSection = new Section(dataTypes.REVIEWS, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the a list of seasons or episodes of the TV show in question that were screened theatrically.
      */
     getScreenedTheatrically() {
-        return this._getSectionData(dataTypes.SCREENED_THEATRICALLY);
+        var childSection = new Section(dataTypes.SCREENED_THEATRICALLY, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the similar TV shows to the TV show in question.
      */
     getSimilarTvShows() {
-        return this._getSectionData(dataTypes.SIMILAR_TV_SHOWS);
+        var childSection = new Section(dataTypes.SIMILAR_MOVIES, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the translations of the TV show in question.
      */ 
     getTranslations() {
-        return this._getSectionData(dataTypes.TRANSLATIONS);
+        var childSection = new Section(dataTypes.TRANSLATIONS, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets the videos of the TV show in question.
      */
     getVideos() {
-        return this._getSectionData(dataTypes.VIDEOS);
+        var childSection = new Section(dataTypes.VIDEOS, this);
+        return childSection.getQueryResult();
+    }
+
+    /**
+     * Gets the season with the passed number.
+     * @param {Number} seasonNumber 
+     */
+    getSeason(seasonNumber) {
+        var seasonsSection = new Section(dataTypes.CHANGES, this);
+        var seasonSection = new Section(seasonNumber.toString(), seasonsSection);
+        return seasonSection.getQueryResult();
+    }
+
+    /**
+     * Gets all seasons.
+     * @returns An array of season objects.
+     */
+    getSeasons() {
+        var seasonNumber = 1;
+        var seasons = [];
+        while (true) {
+            var season = this.getSeason(seasonNumber);
+
+            if (season == undefined) {
+                return seasons;
+            }
+
+            seasons.push(season)
+            seasonNumber++;
+        }
+    }
+
+    /**
+     * Gets the specified episode of the specified season.
+     * @param {*} seasonNumber The season number.
+     * @param {*} episodeNumber The episode number
+     */
+    getEpisode(seasonNumber, episodeNumber) {
+        var seasonSection = new Section(
+            seasonNumber.toString(),
+            new Section(dataTypes.CHANGES, this));
+
+        var episodeSection = new Section(
+            episodeNumber.toString(), 
+            new Section(dataTypes.EPISODE, seasonSection));
+
+        return episodeSection.getQueryResult();
+    }
+
+    /**
+     * Gets all episodes of this TV show.
+     */
+    getAllEpisodes() {
+        return getSeasons().filter(season => season["episodes"]).flat();
     }
 }
 
@@ -159,56 +219,56 @@ exports.TvShowSection = class extends Section {
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
-        super(apiKey, sections.TV_SHOW, language);
+        super(sections.TV_SHOW, undefined, apiKey, language);
     }
 
     /**
      * Gets a TvShowSubsection, based on the passed ID.
-     * @param {Number} tvShowId The TV show ID.
+     * @param {Number} id The TV show ID.
      * @returns A TvShowSubsection.
      */
-    getTvShow(tvShowId) {
-        return new exports.TvShowSubsection(this._apiKey, tvShowId, this._language);
+    getTvShow(id) {
+        return new exports.TvShow(id, this);
     }
 
     /**
      * Gets the latest TV shows.
      */
     getLatest() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.LATEST, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.LATEST, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets TV shows airing today.
      */
     getTvAiringToday() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.TV_AIRING_TODAY, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.TV_AIRING_TODAY, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets TV shows currently on the air.
      */
     getTvOnTheAir() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.TV_ON_THE_AIR, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.TV_ON_THE_AIR, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets popular TV shows.
      */
     getPopular() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.POPULAR, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.POPULAR, this);
+        return childSection.getQueryResult();
     }
 
     /**
      * Gets top rated TV shows.
      */
     getTopRated() {
-        return tmdbUtils
-            .getGeneralSectionData(this._section, dataTypes.TOP_RATED, this._apiKey, this._language);
+        var childSection = new Section(dataTypes.TOP_RATED, this);
+        return childSection.getQueryResult();
     }
 
     /**
@@ -216,10 +276,9 @@ exports.TvShowSection = class extends Section {
      * @param {string} episodeGroupId The ID of the episode group.
      */
     getEpisodeGroup(episodeGroupId) {
-        return tmdbUtils.getGeneralSectionData(
-            this._section,
-            dataTypes.EPISODE_GROUPS,this._apiKey,
-            this._language,
-            episodeGroupId);
+        var episodeGroupSection = new Section(
+            episodeGroupId,
+            new Section(dataTypes.EPISODE_GROUPS, this));
+        return episodeGroupSection.getQueryResult();
     }
 }
