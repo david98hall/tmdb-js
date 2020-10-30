@@ -8,7 +8,14 @@ const tmdbUtils = require('../../utils/tmdb_utils');
  */
 exports.Section = class extends TmdbQuerier {
 
+    /**
+     * The name of this section.
+     */
     _name;
+
+    /**
+     * The parent of this section.
+     */
     _parent;
 
     /**

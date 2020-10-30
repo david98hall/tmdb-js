@@ -13,7 +13,7 @@ exports.baseUrl = baseUrlValue;
 /**
  * Gets specific data from a section in TMDB as a JSON object.
  * @function
- * @param {Object} section The section from where data will be retrieved.
+ * @param {Object} sectionUrl The url of the section from where data will be retrieved.
  * @param {string} apiKey The TMDB API key.
  * @param {string} language The natural language of the GET request.
  * @param {string} sessionId The session ID (only needed in certain cases).
