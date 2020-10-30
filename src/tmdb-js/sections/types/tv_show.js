@@ -210,4 +210,16 @@ exports.TvShowSection = class extends Section {
         return tmdbUtils
             .getGeneralSectionData(this._section, dataTypes.TOP_RATED, this._apiKey, this._language);
     }
+
+    /**
+     * Gets the episode group with the passed ID.
+     * @param {string} episodeGroupId The ID of the episode group.
+     */
+    getEpisodeGroup(episodeGroupId) {
+        return tmdbUtils.getGeneralSectionData(
+            this._section,
+            dataTypes.EPISODE_GROUPS,this._apiKey,
+            this._language,
+            episodeGroupId);
+    }
 }

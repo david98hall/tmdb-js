@@ -43,11 +43,13 @@ exports.getSectionData = function(sectionType, sectionId, dataType, apiKey, lang
  * @param {string} dataType The type of data to retrieve.
  * @param {string} apiKey The TMDB API key.
  * @param {string} language The language of the retrieved data.
+ * @param {string} dataId The ID of the data (used in certain cases, e.g. for episode groups).
  */
-exports.getGeneralSectionData = function(sectionType, dataType, apiKey, language) {
+exports.getGeneralSectionData = function(sectionType, dataType, apiKey, language, dataId = "") {
 
     // Create the url, based on this function's arguments
     var url = baseUrlValue + sectionType + "/" + dataType;
+    url += dataId;
     url += "?api_key=" + apiKey;
     url += "&language=" + language
 
