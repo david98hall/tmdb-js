@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections.Subsection.html">Subsection</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.MovieSubsection.html">MovieSubsection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li><li><a href="module-tmdb-js_sections_types.TvShowSubsection.html">TvShowSubsection</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections_types.Movie.html">Movie</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.TvShow.html">TvShow</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li></ul></div>
                 
             </nav>
         </div>
@@ -95,48 +95,55 @@ const tmdbUtils = require('../../utils/tmdb_utils');
  */
 exports.Section = class extends TmdbQuerier {
 
-    _section;
+    /**
+     * The name of this section.
+     */
+    _name;
+
+    /**
+     * The parent of this section.
+     */
+    _parent;
 
     /**
      * Sets properties.
+     * @param {string} name The name of this section.
+     * @param {exports.Section} parent The parent section of this section.
      * @param {string} apiKey The TMDB API key.
-     * @param {string} section The section.
      * @param {string} language The language of queries, the default is "en-US".
      */
-    constructor(apiKey, section, language = "en-US") {
-        super(apiKey, language);
-        this._section = section;
+    constructor(name, parent = undefined, apiKey = undefined, language = "en-US") {
+        super(
+            parent == undefined ? apiKey : parent._apiKey,
+            parent == undefined ? language : parent._language
+        );
+        this._name = name;
+        this._parent = parent;
     }
-}
-
-/**
- * Template class for getting and handling section data on TMDB.
- */
-exports.Subsection = class extends exports.Section {
-
-    _subSectionId;
 
     /**
-     * Sets properties.
-     * @param {string} apiKey The TMDB API key.
-     * @param {string} section The section.
-     * @param {Number} subSectionId The id of the sub section.
-     * @param {string} language The language of queries, the default is "en-US".
+     * Gets the section data from TMDB.
+     * Both session IDs cannot be non-null at the same time.
+     * @param {string} sessionId The session ID.
+     * @param {string} guestSessionId The guest session ID.
      */
-    constructor(apiKey, section, subSectionId, language = "en-US") {
-        super(apiKey, section, language);
-        this._subSectionId = subSectionId;
-    }
-
-     /**
-     * Gets section data of the specified type.
-     * @param {string} section The section.
-     * @param {string} dataType The type of the data to get.
-     * @returns A Promise of section data.
-     */
-    _getSectionData = (dataType) => {
+    getQueryResult(sessionId = null, guestSessionId = null) {
         return tmdbUtils.getSectionData(
-            this._section, this._subSectionId, dataType, this._apiKey, this._language);
+            this.toString(),
+            this._apiKey,
+            this._language,
+            sessionId,
+            guestSessionId);
+    }
+
+    /**
+     * Returns this section in a string format.
+     */
+    toString() {
+        var parentString = this._parent == undefined
+            ? ""
+            : this._parent.toString() + "/";
+        return parentString + this._name;
     }
 }</code></pre>
         </article>
