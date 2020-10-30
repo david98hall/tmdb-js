@@ -12,7 +12,7 @@ exports.runTest = () => {
         it('Should retrieve the API key.', done => {
             // Check that the API key can be found without error
             getApiKey().then(apiKey => {
-                assert.notEqual(apiKey, null);
+                assert.notStrictEqual(apiKey, null);
                 setImmediate(done);
             });
         });

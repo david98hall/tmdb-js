@@ -24,6 +24,14 @@ exports.TvShow = class extends Section {
     }
 
     /**
+     * Gets all details about this TV show.
+     * @returns A Promise of TV show details.
+     */
+    getDetails() {
+        return this.getQueryResult();
+    }
+
+    /**
      * Gets the account states on the TV show in question.
      * Only one of the IDs is allowed to be null or non-null in the same method call.
      * @param {string} sessionId The session ID.
@@ -31,7 +39,7 @@ exports.TvShow = class extends Section {
      */
     getAccountStates(sessionId = null, guestSessionId = null) {
         var childSection = new Section(dataTypes.ACCOUNT_STATES, this);
-        return childSection._getQueryResult(sessionId, guestSessionId);
+        return childSection.getQueryResult(sessionId, guestSessionId);
     }
 
     /**
@@ -39,7 +47,7 @@ exports.TvShow = class extends Section {
      */
     getAlternativeTitles() {
         var childSection = new Section(dataTypes.ALTERNATIVE_TITLES, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -47,7 +55,7 @@ exports.TvShow = class extends Section {
      */
     getChanges() {
         var childSection = new Section(dataTypes.CHANGES, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -55,7 +63,7 @@ exports.TvShow = class extends Section {
      */
     getContentRatings() {
         var childSection = new Section(dataTypes.CONTENT_RATINGS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -63,7 +71,7 @@ exports.TvShow = class extends Section {
      */
     getCredits() {
         var childSection = new Section(dataTypes.CREDITS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -71,7 +79,7 @@ exports.TvShow = class extends Section {
      */
     getEpisodeGroups() {
         var childSection = new Section(dataTypes.EPISODE_GROUPS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -79,7 +87,7 @@ exports.TvShow = class extends Section {
      */
     getExternalIds() {
         var childSection = new Section(dataTypes.EXTERNAL_IDS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -87,7 +95,7 @@ exports.TvShow = class extends Section {
      */
     getImages() {
         var childSection = new Section(dataTypes.IMAGES, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -95,7 +103,7 @@ exports.TvShow = class extends Section {
      */
     getKeywords() {
         var childSection = new Section(dataTypes.KEYWORDS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -103,7 +111,7 @@ exports.TvShow = class extends Section {
      */
     getRecommendations() {
         var childSection = new Section(dataTypes.RECOMMENDATIONS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -111,7 +119,7 @@ exports.TvShow = class extends Section {
      */
     getReviews() {
         var childSection = new Section(dataTypes.REVIEWS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -119,7 +127,7 @@ exports.TvShow = class extends Section {
      */
     getScreenedTheatrically() {
         var childSection = new Section(dataTypes.SCREENED_THEATRICALLY, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -127,7 +135,7 @@ exports.TvShow = class extends Section {
      */
     getSimilarTvShows() {
         var childSection = new Section(dataTypes.SIMILAR_MOVIES, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -135,7 +143,7 @@ exports.TvShow = class extends Section {
      */ 
     getTranslations() {
         var childSection = new Section(dataTypes.TRANSLATIONS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -143,7 +151,7 @@ exports.TvShow = class extends Section {
      */
     getVideos() {
         var childSection = new Section(dataTypes.VIDEOS, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -153,7 +161,7 @@ exports.TvShow = class extends Section {
     getSeason(seasonNumber) {
         var seasonsSection = new Section(dataTypes.CHANGES, this);
         var seasonSection = new Section(seasonNumber.toString(), seasonsSection);
-        return seasonSection._getQueryResult();
+        return seasonSection.getQueryResult();
     }
 
     /**
@@ -189,7 +197,7 @@ exports.TvShow = class extends Section {
             episodeNumber.toString(), 
             new Section(dataTypes.EPISODE, seasonSection));
 
-        return episodeSection._getQueryResult();
+        return episodeSection.getQueryResult();
     }
 
     /**
@@ -228,7 +236,7 @@ exports.TvShowSection = class extends Section {
      */
     getLatest() {
         var childSection = new Section(dataTypes.LATEST, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -236,7 +244,7 @@ exports.TvShowSection = class extends Section {
      */
     getTvAiringToday() {
         var childSection = new Section(dataTypes.TV_AIRING_TODAY, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -244,7 +252,7 @@ exports.TvShowSection = class extends Section {
      */
     getTvOnTheAir() {
         var childSection = new Section(dataTypes.TV_ON_THE_AIR, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -252,7 +260,7 @@ exports.TvShowSection = class extends Section {
      */
     getPopular() {
         var childSection = new Section(dataTypes.POPULAR, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -260,7 +268,7 @@ exports.TvShowSection = class extends Section {
      */
     getTopRated() {
         var childSection = new Section(dataTypes.TOP_RATED, this);
-        return childSection._getQueryResult();
+        return childSection.getQueryResult();
     }
 
     /**
@@ -271,6 +279,6 @@ exports.TvShowSection = class extends Section {
         var episodeGroupSection = new Section(
             episodeGroupId,
             new Section(dataTypes.EPISODE_GROUPS, this));
-        return episodeGroupSection._getQueryResult();
+        return episodeGroupSection.getQueryResult();
     }
 }

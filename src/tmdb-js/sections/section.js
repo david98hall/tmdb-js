@@ -33,9 +33,9 @@ exports.Section = class extends TmdbQuerier {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      */
-    _getQueryResult(sessionId = null, guestSessionId = null) {
+    getQueryResult(sessionId = null, guestSessionId = null) {
         return tmdbUtils.getSectionData(
-            this._toString,
+            this.toString(),
             this._apiKey,
             this._language,
             sessionId,
@@ -45,10 +45,10 @@ exports.Section = class extends TmdbQuerier {
     /**
      * Returns this section in a string format.
      */
-    _toString() {
-        var parentString = parent == undefined
+    toString() {
+        var parentString = this._parent == undefined
             ? ""
-            : parent._toString();
-        return parentString + "/" + this._name;
+            : this._parent.toString() + "/";
+        return parentString + this._name;
     }
 }
