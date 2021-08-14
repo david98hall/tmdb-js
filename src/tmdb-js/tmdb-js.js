@@ -1,6 +1,7 @@
 /**@module tmdb-js */
 
 const MovieSection = require('./sections/types/movie').MovieSection;
+const PeopleSection = require('./sections/types/people').PeopleSection;
 const ReviewSection = require('./sections/types/review').ReviewSection;
 const TvShowSection = require('./sections/types/tv_show').TvShowSection;
 const Searcher = require('./search/searcher').Searcher;
@@ -35,6 +36,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     getMovies() {
         return new MovieSection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a PeopleSection instance which can be used
+     * to get data about people.
+     */
+    getPeople() {
+        return new PeopleSection(this._apiKey, this._language);
     }
 
     /**
