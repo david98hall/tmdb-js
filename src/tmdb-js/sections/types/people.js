@@ -130,7 +130,7 @@ exports.PeopleSection = class extends Section {
     }
 
     /**
-     * Gets popular movies.
+     * Gets popular people.
      */
     getPopular() {
         return this.getChildQueryResult(dataTypes.POPULAR);
