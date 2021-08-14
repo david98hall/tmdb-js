@@ -100,7 +100,7 @@
 
 
     <section>
-        <article><h1><a href="https://github.com/david98hall/tmdb-js">tmdb-js</a></h1>
+        <article><h1><a href="https://github.com/david98hall/tmdb-js">tmdb-js</a> (Work In Progress)</h1>
 <p><a href="https://github.com/david98hall/tmdb-js/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/david98hall/tmdb-js/workflows/Node.js%20CI/badge.svg" alt="Node.js CI"></a>
 <a href="https://github.com/david98hall/tmdb-js/actions?query=workflow%3A%22Node.js+Package%22"><img src="https://github.com/david98hall/tmdb-js/workflows/Node.js%20Package/badge.svg" alt="Node.js Package"></a></p>
 <p>An unofficial JavaScript wrapper for The Movie Database API.</p>
@@ -111,6 +111,27 @@
 </code></pre>
 <h4><a href="https://www.npmjs.com/package/tmdb-js">npm</a></h4>
 <pre class="prettyprint source"><code>npm i tmdb-js
+</code></pre>
+<h4>Usage</h4>
+<p>Here is a simple example of how to use this wrapper:</p>
+<pre class="prettyprint source lang-javascript"><code>const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
+
+var tmdb = new Tmdb(apiKey);
+
+// Get movie data example
+var oceansElevenMovie = tmdb.getMovies().getMovie(161);
+oceansElevenMovie.getDetails().then(json => {
+  console.log(&quot;A great movie: &quot; + json.title)
+})
+
+// Rate movie example
+oceansElevenMovie.rate(10, sessionId);
+
+// Search TMDB examples
+tmdb.getSearcher().searchMovies(&quot;Ocean's&quot;).then(resultPageJsons => console.log(resultPageJsons.length));
+tmdb.getSearcher().searchMovies(&quot;Ocean's&quot;, 1, 1).then(resultPageJsons => console.log(resultPageJsons.length));
+tmdb.getSearcher().multiSearch(&quot;Ocean's&quot;).then(resultPageJsons => console.log(resultPageJsons.length));
+tmdb.getSearcher().multiSearch(&quot;Ocean's&quot;, 1, 2).then(resultPageJsons => console.log(resultPageJsons.length));
 </code></pre>
 <p>See the <a href="https://david98hall.github.io/tmdb-js/">documentation</a> for more info.</p></article>
     </section>
