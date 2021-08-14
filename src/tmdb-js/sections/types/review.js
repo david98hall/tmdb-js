@@ -1,13 +1,8 @@
 /**@module tmdb-js/sections/types */
 
-// HTTP utilities
-const httpUtils = require('../../../utils/http_utils');
-const httpMethod = httpUtils.httpMethod;
-
 // TMDB utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
-const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
 const Section = require('../section').Section;
