@@ -223,9 +223,9 @@ exports.TvShowSection = class extends Section {
     }
 
     /**
-     * Gets a TvShowSubsection, based on the passed ID.
+     * Gets a TvShow instance, based on the passed ID.
      * @param {Number} id The TV show ID.
-     * @returns A TvShowSubsection.
+     * @returns A TvShow instance.
      */
     getTvShow(id) {
         return new exports.TvShow(id, this);

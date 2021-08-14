@@ -221,9 +221,9 @@ exports.MovieSection = class extends Section {
     }
 
     /**
-     * Gets a MovieSubsection, based on the passed ID.
+     * Gets a Movie instance, based on the passed ID.
      * @param {Number} id The ID of the movie.
-     * @returns A MovieSubsection.
+     * @returns A Movie instance.
      */
     getMovie(id) {
         return new exports.Movie(id, this);
