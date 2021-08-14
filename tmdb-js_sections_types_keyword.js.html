@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> tmdb-js/api/tmdb_querier.js</title>
+  <title> tmdb-js/sections/types/keyword.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>tmdb-js/api/tmdb_querier.js</h1>
+                    <h1>tmdb-js/sections/types/keyword.js</h1>
                 </header>
                 
 
@@ -85,27 +85,65 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/api */
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-const TmdbApiUser = require('./tmdb_api_user').TmdbApiUser;
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+
+// Sections
+const Section = require('../section').Section;
 
 /**
- * Can make TMBB queries based on an API key and a specified natural language.
+ * Can get keyword data from TMDB.
  */
-exports.TmdbQuerier = class extends TmdbApiUser {
+exports.Keyword = class extends Section {
 
-    _language;
+    /**
+     * Sets properties.
+     * @param {Number} id The id of the keyword.
+     * @param {KeywordSection} keywordSection The parent KeywordSection.
+     */
+    constructor(id, keywordSection) {
+        super(id, keywordSection);
+    }
+
+    /**
+     * Gets the keyword details based on the passed id.
+     * @param {string} id The keyword id. 
+     * @returns A Promise of keyword details.
+     */
+    getDetails() {
+        return this.getQueryResult();
+    }
+
+    // TODO [david98hall, 2021-08-14]: Implement GET /keyword/{keyword_id}/movies? It is not recommended to be used.
+
+}
+
+/**
+ * Can get keyword data from TMDB.
+ */
+exports.KeywordSection = class extends Section {
 
     /**
      * Sets properties.
      * @param {string} apiKey The TMDB API key.
-     * @param {string} language The natural language of queries, the default is "en-US".
+     * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
-        super(apiKey);
-        this._language = language;
+        super(sections.KEYWORD, undefined, apiKey, language);
     }
-};</code></pre>
+
+    /**
+     * Gets the keyword with the passed id.
+     * @param {Number} id The id of the keyword to get.
+     */
+    getKeyword(id) {
+        return new exports.Keyword(id, this);
+    }
+
+}</code></pre>
         </article>
     </section>
 
