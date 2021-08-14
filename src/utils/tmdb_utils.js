@@ -203,6 +203,7 @@ exports.sections = Object.freeze({
  */
 exports.dataTypes = Object.freeze({
     ACCOUNT_STATES: 'account_states',
+    ALTERNATIVE_NAMES: 'alternative_names',
     ALTERNATIVE_TITLES: 'alternative_titles',
     CHANGES: 'changes',
     COMBINED_CREDITS: 'combined_credits',

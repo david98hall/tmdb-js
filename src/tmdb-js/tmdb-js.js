@@ -2,6 +2,7 @@
 
 const Authenticator = require('./authentication/authentication').Authenticator;
 const MovieSection = require('./sections/types/movie').MovieSection;
+const NetworkSection = require('./sections/types/network').NetworkSection;
 const PeopleSection = require('./sections/types/people').PeopleSection;
 const ReviewSection = require('./sections/types/review').ReviewSection;
 const Searcher = require('./search/searcher').Searcher;
@@ -37,6 +38,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     getMovies() {
         return new MovieSection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a NetworkSection instance which can be used 
+     * to handle and get movie data on TMDB.
+     */
+    getNetworks() {
+        return new NetworkSection(this._apiKey, this._language);
     }
 
     /**

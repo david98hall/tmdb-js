@@ -2,6 +2,7 @@ const assert = require('assert');
 const getApiKey = require('./utils/tmdb_test_utils').getApiKey;
 const tmdbUtilsTest = require('./utils/tmdb_utils_test');
 const movieTest = require('./sections/movie_test');
+const networkTest = require('./sections/network_test');
 const peopleTest = require('./sections/people_test');
 const reviewTest = require('./sections/review_test');
 const searchTest = require('./search/search_test');
@@ -25,6 +26,7 @@ exports.runTest = () => {
         getApiKey().then(apiKey => {
             tmdbUtilsTest.runTest(apiKey);
             movieTest.runTest(apiKey);
+            networkTest.runTest(apiKey);
             peopleTest.runTest(apiKey);
             reviewTest.runTest(apiKey);
             searchTest.runTest(apiKey);
