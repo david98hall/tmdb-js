@@ -10,6 +10,31 @@ const Section = require('../section').Section;
 /**
  * Can get review data from TMDB.
  */
+exports.Review = class extends Section {
+
+    /**
+     * Sets properties.
+     * @param {Number} id The id of the review.
+     * @param {ReviewSection} reviewSection The parent ReviewSection.
+     */
+    constructor(id, reviewSection) {
+        super(id, reviewSection);
+    }
+
+    /**
+     * Gets the review details based on the passed id.
+     * @param {string} id The review id. 
+     * @returns A Promise of review details.
+     */
+    getDetails() {
+        return this.getQueryResult();
+    }
+
+}
+
+/**
+ * Can get review data from TMDB.
+ */
 exports.ReviewSection = class extends Section {
 
     /**
@@ -22,12 +47,11 @@ exports.ReviewSection = class extends Section {
     }
 
     /**
-     * Gets the review details with the passed id.
-     * @param {string} id The review id. 
-     * @returns A Promise of review details.
+     * Gets the review with the passed id.
+     * @param {Number} id The id of the review to get.
      */
-    getDetails(id) {
-        return new Section(id, this).getQueryResult();
+    getReview(id) {
+        return new exports.Review(id, this);
     }
 
 }

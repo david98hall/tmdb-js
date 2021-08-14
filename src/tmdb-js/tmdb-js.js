@@ -2,6 +2,7 @@
 
 const Authenticator = require('./authentication/authentication').Authenticator;
 const FindSection = require('./sections/types/find').FindSection;
+const KeywordSection = require('./sections/types/keyword').KeywordSection;
 const MovieSection = require('./sections/types/movie').MovieSection;
 const NetworkSection = require('./sections/types/network').NetworkSection;
 const PeopleSection = require('./sections/types/people').PeopleSection;
@@ -45,6 +46,14 @@ exports.Tmdb = class extends TmdbQuerier {
     }
 
     /**
+     * Gets a KeywordSection instance which can be used
+     * to get keyword data 
+     */
+    getKeywords() {
+        return new KeywordSection(this._apiKey, this._language);
+    }
+
+    /**
      * Gets a MovieSection instance which can be used 
      * to handle and get movie data on TMDB.
      */
@@ -53,8 +62,7 @@ exports.Tmdb = class extends TmdbQuerier {
     }
 
     /**
-     * Gets a NetworkSection instance which can be used 
-     * to handle and get movie data on TMDB.
+     * Gets a NetworkSection instance which can be used to get network data.
      */
     getNetworks() {
         return new NetworkSection(this._apiKey, this._language);
@@ -69,8 +77,7 @@ exports.Tmdb = class extends TmdbQuerier {
     }
 
     /**
-     * Gets a ReviewSection instance which can be used 
-     * to get review data on TMDB.
+     * Gets a ReviewSection instance which can be used to get review data.
      */
     getReviews() {
         return new ReviewSection(this._apiKey, this._language);

@@ -8,13 +8,14 @@ exports.runTest = apiKey => {
     // Don't test non-deterministic functions on the CI
     if (!process.env.CI) {
 
-        describe('Review GET tests', () => {
+        describe('Keyword GET tests', () => {
         
-            var review = {id: "59ac9ea4c3a3682cc80389e0", author: "Reno"};
-            it('Should get review data.', done => {
-                tmdb.getReviews().getReview(review.id).getDetails().then(json => {
+            var keyword = {id: "14999", name: "devil"};
+            it('Should get keyword data.', done => {
+                tmdb.getKeywords().getKeyword(keyword.id).getDetails().then(json => {
+
                     // Assert the results
-                    assert.strictEqual(json.author, review.author);
+                    assert.strictEqual(json.name, keyword.name);
                 
                     setImmediate(done);
                 })
