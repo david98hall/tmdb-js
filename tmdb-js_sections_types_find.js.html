@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> utils/http_utils.js</title>
+  <title> tmdb-js/sections/types/find.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>utils/http_utils.js</h1>
+                    <h1>tmdb-js/sections/types/find.js</h1>
                 </header>
                 
 
@@ -85,92 +85,53 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**@module utils */
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const jsonContentTypeValue = "application/json;charset=utf-8";
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
 
-/**
- * JSON Content-Type value.
- */
-exports.jsonContentType = jsonContentTypeValue;
-
-/**
- * All different types of HTTP request methods.
- */
-exports.httpMethod = Object.freeze({
-    GET: "GET",
-    HEAD: "HEAD",
-    POST: "POST",
-    PUT: "PUT",
-    DELETE: "DELETE",
-    CONNECT: "CONNECT",
-    OPTIONS: "OPTIONS",
-    TRACE: "TRACE",
-    PATCH: "PATCH"
-});
+// Sections
+const Section = require('../section').Section;
 
 /**
- * Makes an HTTP request to the passed url, based on the passed method and request body.
- * @param {string} url The URL to make a request to.
- * @param {string} method The request method.
- * @param {string} contentType The contentType
- * @param {string} requestBody The body of the request.
+ * Can get data from external sources via TMDB.
  */
-exports.httpRequest = (url, method, contentType = null, requestBody = null) => 
-    new Promise((resolve, reject) => {
-        var xhr = new XMLHttpRequest();
-        xhr.open(method, url);
-        var rejectFun = function() {
-            reject(new Error(`There was an error when doing a ${method} request!`));
+exports.FindSection = class extends Section {
+
+    /**
+     * The external source.
+     */
+    _externalSource;
+
+    /**
+     * Sets properties.
+     * @param {string} externalSource The time window of this trending section (see tmdb_utils.externalSources).
+     * @param {string} apiKey The TMDB API key.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(externalSource, apiKey, language = "en-US") {
+        super(sections.FIND, undefined, apiKey, language);
+        this._externalSource = externalSource;
+    }
+
+    /**
+     * Finds media with the passed ID in the external source in question.
+     * @param {string} externalId The external ID of the media. 
+     */
+    find(externalId) {
+
+        var idChild = this.createChild(externalId);
+
+        var parameters = {
+            "api_key": this._apiKey,
+            "language": this._language,
+            "external_source": this._externalSource
         };
-        xhr.onload = function() {
-            if (xhr.readyState == 4 &amp;&amp; isMethodSuccess(method, xhr.status)) {
-                resolve(xhr.responseText);
-            } else {
-                rejectFun();
-            }
-        };
-        xhr.onerror = rejectFun;
-
-        if (contentType) {
-            xhr.setRequestHeader("Content-Type", contentType);
-        }
-
-        xhr.send(requestBody);
-});
-
-function isMethodSuccess(method, httpStatus) {
-    switch(method) {
-        case "GET": 
-        case "DELETE": 
-            return httpStatus == 200;
-        case "POST": 
-            return httpStatus == 201;
-        default:
-            return false;
+        
+        return tmdbUtils.getData(idChild.toString(), parameters);
     }
-}
 
-/**
- * Makes an HTTP request on the given URL and parses the result.
- * @param {string} url The URL.
- * @param {string} method The request method.
- * @param {Function} parseFun
- * The function used to parse the request result.
- * @param {string} contentType The content type of the request
- * @param {string} requestBody The body of the request
- * @returns A Promise of a parsed response.
- */
-exports.parseHttpRequest = async function(url, method, parseFun, contentType = null, requestBody = null) {
-    try {
-        // Await the HTTP request and return its parsed results
-        const response = await this.httpRequest(url, method, contentType, requestBody);
-        return parseFun(response);
-    }
-    catch (error) {
-        console.log(error);
-    }
 }</code></pre>
         </article>
     </section>

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> tmdb-js/search/searcher.js</title>
+  <title> tmdb-js/sections/types/search.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_search.html">tmdb-js/search</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_search.Searcher.html">Searcher</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections_types.Movie.html">Movie</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.PeopleSection.html">PeopleSection</a></li><li><a href="module-tmdb-js_sections_types.Person.html">Person</a></li><li><a href="module-tmdb-js_sections_types.ReviewSection.html">ReviewSection</a></li><li><a href="module-tmdb-js_sections_types.TrendingSection.html">TrendingSection</a></li><li><a href="module-tmdb-js_sections_types.TvShow.html">TvShow</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.Tmdb.html">Tmdb</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections_types.FindSection.html">FindSection</a></li><li><a href="module-tmdb-js_sections_types.Movie.html">Movie</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.Network.html">Network</a></li><li><a href="module-tmdb-js_sections_types.NetworkSection.html">NetworkSection</a></li><li><a href="module-tmdb-js_sections_types.PeopleSection.html">PeopleSection</a></li><li><a href="module-tmdb-js_sections_types.Person.html">Person</a></li><li><a href="module-tmdb-js_sections_types.ReviewSection.html">ReviewSection</a></li><li><a href="module-tmdb-js_sections_types.SearchSection.html">SearchSection</a></li><li><a href="module-tmdb-js_sections_types.TrendingSection.html">TrendingSection</a></li><li><a href="module-tmdb-js_sections_types.TvShow.html">TvShow</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li></ul></div>
                 
             </nav>
         </div>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>tmdb-js/search/searcher.js</h1>
+                    <h1>tmdb-js/sections/types/search.js</h1>
                 </header>
                 
 
@@ -85,11 +85,13 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/search */
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-const httpUtils = require('../../utils/http_utils');
-const httpMethod = httpUtils.httpMethod;
-const TmdbQuerier = require('../api/tmdb_querier').TmdbQuerier;
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+
+const Section = require('../section').Section;
 
 /**
  * @param {string} apiKey The API key to the TMDB API.
@@ -101,7 +103,7 @@ const TmdbQuerier = require('../api/tmdb_querier').TmdbQuerier;
  * The number of search result pages to return data from.
  * @param {Boolean} includeAdult true if adult content will be included.
  */
-exports.Searcher = class extends TmdbQuerier {
+exports.SearchSection = class extends Section {
 
     /**
      * Sets properties.
@@ -109,7 +111,7 @@ exports.Searcher = class extends TmdbQuerier {
      * @param {string} language The natural language of search queries. The default is "en-US". 
      */
     constructor(apiKey, language = "en-US") {
-        super(apiKey, language);
+        super(sections.SEARCH, undefined, apiKey, language);
     }
 
     /**
@@ -123,9 +125,10 @@ exports.Searcher = class extends TmdbQuerier {
      * true if adult content will be included. The default is true.
      */
     searchCompanies(searchTerm, startPage = 1, pageCount = 1) {
+        var companiesChild = this.createChild(searchType.COMPANIES);
         return searchPages(
+            companiesChild.toString(),
             searchTerm, 
-            searchType.COMPANIES, 
             this._apiKey, 
             startPage, 
             pageCount, 
@@ -144,9 +147,10 @@ exports.Searcher = class extends TmdbQuerier {
      * true if adult content will be included. The default is true.
      */
     searchCollections(searchTerm, startPage = 1, pageCount = 1) {
+        var collectionsChild = this.createChild(searchType.COLLECTIONS);
         return searchPages(
-            searchTerm, 
-            searchType.COLLECTIONS, 
+            collectionsChild.toString(),
+            searchTerm,
             this._apiKey, 
             startPage, 
             pageCount, 
@@ -165,9 +169,10 @@ exports.Searcher = class extends TmdbQuerier {
      * true if adult content will be included. The default is true.
      */
     searchKeywords(searchTerm, startPage = 1, pageCount = 1) {
+        var keywordsChild = this.createChild(searchType.KEYWORDS);
         return searchPages(
+            keywordsChild.toString(),
             searchTerm, 
-            searchType.KEYWORDS, 
             this._apiKey,
             startPage, 
             pageCount, 
@@ -208,9 +213,11 @@ exports.Searcher = class extends TmdbQuerier {
             additionalInfo["primary_release_year"] = primaryReleaseYear;
         }
 
+        var moviesChild = this.createChild(searchType.MOVIES);
+        
         return searchPages(
-            searchTerm, 
-            searchType.MOVIES, 
+            moviesChild.toString(),
+            searchTerm,
             this._apiKey,
             startPage, 
             pageCount, 
@@ -230,9 +237,12 @@ exports.Searcher = class extends TmdbQuerier {
      * true if adult content will be included. The default is true.
      */
     multiSearch(searchTerm, startPage = 1, pageCount = 1, includeAdult = true) {
+
+        var multiChild = this.createChild(searchType.MULTI);
+
         return searchPages(
+            multiChild.toString(),
             searchTerm, 
-            searchType.MULTI, 
             this._apiKey, 
             startPage, 
             pageCount, 
@@ -262,9 +272,11 @@ exports.Searcher = class extends TmdbQuerier {
             additionalInfo["region"] = region;
         }
 
+        var peopleChild = this.createChild(searchType.PEOPLE);
+
         return searchPages(
-            searchTerm, 
-            searchType.PEOPLE, 
+            peopleChild.toString(),
+            searchTerm,
             this._apiKey,
             startPage, 
             pageCount, 
@@ -295,9 +307,11 @@ exports.Searcher = class extends TmdbQuerier {
             additionalInfo["first_air_date_year"] = firstAirDateYear;
         }
 
+        var tvShowChild = this.createChild(searchType.TV_SHOWS);
+
         return searchPages(
+            tvShowChild.toString(),
             searchTerm, 
-            searchType.TV_SHOWS, 
             this._apiKey,
             startPage, 
             pageCount, 
@@ -322,8 +336,8 @@ const searchType = {
 
 /**
  * Gets search data from TMDB as a JSON object.
+ * @param {string} url The url.
  * @param {string} searchTerm The search term (query).
- * @param {string} searchType The type of search to perform. 
  * @param {string} apiKey The API key to the TMDB API. 
  * @param {Number} startPage 
  * The first search result page to return data from.
@@ -335,7 +349,7 @@ const searchType = {
  * @param {Object} additionalInfo
  * Additional info to add to the search query.
  */
-async function searchPages(searchTerm, searchType, apiKey, startPage, 
+async function searchPages(url, searchTerm, apiKey, startPage, 
     pageCount, includeAdult = true, language = "en-US", additionalInfo = {}) {
     
         // Throw an error if the page related parameters are invalid
@@ -345,8 +359,13 @@ async function searchPages(searchTerm, searchType, apiKey, startPage,
 
         // Search the first page in order to get the total number of pages.
         // Used to interrupt when there are no pages left to search.
-        var firstPage = await searchPage(searchTerm, searchType, apiKey, 
-            startPage, includeAdult, language, additionalInfo);
+        var firstPage = await searchPage(url,
+                                         searchTerm,
+                                         apiKey,
+                                         startPage,
+                                         includeAdult,
+                                         language,
+                                         additionalInfo);
 
         // The page count is 1, no more pages should thus be searched
         if (pageCount == 1) 
@@ -359,9 +378,13 @@ async function searchPages(searchTerm, searchType, apiKey, startPage,
         var promises = [];
         for (let index = 1; index &lt;= pageCount; index++) {
             var page = startPage + index;
-            var promise = searchPage(
-                searchTerm, searchType, apiKey, 
-                page, includeAdult, language, additionalInfo);
+            var promise = searchPage(url,
+                                     searchTerm,
+                                     apiKey,
+                                     page,
+                                     includeAdult,
+                                     language,
+                                     additionalInfo);
             promises.push(promise);
         }
         
@@ -373,6 +396,7 @@ async function searchPages(searchTerm, searchType, apiKey, startPage,
 
 /**
  * Gets search data from TMDB as a JSON object.
+ * @param {string} url The url path.
  * @param {string} searchTerm The search term (query).
  * @param {string} searchType The type of search to perform. 
  * @param {string} apiKey The API key to the TMDB API. 
@@ -383,25 +407,19 @@ async function searchPages(searchTerm, searchType, apiKey, startPage,
  * @param {Object} additionalInfo
  * Additional info to add to the search query.
  */
-function searchPage(searchTerm, searchType, apiKey, 
+function searchPage(url, searchTerm, apiKey, 
     page = 1, includeAdult = true, language = "en-US", additionalInfo = {}) {
-
-        // Create the url, based on this function's parameters
-        const baseUrl = "https://api.themoviedb.org/3/search/";
-        var url = baseUrl + searchType;
-        url += "?api_key=" + apiKey;
-        url += "&amp;language=" + language;
-        url += "&amp;query=" + encodeURI(searchTerm);
-        url += "&amp;page=" + page;
-        url += "&amp;include_adult=" + includeAdult;
         
-        // Add any additional info to the query
-        var additionalInfoQuery = "";
-        Object.keys(additionalInfo)
-              .forEach(key => additionalInfoQuery += `&amp;${key}=${additionalInfo[key]}`)
-        url += additionalInfoQuery;
+    parameters = {
+        "api_key": apiKey,
+        "language": language,
+        "query": encodeURI(searchTerm),
+        "page": page,
+        "include_adult": includeAdult
+    };
+    parameters = {...parameters, ...additionalInfo};
 
-        return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse);
+    return tmdbUtils.getData(url, parameters);
 }</code></pre>
         </article>
     </section>
