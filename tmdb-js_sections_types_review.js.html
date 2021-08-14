@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> tmdb-js/authentication/authentication.js</title>
+  <title> tmdb-js/sections/types/review.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>tmdb-js/authentication/authentication.js</h1>
+                    <h1>tmdb-js/sections/types/review.js</h1>
                 </header>
                 
 
@@ -85,53 +85,43 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/authentication */
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-const tmdbUtils = require('../../utils/tmdb_utils');
-const TmdbApiUser = require('../api/tmdb_api_user').TmdbApiUser;
+// HTTP utilities
+const httpUtils = require('../../../utils/http_utils');
+const httpMethod = httpUtils.httpMethod;
 
- /**
-  * Handles authentication methods of TMDB.
-  * @param {string} apiKey 
-  */
- exports.Authenticator = class extends TmdbApiUser {
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+const dataTypes = tmdbUtils.dataTypes;
 
-   /**
-    * Sets properties.
-    * @param {string} apiKey The TMDB API key.
-    */
-   constructor(apiKey) {
-      super(apiKey);
-   }
+// Sections
+const Section = require('../section').Section;
 
-   /**
-    * Creates a session. This will open a tab in the specified web browser, where the 
-    * end-user will have to approve the request token and thereafter get a session ID.
-    * @param {string} permissionApp 
-    * The name of the web browser app that the end-user will use to approve the request token.
-    * The default value is "chrome".
-    * @returns A Promise of a session ID.
-    */
-   createSession(permissionApp = "chrome") { 
-      return tmdbUtils.createSession(apiKey, permissionApp);
-   }
+/**
+ * Can get review data from TMDB.
+ */
+exports.ReviewSection = class extends Section {
 
-   /**
-    * Creates a guest session.
-    * @returns A Promise of a guest session ID.
-    */
-   createGuestSession() {
-      return tmdbUtils.createGuestSession(apiKey);
-   }
+    /**
+     * Sets properties.
+     * @param {string} apiKey The TMDB API key.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(apiKey, language = "en-US") {
+        super(sections.REVIEW, undefined, apiKey, language);
+    }
 
-   /**
-    * Deletes (log outs from) a session.
-    * @param {string} sessionId The ID of the session that will be deleted.
-    * @returns A Promise of a boolean value, which will be true if the deletion is successful. 
-    */
-   deleteSession(sessionId) {
-      return tmdbUtils.deleteSession(apiKey, sessionId);
-   }
+    /**
+     * Gets the review details with the passed id.
+     * @param {string} id The review id. 
+     * @returns A Promise of review details.
+     */
+    getDetails(id) {
+        return new Section(id, this).getQueryResult();
+    }
+
 }</code></pre>
         </article>
     </section>
