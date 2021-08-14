@@ -163,6 +163,24 @@ exports.appendSessionId = (baseUrl, sessionId = null, guestSessionId = null) => 
 }
 
 /**
+ * The different time window types available at TMDB.
+ */
+exports.timeWindows = Object.freeze({
+    DAY: 'day',
+    WEEK: 'week'
+});
+
+/**
+ * The different media types available at TMDB.
+ */
+exports.mediaTypes = Object.freeze({
+    ALL: 'all',
+    MOVIE: 'movie',
+    TV: 'tv',
+    PERSON: 'person',
+});
+
+/**
  * The different types of sections available at TMDB.
  */
 exports.sections = Object.freeze({
@@ -176,6 +194,7 @@ exports.sections = Object.freeze({
     NETWORK: 'network',
     PERSON: 'person',
     REVIEW: 'review',
+    TRENDING: 'trending',
     TV_SHOW: 'tv',
 });
 

@@ -5,6 +5,7 @@ const movieTest = require('./sections/movie_test');
 const peopleTest = require('./sections/people_test');
 const reviewTest = require('./sections/review_test');
 const searchTest = require('./search/search_test');
+const trendingTest = require('./sections/trending_test');
 const tvShowTest = require('./sections/tv_show_test');
 
 
@@ -27,6 +28,7 @@ exports.runTest = () => {
             peopleTest.runTest(apiKey);
             reviewTest.runTest(apiKey);
             searchTest.runTest(apiKey);
+            trendingTest.runTest(apiKey);
             tvShowTest.runTest(apiKey);
         });
     });

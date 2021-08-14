@@ -39,7 +39,7 @@ exports.Person = class extends Section {
      * @returns A Promise of this person's changes.
      */
     getChanges() {
-        return this._getChildQueryResult(dataTypes.CHANGES);
+        return this.getChildQueryResult(dataTypes.CHANGES);
     }
         
     /**
@@ -47,7 +47,7 @@ exports.Person = class extends Section {
      * @returns A Promise of this person's movie credits.
      */
     getMovieCredits() {
-        return this._getChildQueryResult(dataTypes.MOVIE_CREDITS);
+        return this.getChildQueryResult(dataTypes.MOVIE_CREDITS);
     }
 
     /**
@@ -55,7 +55,7 @@ exports.Person = class extends Section {
      * @returns A Promise of this person's TV credits.
      */
     getTvCredits() {
-        return this._getChildQueryResult(dataTypes.TV_CREDITS);
+        return this.getChildQueryResult(dataTypes.TV_CREDITS);
     }
 
     /**
@@ -63,7 +63,7 @@ exports.Person = class extends Section {
      * @returns A Promise of this person's combined credits.
      */
     getCombinedCredits() {
-        return this._getChildQueryResult(dataTypes.COMBINED_CREDITS);
+        return this.getChildQueryResult(dataTypes.COMBINED_CREDITS);
     }
 
     /**
@@ -71,7 +71,7 @@ exports.Person = class extends Section {
      * @returns A Promise of external IDs.
      */
     getExternalIds() { 
-        return this._getChildQueryResult(dataTypes.EXTERNAL_IDS)
+        return this.getChildQueryResult(dataTypes.EXTERNAL_IDS)
     }
 
     /**
@@ -79,7 +79,7 @@ exports.Person = class extends Section {
      * @returns A Promise of images of this person.
      */
     getImages() {
-        return this._getChildQueryResult(dataTypes.IMAGES);
+        return this.getChildQueryResult(dataTypes.IMAGES);
     }
 
     /**
@@ -87,7 +87,7 @@ exports.Person = class extends Section {
      * @returns A Promise of tagged images of this person.
      */
     getImages() {
-        return this._getChildQueryResult(dataTypes.TAGGED_IMAGES);
+        return this.getChildQueryResult(dataTypes.TAGGED_IMAGES);
     }
 
     /**
@@ -95,7 +95,7 @@ exports.Person = class extends Section {
      * @returns A Promise of person translations.
      */ 
     getTranslations() {
-        return this._getChildQueryResult(dataTypes.TRANSLATIONS);
+        return this.getChildQueryResult(dataTypes.TRANSLATIONS);
     }
 }
 
@@ -126,13 +126,13 @@ exports.PeopleSection = class extends Section {
      * Gets the latest created person.
      */
     getLatest() {
-        return this._getChildQueryResult(dataTypes.LATEST);
+        return this.getChildQueryResult(dataTypes.LATEST);
     }
 
     /**
      * Gets popular movies.
      */
     getPopular() {
-        return this._getChildQueryResult(dataTypes.POPULAR);
+        return this.getChildQueryResult(dataTypes.POPULAR);
     }
 }

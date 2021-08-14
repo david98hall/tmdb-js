@@ -64,8 +64,15 @@ exports.Section = class extends TmdbQuerier {
      * section with the passed name.
      * @param {string} childName The name of the child section.
      */
-    _getChildQueryResult(childName) {
-        var childSection = new exports.Section(childName, this);
-        return childSection.getQueryResult();
+    getChildQueryResult(childName) {
+        return this.createChild(childName).getQueryResult();
+    }
+
+    /**
+     * Creates a new child section instance.
+     * @param {string} name The name of the child section.
+     */
+    createChild(name) {
+        return new exports.Section(name, this);
     }
 }

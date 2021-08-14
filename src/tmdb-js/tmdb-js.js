@@ -1,12 +1,13 @@
 /**@module tmdb-js */
 
+const Authenticator = require('./authentication/authentication').Authenticator;
 const MovieSection = require('./sections/types/movie').MovieSection;
 const PeopleSection = require('./sections/types/people').PeopleSection;
 const ReviewSection = require('./sections/types/review').ReviewSection;
-const TvShowSection = require('./sections/types/tv_show').TvShowSection;
 const Searcher = require('./search/searcher').Searcher;
-const Authenticator = require('./authentication/authentication').Authenticator;
 const TmdbQuerier = require('./api/tmdb_querier').TmdbQuerier;
+const TrendingSection = require('./sections/types/trending').TrendingSection;
+const TvShowSection = require('./sections/types/tv_show').TvShowSection;
 
 /**
  * Can handle and get TMDB data.
@@ -55,17 +56,25 @@ exports.Tmdb = class extends TmdbQuerier {
     }
 
     /**
+     * Gets a Searcher instance which can be used to search TMDB.
+     */
+    getSearcher() {
+        return new Searcher(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a TrendingSection which can be used to get trending media from TMDB.
+     * @param {string} timeWindow The time window (see tmdb_utils.timeWindows).
+     */
+    getTrending(timeWindow) {
+        return new TrendingSection(timeWindow, this._apiKey, this._language);
+    }
+
+    /**
      * Gets a TvShowSection instance which can be used 
      * to handle and get TV show data on TMDB.
      */
     getTvShows() {
         return new TvShowSection(this._apiKey, this._language)
-    }
-
-    /**
-     * Gets a Searcher instance which can be used to search TMDB.
-     */
-    getSearcher() {
-        return new Searcher(this._apiKey, this._language);
     }
 };
