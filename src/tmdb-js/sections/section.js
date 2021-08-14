@@ -41,10 +41,15 @@ exports.Section = class extends TmdbQuerier {
      * @param {string} guestSessionId The guest session ID.
      */
     getQueryResult(sessionId = null, guestSessionId = null) {
-        return tmdbUtils.getSectionData(
+        
+        var parameters = {
+            "api_key": this._apiKey,
+            "language": this._language
+        };
+        
+        return tmdbUtils.getData(
             this.toString(),
-            this._apiKey,
-            this._language,
+            parameters,
             sessionId,
             guestSessionId);
     }

@@ -11,24 +11,35 @@ const baseUrlValue = "https://api.themoviedb.org/3/";
 exports.baseUrl = baseUrlValue;
 
 /**
- * Gets specific data from a section in TMDB as a JSON object.
+ * Gets data as a JSON object.
  * @function
- * @param {Object} sectionUrl The url of the section from where data will be retrieved.
- * @param {string} apiKey The TMDB API key.
- * @param {string} language The natural language of the GET request.
+ * @param {string} urlPath The URL from where data will be retrieved.
+ * @param {Object} urlParameters The parameters of the URL.
  * @param {string} sessionId The session ID (only needed in certain cases).
  * @param {string} guestSessionId The guest session ID (only needed in certain cases).
  * @returns A Promise.
  */
-exports.getSectionData = function(sectionUrl, apiKey, language, sessionId = null, guestSessionId = null) {
+exports.getData = function(urlPath, urlParameters = {}, sessionId = null, guestSessionId = null) {
 
     // Create the url, based on this function's parameters
-    var url = baseUrlValue + sectionUrl;
-    url += "?api_key=" + apiKey;
-    url += "&language=" + language
+    var url = baseUrlValue + urlPath;
+
+    // Apply URL parameters
+    if (Object.keys(urlParameters).length > 0) {
+        url += "?";
+        
+        for (const key in urlParameters) {
+            if (Object.hasOwnProperty.call(urlParameters, key)) {
+                url += `${key}=${urlParameters[key]}&`;
+            }
+        }
+
+        // Remove last parameter separator
+        url = url.substr(0, url.length - 1);
+    } 
 
     if (sessionId || guestSessionId) {
-        url = tmdbUtils.appendSessionId(url, sessionId, guestSessionId);
+        url = exports.appendSessionId(url, sessionId, guestSessionId);
     }
 
     return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
@@ -163,6 +174,20 @@ exports.appendSessionId = (baseUrl, sessionId = null, guestSessionId = null) => 
 }
 
 /**
+ * The different external sources supported in TMDB.
+ */
+exports.externalSources = Object.freeze({
+    IMDB_ID: 'imdb_id',
+    FREEBASE_MID: 'freebase_mid',
+    FREEBASE_ID: 'freebase_id',
+    TVDB_ID: 'tvdb_id',
+    TVRAGE_ID: 'tvrage_id',
+    FACEBOOK_ID: 'facebook_id',
+    TWITTER_ID: 'twitter_id',
+    INSTAGRAM_ID: 'instagram_id'
+});
+
+/**
  * The different time window types available at TMDB.
  */
 exports.timeWindows = Object.freeze({
@@ -188,12 +213,14 @@ exports.sections = Object.freeze({
     COLLECTION: 'collection',
     COMPANY: 'company',
     CREDIT: 'credit',
+    FIND: 'find',
     KEYWORD: 'keyword',
     LIST: 'list',
     MOVIE: 'movie',
     NETWORK: 'network',
     PERSON: 'person',
     REVIEW: 'review',
+    SEARCH: 'search',
     TRENDING: 'trending',
     TV_SHOW: 'tv',
 });

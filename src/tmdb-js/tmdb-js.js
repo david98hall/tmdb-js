@@ -1,11 +1,12 @@
 /**@module tmdb-js */
 
 const Authenticator = require('./authentication/authentication').Authenticator;
+const FindSection = require('./sections/types/finder').FindSection;
 const MovieSection = require('./sections/types/movie').MovieSection;
 const NetworkSection = require('./sections/types/network').NetworkSection;
 const PeopleSection = require('./sections/types/people').PeopleSection;
 const ReviewSection = require('./sections/types/review').ReviewSection;
-const Searcher = require('./search/searcher').Searcher;
+const SearchSection = require('./sections/types/search').SearchSection;
 const TmdbQuerier = require('./api/tmdb_querier').TmdbQuerier;
 const TrendingSection = require('./sections/types/trending').TrendingSection;
 const TvShowSection = require('./sections/types/tv_show').TvShowSection;
@@ -24,12 +25,25 @@ exports.Tmdb = class extends TmdbQuerier {
         super(apiKey, language);
     }
 
+    getFinder() {
+        return 
+    }
+
     /**
      * Gets an Authenticator instance which can 
      * be used to handle TMDB authentications.
      */
     getAuthenticator() {
         return new Authenticator(this._apiKey);
+    }
+
+    /**
+     * Gets an FindSection instance which can
+     * be used to find media data based on external
+     * source IDs via TMDB.
+     */
+    getFinder() {
+        return new FindSection(this._apiKey);
     }
 
     /**
@@ -65,10 +79,10 @@ exports.Tmdb = class extends TmdbQuerier {
     }
 
     /**
-     * Gets a Searcher instance which can be used to search TMDB.
+     * Gets a SearchSection instance which can be used to search TMDB.
      */
     getSearcher() {
-        return new Searcher(this._apiKey, this._language);
+        return new SearchSection(this._apiKey, this._language);
     }
 
     /**
