@@ -1,15 +1,17 @@
 const assert = require('assert');
 const getApiKey = require('./utils/tmdb_test_utils').getApiKey;
-const tmdbUtilsTest = require('./utils/tmdb_utils_test');
-const movieTest = require('./sections/movie_test');
-const networkTest = require('./sections/network_test');
-const peopleTest = require('./sections/people_test');
-const reviewTest = require('./sections/review_test');
-const searchTest = require('./search/search_test');
-const trendingTest = require('./sections/trending_test');
-const tvShowTest = require('./sections/tv_show_test');
 
-
+const tests = [
+    require('./utils/tmdb_utils_test'),
+    require('./sections/find_test'),
+    require('./sections/movie_test'),
+    require('./sections/network_test'),
+    require('./sections/people_test'),
+    require('./sections/review_test'),
+    require('./sections/search_test'),
+    require('./sections/trending_test'),
+    require('./sections/tv_show_test')
+]
 
 exports.runTest = () => {
     
@@ -24,14 +26,9 @@ exports.runTest = () => {
         });
     
         getApiKey().then(apiKey => {
-            tmdbUtilsTest.runTest(apiKey);
-            movieTest.runTest(apiKey);
-            networkTest.runTest(apiKey);
-            peopleTest.runTest(apiKey);
-            reviewTest.runTest(apiKey);
-            searchTest.runTest(apiKey);
-            trendingTest.runTest(apiKey);
-            tvShowTest.runTest(apiKey);
+            tests.forEach(test => {
+                test.runTest(apiKey);
+            });
         });
     });
 }

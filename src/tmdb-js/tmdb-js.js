@@ -1,7 +1,7 @@
 /**@module tmdb-js */
 
 const Authenticator = require('./authentication/authentication').Authenticator;
-const FindSection = require('./sections/types/finder').FindSection;
+const FindSection = require('./sections/types/find').FindSection;
 const MovieSection = require('./sections/types/movie').MovieSection;
 const NetworkSection = require('./sections/types/network').NetworkSection;
 const PeopleSection = require('./sections/types/people').PeopleSection;
@@ -25,10 +25,6 @@ exports.Tmdb = class extends TmdbQuerier {
         super(apiKey, language);
     }
 
-    getFinder() {
-        return 
-    }
-
     /**
      * Gets an Authenticator instance which can 
      * be used to handle TMDB authentications.
@@ -41,9 +37,11 @@ exports.Tmdb = class extends TmdbQuerier {
      * Gets an FindSection instance which can
      * be used to find media data based on external
      * source IDs via TMDB.
+     * 
+     * @param externalSource The external source (see tmdb_utils.externalSources).
      */
-    getFinder() {
-        return new FindSection(this._apiKey);
+    getFinder(externalSource) {
+        return new FindSection(externalSource, this._apiKey, this._language);
     }
 
     /**
