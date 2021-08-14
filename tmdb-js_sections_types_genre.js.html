@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> tmdb-js/api/tmdb_api_user.js</title>
+  <title> tmdb-js/sections/types/genre.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>tmdb-js/api/tmdb_api_user.js</h1>
+                    <h1>tmdb-js/sections/types/genre.js</h1>
                 </header>
                 
 
@@ -85,22 +85,49 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/api */
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
+
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+
+// Sections
+const Section = require('../section').Section;
 
 /**
- * A user of the TMBD API.
+ * Can get genre data from TMDB.
  */
-exports.TmdbApiUser = class {
-
-    _apiKey;
+exports.GenreSection = class extends Section {
 
     /**
      * Sets properties.
      * @param {string} apiKey The TMDB API key.
+     * @param {string} language The language of queries, the default is "en-US".
      */
-    constructor(apiKey) {
-        this._apiKey = apiKey;
+    constructor(apiKey, language = "en-US") {
+        super(sections.GENRE, undefined, apiKey, language);
     }
+
+    /**
+     * Gets movie genres.
+     * @return A Promise of movie genre data.
+     */
+    getMovieGenres() {
+        return this.createChild(sections.MOVIE)
+                   .createChild(sections.LIST)
+                   .getQueryResult();
+    }
+
+    /**
+     * Gets TV show genres.
+     * @return A Promise of TV show genre data.
+     */
+    getTvShowGenres() {
+        return this.createChild(sections.TV_SHOW)
+                   .createChild(sections.LIST)
+                   .getQueryResult();
+    }
+
 }</code></pre>
         </article>
     </section>
