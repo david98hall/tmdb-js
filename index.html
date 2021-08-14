@@ -121,17 +121,17 @@ var tmdb = new Tmdb(apiKey);
 // Get movie data example
 var oceansElevenMovie = tmdb.getMovies().getMovie(161);
 oceansElevenMovie.getDetails().then(json => {
-  console.log(&quot;A great movie: &quot; + json.title)
-})
+  console.log(&quot;A great movie: &quot; + json.title);
+});
 
 // Rate movie example
 oceansElevenMovie.rate(10, sessionId);
 
 // Search TMDB examples
-tmdb.getSearcher().searchMovies(&quot;Ocean's&quot;).then(resultPageJsons => console.log(resultPageJsons.length));
-tmdb.getSearcher().searchMovies(&quot;Ocean's&quot;, 1, 1).then(resultPageJsons => console.log(resultPageJsons.length));
-tmdb.getSearcher().multiSearch(&quot;Ocean's&quot;).then(resultPageJsons => console.log(resultPageJsons.length));
-tmdb.getSearcher().multiSearch(&quot;Ocean's&quot;, 1, 2).then(resultPageJsons => console.log(resultPageJsons.length));
+tmdb.getSearcher().searchMovies(&quot;Ocean's&quot;).then(resultPageJsons => { console.log(resultPageJsons.length) });
+tmdb.getSearcher().searchMovies(&quot;Ocean's&quot;, 1, 1).then(resultPageJsons => { console.log(resultPageJsons.length) });
+tmdb.getSearcher().multiSearch(&quot;Ocean's&quot;).then(resultPageJsons => { console.log(resultPageJsons.length) });
+tmdb.getSearcher().multiSearch(&quot;Ocean's&quot;, 1, 2).then(resultPageJsons => { console.log(resultPageJsons.length) });
 </code></pre>
 <p>See the <a href="https://david98hall.github.io/tmdb-js/">documentation</a> for more info.</p></article>
     </section>
