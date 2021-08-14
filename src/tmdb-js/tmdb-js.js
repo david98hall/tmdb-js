@@ -2,6 +2,7 @@
 
 const Authenticator = require('./authentication/authentication').Authenticator;
 const FindSection = require('./sections/types/find').FindSection;
+const GenreSection = require('./sections/types/genre').GenreSection;
 const KeywordSection = require('./sections/types/keyword').KeywordSection;
 const MovieSection = require('./sections/types/movie').MovieSection;
 const NetworkSection = require('./sections/types/network').NetworkSection;
@@ -46,8 +47,16 @@ exports.Tmdb = class extends TmdbQuerier {
     }
 
     /**
+     * Gets a GenreSection instance which can be used
+     * to get genre data.
+     */
+    getGenres() {
+        return new GenreSection(this._apiKey, this._language);
+    }
+
+    /**
      * Gets a KeywordSection instance which can be used
-     * to get keyword data 
+     * to get keyword data.
      */
     getKeywords() {
         return new KeywordSection(this._apiKey, this._language);

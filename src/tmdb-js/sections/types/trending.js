@@ -32,6 +32,8 @@ exports.TrendingSection = class extends Section {
     /**
      * Gets the all trending media (movies, TV shows, people)
      * in the passed time window. See tmdb_utils.timeWindow for the valid types.
+     * 
+     * @return A Promise of trending media data.
      */
     getAll() {
         return this.createChild(mediaTypes.ALL)
@@ -42,6 +44,8 @@ exports.TrendingSection = class extends Section {
     /**
      * Gets the trending movies in the passed time window.
      * See tmdb_utils.timeWindow for the valid types.
+     * 
+     * @return A Promise of trending movie data.
      */
     getMovies() {
         return this.createChild(mediaTypes.MOVIE)
@@ -52,6 +56,8 @@ exports.TrendingSection = class extends Section {
     /**
      * Gets the trending TV shows in the passed time window.
      * See tmdb_utils.timeWindow for the valid types.
+     * 
+     * @return A Promise of trending TV show data.
      */
     getTvShows() {
         return this.createChild(mediaTypes.TV)
@@ -62,6 +68,8 @@ exports.TrendingSection = class extends Section {
     /**
      * Gets the trending people in the passed time window.
      * See tmdb_utils.timeWindow for the valid types.
+     * 
+     * @return A Promise of trending people data.
      */
     getPeople() {
         return this.createChild(mediaTypes.PERSON)

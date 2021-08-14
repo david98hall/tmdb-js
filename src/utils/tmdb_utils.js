@@ -214,6 +214,7 @@ exports.sections = Object.freeze({
     COMPANY: 'company',
     CREDIT: 'credit',
     FIND: 'find',
+    GENRE: 'genre',
     KEYWORD: 'keyword',
     LIST: 'list',
     MOVIE: 'movie',

@@ -15,23 +15,23 @@ exports.Network = class extends Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the movie.
-     * @param {NetworkSection} networkSection The parent NetworkS.
+     * @param {Number} id The id of the network.
+     * @param {NetworkSection} networkSection The parent NetworkSection.
      */
     constructor(id, networkSection) {
         super(id, networkSection);
     }
 
     /**
-     * Gets all details about this movie.
-     * @returns A Promise of movie details.
+     * Gets all details about this network.
+     * @returns A Promise of network details.
      */
     getDetails() {
         return this.getQueryResult();
     }
 
     /**
-     * Gets the alternative titles of the movie in question.
+     * Gets the alternative titles of the network in question.
      * @returns A Promise of alternative titles.
      */
     getAlternativeNames() {
@@ -39,8 +39,8 @@ exports.Network = class extends Section {
     }
 
     /**
-     * Gets the images of the movie in question.
-     * @returns A Promise of movie images.
+     * Gets the images of the network in question.
+     * @returns A Promise of network images.
      */
     getImages() {
         return this.getChildQueryResult(dataTypes.IMAGES);
