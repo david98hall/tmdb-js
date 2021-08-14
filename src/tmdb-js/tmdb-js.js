@@ -1,6 +1,7 @@
 /**@module tmdb-js */
 
 const MovieSection = require('./sections/types/movie').MovieSection;
+const ReviewSection = require('./sections/types/review').ReviewSection;
 const TvShowSection = require('./sections/types/tv_show').TvShowSection;
 const Searcher = require('./search/searcher').Searcher;
 const Authenticator = require('./authentication/authentication').Authenticator;
@@ -34,6 +35,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     getMovies() {
         return new MovieSection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a ReviewSection instance which can be used 
+     * to get review data on TMDB.
+     */
+    getReviews() {
+        return new ReviewSection(this._apiKey, this._language);
     }
 
     /**

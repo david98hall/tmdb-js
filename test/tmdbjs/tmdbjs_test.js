@@ -4,6 +4,7 @@ const tmdbUtilsTest = require('./utils/tmdb_utils_test');
 const movieTest = require('./sections/movie_test');
 const tvShowTest = require('./sections/tv_show_test');
 const searchTest = require('./search/search_test');
+const reviewTest = require('./sections/review_test');
 
 exports.runTest = () => {
     
@@ -22,6 +23,7 @@ exports.runTest = () => {
             movieTest.runTest(apiKey);
             tvShowTest.runTest(apiKey);
             searchTest.runTest(apiKey);
+            reviewTest.runTest(apiKey);
         });
     });
 }
