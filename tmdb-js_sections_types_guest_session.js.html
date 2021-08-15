@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> tmdb-js/sections</title>
+  <title> tmdb-js/sections/types/guest_session.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,60 +75,91 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Module</p>
-                    <h1>tmdb-js/sections</h1>
+                    <p>Source</p>
+                    <h1>tmdb-js/sections/types/guest_session.js</h1>
                 </header>
                 
 
 
 
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-<section>
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+const dataTypes = tmdbUtils.dataTypes;
 
-<header>
-    
-        
-    
-</header>
+// Sections
+const Section = require('../section').Section;
 
-<article>
-    <div class="container-overview">
-    
-        
+/**
+ * Can get data about a guest session.
+ */
+exports.GuestSession = class extends Section {
 
-        
-    
-    </div>
-    
-    
+    /**
+     * Initializes this GuestSession.
+     * @param {string} id 
+     * @param {exports.GuestSessionSection} guestSessionSection 
+     */
+    constructor(id, guestSessionSection) {
+        super(id, guestSessionSection);
+    }
 
-    
+    /**
+     * Gets the rated movies of this guest session.
+     * @returns A Promise of rated movie data.
+     */
+    getRatedMovies() {
+        return this.createChild(dataTypes.RATED).getChildQueryResult(sections.MOVIE);
+    }
 
-    
-        <h3 class="subsection-title">Classes</h3>
+    /**
+     * Gets the rated TV shows of this guest session.
+     * @returns A Promise of rated TV show data.
+     */
+    getRatedTvShows() {
+        return this.createChild(dataTypes.RATED).getChildQueryResult(sections.TV_SHOW);
+    }
 
-        <dl>
-            <dt><a href="module-tmdb-js_sections.Section.html">Section</a></dt>
-            <dd></dd>
-        </dl>
-    
+    /**
+     * Gets the rated TV show episodes of this guest session.
+     * @returns A Promise of rated TV show episode data.
+     */
+    getRatedTvShowEpisodes() {
+        return this.createChild(dataTypes.RATED).getChildQueryResult(sections.EPISODES);
+    }
 
-    
+}
 
-    
+/**
+ * Can get data about guest sessions from TMDB.
+ */
+exports.GuestSessionSection = class extends Section {
 
-    
+    /**
+     * Sets properties.
+     * @param {string} apiKey The TMDB API key.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(apiKey, language = "en-US") {
+        super(sections.GUEST_SESSION, apiKey, language);
+    }
 
-    
+    /**
+     * Gets a GuestSession object with the passed id.
+     * @param {string} id The guest session id.
+     */
+    getGuestSession(id) {
+        return new exports.GuestSession(id, this);
+    }
 
-    
-
-    
-
-    
-</article>
-
-</section>
+}</code></pre>
+        </article>
+    </section>
 
 
 
