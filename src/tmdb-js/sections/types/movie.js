@@ -268,4 +268,13 @@ exports.MovieSection = class extends Section {
         var childSection = new Section(dataTypes.UPCOMING, this);
         return childSection.getQueryResult();
     }
+
+    /**
+     * Gets movie certifications.
+     */
+    getCertifications() {
+        return new Section(sections.CERTIFICATION, null, this._apiKey, this._language)
+            .createChild(sections.MOVIE)
+            .getChildQueryResult(sections.LIST);
+    }
 }

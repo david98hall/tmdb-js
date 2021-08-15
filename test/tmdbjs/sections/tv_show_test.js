@@ -42,6 +42,16 @@ exports.runTest = apiKey => {
 
     describe('General TV show GET query tests', () => {
         // TODO [David Hall, 2020-06-28]: Test all general GET query methods
+
+        it('Should find movie certification data.', done => {
+            tmdb.getTvShows().getCertifications().then(json => {
+                
+                // Assert the results
+                assert.ok(json);
+                
+                setImmediate(done);
+            });
+        });
     });
 
     describe('TV show POST query tests', () => {

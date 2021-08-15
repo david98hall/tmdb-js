@@ -210,6 +210,7 @@ exports.mediaTypes = Object.freeze({
  */
 exports.sections = Object.freeze({
     ACCOUNT: 'account',
+    CERTIFICATION: 'certification',
     COLLECTION: 'collection',
     COMPANY: 'company',
     CREDIT: 'credit',

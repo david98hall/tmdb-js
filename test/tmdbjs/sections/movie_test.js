@@ -33,6 +33,16 @@ exports.runTest = apiKey => {
             });
         });
 
+        it('Should find movie certification data.', done => {
+            tmdb.getMovies().getCertifications().then(json => {
+                
+                // Assert the results
+                assert.ok(json);
+                
+                setImmediate(done);
+            });
+        });
+
     });
 
     // Don't test non-deterministic functions on the CI

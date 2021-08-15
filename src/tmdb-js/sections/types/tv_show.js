@@ -281,4 +281,13 @@ exports.TvShowSection = class extends Section {
             new Section(dataTypes.EPISODE_GROUPS, this));
         return episodeGroupSection.getQueryResult();
     }
+
+    /**
+     * Gets TV show certifications.
+     */
+    getCertifications() {
+        return new Section(sections.CERTIFICATION, null, this._apiKey, this._language)
+            .createChild(sections.TV_SHOW)
+            .getChildQueryResult(sections.LIST);
+    }
 }
