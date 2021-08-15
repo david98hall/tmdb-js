@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> tmdb-js/tmdb-js.js</title>
+  <title> tmdb-js/sections/types/company.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>tmdb-js/tmdb-js.js</h1>
+                    <h1>tmdb-js/sections/types/company.js</h1>
                 </header>
                 
 
@@ -85,132 +85,83 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**@module tmdb-js */
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-const Authenticator = require('./authentication/authentication').Authenticator;
-const CompanySection = require('./sections/types/company').CompanySection;
-const FindSection = require('./sections/types/find').FindSection;
-const GenreSection = require('./sections/types/genre').GenreSection;
-const KeywordSection = require('./sections/types/keyword').KeywordSection;
-const MovieSection = require('./sections/types/movie').MovieSection;
-const NetworkSection = require('./sections/types/network').NetworkSection;
-const PeopleSection = require('./sections/types/people').PeopleSection;
-const ReviewSection = require('./sections/types/review').ReviewSection;
-const SearchSection = require('./sections/types/search').SearchSection;
-const TmdbQuerier = require('./api/tmdb_querier').TmdbQuerier;
-const TrendingSection = require('./sections/types/trending').TrendingSection;
-const TvShowSection = require('./sections/types/tv_show').TvShowSection;
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+const dataTypes = tmdbUtils.dataTypes;
+
+// Sections
+const Section = require('../section').Section;
 
 /**
- * Can handle and get TMDB data.
+ * Can get company data from TMDB.
  */
-exports.Tmdb = class extends TmdbQuerier {
+exports.Company = class extends Section {
+
+    /**
+     * Sets properties.
+     * @param {Number} id The id of the review.
+     * @param {CompanySection} companySection The parent CompanySection.
+     */
+    constructor(id, companySection) {
+        super(id, companySection);
+    }
+
+    /**
+     * Gets the company details based on the passed id.
+     * @param {string} id The company id. 
+     * @returns A Promise of company details.
+     */
+    getDetails() {
+        return this.getQueryResult();
+    }
+
+    /**
+     * Gets the alternative names of this company
+     * @param {string} id The company id. 
+     * @returns A Promise of alternative names.
+     */
+    getAlternativeNames() {
+        return this.getChildQueryResult(dataTypes.ALTERNATIVE_NAMES);
+    }
+
+    /**
+     * Gets images of this company.
+     * @param {string} id The company id. 
+     * @returns A Promise of company images.
+     */
+    getImages() {
+        return this.getChildQueryResult(dataTypes.IMAGES);
+    }
+
+}
+
+/**
+ * Can get company data from TMDB.
+ */
+exports.CompanySection = class extends Section {
 
     /**
      * Sets properties.
      * @param {string} apiKey The TMDB API key.
-     * @param {string} language The natural language of queries, the default is "en-US".
+     * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
-        super(apiKey, language);
+        super(sections.COMPANY, undefined, apiKey, language);
     }
 
     /**
-     * Gets an Authenticator instance which can 
-     * be used to handle TMDB authentications.
+     * Gets the company with the passed id.
+     * @param {Number} id The id of the review to get.
+     * @return A Company instance with the passed id.
      */
-    getAuthenticator() {
-        return new Authenticator(this._apiKey);
+    getCompany(id) {
+        return new exports.Company(id, this);
     }
 
-    /**
-     * Gets a CompanySection instance which can
-     * be used to get company data.
-     */
-    getCompanies() {
-        return new CompanySection(this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a FindSection instance which can
-     * be used to find media data based on external
-     * source IDs via TMDB.
-     * 
-     * @param externalSource The external source (see tmdb_utils.externalSources).
-     */
-    getFinder(externalSource) {
-        return new FindSection(externalSource, this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a GenreSection instance which can be used
-     * to get genre data.
-     */
-    getGenres() {
-        return new GenreSection(this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a KeywordSection instance which can be used
-     * to get keyword data.
-     */
-    getKeywords() {
-        return new KeywordSection(this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a MovieSection instance which can be used 
-     * to handle and get movie data on TMDB.
-     */
-    getMovies() {
-        return new MovieSection(this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a NetworkSection instance which can be used to get network data.
-     */
-    getNetworks() {
-        return new NetworkSection(this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a PeopleSection instance which can be used
-     * to get data about people.
-     */
-    getPeople() {
-        return new PeopleSection(this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a ReviewSection instance which can be used to get review data.
-     */
-    getReviews() {
-        return new ReviewSection(this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a SearchSection instance which can be used to search TMDB.
-     */
-    getSearcher() {
-        return new SearchSection(this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a TrendingSection which can be used to get trending media from TMDB.
-     * @param {string} timeWindow The time window (see tmdb_utils.timeWindows).
-     */
-    getTrending(timeWindow) {
-        return new TrendingSection(timeWindow, this._apiKey, this._language);
-    }
-
-    /**
-     * Gets a TvShowSection instance which can be used 
-     * to handle and get TV show data on TMDB.
-     */
-    getTvShows() {
-        return new TvShowSection(this._apiKey, this._language)
-    }
-};</code></pre>
+}</code></pre>
         </article>
     </section>
 
