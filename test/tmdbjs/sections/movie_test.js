@@ -10,19 +10,29 @@ exports.runTest = apiKey => {
 
         // TODO [David Hall, 2020-06-27]: Test all GET query methods
 
-        it('Should find data about a movie.', done => {
+        // Look for movie data
+        var madMaxMovie = {id: 76341, title: "Mad Max: Fury Road"};
 
-            // Look for movie data
-            var movie = {id: 76341, title: "Mad Max: Fury Road"};
-            
-            tmdb.getMovies().getMovie(movie.id).getDetails().then(json => {
+        it('Should find data about a movie.', done => {
+            tmdb.getMovies().getMovie(madMaxMovie.id).getDetails().then(json => {
               
                 // Assert the results
-                assert.strictEqual(json.title, movie.title);
+                assert.strictEqual(json.title, madMaxMovie.title);
                 
                 setImmediate(done);
             })
         });
+
+        it('Should find movie credit data.', done => {
+            tmdb.getMovies().getMovie(madMaxMovie.id).getCredits().then(json => {
+                
+                // Assert the results
+                assert.ok(json);
+                
+                setImmediate(done);
+            });
+        });
+
     });
 
     // Don't test non-deterministic functions on the CI

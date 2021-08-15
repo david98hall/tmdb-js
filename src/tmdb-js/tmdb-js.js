@@ -1,6 +1,7 @@
 /**@module tmdb-js */
 
 const Authenticator = require('./authentication/authentication').Authenticator;
+const CreditSection = require('./sections/types/credit').CreditSection;
 const CompanySection = require('./sections/types/company').CompanySection;
 const FindSection = require('./sections/types/find').FindSection;
 const GenreSection = require('./sections/types/genre').GenreSection;
@@ -42,6 +43,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     getCompanies() {
         return new CompanySection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a CreditSection instance which can
+     * be used to get credit data.
+     */
+    getCredits() {
+        return new CreditSection(this._apiKey, this._language);
     }
 
     /**
