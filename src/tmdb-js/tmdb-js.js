@@ -3,6 +3,7 @@
 const Authenticator = require('./authentication/authentication').Authenticator;
 const CollectionSection = require('./sections/types/collection').CollectionSection;
 const CompanySection = require('./sections/types/company').CompanySection;
+const ConfigurationSection = require('./sections/types/configuration').ConfigurationSection;
 const CreditSection = require('./sections/types/credit').CreditSection;
 const FindSection = require('./sections/types/find').FindSection;
 const GenreSection = require('./sections/types/genre').GenreSection;
@@ -52,6 +53,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     getCompanies() {
         return new CompanySection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a ConfigurationSection instance which can
+     * be used to get TMDB configuration data.
+     */
+    getConfigurations() {
+        return new ConfigurationSection(this._apiKey, this._language);
     }
 
     /**

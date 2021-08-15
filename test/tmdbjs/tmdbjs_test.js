@@ -5,6 +5,7 @@ const tests = [
     require('./utils/tmdb_utils_test'),
     require('./sections/collection_test'),
     require('./sections/company_test'),
+    require('./sections/configuration_test'),
     require('./sections/credit_test'),
     require('./sections/find_test'),
     require('./sections/genre_test'),
