@@ -24,7 +24,7 @@ exports.runTest = apiKey => {
             });
         });
         
-        it('Should find swedish details about a TV show.', done => {
+        it('Should find Swedish details about a TV show.', done => {
         
             // Look for TV show data
             var tvShow = {id: 34, name: "Skenet bedrar"};

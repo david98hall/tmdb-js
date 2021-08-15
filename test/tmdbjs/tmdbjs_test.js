@@ -3,6 +3,7 @@ const getApiKey = require('./utils/tmdb_test_utils').getApiKey;
 
 const tests = [
     require('./utils/tmdb_utils_test'),
+    require('./sections/company_test'),
     require('./sections/find_test'),
     require('./sections/genre_test'),
     require('./sections/keyword_test'),

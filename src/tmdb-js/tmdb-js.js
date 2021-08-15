@@ -1,6 +1,7 @@
 /**@module tmdb-js */
 
 const Authenticator = require('./authentication/authentication').Authenticator;
+const CompanySection = require('./sections/types/company').CompanySection;
 const FindSection = require('./sections/types/find').FindSection;
 const GenreSection = require('./sections/types/genre').GenreSection;
 const KeywordSection = require('./sections/types/keyword').KeywordSection;
@@ -36,7 +37,15 @@ exports.Tmdb = class extends TmdbQuerier {
     }
 
     /**
-     * Gets an FindSection instance which can
+     * Gets a CompanySection instance which can
+     * be used to get company data.
+     */
+    getCompanies() {
+        return new CompanySection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a FindSection instance which can
      * be used to find media data based on external
      * source IDs via TMDB.
      * 
