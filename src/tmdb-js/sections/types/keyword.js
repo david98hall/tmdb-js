@@ -23,7 +23,6 @@ exports.Keyword = class extends Section {
 
     /**
      * Gets the keyword details based on the passed id.
-     * @param {string} id The keyword id. 
      * @returns A Promise of keyword details.
      */
     getDetails() {

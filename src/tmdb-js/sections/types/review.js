@@ -23,7 +23,6 @@ exports.Review = class extends Section {
 
     /**
      * Gets the review details based on the passed id.
-     * @param {string} id The review id. 
      * @returns A Promise of review details.
      */
     getDetails() {

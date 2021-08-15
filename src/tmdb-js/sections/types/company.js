@@ -24,7 +24,6 @@ exports.Company = class extends Section {
 
     /**
      * Gets the company details based on the passed id.
-     * @param {string} id The company id. 
      * @returns A Promise of company details.
      */
     getDetails() {
@@ -33,7 +32,6 @@ exports.Company = class extends Section {
 
     /**
      * Gets the alternative names of this company
-     * @param {string} id The company id. 
      * @returns A Promise of alternative names.
      */
     getAlternativeNames() {
@@ -41,8 +39,7 @@ exports.Company = class extends Section {
     }
 
     /**
-     * Gets images of this company.
-     * @param {string} id The company id. 
+     * Gets images of this company. 
      * @returns A Promise of company images.
      */
     getImages() {

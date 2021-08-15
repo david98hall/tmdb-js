@@ -48,7 +48,6 @@ exports.CreditSection = class extends Section {
 
     /**
      * Gets the credit with the passed id.
-     * @param {Number} id The id of the credit to get.
      * @returns A Credit instance with the passed id.
      */
     getCredit(id) {
