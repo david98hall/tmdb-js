@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ReviewSection</title>
+  <title> tmdb-js/sections/types/collection.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,404 +75,91 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>ReviewSection</h1>
+                    <p>Source</p>
+                    <h1>tmdb-js/sections/types/collection.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a>.</span>ReviewSection<span class="signature">(apiKey, language)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description">Can get review data from TMDB.</div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="ReviewSection">
-        <a class="href-link" href="#ReviewSection">#</a>
-        
-        <span class="code-name">
-            
-                new ReviewSection<span class="signature">(apiKey, language)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Sets properties.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-            <th>Default</th>
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>apiKey</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-      <td class="default">
-      
-      </td>
-  
-
-  <td class="description last">The TMDB API key.</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>language</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-      <td class="default">
-      
-          en-US
-      
-      </td>
-  
-
-  <td class="description last">The language of queries, the default is "en-US".</td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="tmdb-js_sections_types_review.js.html" class="button">View Source</a>
-            <span>
-                <a href="tmdb-js_sections_types_review.js.html">tmdb-js/sections/types/review.js</a>, <a href="tmdb-js_sections_types_review.js.html#line44">line 44</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class='vertical-section'>
-            <h1>Methods</h1>
-            <div class="members">
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="getReview">
-        <a class="href-link" href="#getReview">#</a>
-        
-        <span class="code-name">
-            
-                getReview<span class="signature">(id)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Gets the review with the passed id.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>id</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Number</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">The id of the review to get.</td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="tmdb-js_sections_types_review.js.html" class="button">View Source</a>
-            <span>
-                <a href="tmdb-js_sections_types_review.js.html">tmdb-js/sections/types/review.js</a>, <a href="tmdb-js_sections_types_review.js.html#line52">line 52</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-            </div>
-        </div>
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
+
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
+const dataTypes = tmdbUtils.dataTypes;
+
+// Sections
+const Section = require('../section').Section;
+
+/**
+ * Can get collection data from TMDB.
+ */
+exports.Collection = class extends Section {
+
+    /**
+     * Sets properties.
+     * @param {Number} id The id of the collection.
+     * @param {CollectionSection} collectionSection The parent CollectionSection.
+     */
+    constructor(id, collectionSection) {
+        super(id, collectionSection);
+    }
+
+    /**
+     * Gets the collection details based on the passed id. 
+     * @returns A Promise of collection details.
+     */
+    getDetails() {
+        return this.getQueryResult();
+    }
+
+    /**
+     * Gets the images of the collection in question.
+     * @returns A Promise of collection images.
+     */
+    getImages() {
+        return this.getChildQueryResult(dataTypes.IMAGES);
+    }
+
+    /**
+     * Gets the translations of the collection in question.
+     * @returns A Promise of collection translations.
+     */ 
+    getTranslations() {
+        return this.getChildQueryResult(dataTypes.TRANSLATIONS);
+    }
+
+}
+
+/**
+ * Can get collection data from TMDB.
+ */
+exports.CollectionSection = class extends Section {
+
+    /**
+     * Sets properties.
+     * @param {string} apiKey The TMDB API key.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(apiKey, language = "en-US") {
+        super(sections.COLLECTION, undefined, apiKey, language);
+    }
+
+    /**
+     * Gets the collection with the passed id.
+     * @param {Number} id The id of the collection to get.
+     */
+    getCollection(id) {
+        return new exports.Collection(id, this);
+    }
+
+}</code></pre>
+        </article>
+    </section>
 
 
 
