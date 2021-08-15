@@ -7,6 +7,7 @@ const ConfigurationSection = require('./sections/types/configuration').Configura
 const CreditSection = require('./sections/types/credit').CreditSection;
 const FindSection = require('./sections/types/find').FindSection;
 const GenreSection = require('./sections/types/genre').GenreSection;
+const GuestSessionSection = require('./sections/types/guest_session').GuestSessionSection;
 const KeywordSection = require('./sections/types/keyword').KeywordSection;
 const ListSection = require('./sections/types/list').ListSection;
 const MovieSection = require('./sections/types/movie').MovieSection;
@@ -89,6 +90,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     getGenres() {
         return new GenreSection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a GuestSessionSection which can be used
+     * to get guest session data.
+     */
+    getGuestSessions() {
+        return new GuestSessionSection(this._apiKey, this._language);
     }
 
     /**
