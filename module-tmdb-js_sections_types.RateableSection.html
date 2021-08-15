@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ConfigurationSection</title>
+  <title> RateableSection</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -74,7 +74,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>ConfigurationSection</h1>
+                    <h1>RateableSection</h1>
                 </header>
                 
 
@@ -86,9 +86,7 @@
 <header>
     
         <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a>.</span>ConfigurationSection<span class="signature">(apiKey, language)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description">Can get TMDB configuration data.</div>
+            <span class="ancestors"><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a>.</span>RateableSection<span class="signature">(name, parent, apiKey, language)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -107,12 +105,12 @@
 
 
     
-    <h4 class="name" id="ConfigurationSection">
-        <a class="href-link" href="#ConfigurationSection">#</a>
+    <h4 class="name" id="RateableSection">
+        <a class="href-link" href="#RateableSection">#</a>
         
         <span class="code-name">
             
-                new ConfigurationSection<span class="signature">(apiKey, language)</span><span class="type-signature"></span>
+                new RateableSection<span class="signature">(name, parent, apiKey, language)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -156,6 +154,64 @@
         </thead>
 
         <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The name of this section.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>parent</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">exports.Section</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The parent section of this section.</td>
+</tr>
+
+
         
 
             
@@ -258,9 +314,9 @@
 
     
         <p class="tag-source">
-            <a href="tmdb-js_sections_types_configuration.js.html" class="button">View Source</a>
+            <a href="tmdb-js_sections_rateable_section.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_configuration.js.html">tmdb-js/sections/types/configuration.js</a>, <a href="tmdb-js_sections_types_configuration.js.html#line21">line 21</a>
+                <a href="tmdb-js_sections_rateable_section.js.html">tmdb-js/sections/rateable_section.js</a>, <a href="tmdb-js_sections_rateable_section.js.html#line18">line 18</a>
             </span>
         </p>
     
@@ -317,12 +373,16 @@
 
 
     
-    <h4 class="name" id="getApiConfiguration">
-        <a class="href-link" href="#getApiConfiguration">#</a>
+    <h4 class="name" id="deleteRating">
+        <a class="href-link" href="#deleteRating">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                getApiConfiguration<span class="signature">()</span><span class="type-signature"></span>
+                deleteRating<span class="signature">(sessionId, guestSessionId)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -331,7 +391,8 @@
     
     
     <div class="description">
-        Gets the system wide TMDB API configuration information.
+        Deletes the rating from the movie in question.
+The sessionId and guestSessionId parameters are mutually exclusive.
     </div>
     
 
@@ -342,6 +403,94 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sessionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The session ID.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>guestSessionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last">The guest session ID.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -380,9 +529,9 @@
 
     
         <p class="tag-source">
-            <a href="tmdb-js_sections_types_configuration.js.html" class="button">View Source</a>
+            <a href="tmdb-js_sections_rateable_section.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_configuration.js.html">tmdb-js/sections/types/configuration.js</a>, <a href="tmdb-js_sections_types_configuration.js.html#line29">line 29</a>
+                <a href="tmdb-js_sections_rateable_section.js.html">tmdb-js/sections/rateable_section.js</a>, <a href="tmdb-js_sections_rateable_section.js.html#line60">line 60</a>
             </span>
         </p>
     
@@ -413,7 +562,7 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'>A Promise of configuration data.</div>
+    <div class='param-desc column is-7'>A Promise of a boolean value, which will be true if the deletion was successful.</div>
     
     
 </div>
@@ -431,12 +580,16 @@
 
 
     
-    <h4 class="name" id="getCountries">
-        <a class="href-link" href="#getCountries">#</a>
+    <h4 class="name" id="rate">
+        <a class="href-link" href="#rate">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                getCountries<span class="signature">()</span><span class="type-signature"></span>
+                rate<span class="signature">(rating, sessionId, guestSessionId)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -445,7 +598,8 @@
     
     
     <div class="description">
-        Gets the countries used in TMDB.
+        Rates the movie in question. The parameters sessionId and
+guestSessionId are mutually exclusive.
     </div>
     
 
@@ -456,6 +610,123 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>rating</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The rating, in the range [0.5, 10].</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>sessionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The session id.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>guestSessionId</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last">The guest session id.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -494,9 +765,9 @@
 
     
         <p class="tag-source">
-            <a href="tmdb-js_sections_types_configuration.js.html" class="button">View Source</a>
+            <a href="tmdb-js_sections_rateable_section.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_configuration.js.html">tmdb-js/sections/types/configuration.js</a>, <a href="tmdb-js_sections_types_configuration.js.html#line37">line 37</a>
+                <a href="tmdb-js_sections_rateable_section.js.html">tmdb-js/sections/rateable_section.js</a>, <a href="tmdb-js_sections_rateable_section.js.html#line33">line 33</a>
             </span>
         </p>
     
@@ -527,463 +798,8 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'>A Promise of country data.</div>
-    
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="getJobs">
-        <a class="href-link" href="#getJobs">#</a>
-        
-        <span class="code-name">
-            
-                getJobs<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Gets the jobs and departments used in TMDB.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="tmdb-js_sections_types_configuration.js.html" class="button">View Source</a>
-            <span>
-                <a href="tmdb-js_sections_types_configuration.js.html">tmdb-js/sections/types/configuration.js</a>, <a href="tmdb-js_sections_types_configuration.js.html#line45">line 45</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'>A Promise of job/department data.</div>
-    
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="getLanguages">
-        <a class="href-link" href="#getLanguages">#</a>
-        
-        <span class="code-name">
-            
-                getLanguages<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Gets the languages used in TMDB.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="tmdb-js_sections_types_configuration.js.html" class="button">View Source</a>
-            <span>
-                <a href="tmdb-js_sections_types_configuration.js.html">tmdb-js/sections/types/configuration.js</a>, <a href="tmdb-js_sections_types_configuration.js.html#line53">line 53</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'>A Promise of language data.</div>
-    
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="getPrimaryTranslations">
-        <a class="href-link" href="#getPrimaryTranslations">#</a>
-        
-        <span class="code-name">
-            
-                getPrimaryTranslations<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Gets the officially supported translations in TMDB.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="tmdb-js_sections_types_configuration.js.html" class="button">View Source</a>
-            <span>
-                <a href="tmdb-js_sections_types_configuration.js.html">tmdb-js/sections/types/configuration.js</a>, <a href="tmdb-js_sections_types_configuration.js.html#line61">line 61</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'>A Promise of translation data.</div>
-    
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="getTimezones">
-        <a class="href-link" href="#getTimezones">#</a>
-        
-        <span class="code-name">
-            
-                getTimezones<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Gets the timezones used in TMDB.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="tmdb-js_sections_types_configuration.js.html" class="button">View Source</a>
-            <span>
-                <a href="tmdb-js_sections_types_configuration.js.html">tmdb-js/sections/types/configuration.js</a>, <a href="tmdb-js_sections_types_configuration.js.html#line69">line 69</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'>A Promise of timezone data.</div>
+    <div class='param-desc column is-7'>A Promise of a boolean value, which will be true
+if the rating is successful.</div>
     
     
 </div>
