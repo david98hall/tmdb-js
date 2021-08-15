@@ -50,7 +50,7 @@ exports.runTest = apiKey => {
 
         describe('Movie session query tests', () => {
         
-            xit('Should rate and unrate a movie', async () => {
+            it('Should rate and unrate a movie', async () => {
                 var sessionId = await tmdbTestUtils.getSessionId();
                 assert.ok(sessionId);
 

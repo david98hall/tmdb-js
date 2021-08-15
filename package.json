@@ -4,7 +4,7 @@
   "description": "A JavaScript wrapper package for The Movie Database API.",
   "main": "src/tmdbjs/tmdbjs.js",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js --timeout 30000"
   },
   "repository": {
     "type": "git",

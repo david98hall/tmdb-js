@@ -10,6 +10,7 @@ const tests = [
     require('./sections/find_test'),
     require('./sections/genre_test'),
     require('./sections/keyword_test'),
+    require('./sections/list_test'),
     require('./sections/movie_test'),
     require('./sections/network_test'),
     require('./sections/people_test'),

@@ -13,24 +13,32 @@ exports.baseUrl = baseUrlValue;
 /**
  * Gets data as a JSON object.
  * @function
- * @param {string} urlPath The URL from where data will be retrieved.
+ * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDB API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
- * @param {string} sessionId The session ID (only needed in certain cases).
- * @param {string} guestSessionId The guest session ID (only needed in certain cases).
  * @returns A Promise.
  */
-exports.getData = function(urlPath, urlParameters = {}, sessionId = null, guestSessionId = null) {
+exports.getData = function(urlPath, urlParameters = {}) {
 
     // Create the url, based on this function's parameters
+    var url = exports.buildUrl(urlPath, urlParameters);
+    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
+};
+
+/**
+ * Builds the URL with the passed path and parameters.
+ * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDB API base URL.).
+ * @param {Object} parameters The parameters of the URL.
+ */
+exports.buildUrl = function(urlPath, parameters = {}) {
     var url = baseUrlValue + urlPath;
 
     // Apply URL parameters
-    if (Object.keys(urlParameters).length > 0) {
+    if (Object.keys(parameters).length > 0) {
         url += "?";
         
-        for (const key in urlParameters) {
-            if (Object.hasOwnProperty.call(urlParameters, key)) {
-                url += `${key}=${urlParameters[key]}&`;
+        for (const key in parameters) {
+            if (Object.hasOwnProperty.call(parameters, key)) {
+                url += `${key}=${parameters[key]}&`;
             }
         }
 
@@ -38,11 +46,7 @@ exports.getData = function(urlPath, urlParameters = {}, sessionId = null, guestS
         url = url.substr(0, url.length - 1);
     } 
 
-    if (sessionId || guestSessionId) {
-        url = exports.appendSessionId(url, sessionId, guestSessionId);
-    }
-
-    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
+    return url;
 };
 
 /**
@@ -99,19 +103,18 @@ exports.createLoginSession = async function(apiKey, username, password) {
  */
 exports.createSession = async function(apiKey, permissionApp = "chrome") {
 
+    // Get request token and approve it
     var requestToken = await this.getRequestToken(apiKey);
-
     await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
 
     // Create a session
-    var sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey;
+    var sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey + "&request_token=" + requestToken;
     var sessionResponse = await httpUtils.parseHttpRequest(
         sessionUrl, 
-        httpMethod.POST, 
+        httpMethod.GET, 
         JSON.parse, 
-        httpUtils.jsonContentType,
-        JSON.stringify({ "request_token": requestToken }));
-    
+        httpUtils.jsonContentType);
+
     if (!sessionResponse || !sessionResponse.success) {
         return undefined;
     }
@@ -151,27 +154,70 @@ exports.deleteSession = async (apiKey, sessionId) => {
 }
 
 /**
- * Appends the non-null session ID to the base URL. 
- * Both IDs can't be null or non-null at the same time (XOR).
- * @param {string} baseUrl The base URL to append the non-null ID on.
+ * Adds a session id parameter (regular or guest) to the passed parameters object.
+ * The sessionId and guestSessionId parameters are mutually exclusive.
+ * @param {Object} parameters The object to add to.
  * @param {string} sessionId The session ID.
  * @param {string} guestSessionId The guest session ID.
  */
-exports.appendSessionId = (baseUrl, sessionId = null, guestSessionId = null) => {
-    if (sessionId && guestSessionId) {
-        throw "A session ID and a guest session ID can't be used together."
-    }
+exports.addSessionIdParameter = (parameters, sessionId, guestSessionId = null) => {
     
+    if (sessionId && guestSessionId) {
+        throw "The sessionId and guestSessionId parameters are mutually exclusive."
+    }
+
+    if (!sessionId && !guestSessionId) {
+        throw "Either sessionId or guestSessionId must be defined."
+    }
+
     if (sessionId) {
-        return baseUrl + "&session_id=" + sessionId;
+        parameters["session_id"] = sessionId;
+    } else if (guestSessionId) {
+        parameters["guest_session_id"] = sessionId;
     }
-
-    if (guestSessionId) {
-        return baseUrl + "&guest_session_id=" + guestSessionId;
-    }
-
-    throw "Both sessionId and guestSessionId are null or undefined."
 }
+
+/**
+ * Posts to TMDB.
+ * @param {string} urlPath The URL path from where data will be posted (excluding the TMDB API base URL.).
+ * @param {Object} urlParameters The parameters of the URL.
+ * @param {Object} requestBody The request body object.
+ * @returns A Promise of a boolean value, which will be true if the rating is successful.
+ */
+exports.post = async function(urlPath, urlParameters, requestBody = null) {
+
+    var url = exports.buildUrl(urlPath, urlParameters);
+
+    // Wait for a response
+    var response = await httpUtils.parseHttpRequest(
+        url,
+        httpMethod.POST,
+        JSON.parse,
+        httpUtils.jsonContentType,
+        requestBody ? JSON.stringify(requestBody) : null);
+
+    return response;
+};
+
+/**
+ * Deletes at the passed url.
+ * @param {string} urlPath The URL path from where data will deleted (excluding the TMDB API base URL.).
+ * @param {Object} urlParameters The parameters of the URL.
+ * @returns A Promise of a boolean value, which will be true if the deletion is successful.
+ */
+exports.delete = async function(urlPath, urlParameters) {
+    
+    var url = exports.buildUrl(urlPath, urlParameters);
+
+    // Wait for a response
+    var response = await httpUtils.parseHttpRequest(
+        url,
+        httpMethod.DELETE,
+        JSON.parse,
+        httpUtils.jsonContentType);
+
+    return response && response.status_code == 13;
+};
 
 /**
  * The different external sources supported in TMDB.
@@ -226,6 +272,8 @@ exports.sections = Object.freeze({
     SEARCH: 'search',
     TRENDING: 'trending',
     TV_SHOW: 'tv',
+    TV_SHOW_EPISODE: 'episode',
+    TV_SHOW_SEASON: 'season'
 });
 
 /**
@@ -233,6 +281,7 @@ exports.sections = Object.freeze({
  */
 exports.dataTypes = Object.freeze({
     ACCOUNT_STATES: 'account_states',
+    AGGREGATE_CREDITS: 'aggregate_credits',
     ALTERNATIVE_NAMES: 'alternative_names',
     ALTERNATIVE_TITLES: 'alternative_titles',
     CHANGES: 'changes',
@@ -244,6 +293,7 @@ exports.dataTypes = Object.freeze({
     EPISODE_GROUPS: 'episode_groups',
     EXTERNAL_IDS: 'external_ids',
     IMAGES: 'images',
+    ITEM_STATUS: 'item_status',
     JOBS: 'jobs',
     KEYWORDS: 'keywords',
     LANGUAGES: 'languages',
@@ -269,4 +319,11 @@ exports.dataTypes = Object.freeze({
     TV_ON_THE_AIR: 'tv_on_the_air',
     UPCOMING: 'upcoming',
     VIDEOS: 'videos',
+});
+
+exports.actionTypes = Object.freeze({
+    RATING: "rating",
+    ADD_ITEM: "add_item",
+    REMOVE_ITEM: "remove_item",
+    CLEAR: "clear"
 });

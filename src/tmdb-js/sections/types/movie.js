@@ -1,21 +1,19 @@
 /**@module tmdb-js/sections/types */
 
-// HTTP utilities
-const httpUtils = require('../../../utils/http_utils');
-const httpMethod = httpUtils.httpMethod;
-
 // TMDB utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
+const actionTypes = tmdbUtils.actionTypes;
 
 // Sections
 const Section = require('../section').Section;
+const RateableSection = require('../rateable_section').RateableSection;
 
 /**
  * Can get and handle movie data on TMDB.
  */
-exports.Movie = class extends Section {
+exports.Movie = class extends RateableSection {
 
     /**
      * Sets properties.
@@ -160,49 +158,6 @@ exports.Movie = class extends Section {
     getLists() {
         var childSection = new Section(dataTypes.LISTS, this);
         return childSection.getQueryResult();
-    }
-
-    /**
-     * Rates the movie in question
-     * @param {Number} rating The rating, in the range [0.5, 10].
-     * @param {string} sessionId The session ID. Use this or the guest session ID.
-     * @param {string} guestSessionId The guest session ID. Use this or the session ID.
-     * @returns A Promise of a boolean value, which will be true if the rating was successful.
-     */
-    async rate(rating, sessionId = null, guestSessionId = null) {
-        var rateUrl = tmdbUtils.baseUrl + this.toString() + `/rating?api_key=${this._apiKey}`;
-        rateUrl = tmdbUtils.appendSessionId(rateUrl, sessionId, guestSessionId);
-
-        var response = await httpUtils.parseHttpRequest(
-            rateUrl,
-            httpMethod.POST,
-            JSON.parse,
-            httpUtils.jsonContentType,
-
-            // Ensure that the rating is in the acceptable range
-            JSON.stringify({ "value": Math.min(Math.max(0.5, rating), 10) }));
-
-        return response && response.status_code == 12;
-    }
-
-    /**
-     * Deletes the rating from the movie in question.
-     * @param {string} sessionId The session ID. Use this or the guest session ID.
-     * @param {string} guestSessionId The guest session ID. Use this or the session ID.
-     * @returns A Promise of a boolean value, which will be true if the deletion was successful.
-     */
-    async deleteRating(sessionId = null, guestSessionId = null) {
-        
-        var rateUrl = tmdbUtils.baseUrl + this.toString() + `/rating?api_key=${this._apiKey}`;
-        rateUrl = tmdbUtils.appendSessionId(rateUrl, sessionId, guestSessionId);
-
-        var response = await httpUtils.parseHttpRequest(
-            rateUrl,
-            httpMethod.DELETE,
-            JSON.parse,
-            httpUtils.jsonContentType);
-
-        return response && response.status_code == 13;
     }
 }
 

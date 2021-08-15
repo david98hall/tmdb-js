@@ -8,6 +8,7 @@ const CreditSection = require('./sections/types/credit').CreditSection;
 const FindSection = require('./sections/types/find').FindSection;
 const GenreSection = require('./sections/types/genre').GenreSection;
 const KeywordSection = require('./sections/types/keyword').KeywordSection;
+const ListSection = require('./sections/types/list').ListSection;
 const MovieSection = require('./sections/types/movie').MovieSection;
 const NetworkSection = require('./sections/types/network').NetworkSection;
 const PeopleSection = require('./sections/types/people').PeopleSection;
@@ -96,6 +97,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     getKeywords() {
         return new KeywordSection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a ListSection instance which can be used
+     * to get and handle list data.
+     */
+    getLists() {
+        return new ListSection(this._apiKey, this._language);
     }
 
     /**

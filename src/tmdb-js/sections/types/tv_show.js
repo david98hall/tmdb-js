@@ -6,13 +6,132 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const section = require('../section');
-const Section = section.Section;
+const Section = require('../section').Section;
+const RateableSection = require('../rateable_section').RateableSection;
+
+exports.TvShowEpisode = class extends RateableSection {
+
+    /**
+     * Sets properties.
+     * @param {Number} id The episode number.
+     * @param {TvShowSeason} tvShowSeason The parent TV show season.
+     */
+    constructor(id, tvShowSeason) {
+        super(id.toString(), new Section(sections.TV_SHOW_EPISODE, tvShowSeason));
+    }
+
+    getDetails() {
+        return this.getQueryResult();
+    }
+
+    getAccountStates() {
+        return this.getChildQueryResult(dataTypes.ACCOUNT_STATES);
+    }
+
+    getChanges() {
+        return this.getChildQueryResult(dataTypes.CHANGES);
+    }
+
+    getCredits() {
+        return this.getChildQueryResult(dataTypes.CREDITS);
+    }
+
+    getExternalIds() {
+        return this.getChildQueryResult(dataTypes.EXTERNAL_IDS);
+    }
+
+    getImages() {
+        return this.getChildQueryResult(dataTypes.IMAGES);
+    }
+
+    getTranslations() {
+        return this.getChildQueryResult(dataTypes.TRANSLATIONS);
+    }
+
+    getVideos() {
+        return this.getChildQueryResult(dataTypes.VIDEOS);
+    }
+
+}
+
+exports.TvShowSeason = class extends Section {
+
+    /**
+     * Sets properties.
+     * @param {Number} id The season number.
+     * @param {TvShow} tvShow The parent TV show.
+     */
+    constructor(id, tvShow) {
+        super(id.toString(), new Section(sections.TV_SHOW_SEASON, tvShow));
+    }
+
+    /**
+     * Gets the details of this TV show season.
+     * @returns A Promise of season detail data.
+     */
+    getDetails() {
+        return this.getQueryResult();
+    }
+
+    getAccountStates() {
+        return this.getChildQueryResult(dataTypes.ACCOUNT_STATES);
+    }
+
+    getAggregateCredits() {
+        return this.getChildQueryResult(dataTypes.AGGREGATE_CREDITS);
+    }
+
+    getChanges() {
+        return this.getChildQueryResult(dataTypes.CHANGES);
+    }
+
+    getCredits() {
+        return this.getChildQueryResult(dataTypes.CREDITS);
+    }
+
+    getExternalIds() {
+        return this.getChildQueryResult(dataTypes.EXTERNAL_IDS);
+    }
+
+    getImages() {
+        return this.getChildQueryResult(dataTypes.IMAGES);
+    }
+
+    getTranslations() {
+        return this.getChildQueryResult(dataTypes.TRANSLATIONS);
+    }
+
+    getVideos() {
+        return this.getChildQueryResult(dataTypes.VIDEOS);
+    }
+    
+    getEpisode(episodeNumber) {
+        return new exports.TvShowEpisode(episodeNumber, this);
+    }
+
+    async getEpisodeCount() {
+        return (await this.getDetails()).episodes.length;
+    }
+
+    async getEpisodes() {
+               
+        // Get the number of episodes
+        var numberOfEpisodes = await this.getEpisodeCount();
+        
+        var episodes = [];
+        for (let i = 1; i <= numberOfEpisodes; i++) {
+            episodes.push(this.getEpisode(i));
+        }
+
+        return episodes;
+    }
+
+}
 
 /**
  * Can get and handle TV show data on TMDB.
  */
-exports.TvShow = class extends Section {
+exports.TvShow = class extends RateableSection {
 
     /**
      * Sets properties.
@@ -156,55 +275,54 @@ exports.TvShow = class extends Section {
 
     /**
      * Gets the season with the passed number.
-     * @param {Number} seasonNumber 
+     * @param {Number} seasonNumber The season number.
+     * @returns A TvShowSeason object.
      */
     getSeason(seasonNumber) {
-        var seasonsSection = new Section(dataTypes.CHANGES, this);
-        var seasonSection = new Section(seasonNumber.toString(), seasonsSection);
-        return seasonSection.getQueryResult();
+        return new exports.TvShowSeason(seasonNumber, this);
+    }
+
+    async getSeasonCount() {
+        return (await this.getDetails()).number_of_seasons;
     }
 
     /**
      * Gets all seasons.
-     * @returns An array of season objects.
+     * @returns An a Promise of an array of TvShowSeason objects.
      */
-    getSeasons() {
-        var seasonNumber = 1;
+    async getSeasons() {
         var seasons = [];
-        while (true) {
-            var season = this.getSeason(seasonNumber);
-
-            if (season == undefined) {
-                return seasons;
-            }
-
+        var seasonCount = await this.getSeasonCount();
+        for (let i = 1; i <= seasonCount; i++) {
+            var season = this.getSeason(i);
             seasons.push(season)
-            seasonNumber++;
         }
+
+        return seasons;
     }
 
     /**
      * Gets the specified episode of the specified season.
-     * @param {*} seasonNumber The season number.
-     * @param {*} episodeNumber The episode number
+     * @param {Number} seasonNumber The season number.
+     * @param {Number} episodeNumber The episode number
      */
     getEpisode(seasonNumber, episodeNumber) {
-        var seasonSection = new Section(
-            seasonNumber.toString(),
-            new Section(dataTypes.CHANGES, this));
-
-        var episodeSection = new Section(
-            episodeNumber.toString(), 
-            new Section(dataTypes.EPISODE, seasonSection));
-
-        return episodeSection.getQueryResult();
+        return this.getSeason(seasonNumber).getEpisode(episodeNumber);
     }
 
     /**
      * Gets all episodes of this TV show.
      */
-    getAllEpisodes() {
-        return getSeasons().filter(season => season["episodes"]).flat();
+    async getAllEpisodes() {
+        var seasons = [];
+        var seasonCount = await this.getSeasonCount();
+        for (let seasonNumber = 1; seasonNumber <= seasonCount; seasonNumber++) {
+            var season = this.getSeason(seasonNumber);
+            var seasonEpisodes = await season.getEpisodes();
+            seasons.push(seasonEpisodes);
+        }
+
+        return seasons.flat();
     }
 }
 

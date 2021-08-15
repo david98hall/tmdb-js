@@ -38,7 +38,7 @@ exports.httpRequest = (url, method, contentType = null, requestBody = null) =>
             reject(new Error(`There was an error when doing a ${method} request!`));
         };
         xhr.onload = function() {
-            if (xhr.readyState == 4 && isMethodSuccess(method, xhr.status)) {
+            if (xhr.readyState == 4) {
                 resolve(xhr.responseText);
             } else {
                 rejectFun();
@@ -53,18 +53,6 @@ exports.httpRequest = (url, method, contentType = null, requestBody = null) =>
         xhr.send(requestBody);
 });
 
-function isMethodSuccess(method, httpStatus) {
-    switch(method) {
-        case "GET": 
-        case "DELETE": 
-            return httpStatus == 200;
-        case "POST": 
-            return httpStatus == 201;
-        default:
-            return false;
-    }
-}
-
 /**
  * Makes an HTTP request on the given URL and parses the result.
  * @param {string} url The URL.
@@ -78,7 +66,7 @@ function isMethodSuccess(method, httpStatus) {
 exports.parseHttpRequest = async function(url, method, parseFun, contentType = null, requestBody = null) {
     try {
         // Await the HTTP request and return its parsed results
-        const response = await this.httpRequest(url, method, contentType, requestBody);
+        var response = await exports.httpRequest(url, method, contentType, requestBody);
         return parseFun(response);
     }
     catch (error) {

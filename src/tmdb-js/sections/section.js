@@ -36,22 +36,15 @@ exports.Section = class extends TmdbQuerier {
 
     /**
      * Gets the section data from TMDB.
-     * Both session IDs cannot be non-null at the same time.
-     * @param {string} sessionId The session ID.
-     * @param {string} guestSessionId The guest session ID.
      */
-    getQueryResult(sessionId = null, guestSessionId = null) {
+    getQueryResult() {
         
         var parameters = {
             "api_key": this._apiKey,
             "language": this._language
         };
         
-        return tmdbUtils.getData(
-            this.toString(),
-            parameters,
-            sessionId,
-            guestSessionId);
+        return tmdbUtils.getData(this.toString(), parameters);
     }
 
     /**
