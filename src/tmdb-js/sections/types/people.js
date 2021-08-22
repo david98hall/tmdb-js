@@ -26,8 +26,18 @@ exports.Person = class extends Section {
      * Gets all details about this person.
      * @returns A Promise of this person's details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    getDetails(...appendToResponse) {
+
+        let urlParameters = null;
+
+        if (appendToResponse.length > 0) {
+            urlParameters = {
+                ...this._getBaseUrlParameters(),
+                "append_to_response": appendToResponse.join(",")
+            }
+        }
+
+        return this.getQueryResult(urlParameters);
     }
 
     /**

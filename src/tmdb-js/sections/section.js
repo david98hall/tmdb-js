@@ -40,14 +40,7 @@ exports.Section = class extends TmdbQuerier {
      * If null, the API key and language of this object will be used.
      */
     getQueryResult(urlParameters = null) {
-        
-        if (!urlParameters) {
-            urlParameters = {
-                "api_key": this._apiKey,
-                "language": this._language
-            };
-        }
-
+        urlParameters = urlParameters ? urlParameters : this._getBaseUrlParameters();
         return tmdbUtils.getData(this.toString(), urlParameters);
     }
 
@@ -78,6 +71,13 @@ exports.Section = class extends TmdbQuerier {
      */
     createChild(name) {
         return new exports.Section(name, this);
+    }
+
+    _getBaseUrlParameters() {
+        return {
+            "api_key": this._apiKey,
+            "language": this._language,
+        }
     }
 
 }

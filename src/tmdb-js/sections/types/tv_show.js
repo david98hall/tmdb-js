@@ -20,8 +20,18 @@ exports.TvShowEpisode = class extends RateableSection {
         super(id.toString(), new Section(sections.TV_SHOW_EPISODE, tvShowSeason));
     }
 
-    getDetails() {
-        return this.getQueryResult();
+    getDetails(...appendToResponse) {
+
+        let urlParameters = null;
+
+        if (appendToResponse.length > 0) {
+            urlParameters = {
+                ...this._getBaseUrlParameters(),
+                "append_to_response": appendToResponse.join(",")
+            }
+        }
+
+        return this.getQueryResult(urlParameters);
     }
 
     getAccountStates() {
@@ -69,8 +79,18 @@ exports.TvShowSeason = class extends Section {
      * Gets the details of this TV show season.
      * @returns A Promise of season detail data.
      */
-    getDetails() {
-        return this.getQueryResult();
+    getDetails(...appendToResponse) {
+
+        let urlParameters = null;
+
+        if (appendToResponse.length > 0) {
+            urlParameters = {
+                ...this._getBaseUrlParameters(),
+                "append_to_response": appendToResponse.join(",")
+            }
+        }
+
+        return this.getQueryResult(urlParameters);
     }
 
     getAccountStates() {
@@ -146,8 +166,18 @@ exports.TvShow = class extends RateableSection {
      * Gets all details about this TV show.
      * @returns A Promise of TV show details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    getDetails(...appendToResponse) {
+
+        let urlParameters = null;
+
+        if (appendToResponse.length > 0) {
+            urlParameters = {
+                ...this._getBaseUrlParameters(),
+                "append_to_response": appendToResponse.join(",")
+            }
+        }
+
+        return this.getQueryResult(urlParameters);
     }
 
     /**

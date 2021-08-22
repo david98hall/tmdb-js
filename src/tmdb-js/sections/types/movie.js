@@ -17,8 +17,8 @@ exports.Movie = class extends RateableSection {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the movie.
-     * @param {MovieSection} movieSection The parent MovieSection.
+     * @param {string} id The id of the movie.
+     * @param {exports.MovieSection} movieSection The parent MovieSection.
      */
     constructor(id, movieSection) {
         super(id, movieSection);
@@ -28,8 +28,18 @@ exports.Movie = class extends RateableSection {
      * Gets all details about this movie.
      * @returns A Promise of movie details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    getDetails(...appendToResponse) {
+
+        let urlParameters = null;
+
+        if (appendToResponse.length > 0) {
+            urlParameters = {
+                ...this._getBaseUrlParameters(),
+                "append_to_response": appendToResponse.join(",")
+            }
+        }
+
+        return this.getQueryResult(urlParameters);
     }
 
     /**
@@ -118,7 +128,7 @@ exports.Movie = class extends RateableSection {
     /**
      * Gets the translations of the movie in question.
      * @returns A Promise of movie translations.
-     */ 
+     */
     getTranslations() {
         var childSection = new Section(dataTypes.TRANSLATIONS, this);
         return childSection.getQueryResult();

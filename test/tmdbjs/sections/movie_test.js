@@ -11,14 +11,30 @@ exports.runTest = apiKey => {
         // TODO [David Hall, 2020-06-27]: Test all GET query methods
 
         // Look for movie data
-        var madMaxMovie = {id: 76341, title: "Mad Max: Fury Road"};
+        let madMaxMovie = {id: 76341, title: "Mad Max: Fury Road"};
 
         it('Should find data about a movie.', done => {
             tmdb.getMovies().getMovie(madMaxMovie.id).getDetails().then(json => {
               
                 // Assert the results
+                assert.ok(json);
                 assert.strictEqual(json.title, madMaxMovie.title);
-                
+                assert.ok(!json.hasOwnProperty("videos"));
+                assert.ok(!json.hasOwnProperty("images"));
+
+                setImmediate(done);
+            })
+        });
+
+        it('Should find data about a movie with "Append to Response".', done => {
+
+            tmdb.getMovies().getMovie(madMaxMovie.id).getDetails("videos", "images").then(json => {
+
+                // Assert the results
+                assert.ok(json);
+                assert.ok(json.hasOwnProperty("videos"));
+                assert.ok(json.hasOwnProperty("images"));
+
                 setImmediate(done);
             })
         });
