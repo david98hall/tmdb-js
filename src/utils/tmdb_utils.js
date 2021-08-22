@@ -294,6 +294,7 @@ exports.dataTypes = Object.freeze({
     EPISODE: "episode",
     EPISODE_GROUPS: 'episode_groups',
     EXTERNAL_IDS: 'external_ids',
+    FAVORITE: 'favorite',
     IMAGES: 'images',
     ITEM_STATUS: 'item_status',
     JOBS: 'jobs',
@@ -301,6 +302,7 @@ exports.dataTypes = Object.freeze({
     LANGUAGES: 'languages',
     LATEST: 'latest',
     LISTS: 'lists',
+    MOVIES: 'movies',
     MOVIE_CREDITS: 'movie_credits',
     NOW_PLAYING: 'now_playing',
     POPULAR: 'popular',
@@ -322,11 +324,23 @@ exports.dataTypes = Object.freeze({
     TV_ON_THE_AIR: 'tv_on_the_air',
     UPCOMING: 'upcoming',
     VIDEOS: 'videos',
+    WATCHLIST: 'watchlist'
 });
 
+/**
+ * The different types of actions available at TMDB.
+ */
 exports.actionTypes = Object.freeze({
     RATING: "rating",
     ADD_ITEM: "add_item",
     REMOVE_ITEM: "remove_item",
     CLEAR: "clear"
+});
+
+/**
+ * The different types of sorting available at TMDB.
+ */
+exports.sortingTypes = Object.freeze({
+    CREATED_AT_ASC: 'created_at.asc',
+    CREATED_AT_DESC: 'created_at.desc'
 });

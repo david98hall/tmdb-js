@@ -1,7 +1,6 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 const tmdbUtils = require('../../../src/utils/tmdb_utils');
-const tmdbTestUtils = require('../utils/tmdb_test_utils');
 
 exports.runTest = apiKey => {
 

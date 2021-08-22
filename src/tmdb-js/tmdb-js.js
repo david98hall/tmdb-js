@@ -1,5 +1,6 @@
 /**@module tmdb-js */
 
+const AccountSection = require('./sections/types/account').AccountSection;
 const Authenticator = require('./authentication/authentication').Authenticator;
 const CollectionSection = require('./sections/types/collection').CollectionSection;
 const CompanySection = require('./sections/types/company').CompanySection;
@@ -31,6 +32,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     constructor(apiKey, language = "en-US") {
         super(apiKey, language);
+    }
+
+    /**
+     * Gets an AccountSection instance which can
+     * be used to get and handle account data.
+     */
+    getAccounts() {
+        return new AccountSection(this._apiKey, this._language);
     }
 
     /**

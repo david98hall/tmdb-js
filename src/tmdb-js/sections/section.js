@@ -36,15 +36,19 @@ exports.Section = class extends TmdbQuerier {
 
     /**
      * Gets the section data from TMDB.
+     * @param {Object} urlParameters The url parameters to use.
+     * If null, the API key and language of this object will be used.
      */
-    getQueryResult() {
+    getQueryResult(urlParameters = null) {
         
-        var parameters = {
-            "api_key": this._apiKey,
-            "language": this._language
-        };
-        
-        return tmdbUtils.getData(this.toString(), parameters);
+        if (!urlParameters) {
+            urlParameters = {
+                "api_key": this._apiKey,
+                "language": this._language
+            };
+        }
+
+        return tmdbUtils.getData(this.toString(), urlParameters);
     }
 
     /**
@@ -61,9 +65,11 @@ exports.Section = class extends TmdbQuerier {
      * Gets the query results of the child
      * section with the passed name.
      * @param {string} childName The name of the child section.
+     * @param {Object} urlParameters The url parameters to use.
+     * If null, the API key and language of this object will be used.
      */
-    getChildQueryResult(childName) {
-        return this.createChild(childName).getQueryResult();
+    getChildQueryResult(childName, urlParameters = null) {
+        return this.createChild(childName).getQueryResult(urlParameters);
     }
 
     /**
@@ -73,4 +79,5 @@ exports.Section = class extends TmdbQuerier {
     createChild(name) {
         return new exports.Section(name, this);
     }
+
 }
