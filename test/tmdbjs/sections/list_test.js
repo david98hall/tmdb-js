@@ -39,7 +39,7 @@ exports.runTest = apiKey => {
                 assert.strictEqual(listDetails.name, listObj.name);
 
                 // Delete the created list
-                assert.ok(await list.delete(sessionId));
+                assert.ok(await list.delete(sessionId)); // TODO [david98hall, 2021-08-22]: Failing due to external problem?
             });
 
             xit('Should add a movie to a list and then remove it.', async () => {
@@ -64,7 +64,7 @@ exports.runTest = apiKey => {
                 assert.ok(await list.removeMovie(movieId, sessionId));
 
                 // Delete list
-                await list.delete();
+                assert.ok(await list.delete()); // TODO [david98hall, 2021-08-22]: Failing due to external problem?
             });
     
         });
