@@ -1,6 +1,7 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 const tmdbTestUtils = require('../utils/tmdb_test_utils');
+const tmdbUtils = require("../../../src/utils/tmdb_utils");
 
 exports.runTest = apiKey => {
 
@@ -74,10 +75,15 @@ exports.runTest = apiKey => {
     // Don't test non-deterministic functions on the CI
     if (!process.env.CI) {
 
+        let sessionId = null;
+        before(async () => {
+            sessionId = await tmdbUtils.createSession(apiKey);
+        });
+
         describe('TV show session query tests', () => {
         
             it('Should rate and unrate a TV show', async () => {
-                let sessionId = await tmdbTestUtils.getSessionId();
+
                 assert.ok(sessionId);
 
                 let tvShow = tmdb.getTvShows().getTvShow("1399");
@@ -86,14 +92,17 @@ exports.runTest = apiKey => {
             });
     
             it('Should rate and unrate a TV show episode', async () => {
-                let sessionId = await tmdbTestUtils.getSessionId();
+
                 assert.ok(sessionId);
 
                 let tvShowEpisode = tmdb.getTvShows().getTvShow("1399").getEpisode(1, 1);
                 assert.ok(await tvShowEpisode.rate(10, sessionId));
                 assert.ok(await tvShowEpisode.deleteRating(sessionId));
             });
+        });
 
+        after(async () => {
+            await tmdbUtils.deleteSession(apiKey, sessionId);
         });
     }
 }

@@ -93,8 +93,8 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      */
     constructor(name, parent = null, apiKey = undefined, language = "en-US") {
         super(
-            parent == null ? apiKey : parent._apiKey,
-            parent == null ? language : parent._language
+            parent ? parent._apiKey : apiKey,
+            parent ? parent._language : language
         );
         this._name = name;
         this._parent = parent;

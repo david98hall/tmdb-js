@@ -18,7 +18,7 @@ exports.runTest = apiKey => {
             let movie = {id: 'tt0074256', title: 'Bugsy Malone'};
             tmdb.getFinder(externalSources.IMDB_ID).find(movie.id).then(json => {
             
-                assert.strictEqual(json["movie_results"][0].title, movie.title);
+                assert.strictEqual(json["movie_results"][0]["title"], movie.title);
 
                 setImmediate(done);
             });

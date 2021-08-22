@@ -5,24 +5,20 @@ exports.runTest = apiKey => {
 
     let tmdb = new Tmdb(apiKey);
 
-    // Don't test non-deterministic functions on the CI
-    if (!process.env.CI) {
+    describe('Company GET tests', () => {
 
-        describe('Company GET tests', () => {
-        
-            // TODO [david98hall, 2021-08-15]: Test all GET methods
+        // TODO [david98hall, 2021-08-15]: Test all GET methods
 
-            let company = {id: "1", name: "Lucasfilm Ltd."};
-            it('Should get company data.', done => {
-                tmdb.getCompanies().getCompany(company.id).getDetails().then(json => {
-                    
-                    // Assert the results
-                    assert.strictEqual(json.name, company.name);
-                
-                    setImmediate(done);
-                })
+        let company = {id: "1", name: "Lucasfilm Ltd."};
+        it('Should get company data.', done => {
+            tmdb.getCompanies().getCompany(company.id).getDetails().then(json => {
+
+                // Assert the results
+                assert.strictEqual(json.name, company.name);
+
+                setImmediate(done);
             })
-    
-        });
-    }
+        })
+
+    });
 }

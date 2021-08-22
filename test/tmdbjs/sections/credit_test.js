@@ -5,22 +5,18 @@ exports.runTest = apiKey => {
 
     let tmdb = new Tmdb(apiKey);
 
-    // Don't test non-deterministic functions on the CI
-    if (!process.env.CI) {
+    describe('Credit GET tests', () => {
 
-        describe('Review GET tests', () => {
-        
-            let credit = {credit_id: "577da2fac3a36817e1003842", department: "Production"};
-            it('Should get credit data.', done => {
-                tmdb.getCredits().getCredit(credit.credit_id).getDetails().then(json => {
-                    
-                    // Assert the results
-                    assert.strictEqual(json.department, credit.department);
-                
-                    setImmediate(done);
-                })
+        let credit = {credit_id: "577da2fac3a36817e1003842", department: "Production"};
+        it('Should get credit data.', done => {
+            tmdb.getCredits().getCredit(credit.credit_id).getDetails().then(json => {
+
+                // Assert the results
+                assert.strictEqual(json.department, credit.department);
+
+                setImmediate(done);
             })
-    
-        });
-    }
+        })
+
+    });
 }

@@ -12,7 +12,7 @@ exports.runTest = apiKey => {
         it('Should find data about a person.', done => {
 
             // Look for person data
-            let person = {id: 37014, name: "Lauren German", birthday: "1978-11-29"};
+            let person = {id: "37014", name: "Lauren German", birthday: "1978-11-29"};
             
             tmdb.getPeople().getPerson(person.id).getDetails().then(json => {
               

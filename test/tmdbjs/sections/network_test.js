@@ -12,7 +12,7 @@ exports.runTest = apiKey => {
         it('Should find data about a network.', done => {
 
             // Look for movie data
-            let network = {"id":19, "name":"FOX"};
+            let network = { id: "19", name: "FOX" };
             
             tmdb.getNetworks().getNetwork(network.id).getDetails().then(json => {
               

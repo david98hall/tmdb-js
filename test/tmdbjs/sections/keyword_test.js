@@ -5,22 +5,18 @@ exports.runTest = apiKey => {
 
     const tmdb = new Tmdb(apiKey);
 
-    // Don't test non-deterministic functions on the CI
-    if (!process.env.CI) {
+    describe('Keyword GET tests', () => {
 
-        describe('Keyword GET tests', () => {
+        const keyword = {id: "14999", name: "devil"};
+        it('Should get keyword data.', done => {
+            tmdb.getKeywords().getKeyword(keyword.id).getDetails().then(json => {
 
-            const keyword = {id: "14999", name: "devil"};
-            it('Should get keyword data.', done => {
-                tmdb.getKeywords().getKeyword(keyword.id).getDetails().then(json => {
+                // Assert the results
+                assert.strictEqual(json.name, keyword.name);
 
-                    // Assert the results
-                    assert.strictEqual(json.name, keyword.name);
-                
-                    setImmediate(done);
-                })
+                setImmediate(done);
             })
-    
-        });
-    }
+        })
+
+    });
 }

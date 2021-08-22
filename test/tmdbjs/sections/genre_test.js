@@ -5,31 +5,27 @@ exports.runTest = apiKey => {
 
     let tmdb = new Tmdb(apiKey);
 
-    // Don't test non-deterministic functions on the CI
-    if (!process.env.CI) {
+    describe('Genre GET tests', () => {
 
-        describe('Genre GET tests', () => {
-        
-            it('Get movie genre list.', done => {
-                tmdb.getGenres().getMovieGenres().then(json => {
+        it('Get movie genre list.', done => {
+            tmdb.getGenres().getMovieGenres().then(json => {
 
-                    // Assert the results
-                    assert.ok(json);
-                
-                    setImmediate(done);
-                })
-            });
+                // Assert the results
+                assert.ok(json);
 
-            it('Get TV show genre list.', done => {
-                tmdb.getGenres().getTvShowGenres().then(json => {
-
-                    // Assert the results
-                    assert.ok(json);
-                
-                    setImmediate(done);
-                })
-            });
-    
+                setImmediate(done);
+            })
         });
-    }
+
+        it('Get TV show genre list.', done => {
+            tmdb.getGenres().getTvShowGenres().then(json => {
+
+                // Assert the results
+                assert.ok(json);
+
+                setImmediate(done);
+            })
+        });
+
+    });
 }
