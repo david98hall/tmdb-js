@@ -28,7 +28,7 @@ exports.Account = class extends Section {
      */
     getCreatedLists(sessionId, page) {
         
-        var urlParameters = {
+        let urlParameters = {
             ...this.__getBaseUrlParameters(sessionId),
             "language": this._language,
             "page": page,
@@ -103,7 +103,7 @@ exports.Account = class extends Section {
      */
     getRatedTvShowEpisodes(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
 
-        var urlParameters = {
+        let urlParameters = {
             ...this.__getBaseUrlParameters(sessionId),
             "language": this._language,
             "sort_by": sortBy,
@@ -111,8 +111,8 @@ exports.Account = class extends Section {
         };
 
         return this.createChild(dataTypes.RATED)
-        .createChild(sections.TV_SHOW) 
-        .getChildQueryResult(sections.EPISODES, urlParameters);
+                   .createChild(sections.TV_SHOW)
+                   .getChildQueryResult(sections.EPISODES, urlParameters);
     }
     
     /**
@@ -137,7 +137,7 @@ exports.Account = class extends Section {
      * 
      * @returns A Promise of TV shows in this account's watchlist.
      */
-    getMovieWatchlist(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+    getTvShowWatchlist(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return this.__getFilteredMedia(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.WATCHLIST);
     }
 
@@ -176,8 +176,8 @@ exports.Account = class extends Section {
      * 
      * @returns A Promise of a boolean value indicating whether the watchlist update was successful or not.
      */
-    async setMovieWatchlistStatus(sessionId, mediaId, favorite) {
-        return await this.__setWatchlistStatus(sessionId, tmdbUtils.mediaTypes.MOVIE, mediaId, favorite);
+    async setMovieWatchlistStatus(sessionId, mediaId, watchlist) {
+        return await this.__setWatchlistStatus(sessionId, tmdbUtils.mediaTypes.MOVIE, mediaId, watchlist);
     }
 
     /**
@@ -189,8 +189,8 @@ exports.Account = class extends Section {
      * 
      * @returns A Promise of a boolean value indicating whether the watchlist update was successful or not.
      */
-     async setTvShowWatchlistStatus(sessionId, mediaId, favorite) {
-        return await this.__setWatchlistStatus(sessionId, tmdbUtils.mediaTypes.TV, mediaId, favorite);
+     async setTvShowWatchlistStatus(sessionId, mediaId, watchlist) {
+        return await this.__setWatchlistStatus(sessionId, tmdbUtils.mediaTypes.TV, mediaId, watchlist);
     }
 
     async __setFavoriteStatus(sessionId, mediaType, mediaId, favorite) {
@@ -203,22 +203,21 @@ exports.Account = class extends Section {
     
     __setMediaStatus(sessionId, mediaType, mediaId, statusType, status) {
 
-        var urlPath = this.createChild(statusType).toString();
-        
-        var urlParameters = this.__getBaseUrlParameters(sessionId);
-        
-        var requestBody = {
+        let urlPath = this.createChild(statusType).toString();
+
+        let urlParameters = this.__getBaseUrlParameters(sessionId);
+
+        let requestBody = {
             "media_type": mediaType,
             "media_id": mediaId
         };
         requestBody[statusType] = status;
 
-        var successful = tmdbUtils.post(urlPath, urlParameters, requestBody);
-        return successful;
+        return tmdbUtils.post(urlPath, urlParameters, requestBody);
     }
 
     __getFilteredMedia(sessionId, page, sortBy, mediaType, filter) {
-        var urlParameters = {
+        let urlParameters = {
             ...this.__getBaseUrlParameters(sessionId),
             "language": this._language,
             "sort_by": sortBy,
@@ -258,7 +257,7 @@ exports.AccountSection = class extends Section {
      */
      getDetails(sessionId) {
 
-        var urlParameters = {
+        let urlParameters = {
             "api_key": this._apiKey,
             "session_id": sessionId
         };

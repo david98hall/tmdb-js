@@ -3,7 +3,7 @@ const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    let tmdb = new Tmdb(apiKey);
 
     describe('Search query tests.', () => {
 
@@ -59,9 +59,9 @@ exports.runTest = apiKey => {
                 assert.strictEqual(pages[0].page, 1);
                 assert.strictEqual(pages[1].page, 2);
                 assert.strictEqual(pages[pages.length - 1].page, pages.length);
-                assert.ok(pages[0].total_results > 0);
-                assert.ok(pages[0].total_pages > 0);
-                assert.ok(pages[0].results.length > 0);
+                assert.ok(pages[0]["total_results"] > 0);
+                assert.ok(pages[0]["total_pages"] > 0);
+                assert.ok(pages[0]["results"].length > 0);
 
                 setImmediate(done);
             });
@@ -87,10 +87,10 @@ exports.runTest = apiKey => {
 
 function assertSearchResultPage(pages) {
     assert.strictEqual(pages.length, 1);
-    var pageJson = pages[0];
-    assert.ok(pageJson != undefined);
+    let pageJson = pages[0];
+    assert.ok(pageJson);
     assert.strictEqual(pageJson.page, 1);
-    assert.ok(pageJson.total_results > 0);
-    assert.ok(pageJson.total_pages > 0);
-    assert.ok(pageJson.results.length > 0);
+    assert.ok(pageJson["total_results"] > 0);
+    assert.ok(pageJson["total_pages"] > 0);
+    assert.ok(pageJson["results"].length > 0);
 }

@@ -4,7 +4,7 @@ const tmdbUtils = require('../../../src/utils/tmdb_utils');
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    let tmdb = new Tmdb(apiKey);
 
     describe('List GET query tests', () => {
 
@@ -14,46 +14,50 @@ exports.runTest = apiKey => {
 
     // Don't test non-deterministic functions on the CI
     if (!process.env.CI) {
+
+        let sessionId = null;
+        before(async () => {
+            sessionId = await tmdbUtils.createSession(apiKey);
+        });
+
         describe('List session query tests', () => {
 
-            xit('Create and delete a list.', async () => {
+            it('Create and delete a list.', async () => {
 
-                var sessionId = await tmdbUtils.createSession(apiKey);
                 assert.ok(sessionId);
 
-                var listObj = {
+                let listObj = {
                     name: `list ${(+new Date).toString(36)}`,
                     description: "I am just testing my API wrapper.",
                     language: "en-US"
                 };
 
                 // Create a new list
-                var list = await tmdb.getLists()
+                let list = await tmdb.getLists()
                     .createList(listObj.name, listObj.description, listObj.language, sessionId);
                 
                 assert.ok(list);
 
                 // Assert that the list details are as expected
-                var listDetails = await list.getDetails();
+                let listDetails = await list.getDetails();
                 assert.strictEqual(listDetails.name, listObj.name);
 
                 // Delete the created list
                 assert.ok(await list.delete(sessionId)); // TODO [david98hall, 2021-08-22]: Failing due to external problem?
             });
 
-            xit('Should add a movie to a list and then remove it.', async () => {
+            it('Should add a movie to a list and then remove it.', async () => {
 
-                var sessionId = await tmdbUtils.createSession(apiKey);
                 assert.ok(sessionId);
 
-                var listObj = {
+                let listObj = {
                     name: `list ${(+new Date).toString(36)}`,
                     description: "I am just testing my API wrapper.",
                     language: "en-US"
                 };
 
                 // Create a new list
-                var list = await tmdb.getLists()
+                let list = await tmdb.getLists()
                     .createList(listObj.name, listObj.description, listObj.language, sessionId);
                 assert.ok(list);
                     
@@ -66,6 +70,10 @@ exports.runTest = apiKey => {
                 assert.ok(await list.delete()); // TODO [david98hall, 2021-08-22]: Failing due to external problem?
             });
     
+        });
+
+        after(async () => {
+            await tmdbUtils.deleteSession(apiKey, sessionId);
         });
     }
 }

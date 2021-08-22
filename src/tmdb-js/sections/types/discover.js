@@ -12,7 +12,7 @@ class DiscoverSettings {
     _parameters = {};
 
     getAllParameters() {
-        var parameters = {}
+        let parameters = {}
         Object.assign(parameters, this._parameters);
         return parameters;
     }
@@ -219,7 +219,7 @@ exports.DiscoverSection = class extends Section {
      * @return A Promise of discovered movie data.
      */
     discoverMovies(settings) {
-        var urlParameters = this.__buildUrlParameters(settings);
+        let urlParameters = this.__buildUrlParameters(settings);
         return this.createChild(sections.MOVIE)
                    .getQueryResult(urlParameters);
     }
@@ -230,7 +230,7 @@ exports.DiscoverSection = class extends Section {
      * @return A Promise of discovered TV show data.
      */
     discoverTvShows(settings) {
-        var urlParameters = this.__buildUrlParameters(settings);
+        let urlParameters = this.__buildUrlParameters(settings);
         return this.createChild(sections.TV_SHOW)
                    .getQueryResult(urlParameters);
     }

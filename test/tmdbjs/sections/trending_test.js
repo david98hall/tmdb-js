@@ -1,12 +1,11 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
-const tmdbTestUtils = require('../utils/tmdb_test_utils');
 const tmdbUtils = require('../../../src/utils/tmdb_utils');
 const timeWindows = tmdbUtils.timeWindows;
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    const tmdb = new Tmdb(apiKey);
 
     describe('Trending media GET query tests', () => {
 

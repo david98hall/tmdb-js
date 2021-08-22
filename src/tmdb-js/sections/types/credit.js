@@ -22,8 +22,7 @@ exports.Credit = class extends Section {
     }
 
     /**
-     * Gets the credit details based on the passed id.
-     * @param {string} id The credit id. 
+     * Gets the credit details.
      * @returns A Promise of credit details.
      */
     getDetails() {

@@ -4,7 +4,7 @@ const tmdbTestUtils = require('../utils/tmdb_test_utils');
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    let tmdb = new Tmdb(apiKey);
 
     describe('Movie GET query tests', () => {
 
@@ -67,10 +67,10 @@ exports.runTest = apiKey => {
         describe('Movie session query tests', () => {
         
             it('Should rate and unrate a movie', async () => {
-                var sessionId = await tmdbTestUtils.getSessionId();
+                let sessionId = await tmdbTestUtils.getSessionId();
                 assert.ok(sessionId);
 
-                var movie = tmdb.getMovies().getMovie(16869);
+                let movie = tmdb.getMovies().getMovie(16869);
                 assert.ok(await movie.rate(10, sessionId));
                 assert.ok(await movie.deleteRating(sessionId));
             });

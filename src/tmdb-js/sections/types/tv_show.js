@@ -130,15 +130,15 @@ exports.TvShowSeason = class extends Section {
     }
 
     async getEpisodeCount() {
-        return (await this.getDetails()).episodes.length;
+        return (await this.getDetails())["episodes"].length;
     }
 
     async getEpisodes() {
                
         // Get the number of episodes
-        var numberOfEpisodes = await this.getEpisodeCount();
+        let numberOfEpisodes = await this.getEpisodeCount();
         
-        var episodes = [];
+        let episodes = [];
         for (let i = 1; i <= numberOfEpisodes; i++) {
             episodes.push(this.getEpisode(i));
         }
@@ -186,16 +186,20 @@ exports.TvShow = class extends RateableSection {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      */
-    getAccountStates(sessionId = null, guestSessionId = null) {
-        var childSection = new Section(dataTypes.ACCOUNT_STATES, this);
-        return childSection.getQueryResult(sessionId, guestSessionId);
+    getAccountStates(sessionId = undefined, guestSessionId = undefined) {
+        let childSection = new Section(dataTypes.ACCOUNT_STATES, this);
+
+        let urlParameters = { ...this._getBaseUrlParameters() };
+        tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId)
+
+        return childSection.getQueryResult(urlParameters);
     }
 
     /**
      * Gets the alternative titles of the TV show in question.
      */
     getAlternativeTitles() {
-        var childSection = new Section(dataTypes.ALTERNATIVE_TITLES, this);
+        let childSection = new Section(dataTypes.ALTERNATIVE_TITLES, this);
         return childSection.getQueryResult();
     }
 
@@ -203,7 +207,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the changes of the TV show in question.
      */
     getChanges() {
-        var childSection = new Section(dataTypes.CHANGES, this);
+        let childSection = new Section(dataTypes.CHANGES, this);
         return childSection.getQueryResult();
     }
 
@@ -211,7 +215,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the content ratings of the TV show in question.
      */
     getContentRatings() {
-        var childSection = new Section(dataTypes.CONTENT_RATINGS, this);
+        let childSection = new Section(dataTypes.CONTENT_RATINGS, this);
         return childSection.getQueryResult();
     }
 
@@ -219,7 +223,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the credits of the TV show in question.
      */
     getCredits() {
-        var childSection = new Section(dataTypes.CREDITS, this);
+        let childSection = new Section(dataTypes.CREDITS, this);
         return childSection.getQueryResult();
     }
 
@@ -227,7 +231,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the episode groups of the TV show in question.
      */
     getEpisodeGroups() {
-        var childSection = new Section(dataTypes.EPISODE_GROUPS, this);
+        let childSection = new Section(dataTypes.EPISODE_GROUPS, this);
         return childSection.getQueryResult();
     }
 
@@ -235,7 +239,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the external IDs of the TV show in question.
      */
     getExternalIds() {
-        var childSection = new Section(dataTypes.EXTERNAL_IDS, this);
+        let childSection = new Section(dataTypes.EXTERNAL_IDS, this);
         return childSection.getQueryResult();
     }
 
@@ -243,7 +247,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the images of the TV show in question.
      */
     getImages() {
-        var childSection = new Section(dataTypes.IMAGES, this);
+        let childSection = new Section(dataTypes.IMAGES, this);
         return childSection.getQueryResult();
     }
 
@@ -251,7 +255,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the keywords of the TV show in question.
      */
     getKeywords() {
-        var childSection = new Section(dataTypes.KEYWORDS, this);
+        let childSection = new Section(dataTypes.KEYWORDS, this);
         return childSection.getQueryResult();
     }
 
@@ -259,7 +263,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the recommendations based on the TV show in question.
      */
     getRecommendations() {
-        var childSection = new Section(dataTypes.RECOMMENDATIONS, this);
+        let childSection = new Section(dataTypes.RECOMMENDATIONS, this);
         return childSection.getQueryResult();
     }
 
@@ -267,7 +271,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the reviews of the TV show in question.
      */
     getReviews() {
-        var childSection = new Section(dataTypes.REVIEWS, this);
+        let childSection = new Section(dataTypes.REVIEWS, this);
         return childSection.getQueryResult();
     }
 
@@ -275,7 +279,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the a list of seasons or episodes of the TV show in question that were screened theatrically.
      */
     getScreenedTheatrically() {
-        var childSection = new Section(dataTypes.SCREENED_THEATRICALLY, this);
+        let childSection = new Section(dataTypes.SCREENED_THEATRICALLY, this);
         return childSection.getQueryResult();
     }
 
@@ -283,7 +287,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the similar TV shows to the TV show in question.
      */
     getSimilarTvShows() {
-        var childSection = new Section(dataTypes.SIMILAR_MOVIES, this);
+        let childSection = new Section(dataTypes.SIMILAR_MOVIES, this);
         return childSection.getQueryResult();
     }
 
@@ -291,7 +295,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the translations of the TV show in question.
      */ 
     getTranslations() {
-        var childSection = new Section(dataTypes.TRANSLATIONS, this);
+        let childSection = new Section(dataTypes.TRANSLATIONS, this);
         return childSection.getQueryResult();
     }
 
@@ -299,7 +303,7 @@ exports.TvShow = class extends RateableSection {
      * Gets the videos of the TV show in question.
      */
     getVideos() {
-        var childSection = new Section(dataTypes.VIDEOS, this);
+        let childSection = new Section(dataTypes.VIDEOS, this);
         return childSection.getQueryResult();
     }
 
@@ -313,7 +317,7 @@ exports.TvShow = class extends RateableSection {
     }
 
     async getSeasonCount() {
-        return (await this.getDetails()).number_of_seasons;
+        return (await this.getDetails())["number_of_seasons"];
     }
 
     /**
@@ -321,10 +325,10 @@ exports.TvShow = class extends RateableSection {
      * @returns An a Promise of an array of TvShowSeason objects.
      */
     async getSeasons() {
-        var seasons = [];
-        var seasonCount = await this.getSeasonCount();
+        let seasons = [];
+        let seasonCount = await this.getSeasonCount();
         for (let i = 1; i <= seasonCount; i++) {
-            var season = this.getSeason(i);
+            let season = this.getSeason(i);
             seasons.push(season)
         }
 
@@ -344,11 +348,11 @@ exports.TvShow = class extends RateableSection {
      * Gets all episodes of this TV show.
      */
     async getAllEpisodes() {
-        var seasons = [];
-        var seasonCount = await this.getSeasonCount();
+        let seasons = [];
+        let seasonCount = await this.getSeasonCount();
         for (let seasonNumber = 1; seasonNumber <= seasonCount; seasonNumber++) {
-            var season = this.getSeason(seasonNumber);
-            var seasonEpisodes = await season.getEpisodes();
+            let season = this.getSeason(seasonNumber);
+            let seasonEpisodes = await season.getEpisodes();
             seasons.push(seasonEpisodes);
         }
 
@@ -383,7 +387,7 @@ exports.TvShowSection = class extends Section {
      * Gets the latest TV shows.
      */
     getLatest() {
-        var childSection = new Section(dataTypes.LATEST, this);
+        let childSection = new Section(dataTypes.LATEST, this);
         return childSection.getQueryResult();
     }
 
@@ -391,7 +395,7 @@ exports.TvShowSection = class extends Section {
      * Gets TV shows airing today.
      */
     getTvAiringToday() {
-        var childSection = new Section(dataTypes.TV_AIRING_TODAY, this);
+        let childSection = new Section(dataTypes.TV_AIRING_TODAY, this);
         return childSection.getQueryResult();
     }
 
@@ -399,7 +403,7 @@ exports.TvShowSection = class extends Section {
      * Gets TV shows currently on the air.
      */
     getTvOnTheAir() {
-        var childSection = new Section(dataTypes.TV_ON_THE_AIR, this);
+        let childSection = new Section(dataTypes.TV_ON_THE_AIR, this);
         return childSection.getQueryResult();
     }
 
@@ -407,7 +411,7 @@ exports.TvShowSection = class extends Section {
      * Gets popular TV shows.
      */
     getPopular() {
-        var childSection = new Section(dataTypes.POPULAR, this);
+        let childSection = new Section(dataTypes.POPULAR, this);
         return childSection.getQueryResult();
     }
 
@@ -415,7 +419,7 @@ exports.TvShowSection = class extends Section {
      * Gets top rated TV shows.
      */
     getTopRated() {
-        var childSection = new Section(dataTypes.TOP_RATED, this);
+        let childSection = new Section(dataTypes.TOP_RATED, this);
         return childSection.getQueryResult();
     }
 
@@ -424,7 +428,7 @@ exports.TvShowSection = class extends Section {
      * @param {string} episodeGroupId The ID of the episode group.
      */
     getEpisodeGroup(episodeGroupId) {
-        var episodeGroupSection = new Section(
+        let episodeGroupSection = new Section(
             episodeGroupId,
             new Section(dataTypes.EPISODE_GROUPS, this));
         return episodeGroupSection.getQueryResult();

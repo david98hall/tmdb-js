@@ -3,14 +3,14 @@ const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    let tmdb = new Tmdb(apiKey);
 
     // Don't test non-deterministic functions on the CI
     if (!process.env.CI) {
 
         describe('Collection GET tests', () => {
         
-            var collection = {id: 304, name: "Ocean's Collection"};
+            let collection = {id: 304, name: "Ocean's Collection"};
             it('Should get collection data.', done => {
                 tmdb.getCollections().getCollection(collection.id).getDetails().then(json => {
                     

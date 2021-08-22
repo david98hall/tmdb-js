@@ -34,11 +34,9 @@ exports.SearchSection = class extends Section {
      * The first search result page to return data from. The default is 1.
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
-     * @param {Boolean} includeAdult 
-     * true if adult content will be included. The default is true.
      */
     searchCompanies(searchTerm, startPage = 1, pageCount = 1) {
-        var companiesChild = this.createChild(searchType.COMPANIES);
+        let companiesChild = this.createChild(searchType.COMPANIES);
         return searchPages(
             companiesChild.toString(),
             searchTerm, 
@@ -56,11 +54,9 @@ exports.SearchSection = class extends Section {
      * The first search result page to return data from. The default is 1.
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
-     * @param {Boolean} includeAdult 
-     * true if adult content will be included. The default is true.
      */
     searchCollections(searchTerm, startPage = 1, pageCount = 1) {
-        var collectionsChild = this.createChild(searchType.COLLECTIONS);
+        let collectionsChild = this.createChild(searchType.COLLECTIONS);
         return searchPages(
             collectionsChild.toString(),
             searchTerm,
@@ -78,11 +74,9 @@ exports.SearchSection = class extends Section {
      * The first search result page to return data from. The default is 1.
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
-     * @param {Boolean} includeAdult 
-     * true if adult content will be included. The default is true.
      */
     searchKeywords(searchTerm, startPage = 1, pageCount = 1) {
-        var keywordsChild = this.createChild(searchType.KEYWORDS);
+        let keywordsChild = this.createChild(searchType.KEYWORDS);
         return searchPages(
             keywordsChild.toString(),
             searchTerm, 
@@ -102,31 +96,34 @@ exports.SearchSection = class extends Section {
      * The number of search result pages to return data from. The default is 1.
      * @param {Boolean} includeAdult 
      * true if adult content will be included. The default is true.
+     * @param {string} region The region.
+     * @param {Number} year The year.
+     * @param {Number} primaryReleaseYear The primary release year.
      */
     searchMovies(searchTerm,
                  startPage = 1,
                  pageCount = 1,
                  includeAdult = true,
-                 region = "",
-                 year = "",
-                 primaryReleaseYear = "") {
+                 region = undefined,
+                 year = undefined,
+                 primaryReleaseYear = undefined) {
         
         // Additional optional query info
-        var additionalInfo = {};
+        let additionalInfo = {};
         
-        if (region.length > 0) {
+        if (region) {
             additionalInfo["region"] = region;
         }
         
-        if (year.length > 0) {
+        if (year) {
             additionalInfo["year"] = year;
         }
 
-        if (primaryReleaseYear.length > 0) {
+        if (primaryReleaseYear) {
             additionalInfo["primary_release_year"] = primaryReleaseYear;
         }
 
-        var moviesChild = this.createChild(searchType.MOVIES);
+        let moviesChild = this.createChild(searchType.MOVIES);
         
         return searchPages(
             moviesChild.toString(),
@@ -151,7 +148,7 @@ exports.SearchSection = class extends Section {
      */
     multiSearch(searchTerm, startPage = 1, pageCount = 1, includeAdult = true) {
 
-        var multiChild = this.createChild(searchType.MULTI);
+        let multiChild = this.createChild(searchType.MULTI);
 
         return searchPages(
             multiChild.toString(),
@@ -172,20 +169,21 @@ exports.SearchSection = class extends Section {
      * The number of search result pages to return data from. The default is 1.
      * @param {Boolean} includeAdult 
      * true if adult content will be included. The default is true.
+     * @param {string} region The region.
      */
     searchPeople(searchTerm,
         startPage = 1,
         pageCount = 1,
         includeAdult = true,
-        region = "") {
+        region = undefined) {
 
         // Additional optional query info
-        var additionalInfo = {};
-        if (region.length > 0) {
+        let additionalInfo = {};
+        if (region) {
             additionalInfo["region"] = region;
         }
 
-        var peopleChild = this.createChild(searchType.PEOPLE);
+        let peopleChild = this.createChild(searchType.PEOPLE);
 
         return searchPages(
             peopleChild.toString(),
@@ -207,20 +205,21 @@ exports.SearchSection = class extends Section {
      * The number of search result pages to return data from. The default is 1.
      * @param {Boolean} includeAdult 
      * true if adult content will be included. The default is true.
+     * @param {Number} firstAirDateYear The first air date year.
      */
     searchTvShows(searchTerm,
         startPage = 1,
         pageCount = 1,
         includeAdult = true,
-        firstAirDateYear = "") {
+        firstAirDateYear = undefined) {
 
         // Additional optional query info
-        var additionalInfo = {};
-        if (firstAirDateYear.length > 0) {
+        let additionalInfo = {};
+        if (firstAirDateYear) {
             additionalInfo["first_air_date_year"] = firstAirDateYear;
         }
 
-        var tvShowChild = this.createChild(searchType.TV_SHOWS);
+        let tvShowChild = this.createChild(searchType.TV_SHOWS);
 
         return searchPages(
             tvShowChild.toString(),
@@ -235,7 +234,7 @@ exports.SearchSection = class extends Section {
 }
 
 /**
- * All different search types on TMDB.
+ * All different search types on TMDb.
  */
 const searchType = {
     COMPANIES: 'company',
@@ -248,10 +247,10 @@ const searchType = {
 }
 
 /**
- * Gets search data from TMDB as a JSON object.
+ * Gets search data from TMDb as a JSON object.
  * @param {string} url The url.
  * @param {string} searchTerm The search term (query).
- * @param {string} apiKey The API key to the TMDB API. 
+ * @param {string} apiKey The API key to the TMDb API.
  * @param {Number} startPage 
  * The first search result page to return data from.
  * @param {Number} pageCount 
@@ -272,7 +271,7 @@ async function searchPages(url, searchTerm, apiKey, startPage,
 
         // Search the first page in order to get the total number of pages.
         // Used to interrupt when there are no pages left to search.
-        var firstPage = await searchPage(url,
+        let firstPage = await searchPage(url,
                                          searchTerm,
                                          apiKey,
                                          startPage,
@@ -285,13 +284,13 @@ async function searchPages(url, searchTerm, apiKey, startPage,
             return [firstPage];
 
         // Update the page count, in case it exceeds the total number of pages
-        pageCount = Math.min(pageCount, firstPage.total_pages - startPage);
+        pageCount = Math.min(pageCount, firstPage["total_pages"] - startPage);
 
         // Create one search promise per page
-        var promises = [];
+        let promises = [];
         for (let index = 1; index <= pageCount; index++) {
-            var page = startPage + index;
-            var promise = searchPage(url,
+            let page = startPage + index;
+            let promise = searchPage(url,
                                      searchTerm,
                                      apiKey,
                                      page,
@@ -308,10 +307,9 @@ async function searchPages(url, searchTerm, apiKey, startPage,
 }
 
 /**
- * Gets search data from TMDB as a JSON object.
+ * Gets search data from TMDb as a JSON object.
  * @param {string} url The url path.
  * @param {string} searchTerm The search term (query).
- * @param {string} searchType The type of search to perform. 
  * @param {string} apiKey The API key to the TMDB API. 
  * @param {Number} page The search result page to return data from.
  * @param {Boolean} includeAdult true if adult content will be included.
@@ -323,14 +321,14 @@ async function searchPages(url, searchTerm, apiKey, startPage,
 function searchPage(url, searchTerm, apiKey, 
     page = 1, includeAdult = true, language = "en-US", additionalInfo = {}) {
         
-    parameters = {
+    let parameters = {
         "api_key": apiKey,
         "language": language,
         "query": searchTerm,
         "page": page,
-        "include_adult": includeAdult
+        "include_adult": includeAdult,
+        ...additionalInfo
     };
-    parameters = {...parameters, ...additionalInfo};
 
     return tmdbUtils.getData(url, parameters);
 }

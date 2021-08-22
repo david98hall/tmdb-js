@@ -30,11 +30,11 @@ exports.httpMethod = Object.freeze({
  * @param {string} contentType The contentType
  * @param {string} requestBody The body of the request.
  */
-exports.httpRequest = (url, method, contentType = null, requestBody = null) => 
+exports.httpRequest = (url, method, contentType = undefined, requestBody = undefined) =>
     new Promise((resolve, reject) => {
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open(method, url);
-        var rejectFun = function() {
+        let rejectFun = function() {
             reject(new Error(`There was an error when doing a ${method} request!`));
         };
         xhr.onload = function() {
@@ -63,10 +63,10 @@ exports.httpRequest = (url, method, contentType = null, requestBody = null) =>
  * @param {string} requestBody The body of the request
  * @returns A Promise of a parsed response.
  */
-exports.parseHttpRequest = async function(url, method, parseFun, contentType = null, requestBody = null) {
+exports.parseHttpRequest = async function(url, method, parseFun, contentType = undefined, requestBody = undefined) {
     try {
         // Await the HTTP request and return its parsed results
-        var response = await exports.httpRequest(url, method, contentType, requestBody);
+        let response = await exports.httpRequest(url, method, contentType, requestBody);
         return parseFun(response);
     }
     catch (error) {

@@ -1,10 +1,9 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
-const tmdbTestUtils = require('../utils/tmdb_test_utils');
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    let tmdb = new Tmdb(apiKey);
 
     describe('Network GET query tests', () => {
 
@@ -13,7 +12,7 @@ exports.runTest = apiKey => {
         it('Should find data about a network.', done => {
 
             // Look for movie data
-            var network = {"id":19, "name":"FOX"};
+            let network = {"id":19, "name":"FOX"};
             
             tmdb.getNetworks().getNetwork(network.id).getDetails().then(json => {
               

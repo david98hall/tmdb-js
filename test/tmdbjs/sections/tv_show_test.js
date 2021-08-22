@@ -4,7 +4,7 @@ const tmdbTestUtils = require('../utils/tmdb_test_utils');
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    let tmdb = new Tmdb(apiKey);
 
     describe('TV show GET query tests', () => {
 
@@ -13,7 +13,7 @@ exports.runTest = apiKey => {
         it('Should find details about a TV show.', done => {
         
             // Look for TV show data
-            var tvShow = {id: 66732, name: "Stranger Things"};
+            let tvShow = {id: 66732, name: "Stranger Things"};
             
             tmdb.getTvShows().getTvShow(tvShow.id).getDetails().then(json => {
 
@@ -27,9 +27,9 @@ exports.runTest = apiKey => {
         it('Should find Swedish details about a TV show.', done => {
         
             // Look for TV show data
-            var tvShow = {id: 34, name: "Skenet bedrar"};
+            let tvShow = {id: 34, name: "Skenet bedrar"};
             
-            var tmdbSwedish = new Tmdb(apiKey, "sv-SE");
+            let tmdbSwedish = new Tmdb(apiKey, "sv-SE");
 
             tmdbSwedish.getTvShows().getTvShow(tvShow.id).getDetails().then(json => {
                 // Assert the results
@@ -39,19 +39,19 @@ exports.runTest = apiKey => {
             });
         });
 
-        var gotTvShow = { id: 1399, seasonCount: 8, episodeCount: 73 };
-        var firstGotEpisode = { number: 1, name: "Winter Is Coming"};
-        var lastGotEpisode = { number: 73, name: "The Iron Throne"};
+        let gotTvShow = { id: 1399, seasonCount: 8, episodeCount: 73 };
+        let firstGotEpisode = { number: 1, name: "Winter Is Coming"};
+        let lastGotEpisode = { number: 73, name: "The Iron Throne"};
         it('Should find all episodes of a TV show', async () => {
             
-            var episodes = await tmdb.getTvShows().getTvShow(gotTvShow.id).getAllEpisodes();
+            let episodes = await tmdb.getTvShows().getTvShow(gotTvShow.id).getAllEpisodes();
 
             assert.strictEqual(episodes.length, gotTvShow.episodeCount);
 
-            var firstEpisodeDetails = await episodes[firstGotEpisode.number - 1].getDetails();
+            let firstEpisodeDetails = await episodes[firstGotEpisode.number - 1].getDetails();
             assert.strictEqual(firstEpisodeDetails.name, firstGotEpisode.name);
 
-            var lastEpisodeDetails = await episodes[lastGotEpisode.number - 1].getDetails();
+            let lastEpisodeDetails = await episodes[lastGotEpisode.number - 1].getDetails();
             assert.strictEqual(lastEpisodeDetails.name, lastGotEpisode.name);
         });
 
@@ -77,19 +77,19 @@ exports.runTest = apiKey => {
         describe('TV show session query tests', () => {
         
             it('Should rate and unrate a TV show', async () => {
-                var sessionId = await tmdbTestUtils.getSessionId();
+                let sessionId = await tmdbTestUtils.getSessionId();
                 assert.ok(sessionId);
 
-                var tvShow = tmdb.getTvShows().getTvShow(1399);
+                let tvShow = tmdb.getTvShows().getTvShow(1399);
                 assert.ok(await tvShow.rate(10, sessionId));
                 assert.ok(await tvShow.deleteRating(sessionId));
             });
     
             it('Should rate and unrate a TV show episode', async () => {
-                var sessionId = await tmdbTestUtils.getSessionId();
+                let sessionId = await tmdbTestUtils.getSessionId();
                 assert.ok(sessionId);
 
-                var tvShowEpisode = tmdb.getTvShows().getTvShow(1399).getEpisode(1, 1);
+                let tvShowEpisode = tmdb.getTvShows().getTvShow(1399).getEpisode(1, 1);
                 assert.ok(await tvShowEpisode.rate(10, sessionId));
                 assert.ok(await tvShowEpisode.deleteRating(sessionId));
             });

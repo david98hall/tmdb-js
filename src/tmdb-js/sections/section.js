@@ -21,21 +21,21 @@ exports.Section = class extends TmdbQuerier {
     /**
      * Sets properties.
      * @param {string} name The name of this section.
-     * @param {exports.Section} parent The parent section of this section.
-     * @param {string} apiKey The TMDB API key.
+     * @param {Section} parent The parent section of this section.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
-    constructor(name, parent = undefined, apiKey = undefined, language = "en-US") {
+    constructor(name, parent = null, apiKey = undefined, language = "en-US") {
         super(
-            parent == undefined ? apiKey : parent._apiKey,
-            parent == undefined ? language : parent._language
+            parent == null ? apiKey : parent._apiKey,
+            parent == null ? language : parent._language
         );
         this._name = name;
         this._parent = parent;
     }
 
     /**
-     * Gets the section data from TMDB.
+     * Gets the section data from TMDb.
      * @param {Object} urlParameters The url parameters to use.
      * If null, the API key and language of this object will be used.
      */
@@ -48,7 +48,7 @@ exports.Section = class extends TmdbQuerier {
      * Returns this section in a string format.
      */
     toString() {
-        var parentString = this._parent == undefined
+        let parentString = this._parent == null
             ? ""
             : this._parent.toString() + "/";
         return parentString + this._name;
@@ -79,5 +79,4 @@ exports.Section = class extends TmdbQuerier {
             "language": this._language,
         }
     }
-
 }

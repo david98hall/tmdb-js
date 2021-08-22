@@ -20,7 +20,7 @@ exports.baseUrl = baseUrlValue;
 exports.getData = function(urlPath, urlParameters = {}) {
 
     // Create the url, based on this function's parameters
-    var url = exports.buildUrl(urlPath, urlParameters);
+    let url = exports.buildUrl(urlPath, urlParameters);
     return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
 };
 
@@ -30,7 +30,7 @@ exports.getData = function(urlPath, urlParameters = {}) {
  * @param {Object} parameters The parameters of the URL.
  */
 exports.buildUrl = function(urlPath, parameters = {}) {
-    var url = baseUrlValue + urlPath;
+    let url = baseUrlValue + urlPath;
 
     // Apply URL parameters
     if (Object.keys(parameters).length > 0) {
@@ -38,7 +38,7 @@ exports.buildUrl = function(urlPath, parameters = {}) {
         
         for (const key in parameters) {
             if (Object.hasOwnProperty.call(parameters, key)) {
-                var uriParameter = encodeURI(parameters[key]);
+                let uriParameter = encodeURI(parameters[key]);
                 url += `${key}=${uriParameter}&`;
             }
         }
@@ -58,8 +58,8 @@ exports.buildUrl = function(urlPath, parameters = {}) {
 exports.getRequestToken = async function(apiKey) {
     
     // GET a request token
-    var requestTokenUrl = baseUrlValue + "authentication/token/new?api_key=" + apiKey;
-    var tokenRequestResult = 
+    let requestTokenUrl = baseUrlValue + "authentication/token/new?api_key=" + apiKey;
+    let tokenRequestResult =
         await httpUtils.parseHttpRequest(requestTokenUrl, httpMethod.GET, JSON.parse);
     return tokenRequestResult.request_token;
 }
@@ -74,11 +74,11 @@ exports.getRequestToken = async function(apiKey) {
  */
 exports.createLoginSession = async function(apiKey, username, password) {
 
-    var requestToken = await this.getRequestToken(apiKey);
+    let requestToken = await this.getRequestToken(apiKey);
 
     // Create a session
-    var sessionUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(
+    let sessionUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
+    let sessionResponse = await httpUtils.parseHttpRequest(
         sessionUrl, 
         httpMethod.POST,
         JSON.parse, 
@@ -105,12 +105,12 @@ exports.createLoginSession = async function(apiKey, username, password) {
 exports.createSession = async function(apiKey, permissionApp = "chrome") {
 
     // Get request token and approve it
-    var requestToken = await this.getRequestToken(apiKey);
+    let requestToken = await this.getRequestToken(apiKey);
     await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
 
     // Create a session
-    var sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey + "&request_token=" + requestToken;
-    var sessionResponse = await httpUtils.parseHttpRequest(
+    let sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey + "&request_token=" + requestToken;
+    let sessionResponse = await httpUtils.parseHttpRequest(
         sessionUrl, 
         httpMethod.GET, 
         JSON.parse, 
@@ -130,8 +130,8 @@ exports.createSession = async function(apiKey, permissionApp = "chrome") {
  * @returns A Promise of a guest session ID.
  */
 exports.createGuestSession = async (apiKey) => {
-    var sessionUrl = baseUrlValue + "authentication/guest_session/new?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(sessionUrl, httpMethod.GET, JSON.parse);
+    let sessionUrl = baseUrlValue + "authentication/guest_session/new?api_key=" + apiKey;
+    let sessionResponse = await httpUtils.parseHttpRequest(sessionUrl, httpMethod.GET, JSON.parse);
     return sessionResponse.guest_session_id;
 }
 
@@ -143,8 +143,8 @@ exports.createGuestSession = async (apiKey) => {
  * A Promise of a boolean value, which will be true if the deletion is successful.
  */
 exports.deleteSession = async (apiKey, sessionId) => {
-    var sessionUrl = baseUrlValue + "authentication/session?api_key=" + apiKey;
-    var sessionResponse = await httpUtils.parseHttpRequest(
+    let sessionUrl = baseUrlValue + "authentication/session?api_key=" + apiKey;
+    let sessionResponse = await httpUtils.parseHttpRequest(
         sessionUrl,
         httpMethod.DELETE,
         JSON.parse,
@@ -161,7 +161,7 @@ exports.deleteSession = async (apiKey, sessionId) => {
  * @param {string} sessionId The session ID.
  * @param {string} guestSessionId The guest session ID.
  */
-exports.addSessionIdParameter = (parameters, sessionId, guestSessionId = null) => {
+exports.addSessionIdParameter = (parameters, sessionId, guestSessionId = undefined) => {
     
     if (sessionId && guestSessionId) {
         throw "The sessionId and guestSessionId parameters are mutually exclusive."
@@ -187,17 +187,15 @@ exports.addSessionIdParameter = (parameters, sessionId, guestSessionId = null) =
  */
 exports.post = async function(urlPath, urlParameters, requestBody = null) {
 
-    var url = exports.buildUrl(urlPath, urlParameters);
+    let url = exports.buildUrl(urlPath, urlParameters);
 
     // Wait for a response
-    var response = await httpUtils.parseHttpRequest(
+    return await httpUtils.parseHttpRequest(
         url,
         httpMethod.POST,
         JSON.parse,
         httpUtils.jsonContentType,
         requestBody ? JSON.stringify(requestBody) : null);
-
-    return response;
 };
 
 /**
@@ -208,16 +206,16 @@ exports.post = async function(urlPath, urlParameters, requestBody = null) {
  */
 exports.delete = async function(urlPath, urlParameters) {
     
-    var url = exports.buildUrl(urlPath, urlParameters);
+    let url = exports.buildUrl(urlPath, urlParameters);
 
     // Wait for a response
-    var response = await httpUtils.parseHttpRequest(
+    let response = await httpUtils.parseHttpRequest(
         url,
         httpMethod.DELETE,
         JSON.parse,
         httpUtils.jsonContentType);
 
-    return response && response.status_code == 13;
+    return response && response["status_code"] == 13;
 };
 
 /**

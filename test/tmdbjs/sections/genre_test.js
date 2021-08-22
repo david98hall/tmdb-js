@@ -3,7 +3,7 @@ const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    let tmdb = new Tmdb(apiKey);
 
     // Don't test non-deterministic functions on the CI
     if (!process.env.CI) {

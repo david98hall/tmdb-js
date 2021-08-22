@@ -7,18 +7,18 @@ const externalSources = tmdbUtils.externalSources;
 
 exports.runTest = apiKey => {
 
-    var tmdb = new Tmdb(apiKey);
+    let tmdb = new Tmdb(apiKey);
 
     describe('Find query tests.', () => {
 
-        // TODO [david98hall, 2021-08-14]: Test the othe external sources
+        // TODO [david98hall, 2021-08-14]: Test the other external sources
 
         it('Find movie in external Source: IMDB.', done => {
 
-            var movie = {id: 'tt0074256', title: 'Bugsy Malone'};
+            let movie = {id: 'tt0074256', title: 'Bugsy Malone'};
             tmdb.getFinder(externalSources.IMDB_ID).find(movie.id).then(json => {
             
-                assert.strictEqual(json.movie_results[0].title, movie.title);
+                assert.strictEqual(json["movie_results"][0].title, movie.title);
 
                 setImmediate(done);
             });

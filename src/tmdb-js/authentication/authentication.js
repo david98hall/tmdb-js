@@ -26,7 +26,7 @@ const TmdbApiUser = require('../api/tmdb_api_user').TmdbApiUser;
     * @returns A Promise of a session ID.
     */
    createSession(permissionApp = "chrome") { 
-      return tmdbUtils.createSession(apiKey, permissionApp);
+      return tmdbUtils.createSession(this._apiKey, permissionApp);
    }
 
    /**
@@ -34,7 +34,7 @@ const TmdbApiUser = require('../api/tmdb_api_user').TmdbApiUser;
     * @returns A Promise of a guest session ID.
     */
    createGuestSession() {
-      return tmdbUtils.createGuestSession(apiKey);
+      return tmdbUtils.createGuestSession(this._apiKey);
    }
 
    /**
@@ -43,6 +43,6 @@ const TmdbApiUser = require('../api/tmdb_api_user').TmdbApiUser;
     * @returns A Promise of a boolean value, which will be true if the deletion is successful. 
     */
    deleteSession(sessionId) {
-      return tmdbUtils.deleteSession(apiKey, sessionId);
+      return tmdbUtils.deleteSession(this._apiKey, sessionId);
    }
 }

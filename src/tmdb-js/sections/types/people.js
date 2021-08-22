@@ -16,7 +16,7 @@ exports.Person = class extends Section {
     /**
      * Sets properties.
      * @param {Number} id The id of the person.
-     * @param {PersonSection} personSection The parent PersonSection.
+     * @param {PeopleSection} personSection The parent PersonSection.
      */
     constructor(id, personSection) {
         super(id, personSection);
@@ -92,7 +92,7 @@ exports.Person = class extends Section {
      * Gets the tagged images of this person.
      * @returns A Promise of tagged images of this person.
      */
-    getImages() {
+    getTaggedImages() {
         return this.getChildQueryResult(dataTypes.TAGGED_IMAGES);
     }
 

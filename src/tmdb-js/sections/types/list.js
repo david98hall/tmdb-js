@@ -46,10 +46,9 @@ exports.List = class extends Section {
      * @returns A Promise of a boolean value indicating whether the addition was successful or not.
      */
     async addMovie(movieId, sessionId) {
-        var requestBody = { media_id: movieId };
-        var addItemSection = this.createChild(actionTypes.ADD_ITEM);
-        var successful = await tmdbUtils.post(addItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
-        return successful;
+        let requestBody = { media_id: movieId };
+        let addItemSection = this.createChild(actionTypes.ADD_ITEM);
+        return await tmdbUtils.post(addItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
     }
 
     /**
@@ -59,10 +58,9 @@ exports.List = class extends Section {
      * @returns A Promise of a boolean value indicating whether the removal was successful or not.
      */
     async removeMovie(movieId, sessionId) {
-        var requestBody = { media_id: movieId };
-        var removeItemSection = this.createChild(actionTypes.REMOVE_ITEM);
-        var successful = await tmdbUtils.post(removeItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
-        return successful;
+        let requestBody = { media_id: movieId };
+        let removeItemSection = this.createChild(actionTypes.REMOVE_ITEM);
+        return await tmdbUtils.post(removeItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
     }
 
     /**
@@ -71,11 +69,10 @@ exports.List = class extends Section {
      * @returns A Promise of a boolean value indicating whether the clearing was successful or not.
      */
     async clear(sessionId) {
-        var urlParameters = this._getUrlParameters(sessionId);
+        let urlParameters = this._getUrlParameters(sessionId);
         urlParameters["confirm"] = true;
-        var clearSection = this.createChild(actionTypes.CLEAR);
-        var successful = await tmdbUtils.post(clearSection.toString(), urlParameters);
-        return successful;
+        let clearSection = this.createChild(actionTypes.CLEAR);
+        return await tmdbUtils.post(clearSection.toString(), urlParameters);
     }
 
     /**
@@ -84,8 +81,7 @@ exports.List = class extends Section {
      * @returns A Promise of a boolean value indicating whether the deletion was successful or not.
      */
     async delete(sessionId) {
-        var successful = await tmdbUtils.delete(this.toString(), this._getUrlParameters(sessionId));
-        return successful;
+        return await tmdbUtils.delete(this.toString(), this._getUrlParameters(sessionId));
     }
 
     /**
@@ -136,22 +132,22 @@ exports.ListSection = class extends Section {
      * (null if the creation was not successful).
      */
     async createList(name, description, language = "en-US", sessionId) {
-        
-        var requestBody = {
+
+        const requestBody = {
             "name": name,
             "description": description,
             "language": language
         };
 
-        var urlParameters = {
+        const urlParameters = {
             "api_key": this._apiKey,
             "session_id": sessionId
         };
-        
-        var response = await tmdbUtils.post(this.toString(), urlParameters, requestBody);
+
+        const response = await tmdbUtils.post(this.toString(), urlParameters, requestBody);
 
         if (response && response.success) {
-            return new exports.List(response.list_id, this);
+            return new exports.List(response["list_id"], this);
         }
 
         return null;

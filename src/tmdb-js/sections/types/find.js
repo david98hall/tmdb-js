@@ -34,9 +34,9 @@ exports.FindSection = class extends Section {
      */
     find(externalId) {
 
-        var idChild = this.createChild(externalId);
+        let idChild = this.createChild(externalId);
 
-        var parameters = {
+        let parameters = {
             "api_key": this._apiKey,
             "language": this._language,
             "external_source": this._externalSource
