@@ -6,17 +6,17 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get company data from TMDB.
  */
-exports.Company = class extends Section {
+exports.Company = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the review.
-     * @param {CompanySection} companySection The parent CompanySection.
+     * @param {string} id The id of the review.
+     * @param {exports.CompanySection} companySection The parent CompanySection.
      */
     constructor(id, companySection) {
         super(id, companySection);
@@ -51,7 +51,7 @@ exports.Company = class extends Section {
 /**
  * Can get company data from TMDB.
  */
-exports.CompanySection = class extends Section {
+exports.CompanySection = class extends section.Section {
 
     /**
      * Sets properties.
@@ -64,7 +64,7 @@ exports.CompanySection = class extends Section {
 
     /**
      * Gets the company with the passed id.
-     * @param {Number} id The id of the review to get.
+     * @param {string} id The id of the review to get.
      * @return A Company instance with the passed id.
      */
     getCompany(id) {

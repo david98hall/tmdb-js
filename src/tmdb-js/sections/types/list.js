@@ -7,17 +7,17 @@ const dataTypes = tmdbUtils.dataTypes;
 const actionTypes = tmdbUtils.actionTypes;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get and handle list data on TMDB.
  */
-exports.List = class extends Section {
+exports.List = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the list.
-     * @param {ListSection} listSection The parent ListSection.
+     * @param {string} id The id of the list.
+     * @param {exports.ListSection} listSection The parent ListSection.
      */
     constructor(id, listSection) {
         super(id, listSection);
@@ -100,7 +100,7 @@ exports.List = class extends Section {
 /**
  * Can get data about lists in general from the TMDB API.
  */
-exports.ListSection = class extends Section {
+exports.ListSection = class extends section.Section {
     
     /**
      * Sets properties.
@@ -113,7 +113,7 @@ exports.ListSection = class extends Section {
 
     /**
      * Gets a List instance, based on the passed ID.
-     * @param {Number} id The ID of the list.
+     * @param {string} id The ID of the list.
      * @returns A List instance.
      */
     getList(id) {

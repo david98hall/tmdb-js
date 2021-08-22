@@ -6,17 +6,17 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get account data from TMDB.
  */
-exports.Account = class extends Section {
+exports.Account = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the review.
-     * @param {AccountSection} accountSection The parent AccountSection.
+     * @param {string} id The id of the review.
+     * @param {exports.AccountSection} accountSection The parent AccountSection.
      */
     constructor(id, accountSection) {
         super(id, accountSection);
@@ -239,7 +239,7 @@ exports.Account = class extends Section {
 /**
  * Can get account data from TMDB.
  */
-exports.AccountSection = class extends Section {
+exports.AccountSection = class extends section.Section {
 
     /**
      * Sets properties.
@@ -267,7 +267,7 @@ exports.AccountSection = class extends Section {
     
     /**
      * Gets the account with the passed id.
-     * @param {Number} id The id of the review to get.
+     * @param {string} id The id of the review to get.
      * @return A Account instance with the passed id.
      */
     getAccount(id) {

@@ -6,12 +6,12 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get data about a guest session.
  */
-exports.GuestSession = class extends Section {
+exports.GuestSession = class extends section.Section {
 
     /**
      * Initializes this GuestSession.
@@ -51,7 +51,7 @@ exports.GuestSession = class extends Section {
 /**
  * Can get data about guest sessions from TMDB.
  */
-exports.GuestSessionSection = class extends Section {
+exports.GuestSessionSection = class extends section.Section {
 
     /**
      * Sets properties.

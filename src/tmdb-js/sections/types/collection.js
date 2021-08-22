@@ -6,17 +6,17 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get collection data from TMDB.
  */
-exports.Collection = class extends Section {
+exports.Collection = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the collection.
-     * @param {CollectionSection} collectionSection The parent CollectionSection.
+     * @param {string} id The id of the collection.
+     * @param {exports.CollectionSection} collectionSection The parent CollectionSection.
      */
     constructor(id, collectionSection) {
         super(id, collectionSection);
@@ -51,7 +51,7 @@ exports.Collection = class extends Section {
 /**
  * Can get collection data from TMDB.
  */
-exports.CollectionSection = class extends Section {
+exports.CollectionSection = class extends section.Section {
 
     /**
      * Sets properties.
@@ -64,7 +64,7 @@ exports.CollectionSection = class extends Section {
 
     /**
      * Gets the collection with the passed id.
-     * @param {Number} id The id of the collection to get.
+     * @param {string} id The id of the collection to get.
      */
     getCollection(id) {
         return new exports.Collection(id, this);

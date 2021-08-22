@@ -5,17 +5,17 @@ const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get review data from TMDB.
  */
-exports.Review = class extends Section {
+exports.Review = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the review.
-     * @param {ReviewSection} reviewSection The parent ReviewSection.
+     * @param {string} id The id of the review.
+     * @param {exports.ReviewSection} reviewSection The parent ReviewSection.
      */
     constructor(id, reviewSection) {
         super(id, reviewSection);
@@ -34,7 +34,7 @@ exports.Review = class extends Section {
 /**
  * Can get review data from TMDB.
  */
-exports.ReviewSection = class extends Section {
+exports.ReviewSection = class extends section.Section {
 
     /**
      * Sets properties.
@@ -47,7 +47,7 @@ exports.ReviewSection = class extends Section {
 
     /**
      * Gets the review with the passed id.
-     * @param {Number} id The id of the review to get.
+     * @param {string} id The id of the review to get.
      */
     getReview(id) {
         return new exports.Review(id, this);

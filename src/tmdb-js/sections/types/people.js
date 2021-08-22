@@ -6,17 +6,17 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get person data from TMDB.
  */
-exports.Person = class extends Section {
+exports.Person = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the person.
-     * @param {PeopleSection} personSection The parent PersonSection.
+     * @param {string} id The id of the person.
+     * @param {exports.PeopleSection} personSection The parent PersonSection.
      */
     constructor(id, personSection) {
         super(id, personSection);
@@ -108,7 +108,7 @@ exports.Person = class extends Section {
 /**
  * Can get data about people in general from the TMDB API.
  */
-exports.PeopleSection = class extends Section {
+exports.PeopleSection = class extends section.Section {
     
     /**
      * Sets properties.
@@ -121,7 +121,7 @@ exports.PeopleSection = class extends Section {
 
     /**
      * Gets a Person instance with the passed id.
-     * @param {Number} id The ID of the person.
+     * @param {string} id The ID of the person.
      * @returns A Person instance.
      */
     getPerson(id) {

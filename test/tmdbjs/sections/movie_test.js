@@ -70,7 +70,7 @@ exports.runTest = apiKey => {
                 let sessionId = await tmdbTestUtils.getSessionId();
                 assert.ok(sessionId);
 
-                let movie = tmdb.getMovies().getMovie(16869);
+                let movie = tmdb.getMovies().getMovie("16869");
                 assert.ok(await movie.rate(10, sessionId));
                 assert.ok(await movie.deleteRating(sessionId));
             });

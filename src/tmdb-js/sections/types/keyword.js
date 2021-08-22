@@ -5,17 +5,17 @@ const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get keyword data from TMDB.
  */
-exports.Keyword = class extends Section {
+exports.Keyword = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the keyword.
-     * @param {KeywordSection} keywordSection The parent KeywordSection.
+     * @param {string} id The id of the keyword.
+     * @param {exports.KeywordSection} keywordSection The parent KeywordSection.
      */
     constructor(id, keywordSection) {
         super(id, keywordSection);
@@ -36,7 +36,7 @@ exports.Keyword = class extends Section {
 /**
  * Can get keyword data from TMDB.
  */
-exports.KeywordSection = class extends Section {
+exports.KeywordSection = class extends section.Section {
 
     /**
      * Sets properties.
@@ -49,7 +49,7 @@ exports.KeywordSection = class extends Section {
 
     /**
      * Gets the keyword with the passed id.
-     * @param {Number} id The id of the keyword to get.
+     * @param {string} id The id of the keyword to get.
      */
     getKeyword(id) {
         return new exports.Keyword(id, this);

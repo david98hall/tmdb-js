@@ -6,13 +6,12 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const Section = require('../section').Section;
-const RateableSection = require('../rateable_section').RateableSection;
+const section = require('../section');
 
 /**
  * Can get and handle movie data on TMDB.
  */
-exports.Movie = class extends RateableSection {
+exports.Movie = class extends section.RateableSection {
 
     /**
      * Sets properties.
@@ -179,7 +178,7 @@ exports.Movie = class extends RateableSection {
 /**
  * Can get data about movies in general from the TMDB API.
  */
-exports.MovieSection = class extends Section {
+exports.MovieSection = class extends section.Section {
     
     /**
      * Sets properties.
@@ -192,7 +191,7 @@ exports.MovieSection = class extends Section {
 
     /**
      * Gets a Movie instance, based on the passed ID.
-     * @param {Number} id The ID of the movie.
+     * @param {string} id The ID of the movie.
      * @returns A Movie instance.
      */
     getMovie(id) {

@@ -6,18 +6,17 @@ const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
 
 // Sections
-const Section = require('../section').Section;
-const RateableSection = require('../rateable_section').RateableSection;
+const section = require('../section');
 
-exports.TvShowEpisode = class extends RateableSection {
+exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
      * Sets properties.
-     * @param {Number} id The episode number.
-     * @param {TvShowSeason} tvShowSeason The parent TV show season.
+     * @param {Number} episodeNumber The episode number.
+     * @param {exports.TvShowSeason} tvShowSeason The parent TV show season.
      */
-    constructor(id, tvShowSeason) {
-        super(id.toString(), new Section(sections.TV_SHOW_EPISODE, tvShowSeason));
+    constructor(episodeNumber, tvShowSeason) {
+        super(episodeNumber.toString(), new section.Section(sections.TV_SHOW_EPISODE, tvShowSeason));
     }
 
     getDetails(...appendToResponse) {
@@ -64,15 +63,15 @@ exports.TvShowEpisode = class extends RateableSection {
 
 }
 
-exports.TvShowSeason = class extends Section {
+exports.TvShowSeason = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The season number.
-     * @param {TvShow} tvShow The parent TV show.
+     * @param {Number} seasonNumber The season number.
+     * @param {exports.TvShow} tvShow The parent TV show.
      */
-    constructor(id, tvShow) {
-        super(id.toString(), new Section(sections.TV_SHOW_SEASON, tvShow));
+    constructor(seasonNumber, tvShow) {
+        super(seasonNumber.toString(), new section.Section(sections.TV_SHOW_SEASON, tvShow));
     }
 
     /**
@@ -151,12 +150,12 @@ exports.TvShowSeason = class extends Section {
 /**
  * Can get and handle TV show data on TMDB.
  */
-exports.TvShow = class extends RateableSection {
+exports.TvShow = class extends section.RateableSection {
 
     /**
      * Sets properties.
-     * @param {Number} id The ID of the TV show.
-     * @param {TvShowSection} tvShowSection The parent TV show section.
+     * @param {string} id The ID of the TV show.
+     * @param {exports.TvShowSection} tvShowSection The parent TV show section.
      */
     constructor(id, tvShowSection) {
         super(id, tvShowSection);
@@ -363,7 +362,7 @@ exports.TvShow = class extends RateableSection {
 /**
  * Can get data about TV shows in general from the TMDB API.
  */
-exports.TvShowSection = class extends Section {
+exports.TvShowSection = class extends section.Section {
     
     /**
      * Sets properties.
@@ -376,7 +375,7 @@ exports.TvShowSection = class extends Section {
 
     /**
      * Gets a TvShow instance, based on the passed ID.
-     * @param {Number} id The TV show ID.
+     * @param {string} id The TV show ID.
      * @returns A TvShow instance.
      */
     getTvShow(id) {

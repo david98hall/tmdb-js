@@ -5,17 +5,17 @@ const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 
 // Sections
-const Section = require('../section').Section;
+const section = require('../section');
 
 /**
  * Can get credit data from TMDB.
  */
-exports.Credit = class extends Section {
+exports.Credit = class extends section.Section {
 
     /**
      * Sets properties.
-     * @param {Number} id The id of the credit.
-     * @param {CreditSection} creditSection The parent CreditSection.
+     * @param {string} id The id of the credit.
+     * @param {exports.CreditSection} creditSection The parent CreditSection.
      */
     constructor(id, creditSection) {
         super(id, creditSection);
@@ -34,7 +34,7 @@ exports.Credit = class extends Section {
 /**
  * Can get credit data from TMDB.
  */
-exports.CreditSection = class extends Section {
+exports.CreditSection = class extends section.Section {
 
     /**
      * Sets properties.

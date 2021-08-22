@@ -34,7 +34,7 @@ exports.runTest = apiKey => {
                 assert.ok(sessionId);
 
                 const page = 1;
-                let account = tmdb.getAccounts().getAccount(9370799);
+                let account = tmdb.getAccounts().getAccount("9370799");
                 let favoriteMovies = await account.getFavoriteMovies(sessionId, page);
                 assert.ok(favoriteMovies);
                 assert.strictEqual(page, favoriteMovies.page);
@@ -49,7 +49,7 @@ exports.runTest = apiKey => {
 
                 assert.ok(sessionId);
 
-                let account = tmdb.getAccounts().getAccount(9370799);
+                let account = tmdb.getAccounts().getAccount("9370799");
                 const movieId = 161;
 
                 let addFavoriteSuccessful = await account.setMovieFavoriteStatus(sessionId, movieId, true);
@@ -65,7 +65,7 @@ exports.runTest = apiKey => {
 
                 assert.ok(sessionId);
 
-                let account = tmdb.getAccounts().getAccount(9370799);
+                let account = tmdb.getAccounts().getAccount("9370799");
                 const tvShowId = 63174;
 
                 let addToWatchlistSuccessful = await account.setTvShowWatchlistStatus(sessionId, tvShowId, true);

@@ -42,5 +42,5 @@ exports.getSessionId = async () => {
  */
 getCredentialsJSON = async () => {
     let credentials = await fs.readFile('././credentials.json');
-    return JSON.parse(credentials);
+    return JSON.parse(credentials.toString());
 }

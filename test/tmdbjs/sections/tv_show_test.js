@@ -80,7 +80,7 @@ exports.runTest = apiKey => {
                 let sessionId = await tmdbTestUtils.getSessionId();
                 assert.ok(sessionId);
 
-                let tvShow = tmdb.getTvShows().getTvShow(1399);
+                let tvShow = tmdb.getTvShows().getTvShow("1399");
                 assert.ok(await tvShow.rate(10, sessionId));
                 assert.ok(await tvShow.deleteRating(sessionId));
             });
@@ -89,7 +89,7 @@ exports.runTest = apiKey => {
                 let sessionId = await tmdbTestUtils.getSessionId();
                 assert.ok(sessionId);
 
-                let tvShowEpisode = tmdb.getTvShows().getTvShow(1399).getEpisode(1, 1);
+                let tvShowEpisode = tmdb.getTvShows().getTvShow("1399").getEpisode(1, 1);
                 assert.ok(await tvShowEpisode.rate(10, sessionId));
                 assert.ok(await tvShowEpisode.deleteRating(sessionId));
             });
