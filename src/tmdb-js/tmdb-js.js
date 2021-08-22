@@ -6,6 +6,7 @@ const CollectionSection = require('./sections/types/collection').CollectionSecti
 const CompanySection = require('./sections/types/company').CompanySection;
 const ConfigurationSection = require('./sections/types/configuration').ConfigurationSection;
 const CreditSection = require('./sections/types/credit').CreditSection;
+const DiscoverSection = require('./sections/types/discover').DiscoverSection;
 const FindSection = require('./sections/types/find').FindSection;
 const GenreSection = require('./sections/types/genre').GenreSection;
 const GuestSessionSection = require('./sections/types/guest_session').GuestSessionSection;
@@ -80,6 +81,14 @@ exports.Tmdb = class extends TmdbQuerier {
      */
     getCredits() {
         return new CreditSection(this._apiKey, this._language);
+    }
+
+    /**
+     * Gets a DiscoverSection instance which can
+     * be used to discover media data on TMDB.
+     */
+    getDiscoverer() {
+        return new DiscoverSection(this._apiKey, this._language);
     }
 
     /**

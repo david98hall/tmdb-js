@@ -8,6 +8,7 @@ const tests = [
     require('./sections/company_test'),
     require('./sections/configuration_test'),
     require('./sections/credit_test'),
+    require('./sections/discover_test'),
     require('./sections/find_test'),
     require('./sections/genre_test'),
     require('./sections/guest_session_test'),

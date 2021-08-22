@@ -326,7 +326,7 @@ function searchPage(url, searchTerm, apiKey,
     parameters = {
         "api_key": apiKey,
         "language": language,
-        "query": encodeURI(searchTerm),
+        "query": searchTerm,
         "page": page,
         "include_adult": includeAdult
     };

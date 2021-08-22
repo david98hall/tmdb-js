@@ -38,7 +38,10 @@ exports.runTest = apiKey => {
 
                 assert.ok(await tmdbUtils.deleteSession(apiKey, sessionId));
             })
+        });
 
+        describe("Account SET tests", () => {
+            
             xit('Should mark a movie as a favorite and then remove the marking.', async () => {
 
                 var sessionId = await tmdbUtils.createSession(apiKey);
@@ -72,7 +75,6 @@ exports.runTest = apiKey => {
 
                 assert.ok(await tmdbUtils.deleteSession(apiKey, sessionId));
             })
-
         });
     }
 }

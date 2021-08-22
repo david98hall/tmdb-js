@@ -36,6 +36,10 @@ exports.runTest = apiKey => {
                 .searchMovies("Spider-Man")
                 .then(assertSearchResultPage);
 
+            tmdb.getSearcher()
+                .searchMovies("Jak & Daxter")
+                .then(assertSearchResultPage);
+
             setImmediate(done);
         });
 

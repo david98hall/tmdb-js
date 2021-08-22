@@ -42,7 +42,9 @@ exports.Account = class extends Section {
      * 
      * @param {string} sessionId The session ID.
      * @param {Number} page The page to retrieve data from.
-     * @param {string} sortBy The sorting type to use (see tmdb_utils.sortingTypes).
+     * @param {string} sortBy The sorting type to use
+     * (valid values: tmdb_utils.sortingTypes.CREATED_AT_ASC
+     * and tmdb_utils.sortingTypes.CREATED_AT_DESC).
      * 
      * @returns A Promise of favorite movies.
      */
