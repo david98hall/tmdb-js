@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Review</title>
+  <title> tmdb-js/sections/types/discover.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,358 +75,269 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>Review</h1>
+                    <p>Source</p>
+                    <h1>tmdb-js/sections/types/discover.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
-    
-        <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a>.</span>Review<span class="signature">(id, reviewSection)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description">Can get review data from TMDB.</div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="Review">
-        <a class="href-link" href="#Review">#</a>
-        
-        <span class="code-name">
-            
-                new Review<span class="signature">(id, reviewSection)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Sets properties.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>id</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">Number</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">The id of the review.</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>reviewSection</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">ReviewSection</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">The parent ReviewSection.</td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="tmdb-js_sections_types_review.js.html" class="button">View Source</a>
-            <span>
-                <a href="tmdb-js_sections_types_review.js.html">tmdb-js/sections/types/review.js</a>, <a href="tmdb-js_sections_types_review.js.html#line20">line 20</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class='vertical-section'>
-            <h1>Methods</h1>
-            <div class="members">
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="getDetails">
-        <a class="href-link" href="#getDetails">#</a>
-        
-        <span class="code-name">
-            
-                getDetails<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Gets the review details based on the passed id.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**@module tmdb-js/sections/types */
 
-    
-
-    
+// TMDB utilities
+const tmdbUtils = require('../../../utils/tmdb_utils');
+const sections = tmdbUtils.sections;
 
-    
-
-    
-    
+// Sections
+const Section = require('../section').Section;
 
-    
+class DiscoverSettings {
 
-    
+    _parameters = {};
 
-    
-        <p class="tag-source">
-            <a href="tmdb-js_sections_types_review.js.html" class="button">View Source</a>
-            <span>
-                <a href="tmdb-js_sections_types_review.js.html">tmdb-js/sections/types/review.js</a>, <a href="tmdb-js_sections_types_review.js.html#line28">line 28</a>
-            </span>
-        </p>
-    
-</dl>
+    getAllParameters() {
+        var parameters = {}
+        Object.assign(parameters, this._parameters);
+        return parameters;
+    }
 
+    setSortBy(sortBy) {
+        this._parameters["sort_by"] = sortBy;
+    }
 
+    setPage(page) {
+        this._parameters["page"] = page;
+    }
 
+    setVoteCountGte(limit) {
+        this._parameters["vote_count.gte"] = limit;
+    }
 
+    setVoteAverageGte(limit) {
+        this._parameters["vote_average.gte"] = limit;
+    }
 
+    setWithGenres(...genreIds) {
+        this._setWithParameter("with_genres", genreIds);
+    }
 
+    setWithoutGenres(...genreIds) {
+        this._setWithParameter("without_genres", genreIds);
+    }
 
+    setWithRuntimeGte(limit) {
+        this._parameters["with_runtime.gte"] = limit;
+    }
 
+    setWithRuntimeLte(limit) {
+        this._parameters["with_runtime.lte"] = limit;
+    }
 
+    setWithKeywords(...keywords) {
+        this._setWithParameter("with_keywords", keywords);
+    }
 
+    setWithoutKeywords(...keywords) {
+        this._setWithParameter("without_keywords", keywords);
+    }
 
+    setWithOriginalLanguage(withOriginalLanguage) {
+        this._parameters["with_original_language"] = withOriginalLanguage;
+    }
 
+    setWatchRegion(watchRegion) {
+        this._parameters["watch_region"] = watchRegion;
+    }
 
+    setWithCompanies(...companyIds) {
+        this._setWithParameter("with_companies", companyIds);
+    }
 
+    setWithWatchProviders(...providerIds) {
+        this._setWithParameter("with_watch_providers", providerIds);
+    }
 
+    setWithWatchMonetizationTypes(watchMonetizationTypes) {
+        this._parameters["with_watch_monetization_types"] = watchMonetizationTypes;
+    }
 
+    _setWithParameter(withType, ...elements) {
+        this._parameters[withType] = elements.join(",");
+    }
+}
 
+exports.DiscoverMovieSettings = class extends DiscoverSettings {
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
+    setRegion(region) {
+        this._parameters["region"] = region;
+    }
 
-<div class="columns">
-    
-    <div class='param-desc column is-7'>A Promise of review details.</div>
-    
-    
-</div>
+    setCertificationCountry(country) {
+        this._parameters["certification_country"] = country;
+    }
 
-                
-        </div>
-    </div>
+    setCertification(certification) {
+        this._parameters["certification"] = certification;
+    }
 
+    setCertificationLte(limit) {
+        this._parameters["certification.lte"] = limit;
+    }
 
+    setCertificationGte(limit) {
+        this._parameters["certification.gte"] = limit;
+    }
 
+    setIncludeAdult(includeAdult) {
+        this._parameters["include_adult"] = includeAdult;
+    }
 
-</div>
-            
-            </div>
-        </div>
-    
+    setIncludeVideo(includeVideo) {
+        this._parameters["include_video"] = includeVideo;
+    }
 
-    
+    setPrimaryReleaseYear(year) {
+        this._parameters["primary_release_year"] = year;
+    }
 
-    
-</article>
+    setPrimaryReleaseYearLte(limit) {
+        this._parameters["primary_release_year.lte"] = limit;
+    }
 
-</section>
+    setPrimaryReleaseYearGte(limit) {
+        this._parameters["primary_release_year.gte"] = limit;
+    }
+
+    setReleaseDateGte(limit) {
+        this._parameters["release_date.gte"] = limit;
+    }
+
+    setReleaseDateLte(limit) {
+        this._parameters["release_date.lte"] = limit;
+    }
+
+    setWithReleaseType(withReleaseType) {
+        this._parameters["with_release_type"] = withReleaseType;
+    }
+
+    setYear(year) {
+        this._parameters["year"] = year;
+    }
+
+    setVoteCountLte(limit) {
+        this._parameters["vote_count.lte"] = limit;
+    }
+
+    setVoteAverageLte(limit) {
+        this._parameters["vote_average.lte"] = limit;
+    }
+
+    setWithCast(...personIds) {
+        this._setWithParameter("with_cast", personIds);
+    }
+
+    setWithCrew(...personIds) {
+        this._setWithParameter("with_crew", personIds);
+    }
+
+    setWithPeople(...personIds) {
+        this._setWithParameter("with_people", personIds);
+    }
+}
+
+exports.DiscoverTvShowSettings = class extends DiscoverSettings {
+
+    setAirDateGte(limit) {
+        this._parameters["air_date.gte"] = limit;
+    }
+
+    setAirDateLte(limit) {
+        this._parameters["air_date.lte"] = limit;
+    }
+
+    setFirstAirDateGte(limit) {
+        this._parameters["first_air_date.gte"] = limit;
+    }
+
+    setFirstAirDateLte(limit) {
+        this._parameters["first_air_date.lte"] = limit;
+    }
+
+    setFirstAirDateYear(year) {
+        this._parameters["first_air_date_year"] = year;
+    }
+
+    setTimezone(timezone) {
+        this._parameters["timezone"] = timezone;
+    }
+
+    setWithNetworks(...networkIds) {
+        this._setWithParameter("with_networks", networkIds);
+    }
+
+    setIncludeNullFirstAirDates(include) {
+        this._parameters["include_null_first_air_dates"] = include;
+    }
+
+
+
+    setScreenedTheatrically(screenedTheatrically) {
+        this._parameters["screened_theatrically"] = screenedTheatrically;
+    }
+}
+
+exports.DiscoverSection = class extends Section {
+
+    /**
+     * Sets properties.
+     * @param {string} apiKey The TMDB API key.
+     * @param {string} language The language of queries, the default is "en-US".
+     */
+    constructor(apiKey, language = "en-US") {
+        super(sections.DISCOVER, undefined, apiKey, language);
+    }
+
+    /**
+     * Discovers movie data based on the passed settings.
+     * @param {exports.DiscoverMovieSettings} settings The discover settings.
+     * @return A Promise of discovered movie data.
+     */
+    discoverMovies(settings) {
+        var urlParameters = this.__buildUrlParameters(settings);
+        return this.createChild(sections.MOVIE)
+                   .getQueryResult(urlParameters);
+    }
+
+    /**
+     * Discovers TV show data based on the passed settings.
+     * @param {exports.DiscoverTvShowSettings} settings The discover settings.
+     * @return A Promise of discovered TV show data.
+     */
+    discoverTvShows(settings) {
+        var urlParameters = this.__buildUrlParameters(settings);
+        return this.createChild(sections.TV_SHOW)
+                   .getQueryResult(urlParameters);
+    }
+
+    __buildUrlParameters(discoverSettings) {
+
+        if (!discoverSettings) {
+            discoverSettings = new DiscoverSettings();
+        }
+
+        return {
+            "api_key": this._apiKey,
+            "language": this._language,
+            ...discoverSettings.getAllParameters()
+        };
+    }
+
+}</code></pre>
+        </article>
+    </section>
 
 
 
