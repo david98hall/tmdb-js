@@ -24,7 +24,7 @@ const TvShowSection = require('./sections/types/tv_show').TvShowSection;
 /**
  * Can handle and get TMDB data.
  */
-exports.Tmdb = class extends TmdbQuerier {
+exports.TmdbClient = class extends TmdbQuerier {
 
     /**
      * Sets properties.

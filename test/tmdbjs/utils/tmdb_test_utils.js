@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
+const Tmdb = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
 
 /**
  * Instantiates a TMDb object with an API key.
