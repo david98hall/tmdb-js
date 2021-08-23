@@ -27,8 +27,7 @@ exports.runTest = (apiKey, sessionId) => {
                 // Create a new list
                 let list = await tmdb.getLists()
                     .createList(listObj.name, listObj.description, listObj.language, sessionId);
-                
-                assert.ok(list);
+                assert.ok(list); // TODO [david98hall, 2021-08-23]: Fix the error that occurs here
 
                 // Assert that the list details are as expected
                 let listDetails = await list.getDetails();
@@ -49,7 +48,7 @@ exports.runTest = (apiKey, sessionId) => {
                 // Create a new list
                 let list = await tmdb.getLists()
                     .createList(listObj.name, listObj.description, listObj.language, sessionId);
-                assert.ok(list);
+                assert.ok(list); // TODO [david98hall, 2021-08-23]: Fix the error that occurs here
                     
                 // Add a movie to the list and then remove it
                 const movieId = 18;
