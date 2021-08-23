@@ -23,7 +23,7 @@ Here is a simple example of how to use this wrapper:
 ```javascript
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 
-var tmdb = new Tmdb(apiKey);
+var tmdb = new TmdbClient(apiKey);
 
 // Get movie data example
 var oceansElevenMovie = tmdb.getMovies().getMovie(161);
