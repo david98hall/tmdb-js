@@ -21,7 +21,7 @@ npm i tmdb-js
 #### Usage
 Here is a simple example of how to use this wrapper:
 ```javascript
-const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
+const TmdbClient = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
 
 var tmdb = new TmdbClient(apiKey);
 
