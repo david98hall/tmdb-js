@@ -71,7 +71,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of movie changes.
      */
     getChanges() {
-        let childSection = new Section(dataTypes.CHANGES, this);
+        let childSection = new section.Section(dataTypes.CHANGES, this);
         return childSection.getQueryResult();
     }
         
@@ -89,7 +89,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of external IDs.
      */
     getExternalIds() { 
-        let childSection = new Section(dataTypes.EXTERNAL_IDS, this);
+        let childSection = new section.Section(dataTypes.EXTERNAL_IDS, this);
         return childSection.getQueryResult();
     }
 
@@ -98,7 +98,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of movie images.
      */
     getImages() {
-        let childSection = new Section(dataTypes.IMAGES, this);
+        let childSection = new section.Section(dataTypes.IMAGES, this);
         return childSection.getQueryResult();
     }
 
@@ -107,7 +107,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of movie keywords.
      */
     getKeywords() {
-        let childSection = new Section(dataTypes.KEYWORDS, this);
+        let childSection = new section.Section(dataTypes.KEYWORDS, this);
         return childSection.getQueryResult();
     }
 
@@ -116,7 +116,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of movie release dates.
      */
     getReleaseDates() {
-        let childSection = new Section(dataTypes.RELEASE_DATES, this);
+        let childSection = new section.Section(dataTypes.RELEASE_DATES, this);
         return childSection.getQueryResult();
     }
 
@@ -125,7 +125,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of movie videos.
      */
     getVideos() {
-        let childSection = new Section(dataTypes.VIDEOS, this);
+        let childSection = new section.Section(dataTypes.VIDEOS, this);
         return childSection.getQueryResult();
     }
 
@@ -134,7 +134,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of movie translations.
      */
     getTranslations() {
-        let childSection = new Section(dataTypes.TRANSLATIONS, this);
+        let childSection = new section.Section(dataTypes.TRANSLATIONS, this);
         return childSection.getQueryResult();
     }
 
@@ -143,7 +143,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of recommendations.
      */
     getRecommendations() {
-        let childSection = new Section(dataTypes.RECOMMENDATIONS, this);
+        let childSection = new section.Section(dataTypes.RECOMMENDATIONS, this);
         return childSection.getQueryResult();
     }
 
@@ -152,7 +152,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of similar movies.
      */
     getSimilarMovies() {
-        let childSection = new Section(dataTypes.SIMILAR_MOVIES, this);
+        let childSection = new section.Section(dataTypes.SIMILAR_MOVIES, this);
         return childSection.getQueryResult();
     }
 
@@ -161,7 +161,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of movie reviews.
      */
     getReviews() {
-        let childSection = new Section(dataTypes.REVIEWS, this);
+        let childSection = new section.Section(dataTypes.REVIEWS, this);
         return childSection.getQueryResult();
     }
 
@@ -170,7 +170,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of lists.
      */
     getLists() {
-        let childSection = new Section(dataTypes.LISTS, this);
+        let childSection = new section.Section(dataTypes.LISTS, this);
         return childSection.getQueryResult();
     }
 }
@@ -202,7 +202,7 @@ exports.MovieSection = class extends section.Section {
      * Gets the latest movies.
      */
     getLatest() {
-        let childSection = new Section(dataTypes.LATEST, this);
+        let childSection = new section.Section(dataTypes.LATEST, this);
         return childSection.getQueryResult();
     }
 
@@ -210,7 +210,7 @@ exports.MovieSection = class extends section.Section {
      * Gets a list of movies currently playing in theatres.
      */
     getNowPlaying() {
-        let childSection = new Section(dataTypes.NOW_PLAYING, this);
+        let childSection = new section.Section(dataTypes.NOW_PLAYING, this);
         return childSection.getQueryResult();
     }
 
@@ -218,7 +218,7 @@ exports.MovieSection = class extends section.Section {
      * Gets popular movies.
      */
     getPopular() {
-        let childSection = new Section(dataTypes.POPULAR, this);
+        let childSection = new section.Section(dataTypes.POPULAR, this);
         return childSection.getQueryResult();
     }
 
@@ -226,7 +226,7 @@ exports.MovieSection = class extends section.Section {
      * Gets top rated movies.
      */
     getTopRated() {
-        let childSection = new Section(dataTypes.TOP_RATED, this);
+        let childSection = new section.Section(dataTypes.TOP_RATED, this);
         return childSection.getQueryResult();
     }
 
@@ -234,7 +234,7 @@ exports.MovieSection = class extends section.Section {
      * Gets upcoming movies.
      */
     getUpcoming() {
-        let childSection = new Section(dataTypes.UPCOMING, this);
+        let childSection = new section.Section(dataTypes.UPCOMING, this);
         return childSection.getQueryResult();
     }
 

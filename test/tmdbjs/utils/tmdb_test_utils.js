@@ -24,12 +24,16 @@ exports.getApiKey = async () => {
     }
 }
 
+/**
+ * Gets login information.
+ * @returns {Promise<{password: string, username: string}>}
+ */
 exports.getLoginInformation = async () => {
     let credentials = await getCredentialsJSON();
     return {
         "username": credentials.username,
         "password": credentials.password
-    }
+    };
 };
 
 exports.getSessionId = async () => {

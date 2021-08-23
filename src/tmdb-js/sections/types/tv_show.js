@@ -186,7 +186,7 @@ exports.TvShow = class extends section.RateableSection {
      * @param {string} guestSessionId The guest session ID.
      */
     getAccountStates(sessionId = undefined, guestSessionId = undefined) {
-        let childSection = new Section(dataTypes.ACCOUNT_STATES, this);
+        let childSection = new section.Section(dataTypes.ACCOUNT_STATES, this);
 
         let urlParameters = { ...this._getBaseUrlParameters() };
         tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId)
@@ -198,7 +198,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the alternative titles of the TV show in question.
      */
     getAlternativeTitles() {
-        let childSection = new Section(dataTypes.ALTERNATIVE_TITLES, this);
+        let childSection = new section.Section(dataTypes.ALTERNATIVE_TITLES, this);
         return childSection.getQueryResult();
     }
 
@@ -206,7 +206,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the changes of the TV show in question.
      */
     getChanges() {
-        let childSection = new Section(dataTypes.CHANGES, this);
+        let childSection = new section.Section(dataTypes.CHANGES, this);
         return childSection.getQueryResult();
     }
 
@@ -214,7 +214,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the content ratings of the TV show in question.
      */
     getContentRatings() {
-        let childSection = new Section(dataTypes.CONTENT_RATINGS, this);
+        let childSection = new section.Section(dataTypes.CONTENT_RATINGS, this);
         return childSection.getQueryResult();
     }
 
@@ -222,7 +222,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the credits of the TV show in question.
      */
     getCredits() {
-        let childSection = new Section(dataTypes.CREDITS, this);
+        let childSection = new section.Section(dataTypes.CREDITS, this);
         return childSection.getQueryResult();
     }
 
@@ -230,7 +230,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the episode groups of the TV show in question.
      */
     getEpisodeGroups() {
-        let childSection = new Section(dataTypes.EPISODE_GROUPS, this);
+        let childSection = new section.Section(dataTypes.EPISODE_GROUPS, this);
         return childSection.getQueryResult();
     }
 
@@ -238,7 +238,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the external IDs of the TV show in question.
      */
     getExternalIds() {
-        let childSection = new Section(dataTypes.EXTERNAL_IDS, this);
+        let childSection = new section.Section(dataTypes.EXTERNAL_IDS, this);
         return childSection.getQueryResult();
     }
 
@@ -246,7 +246,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the images of the TV show in question.
      */
     getImages() {
-        let childSection = new Section(dataTypes.IMAGES, this);
+        let childSection = new section.Section(dataTypes.IMAGES, this);
         return childSection.getQueryResult();
     }
 
@@ -254,7 +254,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the keywords of the TV show in question.
      */
     getKeywords() {
-        let childSection = new Section(dataTypes.KEYWORDS, this);
+        let childSection = new section.Section(dataTypes.KEYWORDS, this);
         return childSection.getQueryResult();
     }
 
@@ -262,7 +262,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the recommendations based on the TV show in question.
      */
     getRecommendations() {
-        let childSection = new Section(dataTypes.RECOMMENDATIONS, this);
+        let childSection = new section.Section(dataTypes.RECOMMENDATIONS, this);
         return childSection.getQueryResult();
     }
 
@@ -270,7 +270,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the reviews of the TV show in question.
      */
     getReviews() {
-        let childSection = new Section(dataTypes.REVIEWS, this);
+        let childSection = new section.Section(dataTypes.REVIEWS, this);
         return childSection.getQueryResult();
     }
 
@@ -278,7 +278,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the a list of seasons or episodes of the TV show in question that were screened theatrically.
      */
     getScreenedTheatrically() {
-        let childSection = new Section(dataTypes.SCREENED_THEATRICALLY, this);
+        let childSection = new section.Section(dataTypes.SCREENED_THEATRICALLY, this);
         return childSection.getQueryResult();
     }
 
@@ -286,7 +286,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the similar TV shows to the TV show in question.
      */
     getSimilarTvShows() {
-        let childSection = new Section(dataTypes.SIMILAR_MOVIES, this);
+        let childSection = new section.Section(dataTypes.SIMILAR_MOVIES, this);
         return childSection.getQueryResult();
     }
 
@@ -294,7 +294,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the translations of the TV show in question.
      */ 
     getTranslations() {
-        let childSection = new Section(dataTypes.TRANSLATIONS, this);
+        let childSection = new section.Section(dataTypes.TRANSLATIONS, this);
         return childSection.getQueryResult();
     }
 
@@ -302,7 +302,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the videos of the TV show in question.
      */
     getVideos() {
-        let childSection = new Section(dataTypes.VIDEOS, this);
+        let childSection = new section.Section(dataTypes.VIDEOS, this);
         return childSection.getQueryResult();
     }
 
@@ -386,7 +386,7 @@ exports.TvShowSection = class extends section.Section {
      * Gets the latest TV shows.
      */
     getLatest() {
-        let childSection = new Section(dataTypes.LATEST, this);
+        let childSection = new section.Section(dataTypes.LATEST, this);
         return childSection.getQueryResult();
     }
 
@@ -394,7 +394,7 @@ exports.TvShowSection = class extends section.Section {
      * Gets TV shows airing today.
      */
     getTvAiringToday() {
-        let childSection = new Section(dataTypes.TV_AIRING_TODAY, this);
+        let childSection = new section.Section(dataTypes.TV_AIRING_TODAY, this);
         return childSection.getQueryResult();
     }
 
@@ -402,7 +402,7 @@ exports.TvShowSection = class extends section.Section {
      * Gets TV shows currently on the air.
      */
     getTvOnTheAir() {
-        let childSection = new Section(dataTypes.TV_ON_THE_AIR, this);
+        let childSection = new section.Section(dataTypes.TV_ON_THE_AIR, this);
         return childSection.getQueryResult();
     }
 
@@ -410,7 +410,7 @@ exports.TvShowSection = class extends section.Section {
      * Gets popular TV shows.
      */
     getPopular() {
-        let childSection = new Section(dataTypes.POPULAR, this);
+        let childSection = new section.Section(dataTypes.POPULAR, this);
         return childSection.getQueryResult();
     }
 
@@ -418,7 +418,7 @@ exports.TvShowSection = class extends section.Section {
      * Gets top rated TV shows.
      */
     getTopRated() {
-        let childSection = new Section(dataTypes.TOP_RATED, this);
+        let childSection = new section.Section(dataTypes.TOP_RATED, this);
         return childSection.getQueryResult();
     }
 
@@ -427,9 +427,9 @@ exports.TvShowSection = class extends section.Section {
      * @param {string} episodeGroupId The ID of the episode group.
      */
     getEpisodeGroup(episodeGroupId) {
-        let episodeGroupSection = new Section(
+        let episodeGroupSection = new section.Section(
             episodeGroupId,
-            new Section(dataTypes.EPISODE_GROUPS, this));
+            new section.Section(dataTypes.EPISODE_GROUPS, this));
         return episodeGroupSection.getQueryResult();
     }
 
