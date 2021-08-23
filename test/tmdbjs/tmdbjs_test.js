@@ -33,12 +33,16 @@ exports.runTest = () => {
             let apiKey = await getApiKey();
             assert.ok(apiKey);
 
-            let sessionId = await tmdbUtils.createSession(apiKey);
-            assert.ok(sessionId);
+            // Get a session id if possible
+            let sessionId = undefined;
+            if (!process.env.CI) {
+                sessionId = await tmdbUtils.createSession(apiKey);
+                assert.ok(sessionId);
 
-            after(async () => {
-                await tmdbUtils.deleteSession(apiKey, sessionId);
-            });
+                after(async () => {
+                    await tmdbUtils.deleteSession(apiKey, sessionId);
+                });
+            }
 
             tests.forEach(test => {
                 test.runTest(apiKey, sessionId);
