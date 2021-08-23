@@ -38,7 +38,7 @@ exports.httpRequest = (url, method, contentType = undefined, requestBody = undef
             reject(new Error(`There was an error when doing a ${method} request!`));
         };
         xhr.onload = function() {
-            if (xhr.readyState == 4) {
+            if (xhr.readyState === 4) {
                 resolve(xhr.responseText);
             } else {
                 rejectFun();

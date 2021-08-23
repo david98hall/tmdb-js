@@ -280,7 +280,7 @@ async function searchPages(url, searchTerm, apiKey, startPage,
                                          additionalInfo);
 
         // The page count is 1, no more pages should thus be searched
-        if (pageCount == 1) 
+        if (pageCount === 1)
             return [firstPage];
 
         // Update the page count, in case it exceeds the total number of pages

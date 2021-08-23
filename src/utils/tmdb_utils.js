@@ -215,7 +215,7 @@ exports.delete = async function(urlPath, urlParameters) {
         JSON.parse,
         httpUtils.jsonContentType);
 
-    return response && response["status_code"] == 13;
+    return response && response["status_code"] === 13;
 };
 
 /**
