@@ -11,6 +11,7 @@ exports.getApiReadyTmdb = async function() {
 
 /**
  * Gets the API key from the file system.
+ * @returns {Promise<string>} A Promise of an API key as a string.
  */
 exports.getApiKey = async () => {
     if (process.env.TMDB_API_V3_KEY) {

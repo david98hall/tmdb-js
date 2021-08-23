@@ -1,9 +1,7 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
-const tmdbTestUtils = require('../utils/tmdb_test_utils');
-const tmdbUtils = require("../../../src/utils/tmdb_utils");
 
-exports.runTest = apiKey => {
+exports.runTest = (apiKey, sessionId) => {
 
     let tmdb = new Tmdb(apiKey);
 
@@ -65,25 +63,15 @@ exports.runTest = apiKey => {
     // Don't test non-deterministic functions on the CI
     if (!process.env.CI) {
 
-        let sessionId = null;
-        before(async () => {
-            sessionId = await tmdbUtils.createSession(apiKey);
-        });
-
         describe('Movie session query tests', () => {
         
             it('Should rate and unrate a movie', async () => {
-                assert.ok(sessionId);
 
                 let movie = tmdb.getMovies().getMovie("16869");
                 assert.ok(await movie.rate(10, sessionId));
                 assert.ok(await movie.deleteRating(sessionId));
             });
     
-        });
-
-        after(async () => {
-            await tmdbUtils.deleteSession(apiKey, sessionId);
         });
     }
 }

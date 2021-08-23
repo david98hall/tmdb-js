@@ -1,8 +1,7 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
-const tmdbUtils = require('../../../src/utils/tmdb_utils');
 
-exports.runTest = apiKey => {
+exports.runTest = (apiKey, sessionId) => {
 
     let tmdb = new Tmdb(apiKey);
 
@@ -15,16 +14,9 @@ exports.runTest = apiKey => {
     // Don't test non-deterministic functions on the CI
     if (!process.env.CI) {
 
-        let sessionId = null;
-        before(async () => {
-            sessionId = await tmdbUtils.createSession(apiKey);
-        });
-
         describe('List session query tests', () => {
 
             it('Create and delete a list.', async () => {
-
-                assert.ok(sessionId);
 
                 let listObj = {
                     name: `list ${(+new Date).toString(36)}`,
@@ -43,12 +35,10 @@ exports.runTest = apiKey => {
                 assert.strictEqual(listDetails.name, listObj.name);
 
                 // Delete the created list
-                assert.ok(await list.delete(sessionId)); // TODO [david98hall, 2021-08-22]: Failing due to external problem?
+                assert.ok(await list.delete(sessionId));
             });
 
             it('Should add a movie to a list and then remove it.', async () => {
-
-                assert.ok(sessionId);
 
                 let listObj = {
                     name: `list ${(+new Date).toString(36)}`,
@@ -67,13 +57,8 @@ exports.runTest = apiKey => {
                 assert.ok(await list.removeMovie(movieId, sessionId));
 
                 // Delete list
-                assert.ok(await list.delete()); // TODO [david98hall, 2021-08-22]: Failing due to external problem?
+                assert.ok(await list.delete(sessionId));
             });
-    
-        });
-
-        after(async () => {
-            await tmdbUtils.deleteSession(apiKey, sessionId);
         });
     }
 }

@@ -3,7 +3,7 @@ const Tmdb = require('../../../src/tmdb-js/tmdb-js').Tmdb;
 const tmdbUtils = require('../../../src/utils/tmdb_utils');
 const discover = require('../../../src/tmdb-js/sections/types/discover');
 
-exports.runTest = apiKey => {
+exports.runTest = (apiKey, sessionId = undefined) => {
 
     let tmdb = new Tmdb(apiKey);
 

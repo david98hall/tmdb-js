@@ -1,4 +1,5 @@
 const assert = require('assert');
+const tmdbUtils = require('../../src/utils/tmdb_utils');
 const getApiKey = require('./utils/tmdb_test_utils').getApiKey;
 
 const tests = [
@@ -24,20 +25,23 @@ const tests = [
 ]
 
 exports.runTest = () => {
-    
-    describe('TMDB API Tests', () => {
 
-        it('Should retrieve the API key.', done => {
-            // Check that the API key can be found without error
-            getApiKey().then(apiKey => {
-                assert.notStrictEqual(apiKey, null);
-                setImmediate(done);
+    describe('TMDB API Wrapper', () => {
+
+        it('Unit Tests', async () => {
+
+            let apiKey = await getApiKey();
+            assert.ok(apiKey);
+
+            let sessionId = await tmdbUtils.createSession(apiKey);
+            assert.ok(sessionId);
+
+            after(async () => {
+                await tmdbUtils.deleteSession(apiKey, sessionId);
             });
-        });
-    
-        getApiKey().then(apiKey => {
+
             tests.forEach(test => {
-                test.runTest(apiKey);
+                test.runTest(apiKey, sessionId);
             });
         });
     });

@@ -437,7 +437,7 @@ exports.TvShowSection = class extends section.Section {
      * Gets TV show certifications.
      */
     getCertifications() {
-        return new Section(sections.CERTIFICATION, null, this._apiKey, this._language)
+        return new section.Section(sections.CERTIFICATION, null, this._apiKey, this._language)
             .createChild(sections.TV_SHOW)
             .getChildQueryResult(sections.LIST);
     }

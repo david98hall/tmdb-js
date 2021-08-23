@@ -80,7 +80,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of movie credits.
      */
     getCredits() {
-        let childSection = new Section(dataTypes.CREDITS, this);
+        let childSection = new section.Section(dataTypes.CREDITS, this);
         return childSection.getQueryResult();
     }
 
@@ -242,7 +242,7 @@ exports.MovieSection = class extends section.Section {
      * Gets movie certifications.
      */
     getCertifications() {
-        return new Section(sections.CERTIFICATION, null, this._apiKey, this._language)
+        return new section.Section(sections.CERTIFICATION, null, this._apiKey, this._language)
             .createChild(sections.MOVIE)
             .getChildQueryResult(sections.LIST);
     }
