@@ -9,7 +9,7 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get and handle movie data on TMDB.
+ * A class that represents a specific movie in TMDb.
  */
 exports.Movie = class extends section.RateableSection {
 
@@ -179,7 +179,7 @@ exports.Movie = class extends section.RateableSection {
 }
 
 /**
- * Can get data about movies in general from the TMDB API.
+ * A class that represents the movie section in TMDb.
  */
 exports.MovieSection = class extends section.Section {
     

@@ -9,7 +9,7 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get collection data from TMDB.
+ * A class that represents the collection section in TMDb.
  */
 exports.Collection = class extends section.Section {
 

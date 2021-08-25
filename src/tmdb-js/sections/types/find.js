@@ -8,7 +8,7 @@ const sections = tmdbUtils.sections;
 const Section = require('../section').Section;
 
 /**
- * Can get data from external sources via TMDB.
+ * A class that represents the find section in TMDb.
  */
 exports.FindSection = class extends Section {
 

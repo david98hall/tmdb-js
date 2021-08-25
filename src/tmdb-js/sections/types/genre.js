@@ -8,7 +8,7 @@ const sections = tmdbUtils.sections;
 const Section = require('../section').Section;
 
 /**
- * Can get genre data from TMDB.
+ * A class that represents the genre section in TMDb.
  */
 exports.GenreSection = class extends Section {
 

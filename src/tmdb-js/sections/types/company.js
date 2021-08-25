@@ -9,7 +9,7 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get company data from TMDB.
+ * A class that represents a specific company in TMDb.
  */
 exports.Company = class extends section.Section {
 
@@ -48,7 +48,7 @@ exports.Company = class extends section.Section {
 }
 
 /**
- * Can get company data from TMDB.
+ * A class that represents the company section in TMDb.
  */
 exports.CompanySection = class extends section.Section {
 

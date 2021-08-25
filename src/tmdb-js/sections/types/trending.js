@@ -9,7 +9,7 @@ const mediaTypes = tmdbUtils.mediaTypes;
 const Section = require('../section').Section;
 
 /**
- * Can get data about trending media from TMDB.
+ * A class that represents the trending section in TMDb.
  */
 exports.TrendingSection = class extends Section {
 

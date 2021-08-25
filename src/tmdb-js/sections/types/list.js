@@ -10,7 +10,7 @@ const actionTypes = tmdbUtils.actionTypes;
 const section = require('../section');
 
 /**
- * Can get and handle list data on TMDB.
+ * A class that represents a specific list in TMDb.
  */
 exports.List = class extends section.Section {
 
@@ -93,7 +93,7 @@ exports.List = class extends section.Section {
 }
 
 /**
- * Can get data about lists in general from the TMDB API.
+ * A class that represents the list section in TMDb.
  */
 exports.ListSection = class extends section.Section {
     

@@ -7,7 +7,7 @@ const sections = tmdbUtils.sections;
 const Section = require('../section').Section;
 
 /**
- * A class that represents the search section of TMDb.
+ * A class that represents the search section in TMDb.
  */
 exports.SearchSection = class extends Section {
 

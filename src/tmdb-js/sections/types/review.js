@@ -8,7 +8,7 @@ const sections = tmdbUtils.sections;
 const section = require('../section');
 
 /**
- * Can get review data from TMDB.
+ * A class that represents a specific review in TMDb.
  */
 exports.Review = class extends section.Section {
 
@@ -31,7 +31,7 @@ exports.Review = class extends section.Section {
 }
 
 /**
- * Can get review data from TMDB.
+ * A class that represents the review section in TMDb.
  */
 exports.ReviewSection = class extends section.Section {
 

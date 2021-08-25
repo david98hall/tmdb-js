@@ -9,7 +9,7 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get person data from TMDB.
+ * A class that represents a specific person in TMDb.
  */
 exports.Person = class extends section.Section {
 
@@ -106,7 +106,7 @@ exports.Person = class extends section.Section {
 }
 
 /**
- * Can get data about people in general from the TMDB API.
+ * A class that represents the people section in TMDb.
  */
 exports.PeopleSection = class extends section.Section {
     

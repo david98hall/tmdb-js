@@ -9,7 +9,7 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * A class that represents a TV show episode in TMDb.
+ * A class that represents a specific TV show episode in TMDb.
  */
 exports.TvShowEpisode = class extends section.RateableSection {
 
@@ -110,7 +110,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
 }
 
 /**
- * A class that represents a TV show season on TMDb.
+ * A class that represents a specific TV show season on TMDb.
  */
 exports.TvShowSeason = class extends section.Section {
 
@@ -252,7 +252,7 @@ exports.TvShowSeason = class extends section.Section {
 }
 
 /**
- * Can get and handle TV show data on TMDB.
+ * A class that represents a specific TV show in TMDb.
  */
 exports.TvShow = class extends section.RateableSection {
 
@@ -492,7 +492,7 @@ exports.TvShow = class extends section.RateableSection {
 }
 
 /**
- * Can get data about TV shows in general from the TMDB API.
+ * A class that represents the TV show section in TMDb.
  */
 exports.TvShowSection = class extends section.Section {
     

@@ -9,7 +9,7 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get network data on TMDB.
+ * A class that represents a specific network in TMDb.
  */
 exports.Network = class extends section.Section {
 
@@ -48,7 +48,7 @@ exports.Network = class extends section.Section {
 }
 
 /**
- * Can get network data from the TMDB API.
+ * A class that represents the network section in TMDb.
  */
 exports.NetworkSection = class extends section.Section {
     

@@ -9,7 +9,7 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get account data from TMDB.
+ * A class that represents a specific account in TMDb.
  */
 exports.Account = class extends section.Section {
 
@@ -237,7 +237,7 @@ exports.Account = class extends section.Section {
 }
     
 /**
- * Can get account data from TMDB.
+ * A class that represents the account section in TMDb.
  */
 exports.AccountSection = class extends section.Section {
 

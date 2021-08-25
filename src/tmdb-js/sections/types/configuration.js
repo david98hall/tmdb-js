@@ -9,7 +9,7 @@ const dataTypes = tmdbUtils.dataTypes;
 const Section = require('../section').Section;
 
 /**
- * Can get TMDB configuration data.
+ * A class that represents the configuration section in TMDb. 
  */
 exports.ConfigurationSection = class extends Section {
 

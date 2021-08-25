@@ -8,7 +8,7 @@ const sections = tmdbUtils.sections;
 const section = require('../section');
 
 /**
- * Can get credit data from TMDB.
+ * A class that represents a specific credit in TMDb.
  */
 exports.Credit = class extends section.Section {
 
@@ -31,7 +31,7 @@ exports.Credit = class extends section.Section {
 }
 
 /**
- * Can get credit data from TMDB.
+ * A class that represents the credit section in TMDb.
  */
 exports.CreditSection = class extends section.Section {
 

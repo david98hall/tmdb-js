@@ -8,7 +8,7 @@ const sections = tmdbUtils.sections;
 const section = require('../section');
 
 /**
- * Can get keyword data from TMDB.
+ * A class that represents a specific keyword in TMDb.
  */
 exports.Keyword = class extends section.Section {
 
@@ -33,7 +33,7 @@ exports.Keyword = class extends section.Section {
 }
 
 /**
- * Can get keyword data from TMDB.
+ * A class that represents the keyword section in TMDb.
  */
 exports.KeywordSection = class extends section.Section {
 
