@@ -4,6 +4,7 @@ const open = require('open');
 const httpUtils = require('./http_utils');
 const httpMethod = httpUtils.httpMethod;
 const baseUrlValue = "https://api.themoviedb.org/3/";
+const section = require('../tmdb-js/sections/section');
 
  /**
   * The TMDB API base URL.
@@ -221,13 +222,14 @@ exports.deleteAsync = async function(urlPath, urlParameters) {
 };
 
 /**
- * Gets the changes of the movie in question.
+ * Gets the change data related to the passed section.
  * 
+ * @param {section.Section} section The section to query.
  * @param {string} startDate The start date.
  * @param {string} endDate The end date.
  * @param {Number} page The page.
  * 
- * @returns A Promise of JSON data with movie changes.
+ * @returns A Promise of JSON data with changes.
  */
 exports.getChangesAsync = async function(section, startDate = undefined, endDate = undefined, page = null) {
     
@@ -246,6 +248,44 @@ exports.getChangesAsync = async function(section, startDate = undefined, endDate
     }
 
     return await section.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
+}
+
+/**
+ * Gets data on the specified page.
+ * @param {section.Section} section The section to query.
+ * @param {Number} page The page.
+ * @returns A Promise of JSON data obtained on the specified page.
+ */
+exports.getPageDataAsync = async function(section, page = null) {
+
+    let urlParameters = { ...this._getBaseUrlParameters() };
+        
+    if (page) {
+        urlParameters["page"] = page;
+    }
+
+    return await section.getQueryResultAsync(urlParameters);
+}
+
+/**
+ * Gets data on the specified page from the passed region.
+ * @param {section.Section} section The section to query.
+ * @param {Number} page The page.
+ * @param {string} region The region.
+ * @returns A Promise of JSON data.
+ */
+exports.getRegionPageDataAsync = async function(section, page = null, region = undefined) {
+    let urlParameters = { ...this._getBaseUrlParameters() };
+
+    if (page) {
+        urlParameters["page"] = page;
+    }
+
+    if (region) {
+        urlParameters["region"] = region;
+    }
+
+    return await section.getQueryResultAsync(urlParameters);
 }
 
 /**

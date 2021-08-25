@@ -95,10 +95,12 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the tagged images of this person.
+     * @param {Number} page The page.
      * @returns A Promise of tagged images of this person in JSON format.
      */
-    async getTaggedImagesAsync() {
-        return await this.getChildQueryResultAsync(dataTypes.TAGGED_IMAGES);
+    async getTaggedImagesAsync(page = null) {
+        let child = this.createChild(dataTypes.TAGGED_IMAGES);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 
     /**
@@ -143,9 +145,11 @@ exports.PeopleSection = class extends section.Section {
 
     /**
      * Gets popular people.
+     * @param {Number} page The page.
      * @returns A Promise of JSON data with popular people.
      */
-    async getPopularAsync() {
-        return await this.getChildQueryResultAsync(dataTypes.POPULAR);
+    async getPopularAsync(page = null) {
+        let child = this.createChild(dataTypes.POPULAR);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 }
