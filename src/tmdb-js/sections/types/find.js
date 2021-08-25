@@ -31,6 +31,7 @@ exports.FindSection = class extends Section {
     /**
      * Finds media with the passed ID in the external source in question.
      * @param {string} externalId The external ID of the media. 
+     * @returns A Promise of JSON data.
      */
     async findAsync(externalId) {
 
@@ -44,5 +45,4 @@ exports.FindSection = class extends Section {
         
         return await tmdbUtils.getDataAsync(idChild.toString(), parameters);
     }
-
 }

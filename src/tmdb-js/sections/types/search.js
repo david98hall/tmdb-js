@@ -7,14 +7,7 @@ const sections = tmdbUtils.sections;
 const Section = require('../section').Section;
 
 /**
- * @param {string} apiKey The API key to the TMDB API.
- * @param {string} language
- * The language of the search results. Default value is "en-US".
- * @param {Number} startPage 
- * The first search result page to return data from.
- * @param {Number} pageCount 
- * The number of search result pages to return data from.
- * @param {Boolean} includeAdult true if adult content will be included.
+ * A class that represents the search section of TMDb.
  */
 exports.SearchSection = class extends Section {
 
@@ -29,11 +22,14 @@ exports.SearchSection = class extends Section {
 
     /**
      * Gets data from a company search in TMDB.
+     * 
      * @param {string} searchTerm The search term (query).
      * @param {Number} startPage 
      * The first search result page to return data from. The default is 1.
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
+     * 
+     * @returns A Promise of JSON data with search results of companies.
      */
     async searchCompaniesAsync(searchTerm, startPage = 1, pageCount = 1) {
         let companiesChild = this.createChild(searchType.COMPANIES);
@@ -49,11 +45,14 @@ exports.SearchSection = class extends Section {
 
     /**
      * Gets data from a collection search in TMDB.
+     * 
      * @param {string} searchTerm The search term (query).
      * @param {Number} startPage 
      * The first search result page to return data from. The default is 1.
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
+     * 
+     * @returns A Promise of JSON data with search results of collections.
      */
     async searchCollectionsAsync(searchTerm, startPage = 1, pageCount = 1) {
         let collectionsChild = this.createChild(searchType.COLLECTIONS);
@@ -69,11 +68,14 @@ exports.SearchSection = class extends Section {
 
     /**
      * Gets data from a keyword search in TMDB.
+     * 
      * @param {string} searchTerm The search term (query).
      * @param {Number} startPage 
      * The first search result page to return data from. The default is 1.
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
+     * 
+     * @returns A Promise of JSON data with search results of keywords.
      */
     async searchKeywordsAsync(searchTerm, startPage = 1, pageCount = 1) {
         let keywordsChild = this.createChild(searchType.KEYWORDS);
@@ -89,6 +91,7 @@ exports.SearchSection = class extends Section {
 
     /**
      * Gets data from a movie search in TMDB.
+     * 
      * @param {string} searchTerm The search term (query).
      * @param {Number} startPage 
      * The first search result page to return data from. The default is 1.
@@ -99,6 +102,8 @@ exports.SearchSection = class extends Section {
      * @param {string} region The region.
      * @param {Number} year The year.
      * @param {Number} primaryReleaseYear The primary release year.
+     * 
+     * @returns A Promise of JSON data with search results of movies.
      */
     async searchMoviesAsync(searchTerm,
                  startPage = 1,
@@ -138,6 +143,7 @@ exports.SearchSection = class extends Section {
 
     /**
      * Gets data from a multi search in TMDB.
+     * 
      * @param {string} searchTerm The search term (query).
      * @param {Number} startPage 
      * The first search result page to return data from. The default is 1.
@@ -145,6 +151,8 @@ exports.SearchSection = class extends Section {
      * The number of search result pages to return data from. The default is 1.
      * @param {Boolean} includeAdult 
      * true if adult content will be included. The default is true.
+     * 
+     * @returns A Promise of JSON data with multi-search results.
      */
     async multiSearchAsync(searchTerm, startPage = 1, pageCount = 1, includeAdult = true) {
 
@@ -162,6 +170,7 @@ exports.SearchSection = class extends Section {
 
     /**
      * Gets data from a people search in TMDB.
+     * 
      * @param {string} searchTerm The search term (query).
      * @param {Number} startPage 
      * The first search result page to return data from. The default is 1.
@@ -170,6 +179,8 @@ exports.SearchSection = class extends Section {
      * @param {Boolean} includeAdult 
      * true if adult content will be included. The default is true.
      * @param {string} region The region.
+     * 
+     * @returns A Promise of JSON data with search results of people.
      */
     async searchPeopleAsync(searchTerm,
         startPage = 1,
@@ -198,6 +209,7 @@ exports.SearchSection = class extends Section {
 
     /**
      * Gets data from a TV show search in TMDB.
+     * 
      * @param {string} searchTerm The search term (query).
      * @param {Number} startPage 
      * The first search result page to return data from. The default is 1.
@@ -206,6 +218,8 @@ exports.SearchSection = class extends Section {
      * @param {Boolean} includeAdult 
      * true if adult content will be included. The default is true.
      * @param {Number} firstAirDateYear The first air date year.
+     * 
+     * @returns A Promise of JSON data with search results of TV shows.
      */
     async searchTvShowsAsync(searchTerm,
         startPage = 1,
@@ -248,6 +262,7 @@ const searchType = {
 
 /**
  * Gets search data from TMDb as a JSON object.
+ * 
  * @param {string} url The url.
  * @param {string} searchTerm The search term (query).
  * @param {string} apiKey The API key to the TMDb API.
@@ -260,6 +275,8 @@ const searchType = {
  * The language of the search results. Default value is "en-US".
  * @param {Object} additionalInfo
  * Additional info to add to the search query.
+ * 
+ * @returns A Promise of JSON data with search results.
  */
 async function searchPagesAsync(url, searchTerm, apiKey, startPage,
     pageCount, includeAdult = true, language = "en-US", additionalInfo = {}) {
@@ -318,7 +335,7 @@ async function searchPagesAsync(url, searchTerm, apiKey, startPage,
  * @param {Object} additionalInfo
  * Additional info to add to the search query.
  *
- * @returns A Promise of page JSON data.
+ * @returns A Promise of JSON data of the specified page.
  */
 async function searchPageAsync(url, searchTerm, apiKey,
     page = 1, includeAdult = true, language = "en-US", additionalInfo = {}) {

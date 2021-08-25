@@ -49,6 +49,7 @@ exports.KeywordSection = class extends section.Section {
     /**
      * Gets the keyword with the passed id.
      * @param {string} id The id of the keyword to get.
+     * @returns A Keyword object with the passed id.
      */
     getKeyword(id) {
         return new exports.Keyword(id, this);

@@ -24,7 +24,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets all details about this person.
-     * @returns A Promise of this person's details.
+     * @returns A Promise of this person's details in JSON format.
      */
     async getDetailsAsync(...appendToResponse) {
 
@@ -42,7 +42,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the changes of the person in question.
-     * @returns A Promise of this person's changes.
+     * @returns A Promise of this person's changes in JSON format.
      */
     async getChangesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.CHANGES);
@@ -50,7 +50,7 @@ exports.Person = class extends section.Section {
         
     /**
      * Gets the movie credits of this person.
-     * @returns A Promise of this person's movie credits.
+     * @returns A Promise of this person's movie credits in JSON format.
      */
     async getMovieCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.MOVIE_CREDITS);
@@ -58,7 +58,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the TV credits of this person.
-     * @returns A Promise of this person's TV credits.
+     * @returns A Promise of this person's TV credits in JSON format.
      */
     async getTvCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TV_CREDITS);
@@ -66,7 +66,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the combined credits of this person.
-     * @returns A Promise of this person's combined credits.
+     * @returns A Promise of this person's combined credits in JSON format.
      */
     async getCombinedCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.COMBINED_CREDITS);
@@ -74,7 +74,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the external IDs of this person.
-     * @returns A Promise of external IDs.
+     * @returns A Promise of this person's external IDs in JSON format.
      */
     async getExternalIdsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.EXTERNAL_IDS)
@@ -82,7 +82,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the images of this person.
-     * @returns A Promise of images of this person.
+     * @returns A Promise of images of this person in JSON format.
      */
     async getImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.IMAGES);
@@ -90,7 +90,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the tagged images of this person.
-     * @returns A Promise of tagged images of this person.
+     * @returns A Promise of tagged images of this person in JSON format.
      */
     async getTaggedImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TAGGED_IMAGES);
@@ -98,7 +98,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the translations of this person.
-     * @returns A Promise of person translations.
+     * @returns A Promise of person translations in JSON format.
      */ 
     async getTranslationsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
@@ -120,9 +120,9 @@ exports.PeopleSection = class extends section.Section {
     }
 
     /**
-     * Gets a Person instance with the passed id.
+     * Gets a Person instance with the passed ID.
      * @param {string} id The ID of the person.
-     * @returns A Person instance.
+     * @returns A Person object with the passed ID.
      */
     getPerson(id) {
         return new exports.Person(id, this);
@@ -130,6 +130,7 @@ exports.PeopleSection = class extends section.Section {
 
     /**
      * Gets the latest created person.
+     * @returns A Promise of JSON data with the latest people.
      */
     async getLatestAsync() {
         return await this.getChildQueryResultAsync(dataTypes.LATEST);
@@ -137,6 +138,7 @@ exports.PeopleSection = class extends section.Section {
 
     /**
      * Gets popular people.
+     * @returns A Promise of JSON data with popular people.
      */
     async getPopularAsync() {
         return await this.getChildQueryResultAsync(dataTypes.POPULAR);

@@ -423,7 +423,7 @@ exports.DiscoverSection = class extends Section {
     /**
      * Discovers movie data based on the passed settings.
      * @param {exports.DiscoverMovieSettings} settings The discover settings.
-     * @return A Promise of discovered movie data.
+     * @returns A Promise of discovered movie data.
      */
     async discoverMoviesAsync(settings) {
         let urlParameters = this.__buildUrlParameters(settings);
@@ -434,7 +434,7 @@ exports.DiscoverSection = class extends Section {
     /**
      * Discovers TV show data based on the passed settings.
      * @param {exports.DiscoverTvShowSettings} settings The discover settings.
-     * @return A Promise of discovered TV show data.
+     * @returns A Promise of discovered TV show data.
      */
     async discoverTvShowsAsync(settings) {
         let urlParameters = this.__buildUrlParameters(settings);

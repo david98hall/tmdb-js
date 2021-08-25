@@ -68,5 +68,4 @@ exports.GuestSessionSection = class extends section.Section {
     getGuestSession(id) {
         return new exports.GuestSession(id, this);
     }
-
 }

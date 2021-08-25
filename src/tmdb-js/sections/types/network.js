@@ -24,7 +24,7 @@ exports.Network = class extends section.Section {
 
     /**
      * Gets all details about this network.
-     * @returns A Promise of network details.
+     * @returns A Promise of JSON data with network details.
      */
     async getDetailsAsync() {
         return await this.getQueryResultAsync();
@@ -32,7 +32,7 @@ exports.Network = class extends section.Section {
 
     /**
      * Gets the alternative titles of the network in question.
-     * @returns A Promise of alternative titles.
+     * @returns A Promise of JSON data with alternative titles.
      */
     async getAlternativeNamesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.ALTERNATIVE_NAMES);
@@ -40,7 +40,7 @@ exports.Network = class extends section.Section {
 
     /**
      * Gets the images of the network in question.
-     * @returns A Promise of network images.
+     * @returns A Promise of JSON data with network images.
      */
     async getImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.IMAGES);
@@ -64,7 +64,7 @@ exports.NetworkSection = class extends section.Section {
     /**
      * Gets a Network instance, based on the passed ID.
      * @param {string} id The ID of the network.
-     * @returns A Movie instance.
+     * @returns A Network object with the passed ID.
      */
     getNetwork(id) {
         return new exports.Network(id, this);

@@ -40,7 +40,7 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * @param {Object} urlParameters The url parameters to use.
      * If null, the API key and language of this object will be used.
      * 
-     * @returns A Promise of JSON data.
+     * @returns A Promise of JSON data based on this section.
      */
     async getQueryResultAsync(urlParameters = null) {
         urlParameters = urlParameters ? urlParameters : this._getBaseUrlParameters();

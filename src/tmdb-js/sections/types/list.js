@@ -46,7 +46,7 @@ exports.List = class extends section.Section {
      * @returns A Promise of a boolean value indicating whether the addition was successful or not.
      */
     async addMovieAsync(movieId, sessionId) {
-        let requestBody = { media_id: movieId };
+        let requestBody = { "media_id": movieId };
         let addItemSection = this.createChild(actionTypes.ADD_ITEM);
         return await tmdbUtils.postAsync(addItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
     }
@@ -58,7 +58,7 @@ exports.List = class extends section.Section {
      * @returns A Promise of a boolean value indicating whether the removal was successful or not.
      */
     async removeMovieAsync(movieId, sessionId) {
-        let requestBody = { media_id: movieId };
+        let requestBody = { "media_id": movieId };
         let removeItemSection = this.createChild(actionTypes.REMOVE_ITEM);
         return await tmdbUtils.postAsync(removeItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
     }
@@ -84,10 +84,6 @@ exports.List = class extends section.Section {
         return await tmdbUtils.deleteAsync(this.toString(), this._getUrlParameters(sessionId));
     }
 
-    /**
-     * Gets the URL parameters used for requests in this class.
-     * @param {string} sessionId The session id.
-     */
     _getUrlParameters(sessionId) {
         return {
             "api_key": this._apiKey,
@@ -113,7 +109,7 @@ exports.ListSection = class extends section.Section {
     /**
      * Gets a List instance, based on the passed ID.
      * @param {string} id The ID of the list.
-     * @returns A List instance.
+     * @returns A List object with the passed ID.
      */
     getList(id) {
         return new exports.List(id, this);
@@ -145,7 +141,7 @@ exports.ListSection = class extends section.Section {
 
         const response = await tmdbUtils.postAsync(this.toString(), urlParameters, requestBody);
 
-        if (response && response.success) {
+        if (response && response["success"]) {
             return new exports.List(response["list_id"], this);
         }
 

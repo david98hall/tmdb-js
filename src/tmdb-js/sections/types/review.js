@@ -23,7 +23,7 @@ exports.Review = class extends section.Section {
 
     /**
      * Gets the review details based on the passed id.
-     * @returns A Promise of review details.
+     * @returns A Promise of JSON data with review details.
      */
     async getDetailsAsync() {
         return await this.getQueryResultAsync();
@@ -45,8 +45,9 @@ exports.ReviewSection = class extends section.Section {
     }
 
     /**
-     * Gets the review with the passed id.
-     * @param {string} id The id of the review to get.
+     * Gets the review with the passed ID.
+     * @param {string} id The ID of the review to get.
+     * @returns A Review object with the passed ID.
      */
     getReview(id) {
         return new exports.Review(id, this);
