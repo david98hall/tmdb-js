@@ -26,7 +26,7 @@ const TmdbClient = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
 var tmdb = new TmdbClient(apiKey);
 
 // Get movie data example
-var oceansElevenMovie = tmdb.getMovies().getMovie(161);
+var oceansElevenMovie = tmdb.getMovieSection().getMovie(161);
 oceansElevenMovie.getDetailsAsync().then(json => {
   console.log("A great movie: " + json.title);
 });
@@ -35,10 +35,10 @@ oceansElevenMovie.getDetailsAsync().then(json => {
 oceansElevenMovie.rateAsync(10, sessionId);
 
 // Search TMDB examples
-tmdb.getSearcher().searchMoviesAsync("Ocean's").then(resultPageJsons => { console.log(resultPageJsons.length) });
-tmdb.getSearcher().searchMoviesAsync("Ocean's", 1, 1).then(resultPageJsons => { console.log(resultPageJsons.length) });
-tmdb.getSearcher().multiSearchAsync("Ocean's").then(resultPageJsons => { console.log(resultPageJsons.length) });
-tmdb.getSearcher().multiSearchAsync("Ocean's", 1, 2).then(resultPageJsons => { console.log(resultPageJsons.length) });
+tmdb.getSearchSection().searchMoviesAsync("Ocean's").then(resultPageJsons => { console.log(resultPageJsons.length) });
+tmdb.getSearchSection().searchMoviesAsync("Ocean's", 1, 1).then(resultPageJsons => { console.log(resultPageJsons.length) });
+tmdb.getSearchSection().multiSearchAsync("Ocean's").then(resultPageJsons => { console.log(resultPageJsons.length) });
+tmdb.getSearchSection().multiSearchAsync("Ocean's", 1, 2).then(resultPageJsons => { console.log(resultPageJsons.length) });
 ```
 
 See the [documentation](https://david98hall.github.io/tmdb-js/) for more info.
