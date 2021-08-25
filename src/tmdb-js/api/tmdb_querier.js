@@ -10,7 +10,7 @@ exports.TmdbQuerier = class extends TmdbApiUser {
     _language;
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The natural language of queries, the default is "en-US".
      */

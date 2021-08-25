@@ -13,7 +13,7 @@ const section = require('../section');
 exports.Keyword = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the keyword.
      * @param {exports.KeywordSection} keywordSection The parent KeywordSection.
      */
@@ -38,7 +38,7 @@ exports.Keyword = class extends section.Section {
 exports.KeywordSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

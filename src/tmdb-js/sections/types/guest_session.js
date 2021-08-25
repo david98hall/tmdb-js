@@ -14,7 +14,7 @@ const section = require('../section');
 exports.GuestSession = class extends section.Section {
 
     /**
-     * Initializes this GuestSession.
+     * Initializes this object.
      * @param {string} id 
      * @param {exports.GuestSessionSection} guestSessionSection 
      */
@@ -53,7 +53,7 @@ exports.GuestSession = class extends section.Section {
 exports.GuestSessionSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

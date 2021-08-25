@@ -15,7 +15,7 @@ const section = require('../section');
 exports.List = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the list.
      * @param {exports.ListSection} listSection The parent ListSection.
      */
@@ -98,7 +98,7 @@ exports.List = class extends section.Section {
 exports.ListSection = class extends section.Section {
     
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

@@ -14,7 +14,7 @@ const section = require('../section');
 exports.Network = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the network.
      * @param {exports.NetworkSection} networkSection The parent NetworkSection.
      */
@@ -53,7 +53,7 @@ exports.Network = class extends section.Section {
 exports.NetworkSection = class extends section.Section {
     
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

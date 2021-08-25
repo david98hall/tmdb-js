@@ -13,7 +13,7 @@ const Section = require('../section').Section;
 exports.GenreSection = class extends Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

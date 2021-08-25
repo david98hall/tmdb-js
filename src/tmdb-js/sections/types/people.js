@@ -14,7 +14,7 @@ const section = require('../section');
 exports.Person = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the person.
      * @param {exports.PeopleSection} personSection The parent PersonSection.
      */
@@ -111,7 +111,7 @@ exports.Person = class extends section.Section {
 exports.PeopleSection = class extends section.Section {
     
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

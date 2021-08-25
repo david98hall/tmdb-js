@@ -14,7 +14,7 @@ const section = require('../section');
 exports.Account = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the review.
      * @param {exports.AccountSection} accountSection The parent AccountSection.
      */
@@ -242,7 +242,7 @@ exports.Account = class extends section.Section {
 exports.AccountSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

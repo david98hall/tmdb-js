@@ -18,7 +18,7 @@ exports.FindSection = class extends Section {
     _externalSource;
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} externalSource The time window of this trending section (see tmdb_utils.externalSources).
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".

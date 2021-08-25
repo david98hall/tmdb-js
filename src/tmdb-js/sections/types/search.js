@@ -12,7 +12,7 @@ const Section = require('../section').Section;
 exports.SearchSection = class extends Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey A TMDB API key.    
      * @param {string} language The natural language of search queries. The default is "en-US". 
      */

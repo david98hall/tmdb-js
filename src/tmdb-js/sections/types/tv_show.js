@@ -14,7 +14,7 @@ const section = require('../section');
 exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {Number} episodeNumber The episode number.
      * @param {exports.TvShowSeason} tvShowSeason The parent TV show season.
      */
@@ -115,7 +115,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
 exports.TvShowSeason = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {Number} seasonNumber The season number.
      * @param {exports.TvShow} tvShow The parent TV show.
      */
@@ -257,7 +257,7 @@ exports.TvShowSeason = class extends section.Section {
 exports.TvShow = class extends section.RateableSection {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The ID of the TV show.
      * @param {exports.TvShowSection} tvShowSection The parent TV show section.
      */
@@ -497,7 +497,7 @@ exports.TvShow = class extends section.RateableSection {
 exports.TvShowSection = class extends section.Section {
     
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

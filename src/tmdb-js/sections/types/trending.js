@@ -19,7 +19,7 @@ exports.TrendingSection = class extends Section {
     _timeWindow;
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} timeWindow The time window of this trending section (see tmdb_utils.timeWindows).
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".

@@ -13,7 +13,7 @@ const section = require('../section');
 exports.Credit = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the credit.
      * @param {exports.CreditSection} creditSection The parent CreditSection.
      */
@@ -36,7 +36,7 @@ exports.Credit = class extends section.Section {
 exports.CreditSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
