@@ -509,7 +509,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
         
         <span class="code-name">
             
-                getChangesAsync<span class="signature">()</span><span class="type-signature"></span>
+                getChangesAsync<span class="signature">(startDate, endDate, page)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -518,7 +518,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
     
     
     <div class="description">
-        Gets the changes that have been made regarding this TV show episode.
+        Gets the changes of the TV show episode in question.
     </div>
     
 
@@ -529,6 +529,123 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
 
 
 
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>startDate</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The start date.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>endDate</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">The end date.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>page</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          null
+      
+      </td>
+  
+
+  <td class="description last">The page.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -569,7 +686,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
         <p class="tag-source">
             <a href="tmdb-js_sections_types_tv_show.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line67">line 67</a>
+                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line68">line 68</a>
             </span>
         </p>
     
@@ -600,7 +717,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
 
 <div class="columns">
     
-    <div class='param-desc column is-7'>A Promise of change data in JSON format.</div>
+    <div class='param-desc column is-7'>A Promise of JSON data with changes.</div>
     
     
 </div>
@@ -687,7 +804,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
         <p class="tag-source">
             <a href="tmdb-js_sections_types_tv_show.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line75">line 75</a>
+                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line76">line 76</a>
             </span>
         </p>
     
@@ -986,7 +1103,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
         <p class="tag-source">
             <a href="tmdb-js_sections_types_tv_show.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line83">line 83</a>
+                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line84">line 84</a>
             </span>
         </p>
     
@@ -1104,7 +1221,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
         <p class="tag-source">
             <a href="tmdb-js_sections_types_tv_show.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line91">line 91</a>
+                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line92">line 92</a>
             </span>
         </p>
     
@@ -1222,7 +1339,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
         <p class="tag-source">
             <a href="tmdb-js_sections_types_tv_show.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line99">line 99</a>
+                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line100">line 100</a>
             </span>
         </p>
     
@@ -1340,7 +1457,7 @@ Only one of the IDs is allowed to be null or non-null in the same method call.
         <p class="tag-source">
             <a href="tmdb-js_sections_types_tv_show.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line107">line 107</a>
+                <a href="tmdb-js_sections_types_tv_show.js.html">tmdb-js/sections/types/tv_show.js</a>, <a href="tmdb-js_sections_types_tv_show.js.html#line108">line 108</a>
             </span>
         </p>
     

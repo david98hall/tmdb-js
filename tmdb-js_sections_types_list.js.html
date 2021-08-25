@@ -119,11 +119,18 @@ exports.List = class extends section.Section {
     }
 
     /**
-     * Gets the item status of this list.
+     * Gets the item status of a movie in relation to this list.
+     * @param {string} movieId The ID of the movie to get the status about.
      * @returns A Promise of item status data.
      */
-    async getItemStatusAsync() {
-        return await this.getChildQueryResultAsync(dataTypes.ITEM_STATUS);
+    async getItemStatusAsync(movieId) {
+
+        let urlParameters = {
+            ...this._getBaseUrlParameters(),
+            "movie_id": movieId
+        };
+
+        return await this.getChildQueryResultAsync(dataTypes.ITEM_STATUS, urlParameters);
     }
 
     /**
