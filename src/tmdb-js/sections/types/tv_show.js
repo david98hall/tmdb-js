@@ -52,20 +52,21 @@ exports.TvShowEpisode = class extends section.RateableSection {
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
 
-        let urlParameters = {
-            ...this._getBaseUrlParameters()
-        };
-        tmdbUtils.addSessionIdParameter(sessionId, guestSessionId);
-
-        return await this.getChildQueryResultAsync(dataTypes.ACCOUNT_STATES, urlParameters);
+        let child = this.createChild(dataTypes.ACCOUNT_STATES);
+        return await tmdbUtils.getSessionDataAsync(child, sessionId, guestSessionId);
     }
 
     /**
-     * Gets the changes that have been made regarding this TV show episode.
-     * @returns A Promise of change data in JSON format.
+     * Gets the changes of the TV show episode in question.
+     * 
+     * @param {string} startDate The start date.
+     * @param {string} endDate The end date.
+     * @param {Number} page The page.
+     * 
+     * @returns A Promise of JSON data with changes.
      */
-    async getChangesAsync() {
-        return await this.getChildQueryResultAsync(dataTypes.CHANGES);
+     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
     }
 
     /**
@@ -150,14 +151,10 @@ exports.TvShowSeason = class extends section.Section {
      * 
      * @returns A Promise of account state data in JSON format.
      */
-     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
+    async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
 
-        let urlParameters = {
-            ...this._getBaseUrlParameters()
-        };
-        tmdbUtils.addSessionIdParameter(sessionId, guestSessionId);
-
-        return await this.getChildQueryResultAsync(dataTypes.ACCOUNT_STATES, urlParameters);
+        let child = this.createChild(dataTypes.ACCOUNT_STATES);
+        return await tmdbUtils.getSessionDataAsync(child, sessionId, guestSessionId);
     }
 
     /**
@@ -169,11 +166,16 @@ exports.TvShowSeason = class extends section.Section {
     }
 
     /**
-     * Gets the changes that have been made regarding this TV show season.
-     * @returns A Promise of change data in JSON format.
+     * Gets the changes of the TV show season in question.
+     * 
+     * @param {string} startDate The start date.
+     * @param {string} endDate The end date.
+     * @param {Number} page The page.
+     * 
+     * @returns A Promise of JSON data with changes.
      */
-    async getChangesAsync() {
-        return await this.getChildQueryResultAsync(dataTypes.CHANGES);
+     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
     }
 
     /**
@@ -291,12 +293,9 @@ exports.TvShow = class extends section.RateableSection {
      * @returns A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
-        let childSection = new section.Section(dataTypes.ACCOUNT_STATES, this);
-
-        let urlParameters = { ...this._getBaseUrlParameters() };
-        tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId)
-
-        return await childSection.getQueryResultAsync(urlParameters);
+        
+        let child = this.createChild(dataTypes.ACCOUNT_STATES);
+        return await tmdbUtils.getSessionDataAsync(child, sessionId, guestSessionId);
     }
 
     /**
@@ -310,11 +309,15 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the changes of the TV show in question.
-     * @returns A Promise of change data in JSON format.
+     * 
+     * @param {string} startDate The start date.
+     * @param {string} endDate The end date.
+     * @param {Number} page The page.
+     * 
+     * @returns A Promise of JSON data with changes.
      */
-    async getChangesAsync() {
-        let childSection = new section.Section(dataTypes.CHANGES, this);
-        return await childSection.getQueryResultAsync();
+     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
     }
 
     /**
@@ -376,24 +379,21 @@ exports.TvShow = class extends section.RateableSection {
      * @param {Number} page The page to get data from (see the API documentation for the range)
      * @returns A Promise of recommendation data in JSON format.
      */
-    async getRecommendationsAsync(page = 1) {
+    async getRecommendationsAsync(page = null) {
 
-        let urlParameters = {
-            ...this._getBaseUrlParameters(),
-            "page": page
-        }
-
-        let childSection = new section.Section(dataTypes.RECOMMENDATIONS, this);
-        return await childSection.getQueryResultAsync(urlParameters);
+        let child = this.createChild(dataTypes.RECOMMENDATIONS);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 
     /**
      * Gets the reviews of the TV show in question.
+     * @param {Number} page The page to get data from (see the API documentation for the range)
      * @returns A Promise of reviews in JSON format.
      */
-    async getReviewsAsync() {
-        let childSection = new section.Section(dataTypes.REVIEWS, this);
-        return await childSection.getQueryResultAsync();
+    async getReviewsAsync(page = null) {
+
+        let child = this.createChild(dataTypes.REVIEWS);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 
     /**
@@ -407,11 +407,13 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the similar TV shows to the TV show in question.
+     * @param {Number} page The page.
      * @returns A Promise of similar TV shows in JSON format.
      */
-    async getSimilarTvShowsAsync() {
-        let childSection = new section.Section(dataTypes.SIMILAR_MOVIES, this);
-        return await childSection.getQueryResultAsync();
+    async getSimilarTvShowsAsync(page = null) {
+
+        let child = this.createChild(dataTypes.SIMILAR_TV_SHOWS);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 
     /**
@@ -525,38 +527,46 @@ exports.TvShowSection = class extends section.Section {
 
     /**
      * Gets TV shows airing today.
+     * @param {Number} page The page.
      * @returns A Promise of the TV shows airing today in JSON format.
      */
-    async getTvAiringTodayAsync() {
-        let childSection = new section.Section(dataTypes.TV_AIRING_TODAY, this);
-        return await childSection.getQueryResultAsync();
+    async getTvAiringTodayAsync(page = null) {
+
+        let child = this.createChild(dataTypes.TV_AIRING_TODAY);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 
     /**
      * Gets TV shows currently on the air.
+     * @param {Number} page The page.
      * @returns A Promise of TV shows that are on the air in JSON format.
      */
-    async getTvOnTheAirAsync() {
-        let childSection = new section.Section(dataTypes.TV_ON_THE_AIR, this);
-        return await childSection.getQueryResultAsync();
+    async getTvOnTheAirAsync(page = null) {
+
+        let child = this.createChild(dataTypes.TV_ON_THE_AIR);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 
     /**
      * Gets popular TV shows.
+     * @param {Number} page The page.
      * @returns A Promise of popular TV show data in JSON format.
      */
-    async getPopularAsync() {
-        let childSection = new section.Section(dataTypes.POPULAR, this);
-        return await childSection.getQueryResultAsync();
+    async getPopularAsync(page = null) {
+
+        let child = this.createChild(dataTypes.POPULAR);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 
     /**
      * Gets top rated TV shows.
+     * @param {Number} page The page.
      * @returns A Promise of top rated TV show data in JSON format.
      */
-    async getTopRatedAsync() {
-        let childSection = new section.Section(dataTypes.TOP_RATED, this);
-        return await childSection.getQueryResultAsync();
+    async getTopRatedAsync(page = null) {
+
+        let child = this.createChild(dataTypes.TOP_RATED);
+        return await tmdbUtils.getPageDataAsync(child, page);
     }
 
     /**

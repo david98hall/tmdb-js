@@ -50,14 +50,9 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of account state JSON data.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
-        let childSection = new section.Section(dataTypes.ACCOUNT_STATES, this);
-
-        let urlParameters = {
-            ...this._getBaseUrlParameters()
-        }
-        tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId);
-
-        return await childSection.getQueryResultAsync(urlParameters);
+        
+        let child = this.createChild(dataTypes.ACCOUNT_STATES);
+        return await tmdbUtils.getSessionDataAsync(child, sessionId, guestSessionId);
     }
 
     /**

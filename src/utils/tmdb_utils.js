@@ -289,6 +289,19 @@ exports.getRegionPageDataAsync = async function(section, page = null, region = u
 }
 
 /**
+ * Gets data that is linked to a session.
+ * @param {section.Section} section The section to query.
+ * @param {string} sessionId The session ID.
+ * @param {string} guestSessionId The guest session ID.
+ * @returs A Promise of data in JSON format.
+ */
+exports.getSessionDataAsync = async function(section, sessionId, guestSessionId = undefined) {
+    let urlParameters = { ...this._getBaseUrlParameters() };
+    exports.addSessionIdParameter(sessionId, guestSessionId);
+    return await section.getQueryResultAsync(urlParameters);
+}
+
+/**
  * The different external sources supported in TMDB.
  */
 exports.externalSources = Object.freeze({
