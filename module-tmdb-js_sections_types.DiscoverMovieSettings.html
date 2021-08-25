@@ -1,0 +1,3116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> DiscoverMovieSettings</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-tmdb-js.html">tmdb-js</a></li><li><a href="module-tmdb-js_api.html">tmdb-js/api</a></li><li><a href="module-tmdb-js_authentication.html">tmdb-js/authentication</a></li><li><a href="module-tmdb-js_sections.html">tmdb-js/sections</a></li><li><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-tmdb-js.TmdbClient.html">TmdbClient</a></li><li><a href="module-tmdb-js_api.TmdbApiUser.html">TmdbApiUser</a></li><li><a href="module-tmdb-js_api.TmdbQuerier.html">TmdbQuerier</a></li><li><a href="module-tmdb-js_authentication.Authenticator.html">Authenticator</a></li><li><a href="module-tmdb-js_sections.RateableSection.html">RateableSection</a></li><li><a href="module-tmdb-js_sections.Section.html">Section</a></li><li><a href="module-tmdb-js_sections_types.Account.html">Account</a></li><li><a href="module-tmdb-js_sections_types.AccountSection.html">AccountSection</a></li><li><a href="module-tmdb-js_sections_types.Collection.html">Collection</a></li><li><a href="module-tmdb-js_sections_types.CollectionSection.html">CollectionSection</a></li><li><a href="module-tmdb-js_sections_types.Company.html">Company</a></li><li><a href="module-tmdb-js_sections_types.CompanySection.html">CompanySection</a></li><li><a href="module-tmdb-js_sections_types.ConfigurationSection.html">ConfigurationSection</a></li><li><a href="module-tmdb-js_sections_types.Credit.html">Credit</a></li><li><a href="module-tmdb-js_sections_types.CreditSection.html">CreditSection</a></li><li><a href="module-tmdb-js_sections_types.DiscoverMovieSettings.html">DiscoverMovieSettings</a></li><li><a href="module-tmdb-js_sections_types.DiscoverSection.html">DiscoverSection</a></li><li><a href="module-tmdb-js_sections_types.DiscoverTvShowSettings.html">DiscoverTvShowSettings</a></li><li><a href="module-tmdb-js_sections_types.FindSection.html">FindSection</a></li><li><a href="module-tmdb-js_sections_types.GenreSection.html">GenreSection</a></li><li><a href="module-tmdb-js_sections_types.GuestSession.html">GuestSession</a></li><li><a href="module-tmdb-js_sections_types.GuestSessionSection.html">GuestSessionSection</a></li><li><a href="module-tmdb-js_sections_types.Keyword.html">Keyword</a></li><li><a href="module-tmdb-js_sections_types.KeywordSection.html">KeywordSection</a></li><li><a href="module-tmdb-js_sections_types.List.html">List</a></li><li><a href="module-tmdb-js_sections_types.ListSection.html">ListSection</a></li><li><a href="module-tmdb-js_sections_types.Movie.html">Movie</a></li><li><a href="module-tmdb-js_sections_types.MovieSection.html">MovieSection</a></li><li><a href="module-tmdb-js_sections_types.Network.html">Network</a></li><li><a href="module-tmdb-js_sections_types.NetworkSection.html">NetworkSection</a></li><li><a href="module-tmdb-js_sections_types.PeopleSection.html">PeopleSection</a></li><li><a href="module-tmdb-js_sections_types.Person.html">Person</a></li><li><a href="module-tmdb-js_sections_types.Review.html">Review</a></li><li><a href="module-tmdb-js_sections_types.ReviewSection.html">ReviewSection</a></li><li><a href="module-tmdb-js_sections_types.SearchSection.html">SearchSection</a></li><li><a href="module-tmdb-js_sections_types.TrendingSection.html">TrendingSection</a></li><li><a href="module-tmdb-js_sections_types.TvShow.html">TvShow</a></li><li><a href="module-tmdb-js_sections_types.TvShowEpisode.html">TvShowEpisode</a></li><li><a href="module-tmdb-js_sections_types.TvShowSeason.html">TvShowSeason</a></li><li><a href="module-tmdb-js_sections_types.TvShowSection.html">TvShowSection</a></li><li><a href="module-tmdb-js_sections_types-DiscoverSettings.html">DiscoverSettings</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>DiscoverMovieSettings</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="module-tmdb-js_sections_types.html">tmdb-js/sections/types</a>.</span>DiscoverMovieSettings<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">A class that represents the discover settings for movies.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="DiscoverMovieSettings">
+        <a class="href-link" href="#DiscoverMovieSettings">#</a>
+        
+        <span class="code-name">
+            
+                new DiscoverMovieSettings<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line162">line 162</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setCertification">
+        <a class="href-link" href="#setCertification">#</a>
+        
+        <span class="code-name">
+            
+                setCertification<span class="signature">(certification)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the certification parameter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>certification</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line184">line 184</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setCertificationCountry">
+        <a class="href-link" href="#setCertificationCountry">#</a>
+        
+        <span class="code-name">
+            
+                setCertificationCountry<span class="signature">(country)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the certification_country parameter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>country</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line176">line 176</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setCertificationGte">
+        <a class="href-link" href="#setCertificationGte">#</a>
+        
+        <span class="code-name">
+            
+                setCertificationGte<span class="signature">(limit)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the certification.gte parameter ("gte" stands for "greater than or equal to").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line200">line 200</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setCertificationLte">
+        <a class="href-link" href="#setCertificationLte">#</a>
+        
+        <span class="code-name">
+            
+                setCertificationLte<span class="signature">(limit)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the certification.lte parameter ("lte" stands for "less than or equal to").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line192">line 192</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setIncludeAdult">
+        <a class="href-link" href="#setIncludeAdult">#</a>
+        
+        <span class="code-name">
+            
+                setIncludeAdult<span class="signature">(includeAdult)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the include_adult parameter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>includeAdult</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">boolean</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line208">line 208</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setIncludeVideo">
+        <a class="href-link" href="#setIncludeVideo">#</a>
+        
+        <span class="code-name">
+            
+                setIncludeVideo<span class="signature">(includeVideo)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the include_video parameter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>includeVideo</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">boolean</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line216">line 216</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setPrimaryReleaseYear">
+        <a class="href-link" href="#setPrimaryReleaseYear">#</a>
+        
+        <span class="code-name">
+            
+                setPrimaryReleaseYear<span class="signature">(year)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the primary_release_year parameter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>year</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line224">line 224</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setPrimaryReleaseYearGte">
+        <a class="href-link" href="#setPrimaryReleaseYearGte">#</a>
+        
+        <span class="code-name">
+            
+                setPrimaryReleaseYearGte<span class="signature">(limit)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the primary_release_year.gte parameter
+("gte" stands for "greater than or equal to").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line242">line 242</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setPrimaryReleaseYearLte">
+        <a class="href-link" href="#setPrimaryReleaseYearLte">#</a>
+        
+        <span class="code-name">
+            
+                setPrimaryReleaseYearLte<span class="signature">(limit)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the primary_release_year.lte parameter
+("lte" stands for "less than or equal to").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line233">line 233</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setRegion">
+        <a class="href-link" href="#setRegion">#</a>
+        
+        <span class="code-name">
+            
+                setRegion<span class="signature">(region)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the region parameter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>region</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line168">line 168</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setReleaseDateGte">
+        <a class="href-link" href="#setReleaseDateGte">#</a>
+        
+        <span class="code-name">
+            
+                setReleaseDateGte<span class="signature">(limit)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the release_date.gte parameter
+("gte" stands for "greater than or equal to").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line251">line 251</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setReleaseDateLte">
+        <a class="href-link" href="#setReleaseDateLte">#</a>
+        
+        <span class="code-name">
+            
+                setReleaseDateLte<span class="signature">(limit)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the release_date.lte parameter
+("lte" stands for "less than or equal to").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line260">line 260</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setVoteAverageLte">
+        <a class="href-link" href="#setVoteAverageLte">#</a>
+        
+        <span class="code-name">
+            
+                setVoteAverageLte<span class="signature">(limit)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the vote_average.lte parameter
+("lte" stands for "less than or equal to").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line294">line 294</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setVoteCountLte">
+        <a class="href-link" href="#setVoteCountLte">#</a>
+        
+        <span class="code-name">
+            
+                setVoteCountLte<span class="signature">(limit)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the vote_count.lte parameter
+("lte" stands for "less than or equal to").
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>limit</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line285">line 285</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setWithCast">
+        <a class="href-link" href="#setWithCast">#</a>
+        
+        <span class="code-name">
+            
+                setWithCast<span class="signature">(&hellip;personIds)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the with_cast parameter based on the passed person IDs.
+This will determine which cast members to include in the discover results.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>personIds</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+          &lt;repeatable><br>
+      
+      </td>
+  
+
+  
+
+  <td class="description last">The person IDs.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line303">line 303</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setWithCrew">
+        <a class="href-link" href="#setWithCrew">#</a>
+        
+        <span class="code-name">
+            
+                setWithCrew<span class="signature">(&hellip;personIds)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the with_crew parameter based on the passed person IDs.
+This will determine which crew members to include in the discover results.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>personIds</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+          &lt;repeatable><br>
+      
+      </td>
+  
+
+  
+
+  <td class="description last">The person IDs.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line312">line 312</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setWithPeople">
+        <a class="href-link" href="#setWithPeople">#</a>
+        
+        <span class="code-name">
+            
+                setWithPeople<span class="signature">(&hellip;personIds)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the with_people parameter based on the passed person IDs.
+This will determine which people to include in the discover results.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>personIds</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+          &lt;repeatable><br>
+      
+      </td>
+  
+
+  
+
+  <td class="description last">The person IDs.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line321">line 321</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setWithReleaseType">
+        <a class="href-link" href="#setWithReleaseType">#</a>
+        
+        <span class="code-name">
+            
+                setWithReleaseType<span class="signature">(withReleaseType)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the with_release_type parameter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>withReleaseType</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line268">line 268</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setYear">
+        <a class="href-link" href="#setYear">#</a>
+        
+        <span class="code-name">
+            
+                setYear<span class="signature">(year)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Sets the value of the year parameter.
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>year</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">The parameter value.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="tmdb-js_sections_types_discover.js.html" class="button">View Source</a>
+            <span>
+                <a href="tmdb-js_sections_types_discover.js.html">tmdb-js/sections/types/discover.js</a>, <a href="tmdb-js_sections_types_discover.js.html#line276">line 276</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>
