@@ -32,7 +32,7 @@ exports.FindSection = class extends Section {
      * Finds media with the passed ID in the external source in question.
      * @param {string} externalId The external ID of the media. 
      */
-    find(externalId) {
+    async findAsync(externalId) {
 
         let idChild = this.createChild(externalId);
 
@@ -42,7 +42,7 @@ exports.FindSection = class extends Section {
             "external_source": this._externalSource
         };
         
-        return tmdbUtils.getData(idChild.toString(), parameters);
+        return await tmdbUtils.getDataAsync(idChild.toString(), parameters);
     }
 
 }

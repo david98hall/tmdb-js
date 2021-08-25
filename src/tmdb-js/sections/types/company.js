@@ -26,24 +26,24 @@ exports.Company = class extends section.Section {
      * Gets the company details based on the passed id.
      * @returns A Promise of company details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    async getDetailsAsync() {
+        return await this.getQueryResultAsync();
     }
 
     /**
      * Gets the alternative names of this company
      * @returns A Promise of alternative names.
      */
-    getAlternativeNames() {
-        return this.getChildQueryResult(dataTypes.ALTERNATIVE_NAMES);
+    async getAlternativeNamesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.ALTERNATIVE_NAMES);
     }
 
     /**
      * Gets images of this company. 
      * @returns A Promise of company images.
      */
-    getImages() {
-        return this.getChildQueryResult(dataTypes.IMAGES);
+    async getImagesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.IMAGES);
     }
 
 }

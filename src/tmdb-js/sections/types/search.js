@@ -35,9 +35,9 @@ exports.SearchSection = class extends Section {
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
      */
-    searchCompanies(searchTerm, startPage = 1, pageCount = 1) {
+    async searchCompaniesAsync(searchTerm, startPage = 1, pageCount = 1) {
         let companiesChild = this.createChild(searchType.COMPANIES);
-        return searchPages(
+        return await searchPagesAsync(
             companiesChild.toString(),
             searchTerm, 
             this._apiKey, 
@@ -55,9 +55,9 @@ exports.SearchSection = class extends Section {
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
      */
-    searchCollections(searchTerm, startPage = 1, pageCount = 1) {
+    async searchCollectionsAsync(searchTerm, startPage = 1, pageCount = 1) {
         let collectionsChild = this.createChild(searchType.COLLECTIONS);
-        return searchPages(
+        return await searchPagesAsync(
             collectionsChild.toString(),
             searchTerm,
             this._apiKey, 
@@ -75,9 +75,9 @@ exports.SearchSection = class extends Section {
      * @param {Number} pageCount 
      * The number of search result pages to return data from. The default is 1.
      */
-    searchKeywords(searchTerm, startPage = 1, pageCount = 1) {
+    async searchKeywordsAsync(searchTerm, startPage = 1, pageCount = 1) {
         let keywordsChild = this.createChild(searchType.KEYWORDS);
-        return searchPages(
+        return await searchPagesAsync(
             keywordsChild.toString(),
             searchTerm, 
             this._apiKey,
@@ -100,7 +100,7 @@ exports.SearchSection = class extends Section {
      * @param {Number} year The year.
      * @param {Number} primaryReleaseYear The primary release year.
      */
-    searchMovies(searchTerm,
+    async searchMoviesAsync(searchTerm,
                  startPage = 1,
                  pageCount = 1,
                  includeAdult = true,
@@ -125,7 +125,7 @@ exports.SearchSection = class extends Section {
 
         let moviesChild = this.createChild(searchType.MOVIES);
         
-        return searchPages(
+        return await searchPagesAsync(
             moviesChild.toString(),
             searchTerm,
             this._apiKey,
@@ -146,11 +146,11 @@ exports.SearchSection = class extends Section {
      * @param {Boolean} includeAdult 
      * true if adult content will be included. The default is true.
      */
-    multiSearch(searchTerm, startPage = 1, pageCount = 1, includeAdult = true) {
+    async multiSearchAsync(searchTerm, startPage = 1, pageCount = 1, includeAdult = true) {
 
         let multiChild = this.createChild(searchType.MULTI);
 
-        return searchPages(
+        return await searchPagesAsync(
             multiChild.toString(),
             searchTerm, 
             this._apiKey, 
@@ -171,7 +171,7 @@ exports.SearchSection = class extends Section {
      * true if adult content will be included. The default is true.
      * @param {string} region The region.
      */
-    searchPeople(searchTerm,
+    async searchPeopleAsync(searchTerm,
         startPage = 1,
         pageCount = 1,
         includeAdult = true,
@@ -185,7 +185,7 @@ exports.SearchSection = class extends Section {
 
         let peopleChild = this.createChild(searchType.PEOPLE);
 
-        return searchPages(
+        return await searchPagesAsync(
             peopleChild.toString(),
             searchTerm,
             this._apiKey,
@@ -207,7 +207,7 @@ exports.SearchSection = class extends Section {
      * true if adult content will be included. The default is true.
      * @param {Number} firstAirDateYear The first air date year.
      */
-    searchTvShows(searchTerm,
+    async searchTvShowsAsync(searchTerm,
         startPage = 1,
         pageCount = 1,
         includeAdult = true,
@@ -221,7 +221,7 @@ exports.SearchSection = class extends Section {
 
         let tvShowChild = this.createChild(searchType.TV_SHOWS);
 
-        return searchPages(
+        return await searchPagesAsync(
             tvShowChild.toString(),
             searchTerm, 
             this._apiKey,
@@ -261,7 +261,7 @@ const searchType = {
  * @param {Object} additionalInfo
  * Additional info to add to the search query.
  */
-async function searchPages(url, searchTerm, apiKey, startPage, 
+async function searchPagesAsync(url, searchTerm, apiKey, startPage,
     pageCount, includeAdult = true, language = "en-US", additionalInfo = {}) {
     
         // Throw an error if the page related parameters are invalid
@@ -271,7 +271,7 @@ async function searchPages(url, searchTerm, apiKey, startPage,
 
         // Search the first page in order to get the total number of pages.
         // Used to interrupt when there are no pages left to search.
-        let firstPage = await searchPage(url,
+        let firstPage = await searchPageAsync(url,
                                          searchTerm,
                                          apiKey,
                                          startPage,
@@ -290,7 +290,7 @@ async function searchPages(url, searchTerm, apiKey, startPage,
         let promises = [];
         for (let index = 1; index <= pageCount; index++) {
             let page = startPage + index;
-            let promise = searchPage(url,
+            let promise = searchPageAsync(url,
                                      searchTerm,
                                      apiKey,
                                      page,
@@ -317,8 +317,10 @@ async function searchPages(url, searchTerm, apiKey, startPage,
  * The language of the search results. Default value is "en-US".
  * @param {Object} additionalInfo
  * Additional info to add to the search query.
+ *
+ * @returns A Promise of page JSON data.
  */
-function searchPage(url, searchTerm, apiKey, 
+async function searchPageAsync(url, searchTerm, apiKey,
     page = 1, includeAdult = true, language = "en-US", additionalInfo = {}) {
         
     let parameters = {
@@ -330,5 +332,5 @@ function searchPage(url, searchTerm, apiKey,
         ...additionalInfo
     };
 
-    return tmdbUtils.getData(url, parameters);
+    return await tmdbUtils.getDataAsync(url, parameters);
 }

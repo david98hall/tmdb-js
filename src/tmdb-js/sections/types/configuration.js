@@ -26,48 +26,48 @@ exports.ConfigurationSection = class extends Section {
      * Gets the system wide TMDB API configuration information.
      * @returns A Promise of configuration data.
      */
-    getApiConfiguration() {
-        return this.getQueryResult();
+    async getApiConfigurationAsync() {
+        return await this.getQueryResultAsync();
     }
 
     /**
      * Gets the countries used in TMDB.
      * @returns A Promise of country data.
      */
-    getCountries() {
-        return this.getChildQueryResult(dataTypes.COUNTRIES);
+    async getCountriesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.COUNTRIES);
     }
 
     /**
      * Gets the jobs and departments used in TMDB.
      * @returns A Promise of job/department data.
      */
-    getJobs() {
-        return this.getChildQueryResult(dataTypes.JOBS);
+    async getJobsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.JOBS);
     }
 
     /**
      * Gets the languages used in TMDB.
      * @returns A Promise of language data.
      */
-    getLanguages() {
-        return this.getChildQueryResult(dataTypes.LANGUAGES);
+    async getLanguagesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.LANGUAGES);
     }
 
     /**
      * Gets the officially supported translations in TMDB.
      * @returns A Promise of translation data.
      */
-    getPrimaryTranslations() {
-        return this.getChildQueryResult(dataTypes.PRIMARY_TRANSLATIONS);
+    async getPrimaryTranslationsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.PRIMARY_TRANSLATIONS);
     }
 
     /**
      * Gets the timezones used in TMDB.
      * @returns A Promise of timezone data.
      */
-    getTimezones() {
-        return this.getChildQueryResult(dataTypes.TIMEZONES);
+    async getTimezonesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.TIMEZONES);
     }
 
 }

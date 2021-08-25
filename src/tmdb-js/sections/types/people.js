@@ -26,7 +26,7 @@ exports.Person = class extends section.Section {
      * Gets all details about this person.
      * @returns A Promise of this person's details.
      */
-    getDetails(...appendToResponse) {
+    async getDetailsAsync(...appendToResponse) {
 
         let urlParameters = null;
 
@@ -37,71 +37,71 @@ exports.Person = class extends section.Section {
             }
         }
 
-        return this.getQueryResult(urlParameters);
+        return await this.getQueryResultAsync(urlParameters);
     }
 
     /**
      * Gets the changes of the person in question.
      * @returns A Promise of this person's changes.
      */
-    getChanges() {
-        return this.getChildQueryResult(dataTypes.CHANGES);
+    async getChangesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.CHANGES);
     }
         
     /**
      * Gets the movie credits of this person.
      * @returns A Promise of this person's movie credits.
      */
-    getMovieCredits() {
-        return this.getChildQueryResult(dataTypes.MOVIE_CREDITS);
+    async getMovieCreditsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.MOVIE_CREDITS);
     }
 
     /**
      * Gets the TV credits of this person.
      * @returns A Promise of this person's TV credits.
      */
-    getTvCredits() {
-        return this.getChildQueryResult(dataTypes.TV_CREDITS);
+    async getTvCreditsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.TV_CREDITS);
     }
 
     /**
      * Gets the combined credits of this person.
      * @returns A Promise of this person's combined credits.
      */
-    getCombinedCredits() {
-        return this.getChildQueryResult(dataTypes.COMBINED_CREDITS);
+    async getCombinedCreditsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.COMBINED_CREDITS);
     }
 
     /**
      * Gets the external IDs of this person.
      * @returns A Promise of external IDs.
      */
-    getExternalIds() { 
-        return this.getChildQueryResult(dataTypes.EXTERNAL_IDS)
+    async getExternalIdsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.EXTERNAL_IDS)
     }
 
     /**
      * Gets the images of this person.
      * @returns A Promise of images of this person.
      */
-    getImages() {
-        return this.getChildQueryResult(dataTypes.IMAGES);
+    async getImagesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.IMAGES);
     }
 
     /**
      * Gets the tagged images of this person.
      * @returns A Promise of tagged images of this person.
      */
-    getTaggedImages() {
-        return this.getChildQueryResult(dataTypes.TAGGED_IMAGES);
+    async getTaggedImagesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.TAGGED_IMAGES);
     }
 
     /**
      * Gets the translations of this person.
      * @returns A Promise of person translations.
      */ 
-    getTranslations() {
-        return this.getChildQueryResult(dataTypes.TRANSLATIONS);
+    async getTranslationsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
     }
 }
 
@@ -131,14 +131,14 @@ exports.PeopleSection = class extends section.Section {
     /**
      * Gets the latest created person.
      */
-    getLatest() {
-        return this.getChildQueryResult(dataTypes.LATEST);
+    async getLatestAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.LATEST);
     }
 
     /**
      * Gets popular people.
      */
-    getPopular() {
-        return this.getChildQueryResult(dataTypes.POPULAR);
+    async getPopularAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.POPULAR);
     }
 }

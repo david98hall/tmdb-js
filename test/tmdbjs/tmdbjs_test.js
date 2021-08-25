@@ -1,6 +1,6 @@
 const assert = require('assert');
 const tmdbUtils = require('../../src/utils/tmdb_utils');
-const getApiKey = require('./utils/tmdb_test_utils').getApiKey;
+const getApiKey = require('./utils/tmdb_test_utils').getApiKeyAsync;
 
 const tests = [
     require('./utils/tmdb_utils_test'),
@@ -36,11 +36,11 @@ exports.runTest = () => {
             // Get a session id if possible
             let sessionId = undefined;
             if (!process.env.CI) {
-                sessionId = await tmdbUtils.createSession(apiKey);
+                sessionId = await tmdbUtils.createSessionAsync(apiKey);
                 assert.ok(sessionId);
 
                 after(async () => {
-                    await tmdbUtils.deleteSession(apiKey, sessionId);
+                    await tmdbUtils.deleteSessionAsync(apiKey, sessionId);
                 });
             }
 

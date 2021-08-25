@@ -26,7 +26,7 @@ exports.Account = class extends section.Section {
      * Gets the created lists of this account
      * @returns A Promise of created lists.
      */
-    getCreatedLists(sessionId, page) {
+    async getCreatedListsAsync(sessionId, page) {
         
         let urlParameters = {
             ...this.__getBaseUrlParameters(sessionId),
@@ -34,7 +34,7 @@ exports.Account = class extends section.Section {
             "page": page,
         };
 
-        return this.getChildQueryResult(dataTypes.LISTS, urlParameters);
+        return await this.getChildQueryResultAsync(dataTypes.LISTS, urlParameters);
     }
 
     /**
@@ -48,8 +48,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of favorite movies.
      */
-    getFavoriteMovies(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
-        return this.__getFilteredMedia(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.FAVORITE);
+    async getFavoriteMoviesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+        return await this.__getFilteredMediaAsync(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.FAVORITE);
     }
 
     /**
@@ -61,8 +61,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of favorite TV shows.
      */
-    getFavoriteTvShows(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
-        return this.__getFilteredMedia(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.FAVORITE);
+    async getFavoriteTvShowsAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+        return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.FAVORITE);
     }
     
     
@@ -75,8 +75,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of rated movies.
      */
-    getRatedMovies(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
-        return this.__getFilteredMedia(sessionId, page, sortBy, sections.MOVIE, dataTypes.RATED);
+    async getRatedMoviesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+        return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.MOVIE, dataTypes.RATED);
     }
     
     /**
@@ -88,8 +88,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of rated TV shows.
      */
-    getRatedTvShows(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
-        return this.__getFilteredMedia(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.RATED);
+    async getRatedTvShowsAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+        return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.RATED);
     }
     
     /**
@@ -101,7 +101,7 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of rated TV show episodes.
      */
-    getRatedTvShowEpisodes(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+    async getRatedTvShowEpisodesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
 
         let urlParameters = {
             ...this.__getBaseUrlParameters(sessionId),
@@ -110,9 +110,9 @@ exports.Account = class extends section.Section {
             "page": page
         };
 
-        return this.createChild(dataTypes.RATED)
-                   .createChild(sections.TV_SHOW)
-                   .getChildQueryResult(sections.EPISODES, urlParameters);
+        return await this.createChild(dataTypes.RATED)
+                         .createChild(sections.TV_SHOW)
+                         .getChildQueryResultAsync(sections.EPISODES, urlParameters);
     }
     
     /**
@@ -124,8 +124,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of movies in this account's watchlist.
      */
-    getMovieWatchlist(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
-        return this.__getFilteredMedia(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.WATCHLIST);
+    async getMovieWatchlistAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+        return await this.__getFilteredMediaAsync(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.WATCHLIST);
     }
     
     /**
@@ -137,8 +137,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of TV shows in this account's watchlist.
      */
-    getTvShowWatchlist(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
-        return this.__getFilteredMedia(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.WATCHLIST);
+    async getTvShowWatchlistAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+        return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.WATCHLIST);
     }
 
     /**
@@ -150,8 +150,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of a boolean value indicating whether the favorite marking was successful or not.
      */
-    async setMovieFavoriteStatus(sessionId, mediaId, favorite) {
-        return await this.__setFavoriteStatus(sessionId, tmdbUtils.mediaTypes.MOVIE, mediaId, favorite);
+    async setMovieFavoriteStatusAsync(sessionId, mediaId, favorite) {
+        return await this.__setFavoriteStatusAsync(sessionId, tmdbUtils.mediaTypes.MOVIE, mediaId, favorite);
     }
 
     /**
@@ -163,8 +163,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of a boolean value indicating whether the favorite marking was successful or not.
      */
-    async setTvShowFavoriteStatus(sessionId, mediaId, favorite) {
-        return await this.__setFavoriteStatus(sessionId, tmdbUtils.mediaTypes.TV, mediaId, favorite);
+    async setTvShowFavoriteStatusAsync(sessionId, mediaId, favorite) {
+        return await this.__setFavoriteStatusAsync(sessionId, tmdbUtils.mediaTypes.TV, mediaId, favorite);
     }
 
     /**
@@ -176,8 +176,8 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of a boolean value indicating whether the watchlist update was successful or not.
      */
-    async setMovieWatchlistStatus(sessionId, mediaId, watchlist) {
-        return await this.__setWatchlistStatus(sessionId, tmdbUtils.mediaTypes.MOVIE, mediaId, watchlist);
+    async setMovieWatchlistStatusAsync(sessionId, mediaId, watchlist) {
+        return await this.__setWatchlistStatusAsync(sessionId, tmdbUtils.mediaTypes.MOVIE, mediaId, watchlist);
     }
 
     /**
@@ -189,19 +189,19 @@ exports.Account = class extends section.Section {
      * 
      * @returns A Promise of a boolean value indicating whether the watchlist update was successful or not.
      */
-     async setTvShowWatchlistStatus(sessionId, mediaId, watchlist) {
-        return await this.__setWatchlistStatus(sessionId, tmdbUtils.mediaTypes.TV, mediaId, watchlist);
+    async setTvShowWatchlistStatusAsync(sessionId, mediaId, watchlist) {
+        return await this.__setWatchlistStatusAsync(sessionId, tmdbUtils.mediaTypes.TV, mediaId, watchlist);
     }
 
-    async __setFavoriteStatus(sessionId, mediaType, mediaId, favorite) {
-        return await this.__setMediaStatus(sessionId, mediaType, mediaId, dataTypes.FAVORITE, favorite);
+    async __setFavoriteStatusAsync(sessionId, mediaType, mediaId, favorite) {
+        return await this.__setMediaStatusAsync(sessionId, mediaType, mediaId, dataTypes.FAVORITE, favorite);
     }
     
-    async __setWatchlistStatus(sessionId, mediaType, mediaId, watchlist) {
-        return await this.__setMediaStatus(sessionId, mediaType, mediaId, dataTypes.WATCHLIST, watchlist);
+    async __setWatchlistStatusAsync(sessionId, mediaType, mediaId, watchlist) {
+        return await this.__setMediaStatusAsync(sessionId, mediaType, mediaId, dataTypes.WATCHLIST, watchlist);
     }
     
-    __setMediaStatus(sessionId, mediaType, mediaId, statusType, status) {
+    async __setMediaStatusAsync(sessionId, mediaType, mediaId, statusType, status) {
 
         let urlPath = this.createChild(statusType).toString();
 
@@ -213,10 +213,10 @@ exports.Account = class extends section.Section {
         };
         requestBody[statusType] = status;
 
-        return tmdbUtils.post(urlPath, urlParameters, requestBody);
+        return await tmdbUtils.postAsync(urlPath, urlParameters, requestBody);
     }
 
-    __getFilteredMedia(sessionId, page, sortBy, mediaType, filter) {
+    async __getFilteredMediaAsync(sessionId, page, sortBy, mediaType, filter) {
         let urlParameters = {
             ...this.__getBaseUrlParameters(sessionId),
             "language": this._language,
@@ -224,8 +224,8 @@ exports.Account = class extends section.Section {
             "page": page
         };
 
-        return this.createChild(filter)
-                    .getChildQueryResult(mediaType, urlParameters);
+        return await this.createChild(filter)
+                         .getChildQueryResultAsync(mediaType, urlParameters);
     }
 
     __getBaseUrlParameters(sessionId) {
@@ -255,14 +255,14 @@ exports.AccountSection = class extends section.Section {
      * @param sessionId The sessionId.
      * @returns A Promise of account details.
      */
-     getDetails(sessionId) {
+     async getDetailsAsync(sessionId) {
 
         let urlParameters = {
             "api_key": this._apiKey,
             "session_id": sessionId
         };
 
-        return this.getQueryResult(urlParameters);
+        return await this.getQueryResultAsync(urlParameters);
     }
     
     /**
@@ -273,5 +273,4 @@ exports.AccountSection = class extends section.Section {
     getAccount(id) {
         return new exports.Account(id, this);
     }
-
 }

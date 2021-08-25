@@ -8,7 +8,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
     describe('Genre GET tests', () => {
 
         it('Get movie genre list.', done => {
-            tmdb.getGenres().getMovieGenres().then(json => {
+            tmdb.getGenres().getMovieGenresAsync().then(json => {
 
                 // Assert the results
                 assert.ok(json);
@@ -18,7 +18,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
         });
 
         it('Get TV show genre list.', done => {
-            tmdb.getGenres().getTvShowGenres().then(json => {
+            tmdb.getGenres().getTvShowGenresAsync().then(json => {
 
                 // Assert the results
                 assert.ok(json);
@@ -26,6 +26,5 @@ exports.runTest = (apiKey, sessionId = undefined) => {
                 setImmediate(done);
             })
         });
-
     });
 }

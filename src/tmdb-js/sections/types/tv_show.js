@@ -19,7 +19,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
         super(episodeNumber.toString(), new section.Section(sections.TV_SHOW_EPISODE, tvShowSeason));
     }
 
-    getDetails(...appendToResponse) {
+    async getDetailsAsync(...appendToResponse) {
 
         let urlParameters = null;
 
@@ -30,35 +30,35 @@ exports.TvShowEpisode = class extends section.RateableSection {
             }
         }
 
-        return this.getQueryResult(urlParameters);
+        return await this.getQueryResultAsync(urlParameters);
     }
 
-    getAccountStates() {
-        return this.getChildQueryResult(dataTypes.ACCOUNT_STATES);
+    async getAccountStatesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.ACCOUNT_STATES);
     }
 
-    getChanges() {
-        return this.getChildQueryResult(dataTypes.CHANGES);
+    async getChangesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.CHANGES);
     }
 
-    getCredits() {
-        return this.getChildQueryResult(dataTypes.CREDITS);
+    async getCreditsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.CREDITS);
     }
 
-    getExternalIds() {
-        return this.getChildQueryResult(dataTypes.EXTERNAL_IDS);
+    async getExternalIdsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.EXTERNAL_IDS);
     }
 
-    getImages() {
-        return this.getChildQueryResult(dataTypes.IMAGES);
+    async getImagesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.IMAGES);
     }
 
-    getTranslations() {
-        return this.getChildQueryResult(dataTypes.TRANSLATIONS);
+    async getTranslationsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
     }
 
-    getVideos() {
-        return this.getChildQueryResult(dataTypes.VIDEOS);
+    async getVideosAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.VIDEOS);
     }
 
 }
@@ -78,7 +78,7 @@ exports.TvShowSeason = class extends section.Section {
      * Gets the details of this TV show season.
      * @returns A Promise of season detail data.
      */
-    getDetails(...appendToResponse) {
+    async getDetailsAsync(...appendToResponse) {
 
         let urlParameters = null;
 
@@ -89,53 +89,53 @@ exports.TvShowSeason = class extends section.Section {
             }
         }
 
-        return this.getQueryResult(urlParameters);
+        return await this.getQueryResultAsync(urlParameters);
     }
 
-    getAccountStates() {
-        return this.getChildQueryResult(dataTypes.ACCOUNT_STATES);
+    async getAccountStatesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.ACCOUNT_STATES);
     }
 
-    getAggregateCredits() {
-        return this.getChildQueryResult(dataTypes.AGGREGATE_CREDITS);
+    async getAggregateCreditsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.AGGREGATE_CREDITS);
     }
 
-    getChanges() {
-        return this.getChildQueryResult(dataTypes.CHANGES);
+    async getChangesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.CHANGES);
     }
 
-    getCredits() {
-        return this.getChildQueryResult(dataTypes.CREDITS);
+    async getCreditsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.CREDITS);
     }
 
-    getExternalIds() {
-        return this.getChildQueryResult(dataTypes.EXTERNAL_IDS);
+    async getExternalIdsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.EXTERNAL_IDS);
     }
 
-    getImages() {
-        return this.getChildQueryResult(dataTypes.IMAGES);
+    async getImagesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.IMAGES);
     }
 
-    getTranslations() {
-        return this.getChildQueryResult(dataTypes.TRANSLATIONS);
+    async getTranslationsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
     }
 
-    getVideos() {
-        return this.getChildQueryResult(dataTypes.VIDEOS);
+    async getVideosAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.VIDEOS);
     }
     
     getEpisode(episodeNumber) {
         return new exports.TvShowEpisode(episodeNumber, this);
     }
 
-    async getEpisodeCount() {
-        return (await this.getDetails())["episodes"].length;
+    async getEpisodeCountAsync() {
+        return (await this.getDetailsAsync())["episodes"].length;
     }
 
-    async getEpisodes() {
+    async getEpisodesAsync() {
                
         // Get the number of episodes
-        let numberOfEpisodes = await this.getEpisodeCount();
+        let numberOfEpisodes = await this.getEpisodeCountAsync();
         
         let episodes = [];
         for (let i = 1; i <= numberOfEpisodes; i++) {
@@ -144,7 +144,6 @@ exports.TvShowSeason = class extends section.Section {
 
         return episodes;
     }
-
 }
 
 /**
@@ -165,7 +164,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets all details about this TV show.
      * @returns A Promise of TV show details.
      */
-    getDetails(...appendToResponse) {
+    async getDetailsAsync(...appendToResponse) {
 
         let urlParameters = null;
 
@@ -176,7 +175,7 @@ exports.TvShow = class extends section.RateableSection {
             }
         }
 
-        return this.getQueryResult(urlParameters);
+        return await this.getQueryResultAsync(urlParameters);
     }
 
     /**
@@ -185,125 +184,125 @@ exports.TvShow = class extends section.RateableSection {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      */
-    getAccountStates(sessionId = undefined, guestSessionId = undefined) {
+    async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
         let childSection = new section.Section(dataTypes.ACCOUNT_STATES, this);
 
         let urlParameters = { ...this._getBaseUrlParameters() };
         tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId)
 
-        return childSection.getQueryResult(urlParameters);
+        return await childSection.getQueryResultAsync(urlParameters);
     }
 
     /**
      * Gets the alternative titles of the TV show in question.
      */
-    getAlternativeTitles() {
+    async getAlternativeTitlesAsync() {
         let childSection = new section.Section(dataTypes.ALTERNATIVE_TITLES, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the changes of the TV show in question.
      */
-    getChanges() {
+    async getChangesAsync() {
         let childSection = new section.Section(dataTypes.CHANGES, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the content ratings of the TV show in question.
      */
-    getContentRatings() {
+    async getContentRatingsAsync() {
         let childSection = new section.Section(dataTypes.CONTENT_RATINGS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the credits of the TV show in question.
      */
-    getCredits() {
+    async getCreditsAsync() {
         let childSection = new section.Section(dataTypes.CREDITS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the episode groups of the TV show in question.
      */
-    getEpisodeGroups() {
+   async getEpisodeGroupsAsync() {
         let childSection = new section.Section(dataTypes.EPISODE_GROUPS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the external IDs of the TV show in question.
      */
-    getExternalIds() {
+    async getExternalIdsAsync() {
         let childSection = new section.Section(dataTypes.EXTERNAL_IDS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the images of the TV show in question.
      */
-    getImages() {
+    async getImagesAsync() {
         let childSection = new section.Section(dataTypes.IMAGES, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the keywords of the TV show in question.
      */
-    getKeywords() {
+    async getKeywordsAsync() {
         let childSection = new section.Section(dataTypes.KEYWORDS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the recommendations based on the TV show in question.
      */
-    getRecommendations() {
+    async getRecommendationsAsync() {
         let childSection = new section.Section(dataTypes.RECOMMENDATIONS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the reviews of the TV show in question.
      */
-    getReviews() {
+    async getReviewsAsync() {
         let childSection = new section.Section(dataTypes.REVIEWS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the a list of seasons or episodes of the TV show in question that were screened theatrically.
      */
-    getScreenedTheatrically() {
+    async getScreenedTheatricallyAsync() {
         let childSection = new section.Section(dataTypes.SCREENED_THEATRICALLY, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the similar TV shows to the TV show in question.
      */
-    getSimilarTvShows() {
+    async getSimilarTvShowsAsync() {
         let childSection = new section.Section(dataTypes.SIMILAR_MOVIES, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the translations of the TV show in question.
      */ 
-    getTranslations() {
+    async getTranslationsAsync() {
         let childSection = new section.Section(dataTypes.TRANSLATIONS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the videos of the TV show in question.
      */
-    getVideos() {
+    async getVideosAsync() {
         let childSection = new section.Section(dataTypes.VIDEOS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
@@ -315,17 +314,17 @@ exports.TvShow = class extends section.RateableSection {
         return new exports.TvShowSeason(seasonNumber, this);
     }
 
-    async getSeasonCount() {
-        return (await this.getDetails())["number_of_seasons"];
+    async getSeasonCountAsync() {
+        return (await this.getDetailsAsync())["number_of_seasons"];
     }
 
     /**
      * Gets all seasons.
      * @returns An a Promise of an array of TvShowSeason objects.
      */
-    async getSeasons() {
+    async getSeasonsAsync() {
         let seasons = [];
-        let seasonCount = await this.getSeasonCount();
+        let seasonCount = await this.getSeasonCountAsync();
         for (let i = 1; i <= seasonCount; i++) {
             let season = this.getSeason(i);
             seasons.push(season)
@@ -346,12 +345,12 @@ exports.TvShow = class extends section.RateableSection {
     /**
      * Gets all episodes of this TV show.
      */
-    async getAllEpisodes() {
+    async getAllEpisodesAsync() {
         let seasons = [];
-        let seasonCount = await this.getSeasonCount();
+        let seasonCount = await this.getSeasonCountAsync();
         for (let seasonNumber = 1; seasonNumber <= seasonCount; seasonNumber++) {
             let season = this.getSeason(seasonNumber);
-            let seasonEpisodes = await season.getEpisodes();
+            let seasonEpisodes = await season.getEpisodesAsync();
             seasons.push(seasonEpisodes);
         }
 
@@ -385,60 +384,59 @@ exports.TvShowSection = class extends section.Section {
     /**
      * Gets the latest TV shows.
      */
-    getLatest() {
+    async getLatestAsync() {
         let childSection = new section.Section(dataTypes.LATEST, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets TV shows airing today.
      */
-    getTvAiringToday() {
+    async getTvAiringTodayAsync() {
         let childSection = new section.Section(dataTypes.TV_AIRING_TODAY, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets TV shows currently on the air.
      */
-    getTvOnTheAir() {
+    async getTvOnTheAirAsync() {
         let childSection = new section.Section(dataTypes.TV_ON_THE_AIR, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets popular TV shows.
      */
-    getPopular() {
+    async getPopularAsync() {
         let childSection = new section.Section(dataTypes.POPULAR, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets top rated TV shows.
      */
-    getTopRated() {
+    async getTopRatedAsync() {
         let childSection = new section.Section(dataTypes.TOP_RATED, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the episode group with the passed ID.
      * @param {string} episodeGroupId The ID of the episode group.
      */
-    getEpisodeGroup(episodeGroupId) {
+    async getEpisodeGroupAsync(episodeGroupId) {
         let episodeGroupSection = new section.Section(
             episodeGroupId,
             new section.Section(dataTypes.EPISODE_GROUPS, this));
-        return episodeGroupSection.getQueryResult();
+        return await episodeGroupSection.getQueryResultAsync();
     }
 
     /**
      * Gets TV show certifications.
      */
-    getCertifications() {
-        return new section.Section(sections.CERTIFICATION, null, this._apiKey, this._language)
-            .createChild(sections.TV_SHOW)
-            .getChildQueryResult(sections.LIST);
+    async getCertificationsAsync() {
+        let certificationSection = new section.Section(sections.CERTIFICATION, null, this._apiKey, this._language);
+        return await certificationSection.createChild(sections.TV_SHOW).getChildQueryResultAsync(sections.LIST);
     }
 }

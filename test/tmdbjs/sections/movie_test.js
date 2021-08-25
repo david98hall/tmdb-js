@@ -13,7 +13,7 @@ exports.runTest = (apiKey, sessionId) => {
         let madMaxMovie = {id: 76341, title: "Mad Max: Fury Road"};
 
         it('Should find data about a movie.', done => {
-            tmdb.getMovies().getMovie(madMaxMovie.id).getDetails().then(json => {
+            tmdb.getMovies().getMovie(madMaxMovie.id).getDetailsAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
@@ -27,7 +27,7 @@ exports.runTest = (apiKey, sessionId) => {
 
         it('Should find data about a movie with "Append to Response".', done => {
 
-            tmdb.getMovies().getMovie(madMaxMovie.id).getDetails("videos", "images").then(json => {
+            tmdb.getMovies().getMovie(madMaxMovie.id).getDetailsAsync("videos", "images").then(json => {
 
                 // Assert the results
                 assert.ok(json);
@@ -39,7 +39,7 @@ exports.runTest = (apiKey, sessionId) => {
         });
 
         it('Should find movie credit data.', done => {
-            tmdb.getMovies().getMovie(madMaxMovie.id).getCredits().then(json => {
+            tmdb.getMovies().getMovie(madMaxMovie.id).getCreditsAsync().then(json => {
                 
                 // Assert the results
                 assert.ok(json);
@@ -49,7 +49,7 @@ exports.runTest = (apiKey, sessionId) => {
         });
 
         it('Should find movie certification data.', done => {
-            tmdb.getMovies().getCertifications().then(json => {
+            tmdb.getMovies().getCertificationsAsync().then(json => {
                 
                 // Assert the results
                 assert.ok(json);
@@ -57,7 +57,6 @@ exports.runTest = (apiKey, sessionId) => {
                 setImmediate(done);
             });
         });
-
     });
 
     // Don't test non-deterministic functions on the CI
@@ -68,10 +67,9 @@ exports.runTest = (apiKey, sessionId) => {
             it('Should rate and unrate a movie', async () => {
 
                 let movie = tmdb.getMovies().getMovie("16869");
-                assert.ok(await movie.rate(10, sessionId));
-                assert.ok(await movie.deleteRating(sessionId));
+                assert.ok(await movie.rateAsync(10, sessionId));
+                assert.ok(await movie.deleteRatingAsync(sessionId));
             });
-    
         });
     }
 }

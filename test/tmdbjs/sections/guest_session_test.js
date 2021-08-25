@@ -10,34 +10,34 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find the rated movies of a guest session.', async () => {
 
-            let guestSessionId = await tmdbUtils.createGuestSession(apiKey);
+            let guestSessionId = await tmdbUtils.createGuestSessionAsync(apiKey);
             assert.ok(guestSessionId);
 
             let ratedMovies = await tmdb.getGuestSessions()
                                         .getGuestSession(guestSessionId)
-                                        .getRatedMovies();
+                                        .getRatedMoviesAsync();
             assert.ok(ratedMovies);
         });
 
         it('Should find the rated TV shows of a guest session.', async () => {
 
-            let guestSessionId = await tmdbUtils.createGuestSession(apiKey);
+            let guestSessionId = await tmdbUtils.createGuestSessionAsync(apiKey);
             assert.ok(guestSessionId);
 
             let ratedTvShows = await tmdb.getGuestSessions()
                                          .getGuestSession(guestSessionId)
-                                         .getRatedTvShows();
+                                         .getRatedTvShowsAsync();
             assert.ok(ratedTvShows);
         });
 
         it('Should find the rated TV show episodes of a guest session.', async () => {
 
-            let guestSessionId = await tmdbUtils.createGuestSession(apiKey);
+            let guestSessionId = await tmdbUtils.createGuestSessionAsync(apiKey);
             assert.ok(guestSessionId);
 
             let ratedEpisodes = await tmdb.getGuestSessions()
                                           .getGuestSession(guestSessionId)
-                                          .getRatedTvShowEpisodes();
+                                          .getRatedTvShowEpisodesAsync();
             assert.ok(ratedEpisodes);
         });
 

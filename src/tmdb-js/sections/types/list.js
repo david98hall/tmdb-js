@@ -27,16 +27,16 @@ exports.List = class extends section.Section {
      * Gets all details about this list.
      * @returns A Promise of list details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    async getDetailsAsync() {
+        return await this.getQueryResultAsync();
     }
 
     /**
      * Gets the item status of this list.
      * @returns A Promise of item status data.
      */
-    getItemStatus() {
-        return this.getChildQueryResult(dataTypes.ITEM_STATUS);
+    async getItemStatusAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.ITEM_STATUS);
     }
 
     /**
@@ -45,10 +45,10 @@ exports.List = class extends section.Section {
      * @param {string} sessionId The session id.
      * @returns A Promise of a boolean value indicating whether the addition was successful or not.
      */
-    async addMovie(movieId, sessionId) {
+    async addMovieAsync(movieId, sessionId) {
         let requestBody = { media_id: movieId };
         let addItemSection = this.createChild(actionTypes.ADD_ITEM);
-        return await tmdbUtils.post(addItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
+        return await tmdbUtils.postAsync(addItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
     }
 
     /**
@@ -57,10 +57,10 @@ exports.List = class extends section.Section {
      * @param {string} sessionId The session id.
      * @returns A Promise of a boolean value indicating whether the removal was successful or not.
      */
-    async removeMovie(movieId, sessionId) {
+    async removeMovieAsync(movieId, sessionId) {
         let requestBody = { media_id: movieId };
         let removeItemSection = this.createChild(actionTypes.REMOVE_ITEM);
-        return await tmdbUtils.post(removeItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
+        return await tmdbUtils.postAsync(removeItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
     }
 
     /**
@@ -68,11 +68,11 @@ exports.List = class extends section.Section {
      * @param {string} sessionId The session id.
      * @returns A Promise of a boolean value indicating whether the clearing was successful or not.
      */
-    async clear(sessionId) {
+    async clearAsync(sessionId) {
         let urlParameters = this._getUrlParameters(sessionId);
         urlParameters["confirm"] = true;
         let clearSection = this.createChild(actionTypes.CLEAR);
-        return await tmdbUtils.post(clearSection.toString(), urlParameters);
+        return await tmdbUtils.postAsync(clearSection.toString(), urlParameters);
     }
 
     /**
@@ -80,8 +80,8 @@ exports.List = class extends section.Section {
      * @param {string} sessionId The session id.
      * @returns A Promise of a boolean value indicating whether the deletion was successful or not.
      */
-    async delete(sessionId) {
-        return await tmdbUtils.delete(this.toString(), this._getUrlParameters(sessionId));
+    async deleteAsync(sessionId) {
+        return await tmdbUtils.deleteAsync(this.toString(), this._getUrlParameters(sessionId));
     }
 
     /**
@@ -94,7 +94,6 @@ exports.List = class extends section.Section {
             "session_id": sessionId
         };
     }
-
 }
 
 /**
@@ -131,7 +130,7 @@ exports.ListSection = class extends section.Section {
      * @returns A Promise of a List instance representing the created list
      * (null if the creation was not successful).
      */
-    async createList(name, description, language = "en-US", sessionId) {
+    async createListAsync(name, description, language = "en-US", sessionId) {
 
         const requestBody = {
             "name": name,
@@ -144,7 +143,7 @@ exports.ListSection = class extends section.Section {
             "session_id": sessionId
         };
 
-        const response = await tmdbUtils.post(this.toString(), urlParameters, requestBody);
+        const response = await tmdbUtils.postAsync(this.toString(), urlParameters, requestBody);
 
         if (response && response.success) {
             return new exports.List(response["list_id"], this);
@@ -152,5 +151,4 @@ exports.ListSection = class extends section.Section {
 
         return null;
     }
-
 }

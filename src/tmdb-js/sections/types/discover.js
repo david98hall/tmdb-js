@@ -218,10 +218,10 @@ exports.DiscoverSection = class extends Section {
      * @param {exports.DiscoverMovieSettings} settings The discover settings.
      * @return A Promise of discovered movie data.
      */
-    discoverMovies(settings) {
+    async discoverMoviesAsync(settings) {
         let urlParameters = this.__buildUrlParameters(settings);
-        return this.createChild(sections.MOVIE)
-                   .getQueryResult(urlParameters);
+        return await this.createChild(sections.MOVIE)
+                         .getQueryResultAsync(urlParameters);
     }
 
     /**
@@ -229,10 +229,10 @@ exports.DiscoverSection = class extends Section {
      * @param {exports.DiscoverTvShowSettings} settings The discover settings.
      * @return A Promise of discovered TV show data.
      */
-    discoverTvShows(settings) {
+    async discoverTvShowsAsync(settings) {
         let urlParameters = this.__buildUrlParameters(settings);
-        return this.createChild(sections.TV_SHOW)
-                   .getQueryResult(urlParameters);
+        return await this.createChild(sections.TV_SHOW)
+                         .getQueryResultAsync(urlParameters);
     }
 
     __buildUrlParameters(discoverSettings) {

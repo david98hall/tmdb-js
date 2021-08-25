@@ -26,26 +26,25 @@ exports.Collection = class extends section.Section {
      * Gets the collection details based on the passed id. 
      * @returns A Promise of collection details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    async getDetailsAsync() {
+        return await this.getQueryResultAsync();
     }
 
     /**
      * Gets the images of the collection in question.
      * @returns A Promise of collection images.
      */
-    getImages() {
-        return this.getChildQueryResult(dataTypes.IMAGES);
+    async getImagesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.IMAGES);
     }
 
     /**
      * Gets the translations of the collection in question.
      * @returns A Promise of collection translations.
      */ 
-    getTranslations() {
-        return this.getChildQueryResult(dataTypes.TRANSLATIONS);
+    async getTranslationsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
     }
-
 }
 
 /**
@@ -69,5 +68,4 @@ exports.CollectionSection = class extends section.Section {
     getCollection(id) {
         return new exports.Collection(id, this);
     }
-
 }

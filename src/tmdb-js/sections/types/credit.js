@@ -25,8 +25,8 @@ exports.Credit = class extends section.Section {
      * Gets the credit details.
      * @returns A Promise of credit details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    async getDetailsAsync() {
+        return await this.getQueryResultAsync();
     }
 
 }

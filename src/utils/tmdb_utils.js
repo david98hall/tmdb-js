@@ -15,13 +15,13 @@ exports.baseUrl = baseUrlValue;
  * @function
  * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDB API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
- * @returns A Promise.
+ * @returns A Promise of JSON data.
  */
-exports.getData = function(urlPath, urlParameters = {}) {
+exports.getDataAsync = async function(urlPath, urlParameters = {}) {
 
     // Create the url, based on this function's parameters
     let url = exports.buildUrl(urlPath, urlParameters);
-    return httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
+    return await httpUtils.parseHttpRequest(url, httpMethod.GET, JSON.parse, httpUtils.jsonContentType);
 };
 
 /**
@@ -53,15 +53,15 @@ exports.buildUrl = function(urlPath, parameters = {}) {
 /**
  * Gets a request token from TMDB.
  * @param {string} apiKey The API key to TMDB.
- * @returns A Promise.
+ * @returns A Promise of a request token string.
  */
-exports.getRequestToken = async function(apiKey) {
+exports.getRequestTokenAsync = async function(apiKey) {
     
     // GET a request token
     let requestTokenUrl = baseUrlValue + "authentication/token/new?api_key=" + apiKey;
     let tokenRequestResult =
         await httpUtils.parseHttpRequest(requestTokenUrl, httpMethod.GET, JSON.parse);
-    return tokenRequestResult.request_token;
+    return tokenRequestResult["request_token"];
 }
 
 /**
@@ -72,9 +72,9 @@ exports.getRequestToken = async function(apiKey) {
  * @returns
  * A Promise of a boolean value which is true if the login session creation was a success.
  */
-exports.createLoginSession = async function(apiKey, username, password) {
+exports.createLoginSessionAsync = async function(apiKey, username, password) {
 
-    let requestToken = await this.getRequestToken(apiKey);
+    let requestToken = await this.getRequestTokenAsync(apiKey);
 
     // Create a session
     let sessionUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
@@ -90,7 +90,7 @@ exports.createLoginSession = async function(apiKey, username, password) {
         }));
 
     // Return true if the session creation was successful
-    return sessionResponse && sessionResponse.success;
+    return sessionResponse && sessionResponse["success"];
 }
 
 /**
@@ -102,11 +102,13 @@ exports.createLoginSession = async function(apiKey, username, password) {
  * @returns
  * A Promise of a session ID.
  */
-exports.createSession = async function(apiKey, permissionApp = "chrome") {
+exports.createSessionAsync = async function(apiKey, permissionApp = undefined) {
+
+    let connectionOptions = permissionApp ? {wait: true, app: permissionApp} : {wait: true};
 
     // Get request token and approve it
-    let requestToken = await this.getRequestToken(apiKey);
-    await open('https://www.themoviedb.org/authenticate/' + requestToken, {wait: true, app: permissionApp});
+    let requestToken = await this.getRequestTokenAsync(apiKey);
+    await open('https://www.themoviedb.org/authenticate/' + requestToken, connectionOptions);
 
     // Create a session
     let sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey + "&request_token=" + requestToken;
@@ -116,12 +118,12 @@ exports.createSession = async function(apiKey, permissionApp = "chrome") {
         JSON.parse, 
         httpUtils.jsonContentType);
 
-    if (!sessionResponse || !sessionResponse.success) {
+    if (!sessionResponse || !sessionResponse["success"]) {
         return undefined;
     }
 
     // Return true if the session creation was successful
-    return sessionResponse.session_id;
+    return sessionResponse["session_id"];
 }
 
 /**
@@ -129,10 +131,10 @@ exports.createSession = async function(apiKey, permissionApp = "chrome") {
  * @param {string} apiKey The TMDB API key.
  * @returns A Promise of a guest session ID.
  */
-exports.createGuestSession = async (apiKey) => {
+exports.createGuestSessionAsync = async (apiKey) => {
     let sessionUrl = baseUrlValue + "authentication/guest_session/new?api_key=" + apiKey;
     let sessionResponse = await httpUtils.parseHttpRequest(sessionUrl, httpMethod.GET, JSON.parse);
-    return sessionResponse.guest_session_id;
+    return sessionResponse["guest_session_id"];
 }
 
 /**
@@ -142,7 +144,7 @@ exports.createGuestSession = async (apiKey) => {
  * @returns 
  * A Promise of a boolean value, which will be true if the deletion is successful.
  */
-exports.deleteSession = async (apiKey, sessionId) => {
+exports.deleteSessionAsync = async (apiKey, sessionId) => {
     let sessionUrl = baseUrlValue + "authentication/session?api_key=" + apiKey;
     let sessionResponse = await httpUtils.parseHttpRequest(
         sessionUrl,
@@ -151,7 +153,7 @@ exports.deleteSession = async (apiKey, sessionId) => {
         httpUtils.jsonContentType,
         JSON.stringify({ "session_id": sessionId }));
 
-    return sessionResponse.success;
+    return sessionResponse["success"];
 }
 
 /**
@@ -185,7 +187,7 @@ exports.addSessionIdParameter = (parameters, sessionId, guestSessionId = undefin
  * @param {Object} requestBody The request body object.
  * @returns A Promise of a boolean value, which will be true if the rating is successful.
  */
-exports.post = async function(urlPath, urlParameters, requestBody = null) {
+exports.postAsync = async function(urlPath, urlParameters, requestBody = null) {
 
     let url = exports.buildUrl(urlPath, urlParameters);
 
@@ -204,7 +206,7 @@ exports.post = async function(urlPath, urlParameters, requestBody = null) {
  * @param {Object} urlParameters The parameters of the URL.
  * @returns A Promise of a boolean value, which will be true if the deletion is successful.
  */
-exports.delete = async function(urlPath, urlParameters) {
+exports.deleteAsync = async function(urlPath, urlParameters) {
     
     let url = exports.buildUrl(urlPath, urlParameters);
 

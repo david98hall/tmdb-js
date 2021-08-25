@@ -26,7 +26,7 @@ exports.Movie = class extends section.RateableSection {
      * Gets all details about this movie.
      * @returns A Promise of movie details.
      */
-    getDetails(...appendToResponse) {
+    async getDetailsAsync(...appendToResponse) {
 
         let urlParameters = null;
 
@@ -37,7 +37,7 @@ exports.Movie = class extends section.RateableSection {
             }
         }
 
-        return this.getQueryResult(urlParameters);
+        return await this.getQueryResultAsync(urlParameters);
     }
 
     /**
@@ -46,132 +46,132 @@ exports.Movie = class extends section.RateableSection {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      */
-    getAccountStates(sessionId = undefined, guestSessionId = undefined) {
-        let childSection = new Section(dataTypes.ACCOUNT_STATES, this);
+    async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
+        let childSection = new section.Section(dataTypes.ACCOUNT_STATES, this);
 
         let urlParameters = {
             ...this._getBaseUrlParameters()
         }
         tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId);
 
-        return childSection.getQueryResult(urlParameters);
+        return await childSection.getQueryResultAsync(urlParameters);
     }
 
     /**
      * Gets the alternative titles of the movie in question.
      * @returns A Promise of alternative titles.
      */
-    getAlternativeTitles() {
-        let childSection = new Section(dataTypes.ALTERNATIVE_TITLES, this);
-        return childSection.getQueryResult();
+    async getAlternativeTitlesAsync() {
+        let childSection = new section.Section(dataTypes.ALTERNATIVE_TITLES, this);
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the changes of the movie in question.
      * @returns A Promise of movie changes.
      */
-    getChanges() {
+    async getChangesAsync() {
         let childSection = new section.Section(dataTypes.CHANGES, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
         
     /**
      * Gets the credits of the movie in question.
      * @returns A Promise of movie credits.
      */
-    getCredits() {
+    async getCreditsAsync() {
         let childSection = new section.Section(dataTypes.CREDITS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the external IDs of the movie in question.
      * @returns A Promise of external IDs.
      */
-    getExternalIds() { 
+    async getExternalIdsAsync() {
         let childSection = new section.Section(dataTypes.EXTERNAL_IDS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the images of the movie in question.
      * @returns A Promise of movie images.
      */
-    getImages() {
+    async getImagesAsync() {
         let childSection = new section.Section(dataTypes.IMAGES, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the keywords of the movie in question.
      * @returns A Promise of movie keywords.
      */
-    getKeywords() {
+    async getKeywordsAsync() {
         let childSection = new section.Section(dataTypes.KEYWORDS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the release dates of the movie in question.
      * @returns A Promise of movie release dates.
      */
-    getReleaseDates() {
+    async getReleaseDatesAsync() {
         let childSection = new section.Section(dataTypes.RELEASE_DATES, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the videos of the movie in question.
      * @returns A Promise of movie videos.
      */
-    getVideos() {
+    async getVideosAsync() {
         let childSection = new section.Section(dataTypes.VIDEOS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the translations of the movie in question.
      * @returns A Promise of movie translations.
      */
-    getTranslations() {
+    async getTranslationsAsync() {
         let childSection = new section.Section(dataTypes.TRANSLATIONS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the recommendations based on the movie in question.
      * @returns A Promise of recommendations.
      */
-    getRecommendations() {
+    async getRecommendationsAsync() {
         let childSection = new section.Section(dataTypes.RECOMMENDATIONS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the similar movies to the movie in question.
      * @returns A Promise of similar movies.
      */
-    getSimilarMovies() {
+    async getSimilarMoviesAsync() {
         let childSection = new section.Section(dataTypes.SIMILAR_MOVIES, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the reviews of the movie in question.
      * @returns A Promise of movie reviews.
      */
-    getReviews() {
+    async getReviewsAsync() {
         let childSection = new section.Section(dataTypes.REVIEWS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets the lists of the movie in question.
      * @returns A Promise of lists.
      */
-    getLists() {
+    async getListsAsync() {
         let childSection = new section.Section(dataTypes.LISTS, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 }
 
@@ -201,49 +201,49 @@ exports.MovieSection = class extends section.Section {
     /**
      * Gets the latest movies.
      */
-    getLatest() {
+    async getLatestAsync() {
         let childSection = new section.Section(dataTypes.LATEST, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets a list of movies currently playing in theatres.
      */
-    getNowPlaying() {
+    async getNowPlayingAsync() {
         let childSection = new section.Section(dataTypes.NOW_PLAYING, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets popular movies.
      */
-    getPopular() {
+    async getPopularAsync() {
         let childSection = new section.Section(dataTypes.POPULAR, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets top rated movies.
      */
-    getTopRated() {
+    async getTopRatedAsync() {
         let childSection = new section.Section(dataTypes.TOP_RATED, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets upcoming movies.
      */
-    getUpcoming() {
+    async getUpcomingAsync() {
         let childSection = new section.Section(dataTypes.UPCOMING, this);
-        return childSection.getQueryResult();
+        return await childSection.getQueryResultAsync();
     }
 
     /**
      * Gets movie certifications.
      */
-    getCertifications() {
-        return new section.Section(sections.CERTIFICATION, null, this._apiKey, this._language)
-            .createChild(sections.MOVIE)
-            .getChildQueryResult(sections.LIST);
+    async getCertificationsAsync() {
+        let certificationSection = new section.Section(sections.CERTIFICATION, null, this._apiKey, this._language);
+        return await certificationSection.createChild(sections.MOVIE)
+                                         .getChildQueryResultAsync(sections.LIST);
     }
 }

@@ -51,7 +51,8 @@ exports.httpRequest = (url, method, contentType = undefined, requestBody = undef
         }
 
         xhr.send(requestBody);
-});
+    }
+);
 
 /**
  * Makes an HTTP request on the given URL and parses the result.
@@ -72,4 +73,4 @@ exports.parseHttpRequest = async function(url, method, parseFun, contentType = u
     catch (error) {
         console.log(error);
     }
-}
+};

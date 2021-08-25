@@ -26,24 +26,24 @@ exports.Network = class extends section.Section {
      * Gets all details about this network.
      * @returns A Promise of network details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    async getDetailsAsync() {
+        return await this.getQueryResultAsync();
     }
 
     /**
      * Gets the alternative titles of the network in question.
      * @returns A Promise of alternative titles.
      */
-    getAlternativeNames() {
-        return this.getChildQueryResult(dataTypes.ALTERNATIVE_NAMES);
+    async getAlternativeNamesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.ALTERNATIVE_NAMES);
     }
 
     /**
      * Gets the images of the network in question.
      * @returns A Promise of network images.
      */
-    getImages() {
-        return this.getChildQueryResult(dataTypes.IMAGES);
+    async getImagesAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.IMAGES);
     }
 }
 

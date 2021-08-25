@@ -9,7 +9,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         const keyword = {id: "14999", name: "devil"};
         it('Should get keyword data.', done => {
-            tmdb.getKeywords().getKeyword(keyword.id).getDetails().then(json => {
+            tmdb.getKeywords().getKeyword(keyword.id).getDetailsAsync().then(json => {
 
                 // Assert the results
                 assert.strictEqual(json.name, keyword.name);

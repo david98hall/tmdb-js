@@ -14,7 +14,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             // Look for movie data
             let network = { id: "19", name: "FOX" };
             
-            tmdb.getNetworks().getNetwork(network.id).getDetails().then(json => {
+            tmdb.getNetworks().getNetwork(network.id).getDetailsAsync().then(json => {
               
                 // Assert the results
                 assert.strictEqual(json.name, network.name);

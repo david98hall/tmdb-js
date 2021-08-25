@@ -26,15 +26,15 @@ exports.runTest = (apiKey, sessionId) => {
 
                 // Create a new list
                 let list = await tmdb.getLists()
-                    .createList(listObj.name, listObj.description, listObj.language, sessionId);
+                    .createListAsync(listObj.name, listObj.description, listObj.language, sessionId);
                 assert.ok(list); // TODO [david98hall, 2021-08-23]: Fix the error that occurs here
 
                 // Assert that the list details are as expected
-                let listDetails = await list.getDetails();
+                let listDetails = await list.getDetailsAsync();
                 assert.strictEqual(listDetails.name, listObj.name);
 
                 // Delete the created list
-                assert.ok(await list.delete(sessionId));
+                assert.ok(await list.deleteAsync(sessionId));
             });
 
             it('Should add a movie to a list and then remove it.', async () => {
@@ -47,16 +47,16 @@ exports.runTest = (apiKey, sessionId) => {
 
                 // Create a new list
                 let list = await tmdb.getLists()
-                    .createList(listObj.name, listObj.description, listObj.language, sessionId);
+                    .createListAsync(listObj.name, listObj.description, listObj.language, sessionId);
                 assert.ok(list); // TODO [david98hall, 2021-08-23]: Fix the error that occurs here
                     
                 // Add a movie to the list and then remove it
                 const movieId = 18;
-                assert.ok(await list.addMovie(movieId, sessionId));
-                assert.ok(await list.removeMovie(movieId, sessionId));
+                assert.ok(await list.addMovieAsync(movieId, sessionId));
+                assert.ok(await list.removeMovieAsync(movieId, sessionId));
 
                 // Delete list
-                assert.ok(await list.delete(sessionId));
+                assert.ok(await list.deleteAsync(sessionId));
             });
         });
     }

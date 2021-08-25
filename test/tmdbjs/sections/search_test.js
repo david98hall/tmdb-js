@@ -9,7 +9,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find data when searching for companies.', done => {
             tmdb.getSearcher()
-                .searchCompanies("Warner")
+                .searchCompaniesAsync("Warner")
                 .then(assertSearchResultPage);
 
             setImmediate(done);
@@ -17,7 +17,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find data when searching for collections.', done => {
             tmdb.getSearcher()
-                .searchCollections("Wonder")
+                .searchCollectionsAsync("Wonder")
                 .then(assertSearchResultPage);
 
             setImmediate(done);
@@ -25,7 +25,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find data when searching for keywords.', done => {
             tmdb.getSearcher()
-                .searchKeywords("super")
+                .searchKeywordsAsync("super")
                 .then(assertSearchResultPage);
 
             setImmediate(done);
@@ -33,11 +33,11 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find data when searching for movies.', done => {
             tmdb.getSearcher()
-                .searchMovies("Spider-Man")
+                .searchMoviesAsync("Spider-Man")
                 .then(assertSearchResultPage);
 
             tmdb.getSearcher()
-                .searchMovies("Jak & Daxter")
+                .searchMoviesAsync("Jak & Daxter")
                 .then(assertSearchResultPage);
 
             setImmediate(done);
@@ -45,14 +45,14 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find multi search data.', done => {
             tmdb.getSearcher()
-                .multiSearch("Batman")
+                .multiSearchAsync("Batman")
                 .then(assertSearchResultPage);
 
             setImmediate(done);
         });
     
         it('Should find multi search data of several pages.', done => {
-            tmdb.getSearcher().multiSearch("Batman", 1, 3).then(pages => {
+            tmdb.getSearcher().multiSearchAsync("Batman", 1, 3).then(pages => {
 
                 // Assert the results
                 assert.ok(pages.length > 1);
@@ -69,7 +69,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find data when searching for people.', done => {
             tmdb.getSearcher()
-                .searchPeople("Gal")
+                .searchPeopleAsync("Gal")
                 .then(assertSearchResultPage);
 
             setImmediate(done);
@@ -77,7 +77,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find data when searching for TV shows.', done => {
             tmdb.getSearcher()
-                .searchTvShows("Walking Dead")
+                .searchTvShowsAsync("Walking Dead")
                 .then(assertSearchResultPage);
 
             setImmediate(done);

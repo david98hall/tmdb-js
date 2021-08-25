@@ -26,26 +26,25 @@ exports.GuestSession = class extends section.Section {
      * Gets the rated movies of this guest session.
      * @returns A Promise of rated movie data.
      */
-    getRatedMovies() {
-        return this.createChild(dataTypes.RATED).getChildQueryResult(sections.MOVIE);
+    async getRatedMoviesAsync() {
+        return await this.createChild(dataTypes.RATED).getChildQueryResultAsync(sections.MOVIE);
     }
 
     /**
      * Gets the rated TV shows of this guest session.
      * @returns A Promise of rated TV show data.
      */
-    getRatedTvShows() {
-        return this.createChild(dataTypes.RATED).getChildQueryResult(sections.TV_SHOW);
+    async getRatedTvShowsAsync() {
+        return await this.createChild(dataTypes.RATED).getChildQueryResultAsync(sections.TV_SHOW);
     }
 
     /**
      * Gets the rated TV show episodes of this guest session.
      * @returns A Promise of rated TV show episode data.
      */
-    getRatedTvShowEpisodes() {
-        return this.createChild(dataTypes.RATED).getChildQueryResult(sections.EPISODES);
+    async getRatedTvShowEpisodesAsync() {
+        return await this.createChild(dataTypes.RATED).getChildQueryResultAsync(sections.EPISODES);
     }
-
 }
 
 /**

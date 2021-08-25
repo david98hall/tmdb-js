@@ -22,19 +22,19 @@ const TmdbApiUser = require('../api/tmdb_api_user').TmdbApiUser;
     * end-user will have to approve the request token and thereafter get a session ID.
     * @param {string} permissionApp 
     * The name of the web browser app that the end-user will use to approve the request token.
-    * The default value is "chrome".
-    * @returns A Promise of a session ID.
+    * The default value is undefined. An example of a valid value is "chrome".
+    * @returns A Promise of a session ID string.
     */
-   createSession(permissionApp = "chrome") { 
-      return tmdbUtils.createSession(this._apiKey, permissionApp);
+   async createSessionAsync(permissionApp = undefined) {
+      return await tmdbUtils.createSessionAsync(this._apiKey, permissionApp);
    }
 
    /**
     * Creates a guest session.
     * @returns A Promise of a guest session ID.
     */
-   createGuestSession() {
-      return tmdbUtils.createGuestSession(this._apiKey);
+   async createGuestSessionAsync() {
+      return await tmdbUtils.createGuestSessionAsync(this._apiKey);
    }
 
    /**
@@ -42,7 +42,7 @@ const TmdbApiUser = require('../api/tmdb_api_user').TmdbApiUser;
     * @param {string} sessionId The ID of the session that will be deleted.
     * @returns A Promise of a boolean value, which will be true if the deletion is successful. 
     */
-   deleteSession(sessionId) {
-      return tmdbUtils.deleteSession(this._apiKey, sessionId);
+   async deleteSessionAsync(sessionId) {
+      return tmdbUtils.deleteSessionAsync(this._apiKey, sessionId);
    }
 }

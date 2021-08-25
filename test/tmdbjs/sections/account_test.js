@@ -1,6 +1,5 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
-const tmdbUtils = require('../../../src/utils/tmdb_utils');
 
 exports.runTest = (apiKey, sessionId) => {
 
@@ -15,7 +14,7 @@ exports.runTest = (apiKey, sessionId) => {
 
             it('Should get account details.', async () => {
 
-                let accountDetails = await tmdb.getAccounts().getDetails(sessionId);
+                let accountDetails = await tmdb.getAccounts().getDetailsAsync(sessionId);
                 assert.ok(accountDetails);
                 assert.strictEqual(9370799, accountDetails.id);
             });
@@ -24,7 +23,7 @@ exports.runTest = (apiKey, sessionId) => {
 
                 const page = 1;
                 let account = tmdb.getAccounts().getAccount("9370799");
-                let favoriteMovies = await account.getFavoriteMovies(sessionId, page);
+                let favoriteMovies = await account.getFavoriteMoviesAsync(sessionId, page);
                 assert.ok(favoriteMovies);
                 assert.strictEqual(page, favoriteMovies.page);
             });
@@ -37,10 +36,10 @@ exports.runTest = (apiKey, sessionId) => {
                 let account = tmdb.getAccounts().getAccount("9370799");
                 const movieId = 161;
 
-                let addFavoriteSuccessful = await account.setMovieFavoriteStatus(sessionId, movieId, true);
+                let addFavoriteSuccessful = await account.setMovieFavoriteStatusAsync(sessionId, movieId, true);
                 assert.ok(addFavoriteSuccessful);
 
-                let removeFavoriteSuccessful = await account.setMovieFavoriteStatus(sessionId, movieId, false);
+                let removeFavoriteSuccessful = await account.setMovieFavoriteStatusAsync(sessionId, movieId, false);
                 assert.ok(removeFavoriteSuccessful);
             });
 
@@ -49,10 +48,10 @@ exports.runTest = (apiKey, sessionId) => {
                 let account = tmdb.getAccounts().getAccount("9370799");
                 const tvShowId = 63174;
 
-                let addToWatchlistSuccessful = await account.setTvShowWatchlistStatus(sessionId, tvShowId, true);
+                let addToWatchlistSuccessful = await account.setTvShowWatchlistStatusAsync(sessionId, tvShowId, true);
                 assert.ok(addToWatchlistSuccessful);
 
-                let removeFromWatchlistSuccessful = await account.setTvShowWatchlistStatus(sessionId, tvShowId, false);
+                let removeFromWatchlistSuccessful = await account.setTvShowWatchlistStatusAsync(sessionId, tvShowId, false);
                 assert.ok(removeFromWatchlistSuccessful);
             });
         });

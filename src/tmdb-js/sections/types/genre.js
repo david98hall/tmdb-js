@@ -25,20 +25,19 @@ exports.GenreSection = class extends Section {
      * Gets movie genres.
      * @return A Promise of movie genre data.
      */
-    getMovieGenres() {
-        return this.createChild(sections.MOVIE)
-                   .createChild(sections.LIST)
-                   .getQueryResult();
+    async getMovieGenresAsync() {
+        return await this.createChild(sections.MOVIE)
+                         .createChild(sections.LIST)
+                         .getQueryResultAsync();
     }
 
     /**
      * Gets TV show genres.
      * @return A Promise of TV show genre data.
      */
-    getTvShowGenres() {
-        return this.createChild(sections.TV_SHOW)
-                   .createChild(sections.LIST)
-                   .getQueryResult();
+    async getTvShowGenresAsync() {
+        return await this.createChild(sections.TV_SHOW)
+                         .createChild(sections.LIST)
+                         .getQueryResultAsync();
     }
-
 }

@@ -13,7 +13,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find any trending media (time window: day).', done => {
             
-            tmdb.getTrending(timeWindows.DAY).getAll().then(json => {
+            tmdb.getTrending(timeWindows.DAY).getAllAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
@@ -24,7 +24,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find any trending media (time window: week).', done => {
             
-            tmdb.getTrending(timeWindows.WEEK).getAll().then(json => {
+            tmdb.getTrending(timeWindows.WEEK).getAllAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);

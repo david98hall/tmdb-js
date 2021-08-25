@@ -35,10 +35,10 @@ exports.TrendingSection = class extends Section {
      * 
      * @return A Promise of trending media data.
      */
-    getAll() {
-        return this.createChild(mediaTypes.ALL)
-                   .createChild(this._timeWindow)
-                   .getQueryResult();
+    async getAllAsync() {
+        return await this.createChild(mediaTypes.ALL)
+                         .createChild(this._timeWindow)
+                         .getQueryResultAsync();
     }
 
     /**
@@ -47,10 +47,10 @@ exports.TrendingSection = class extends Section {
      * 
      * @return A Promise of trending movie data.
      */
-    getMovies() {
-        return this.createChild(mediaTypes.MOVIE)
-                   .createChild(this._timeWindow)
-                   .getQueryResult();
+    async getMoviesAsync() {
+        return await this.createChild(mediaTypes.MOVIE)
+                         .createChild(this._timeWindow)
+                         .getQueryResultAsync();
     }
 
     /**
@@ -59,10 +59,10 @@ exports.TrendingSection = class extends Section {
      * 
      * @return A Promise of trending TV show data.
      */
-    getTvShows() {
-        return this.createChild(mediaTypes.TV)
-                   .createChild(this._timeWindow)
-                   .getQueryResult();
+    async getTvShowsAsync() {
+        return await this.createChild(mediaTypes.TV)
+                         .createChild(this._timeWindow)
+                         .getQueryResultAsync();
     }
 
     /**
@@ -71,10 +71,9 @@ exports.TrendingSection = class extends Section {
      * 
      * @return A Promise of trending people data.
      */
-    getPeople() {
-        return this.createChild(mediaTypes.PERSON)
-                   .createChild(this._timeWindow)
-                   .getQueryResult();
+    async getPeopleAsync() {
+        return await this.createChild(mediaTypes.PERSON)
+                         .createChild(this._timeWindow)
+                         .getQueryResultAsync();
     }
-
 }

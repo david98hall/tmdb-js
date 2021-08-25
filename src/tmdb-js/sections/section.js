@@ -40,9 +40,9 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * @param {Object} urlParameters The url parameters to use.
      * If null, the API key and language of this object will be used.
      */
-    getQueryResult(urlParameters = null) {
+    async getQueryResultAsync(urlParameters = null) {
         urlParameters = urlParameters ? urlParameters : this._getBaseUrlParameters();
-        return tmdbUtils.getData(this.toString(), urlParameters);
+        return await tmdbUtils.getDataAsync(this.toString(), urlParameters);
     }
 
     /**
@@ -62,8 +62,8 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * @param {Object} urlParameters The url parameters to use.
      * If null, the API key and language of this object will be used.
      */
-    getChildQueryResult(childName, urlParameters = null) {
-        return this.createChild(childName).getQueryResult(urlParameters);
+    async getChildQueryResultAsync(childName, urlParameters = null) {
+        return await this.createChild(childName).getQueryResultAsync(urlParameters);
     }
 
     /**
@@ -106,7 +106,7 @@ exports.RateableSection = class extends exports.Section {
      * @returns A Promise of a boolean value, which will be true
      * if the rating is successful.
      */
-    async rate(rating, sessionId, guestSessionId = undefined) {
+    async rateAsync(rating, sessionId, guestSessionId = undefined) {
 
         let urlPath = this.createChild(actionTypes.RATING).toString();
 
@@ -120,7 +120,7 @@ exports.RateableSection = class extends exports.Section {
         let requestBody = { "value": Math.min(Math.max(0.5, rating), 10) };
 
         // Await the rating to be done
-        return await tmdbUtils.post(urlPath, urlParameters, requestBody);
+        return await tmdbUtils.postAsync(urlPath, urlParameters, requestBody);
     }
 
     /**
@@ -132,7 +132,7 @@ exports.RateableSection = class extends exports.Section {
      *
      * @returns A Promise of a boolean value, which will be true if the deletion was successful.
      */
-    async deleteRating(sessionId, guestSessionId = undefined) {
+    async deleteRatingAsync(sessionId, guestSessionId = undefined) {
 
         let urlPath = this.createChild(actionTypes.RATING).toString();
 
@@ -142,7 +142,7 @@ exports.RateableSection = class extends exports.Section {
         }
         tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId);
 
-        return await tmdbUtils.delete(urlPath, urlParameters);
+        return await tmdbUtils.deleteAsync(urlPath, urlParameters);
     }
 
 }

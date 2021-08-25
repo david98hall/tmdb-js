@@ -25,12 +25,11 @@ exports.Keyword = class extends section.Section {
      * Gets the keyword details based on the passed id.
      * @returns A Promise of keyword details.
      */
-    getDetails() {
-        return this.getQueryResult();
+    async getDetailsAsync() {
+        return await this.getQueryResultAsync();
     }
 
     // TODO [david98hall, 2021-08-14]: Implement GET /keyword/{keyword_id}/movies? It is not recommended to be used.
-
 }
 
 /**
@@ -54,5 +53,4 @@ exports.KeywordSection = class extends section.Section {
     getKeyword(id) {
         return new exports.Keyword(id, this);
     }
-
 }
