@@ -28,7 +28,6 @@ exports.Credit = class extends section.Section {
     async getDetailsAsync() {
         return await this.getQueryResultAsync();
     }
-
 }
 
 /**
@@ -52,5 +51,4 @@ exports.CreditSection = class extends section.Section {
     getCredit(id) {
         return new exports.Credit(id, this);
     }
-
 }

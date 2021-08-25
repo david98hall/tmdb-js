@@ -7,72 +7,146 @@ const sections = tmdbUtils.sections;
 // Sections
 const Section = require('../section').Section;
 
+/**
+ * A class that represents the settings of the discover section in TMDb.
+ */
 class DiscoverSettings {
 
     _parameters = {};
 
+    /**
+     * Gets all of the parameters in this settings object.
+     * See the TMDb API documentation for a comprehensive list of parameters.
+     * @returns All parameters in these settings.
+     */
     getAllParameters() {
         let parameters = {}
         Object.assign(parameters, this._parameters);
         return parameters;
     }
 
+    /**
+     * Sets the value of the sort_by parameter.
+     * @param {string} sortBy The parameter value (see tmdb_utils.sortingTypes for valid values).
+     */
     setSortBy(sortBy) {
         this._parameters["sort_by"] = sortBy;
     }
 
+    /**
+     * Sets the value of the page parameter.
+     * @param {Number} page The parameter value.
+     */
     setPage(page) {
         this._parameters["page"] = page;
     }
 
+    /**
+     * Sets the value of the vote_count.gte ("gte" stands for "greater than or equal to") parameter.
+     * @param {Number} limit The parameter value.
+     */
     setVoteCountGte(limit) {
         this._parameters["vote_count.gte"] = limit;
     }
 
+    /**
+     * Sets the value of the vote_average.gte ("gte" stands for "greater than or equal to") parameter.
+     * @param {Number} limit The parameter value.
+     */
     setVoteAverageGte(limit) {
         this._parameters["vote_average.gte"] = limit;
     }
 
+    /**
+     * Sets the value of the with_genres parameter based on the passed genre IDs.
+     * This will determine which genres to include in the discover results.
+     * @param  {...string} genreIds The genre IDs.
+     */
     setWithGenres(...genreIds) {
         this._setWithParameter("with_genres", genreIds);
     }
 
+    /**
+     * Sets the value of the without_genres parameter based on the passed genre IDs.
+     * This will determine which genres not to include in the discover results.
+     * @param  {...string} genreIds The genre IDs.
+     */
     setWithoutGenres(...genreIds) {
         this._setWithParameter("without_genres", genreIds);
     }
 
+    /**
+     * Sets the value of the with_runtime.gte parameter ("gte" stands for "greater than or equal to").
+     * @param {Number} limit The parameter value.
+     */
     setWithRuntimeGte(limit) {
         this._parameters["with_runtime.gte"] = limit;
     }
 
+    /**
+     * Sets the value of the with_runtime.lte parameter ("lte" stands for "less than or equal to").
+     * @param {Number} limit The parameter value.
+     */
     setWithRuntimeLte(limit) {
         this._parameters["with_runtime.lte"] = limit;
     }
 
+    /**
+     * Sets the value of the with_keywords based on the passed keywords.
+     * This will determine which keywords to include in the discover results.
+     * @param  {...string} keywords The keywords.
+     */
     setWithKeywords(...keywords) {
         this._setWithParameter("with_keywords", keywords);
     }
 
+    /**
+     * Sets the value of the without_keywords based on the passed keywords.
+     * This will determine which keywords not to include in the discover results.
+     * @param  {...string} keywords The keywords.
+     */
     setWithoutKeywords(...keywords) {
         this._setWithParameter("without_keywords", keywords);
     }
 
+    /**
+     * Sets the value of the with_original_language parameter.
+     * @param {string} withOriginalLanguage 
+     */
     setWithOriginalLanguage(withOriginalLanguage) {
         this._parameters["with_original_language"] = withOriginalLanguage;
     }
 
+    /**
+     * Sets the value of the watch_region parameter.
+     * @param {string} watchRegion The parameter value.
+     */
     setWatchRegion(watchRegion) {
         this._parameters["watch_region"] = watchRegion;
     }
 
+    /**
+     * Sets the value of the with_companies based on the passed company IDs.
+     * This will determine which companies to include in the discover results.
+     * @param  {...string} companyIds The company IDs.
+     */
     setWithCompanies(...companyIds) {
         this._setWithParameter("with_companies", companyIds);
     }
 
+    /**
+     * Sets the value of the with_watch_providers based on the passed provider IDs.
+     * This will determine which watch providers to include in the discover results.
+     * @param  {...string} providerIds The watch provider IDs.
+     */
     setWithWatchProviders(...providerIds) {
         this._setWithParameter("with_watch_providers", providerIds);
     }
 
+    /**
+     * Sets the value of the with_watch_monetization_types parameter.
+     * @param {string} watchMonetizationTypes The parameter value.
+     */
     setWithWatchMonetizationTypes(watchMonetizationTypes) {
         this._parameters["with_watch_monetization_types"] = watchMonetizationTypes;
     }

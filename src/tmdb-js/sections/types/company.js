@@ -45,7 +45,6 @@ exports.Company = class extends section.Section {
     async getImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.IMAGES);
     }
-
 }
 
 /**
@@ -65,10 +64,9 @@ exports.CompanySection = class extends section.Section {
     /**
      * Gets the company with the passed id.
      * @param {string} id The id of the review to get.
-     * @return A Company instance with the passed id.
+     * @returns A Company instance with the passed id.
      */
     getCompany(id) {
         return new exports.Company(id, this);
     }
-
 }

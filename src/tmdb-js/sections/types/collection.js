@@ -64,6 +64,7 @@ exports.CollectionSection = class extends section.Section {
     /**
      * Gets the collection with the passed id.
      * @param {string} id The id of the collection to get.
+     * @returns A Collection object with the passed id.
      */
     getCollection(id) {
         return new exports.Collection(id, this);

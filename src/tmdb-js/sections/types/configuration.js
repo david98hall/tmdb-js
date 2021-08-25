@@ -69,5 +69,4 @@ exports.ConfigurationSection = class extends Section {
     async getTimezonesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TIMEZONES);
     }
-
 }

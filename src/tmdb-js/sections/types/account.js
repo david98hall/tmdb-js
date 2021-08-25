@@ -268,7 +268,7 @@ exports.AccountSection = class extends section.Section {
     /**
      * Gets the account with the passed id.
      * @param {string} id The id of the review to get.
-     * @return A Account instance with the passed id.
+     * @returns A Account instance with the passed id.
      */
     getAccount(id) {
         return new exports.Account(id, this);

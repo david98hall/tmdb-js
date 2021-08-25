@@ -39,6 +39,8 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * Gets the section data from TMDb.
      * @param {Object} urlParameters The url parameters to use.
      * If null, the API key and language of this object will be used.
+     * 
+     * @returns A Promise of JSON data.
      */
     async getQueryResultAsync(urlParameters = null) {
         urlParameters = urlParameters ? urlParameters : this._getBaseUrlParameters();
@@ -47,6 +49,8 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
 
     /**
      * Returns this section in a string format.
+     * 
+     * @returns A string correpsonding to this object.
      */
     toString() {
         let parentString = this._parent == null
@@ -61,6 +65,8 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * @param {string} childName The name of the child section.
      * @param {Object} urlParameters The url parameters to use.
      * If null, the API key and language of this object will be used.
+     * 
+     * @returns A Promise of JSON data based on the child section.
      */
     async getChildQueryResultAsync(childName, urlParameters = null) {
         return await this.createChild(childName).getQueryResultAsync(urlParameters);
@@ -69,6 +75,8 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
     /**
      * Creates a new child section instance.
      * @param {string} name The name of the child section.
+     * 
+     * @returns A section that is a child of this one.
      */
     createChild(name) {
         return new exports.Section(name, this);
@@ -144,5 +152,4 @@ exports.RateableSection = class extends exports.Section {
 
         return await tmdbUtils.deleteAsync(urlPath, urlParameters);
     }
-
 }
