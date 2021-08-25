@@ -8,7 +8,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
     describe('Genre GET tests', () => {
 
         it('Get movie genre list.', done => {
-            tmdb.getGenres().getMovieGenresAsync().then(json => {
+            tmdb.getGenreSection().getMovieGenresAsync().then(json => {
 
                 // Assert the results
                 assert.ok(json);
@@ -18,7 +18,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
         });
 
         it('Get TV show genre list.', done => {
-            tmdb.getGenres().getTvShowGenresAsync().then(json => {
+            tmdb.getGenreSection().getTvShowGenresAsync().then(json => {
 
                 // Assert the results
                 assert.ok(json);

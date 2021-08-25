@@ -9,7 +9,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         let collection = {id: "304", name: "Ocean's Collection"};
         it('Should get collection data.', done => {
-            tmdb.getCollections().getCollection(collection.id).getDetailsAsync().then(json => {
+            tmdb.getCollectionSection().getCollection(collection.id).getDetailsAsync().then(json => {
 
                 // Assert the results
                 assert.strictEqual(json.name, collection.name);

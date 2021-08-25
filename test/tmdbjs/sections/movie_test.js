@@ -13,7 +13,7 @@ exports.runTest = (apiKey, sessionId) => {
         let madMaxMovie = {id: 76341, title: "Mad Max: Fury Road"};
 
         it('Should find data about a movie.', done => {
-            tmdb.getMovies().getMovie(madMaxMovie.id).getDetailsAsync().then(json => {
+            tmdb.getMovieSection().getMovie(madMaxMovie.id).getDetailsAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
@@ -27,7 +27,7 @@ exports.runTest = (apiKey, sessionId) => {
 
         it('Should find data about a movie with "Append to Response".', done => {
 
-            tmdb.getMovies().getMovie(madMaxMovie.id).getDetailsAsync("videos", "images").then(json => {
+            tmdb.getMovieSection().getMovie(madMaxMovie.id).getDetailsAsync("videos", "images").then(json => {
 
                 // Assert the results
                 assert.ok(json);
@@ -39,7 +39,7 @@ exports.runTest = (apiKey, sessionId) => {
         });
 
         it('Should find movie credit data.', done => {
-            tmdb.getMovies().getMovie(madMaxMovie.id).getCreditsAsync().then(json => {
+            tmdb.getMovieSection().getMovie(madMaxMovie.id).getCreditsAsync().then(json => {
                 
                 // Assert the results
                 assert.ok(json);
@@ -49,7 +49,7 @@ exports.runTest = (apiKey, sessionId) => {
         });
 
         it('Should find movie certification data.', done => {
-            tmdb.getMovies().getCertificationsAsync().then(json => {
+            tmdb.getMovieSection().getCertificationsAsync().then(json => {
                 
                 // Assert the results
                 assert.ok(json);
@@ -66,7 +66,7 @@ exports.runTest = (apiKey, sessionId) => {
         
             it('Should rate and unrate a movie', async () => {
 
-                let movie = tmdb.getMovies().getMovie("16869");
+                let movie = tmdb.getMovieSection().getMovie("16869");
                 assert.ok(await movie.rateAsync(10, sessionId));
                 assert.ok(await movie.deleteRatingAsync(sessionId));
             });

@@ -12,7 +12,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
         
             let review = {id: "59ac9ea4c3a3682cc80389e0", author: "Reno"};
             it('Should get review data.', done => {
-                tmdb.getReviews().getReview(review.id).getDetailsAsync().then(json => {
+                tmdb.getReviewSection().getReview(review.id).getDetailsAsync().then(json => {
                     // Assert the results
                     assert.strictEqual(json.author, review.author);
                 

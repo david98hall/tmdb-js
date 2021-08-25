@@ -25,7 +25,7 @@ exports.runTest = (apiKey, sessionId) => {
                 };
 
                 // Create a new list
-                let list = await tmdb.getLists()
+                let list = await tmdb.getListSection()
                     .createListAsync(listObj.name, listObj.description, listObj.language, sessionId);
                 assert.ok(list); // TODO [david98hall, 2021-08-23]: Fix the error that occurs here
 
@@ -46,7 +46,7 @@ exports.runTest = (apiKey, sessionId) => {
                 };
 
                 // Create a new list
-                let list = await tmdb.getLists()
+                let list = await tmdb.getListSection()
                     .createListAsync(listObj.name, listObj.description, listObj.language, sessionId);
                 assert.ok(list); // TODO [david98hall, 2021-08-23]: Fix the error that occurs here
                     

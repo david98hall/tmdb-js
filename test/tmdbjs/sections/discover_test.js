@@ -19,7 +19,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             discoverSettings.setPrimaryReleaseYear(2017);
             discoverSettings.setWithGenres(80, 28);
 
-            let discoveredMovies = await tmdb.getDiscoverer().discoverMoviesAsync(discoverSettings);
+            let discoveredMovies = await tmdb.getDiscoverSection().discoverMoviesAsync(discoverSettings);
             assert.ok(discoveredMovies);
             assert.ok(discoveredMovies["total_results"] > 0);
         })
@@ -33,7 +33,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             discoverSettings.setWithNetworks(213, 19);
             discoverSettings.setTimezone("America/New_York");
 
-            let discoveredTvShows = await tmdb.getDiscoverer().discoverTvShowsAsync(discoverSettings);
+            let discoveredTvShows = await tmdb.getDiscoverSection().discoverTvShowsAsync(discoverSettings);
             assert.ok(discoveredTvShows);
             assert.ok(discoveredTvShows["total_results"] > 0);
         })

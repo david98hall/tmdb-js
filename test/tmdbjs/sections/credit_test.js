@@ -9,14 +9,13 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         let credit = {credit_id: "577da2fac3a36817e1003842", department: "Production"};
         it('Should get credit data.', done => {
-            tmdb.getCredits().getCredit(credit.credit_id).getDetailsAsync().then(json => {
+            tmdb.getCreditSection().getCredit(credit.credit_id).getDetailsAsync().then(json => {
 
                 // Assert the results
                 assert.strictEqual(json.department, credit.department);
 
                 setImmediate(done);
-            })
-        })
-
+            });
+        });
     });
 }

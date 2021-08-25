@@ -11,7 +11,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         let company = {id: "1", name: "Lucasfilm Ltd."};
         it('Should get company data.', done => {
-            tmdb.getCompanies().getCompany(company.id).getDetailsAsync().then(json => {
+            tmdb.getCompanySection().getCompany(company.id).getDetailsAsync().then(json => {
 
                 // Assert the results
                 assert.strictEqual(json.name, company.name);

@@ -39,7 +39,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets an AccountSection instance which can
      * be used to get and handle account data.
      */
-    getAccounts() {
+    getAccountSection() {
         return new AccountSection(this._apiKey, this._language);
     }
 
@@ -55,7 +55,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a CollectionSection instance which can
      * be used to get collection data.
      */
-    getCollections() {
+    getCollectionSection() {
         return new CollectionSection(this._apiKey, this._language);
     }
 
@@ -63,7 +63,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a CompanySection instance which can
      * be used to get company data.
      */
-    getCompanies() {
+    getCompanySection() {
         return new CompanySection(this._apiKey, this._language);
     }
 
@@ -71,7 +71,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a ConfigurationSection instance which can
      * be used to get TMDB configuration data.
      */
-    getConfigurations() {
+    getConfigurationSection() {
         return new ConfigurationSection(this._apiKey, this._language);
     }
 
@@ -79,7 +79,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a CreditSection instance which can
      * be used to get credit data.
      */
-    getCredits() {
+    getCreditSection() {
         return new CreditSection(this._apiKey, this._language);
     }
 
@@ -87,7 +87,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a DiscoverSection instance which can
      * be used to discover media data on TMDB.
      */
-    getDiscoverer() {
+    getDiscoverSection() {
         return new DiscoverSection(this._apiKey, this._language);
     }
 
@@ -98,7 +98,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * 
      * @param externalSource The external source (see tmdb_utils.externalSources).
      */
-    getFinder(externalSource) {
+    getFindSection(externalSource) {
         return new FindSection(externalSource, this._apiKey, this._language);
     }
 
@@ -106,7 +106,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a GenreSection instance which can be used
      * to get genre data.
      */
-    getGenres() {
+    getGenreSection() {
         return new GenreSection(this._apiKey, this._language);
     }
 
@@ -114,7 +114,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a GuestSessionSection which can be used
      * to get guest session data.
      */
-    getGuestSessions() {
+    getGuestSessionSection() {
         return new GuestSessionSection(this._apiKey, this._language);
     }
 
@@ -122,7 +122,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a KeywordSection instance which can be used
      * to get keyword data.
      */
-    getKeywords() {
+    getKeywordSection() {
         return new KeywordSection(this._apiKey, this._language);
     }
 
@@ -130,7 +130,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a ListSection instance which can be used
      * to get and handle list data.
      */
-    getLists() {
+    getListSection() {
         return new ListSection(this._apiKey, this._language);
     }
 
@@ -138,14 +138,14 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a MovieSection instance which can be used 
      * to handle and get movie data on TMDB.
      */
-    getMovies() {
+    getMovieSection() {
         return new MovieSection(this._apiKey, this._language);
     }
 
     /**
      * Gets a NetworkSection instance which can be used to get network data.
      */
-    getNetworks() {
+    getNetworkSection() {
         return new NetworkSection(this._apiKey, this._language);
     }
 
@@ -153,21 +153,21 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a PeopleSection instance which can be used
      * to get data about people.
      */
-    getPeople() {
+    getPeopleSection() {
         return new PeopleSection(this._apiKey, this._language);
     }
 
     /**
      * Gets a ReviewSection instance which can be used to get review data.
      */
-    getReviews() {
+    getReviewSection() {
         return new ReviewSection(this._apiKey, this._language);
     }
 
     /**
      * Gets a SearchSection instance which can be used to search TMDB.
      */
-    getSearcher() {
+    getSearchSection() {
         return new SearchSection(this._apiKey, this._language);
     }
 
@@ -175,7 +175,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a TrendingSection which can be used to get trending media from TMDB.
      * @param {string} timeWindow The time window (see tmdb_utils.timeWindows).
      */
-    getTrending(timeWindow) {
+    getTrendingSection(timeWindow) {
         return new TrendingSection(timeWindow, this._apiKey, this._language);
     }
 
@@ -183,7 +183,7 @@ exports.TmdbClient = class extends TmdbQuerier {
      * Gets a TvShowSection instance which can be used 
      * to handle and get TV show data on TMDB.
      */
-    getTvShows() {
+    getTvShowSection() {
         return new TvShowSection(this._apiKey, this._language)
     }
 };

@@ -13,7 +13,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             let guestSessionId = await tmdbUtils.createGuestSessionAsync(apiKey);
             assert.ok(guestSessionId);
 
-            let ratedMovies = await tmdb.getGuestSessions()
+            let ratedMovies = await tmdb.getGuestSessionSection()
                                         .getGuestSession(guestSessionId)
                                         .getRatedMoviesAsync();
             assert.ok(ratedMovies);
@@ -24,7 +24,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             let guestSessionId = await tmdbUtils.createGuestSessionAsync(apiKey);
             assert.ok(guestSessionId);
 
-            let ratedTvShows = await tmdb.getGuestSessions()
+            let ratedTvShows = await tmdb.getGuestSessionSection()
                                          .getGuestSession(guestSessionId)
                                          .getRatedTvShowsAsync();
             assert.ok(ratedTvShows);
@@ -35,7 +35,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             let guestSessionId = await tmdbUtils.createGuestSessionAsync(apiKey);
             assert.ok(guestSessionId);
 
-            let ratedEpisodes = await tmdb.getGuestSessions()
+            let ratedEpisodes = await tmdb.getGuestSessionSection()
                                           .getGuestSession(guestSessionId)
                                           .getRatedTvShowEpisodesAsync();
             assert.ok(ratedEpisodes);

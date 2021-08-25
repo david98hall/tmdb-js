@@ -14,7 +14,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             // Look for person data
             let person = {id: "37014", name: "Lauren German", birthday: "1978-11-29"};
             
-            tmdb.getPeople().getPerson(person.id).getDetailsAsync().then(json => {
+            tmdb.getPeopleSection().getPerson(person.id).getDetailsAsync().then(json => {
               
                 // Assert the results
                 assert.strictEqual(json.name, person.name);

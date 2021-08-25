@@ -11,7 +11,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find API configuration data.', done => {
             
-            tmdb.getConfigurations().getApiConfigurationAsync().then(json => {
+            tmdb.getConfigurationSection().getApiConfigurationAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
@@ -22,7 +22,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find country configuration data.', done => {
             
-            tmdb.getConfigurations().getCountriesAsync().then(json => {
+            tmdb.getConfigurationSection().getCountriesAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
@@ -33,7 +33,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find job configuration data.', done => {
             
-            tmdb.getConfigurations().getJobsAsync().then(json => {
+            tmdb.getConfigurationSection().getJobsAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
@@ -44,7 +44,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find language configuration data.', done => {
             
-            tmdb.getConfigurations().getLanguagesAsync().then(json => {
+            tmdb.getConfigurationSection().getLanguagesAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
@@ -55,7 +55,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find primary translation configuration data.', done => {
             
-            tmdb.getConfigurations().getPrimaryTranslationsAsync().then(json => {
+            tmdb.getConfigurationSection().getPrimaryTranslationsAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
@@ -66,7 +66,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
         it('Should find timezone configuration data.', done => {
             
-            tmdb.getConfigurations().getTimezonesAsync().then(json => {
+            tmdb.getConfigurationSection().getTimezonesAsync().then(json => {
               
                 // Assert the results
                 assert.ok(json);
