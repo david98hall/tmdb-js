@@ -95,12 +95,12 @@ const sections = tmdbUtils.sections;
 const section = require('../section');
 
 /**
- * Can get keyword data from TMDB.
+ * A class that represents a specific keyword in TMDb.
  */
 exports.Keyword = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the keyword.
      * @param {exports.KeywordSection} keywordSection The parent KeywordSection.
      */
@@ -120,12 +120,12 @@ exports.Keyword = class extends section.Section {
 }
 
 /**
- * Can get keyword data from TMDB.
+ * A class that represents the keyword section in TMDb.
  */
 exports.KeywordSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

@@ -96,12 +96,12 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get person data from TMDB.
+ * A class that represents a specific person in TMDb.
  */
 exports.Person = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the person.
      * @param {exports.PeopleSection} personSection The parent PersonSection.
      */
@@ -193,12 +193,12 @@ exports.Person = class extends section.Section {
 }
 
 /**
- * Can get data about people in general from the TMDB API.
+ * A class that represents the people section in TMDb.
  */
 exports.PeopleSection = class extends section.Section {
     
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

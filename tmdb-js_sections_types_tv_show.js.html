@@ -96,12 +96,12 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * A class that represents a TV show episode in TMDb.
+ * A class that represents a specific TV show episode in TMDb.
  */
 exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {Number} episodeNumber The episode number.
      * @param {exports.TvShowSeason} tvShowSeason The parent TV show season.
      */
@@ -197,12 +197,12 @@ exports.TvShowEpisode = class extends section.RateableSection {
 }
 
 /**
- * A class that represents a TV show season on TMDb.
+ * A class that represents a specific TV show season on TMDb.
  */
 exports.TvShowSeason = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {Number} seasonNumber The season number.
      * @param {exports.TvShow} tvShow The parent TV show.
      */
@@ -339,12 +339,12 @@ exports.TvShowSeason = class extends section.Section {
 }
 
 /**
- * Can get and handle TV show data on TMDB.
+ * A class that represents a specific TV show in TMDb.
  */
 exports.TvShow = class extends section.RateableSection {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The ID of the TV show.
      * @param {exports.TvShowSection} tvShowSection The parent TV show section.
      */
@@ -579,12 +579,12 @@ exports.TvShow = class extends section.RateableSection {
 }
 
 /**
- * Can get data about TV shows in general from the TMDB API.
+ * A class that represents the TV show section in TMDb.
  */
 exports.TvShowSection = class extends section.Section {
     
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

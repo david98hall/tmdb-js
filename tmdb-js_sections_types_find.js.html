@@ -95,7 +95,7 @@ const sections = tmdbUtils.sections;
 const Section = require('../section').Section;
 
 /**
- * Can get data from external sources via TMDB.
+ * A class that represents the find section in TMDb.
  */
 exports.FindSection = class extends Section {
 
@@ -105,7 +105,7 @@ exports.FindSection = class extends Section {
     _externalSource;
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} externalSource The time window of this trending section (see tmdb_utils.externalSources).
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".

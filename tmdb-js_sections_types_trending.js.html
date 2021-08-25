@@ -96,7 +96,7 @@ const mediaTypes = tmdbUtils.mediaTypes;
 const Section = require('../section').Section;
 
 /**
- * Can get data about trending media from TMDB.
+ * A class that represents the trending section in TMDb.
  */
 exports.TrendingSection = class extends Section {
 
@@ -106,7 +106,7 @@ exports.TrendingSection = class extends Section {
     _timeWindow;
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} timeWindow The time window of this trending section (see tmdb_utils.timeWindows).
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".

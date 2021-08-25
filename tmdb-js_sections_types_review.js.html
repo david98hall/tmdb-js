@@ -95,12 +95,12 @@ const sections = tmdbUtils.sections;
 const section = require('../section');
 
 /**
- * Can get review data from TMDB.
+ * A class that represents a specific review in TMDb.
  */
 exports.Review = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the review.
      * @param {exports.ReviewSection} reviewSection The parent ReviewSection.
      */
@@ -118,12 +118,12 @@ exports.Review = class extends section.Section {
 }
 
 /**
- * Can get review data from TMDB.
+ * A class that represents the review section in TMDb.
  */
 exports.ReviewSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

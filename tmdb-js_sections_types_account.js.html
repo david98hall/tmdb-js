@@ -96,12 +96,12 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get account data from TMDB.
+ * A class that represents a specific account in TMDb.
  */
 exports.Account = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the review.
      * @param {exports.AccountSection} accountSection The parent AccountSection.
      */
@@ -324,12 +324,12 @@ exports.Account = class extends section.Section {
 }
     
 /**
- * Can get account data from TMDB.
+ * A class that represents the account section in TMDb.
  */
 exports.AccountSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

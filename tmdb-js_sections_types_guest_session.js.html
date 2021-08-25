@@ -96,12 +96,12 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get data about a guest session.
+ * A class that represents a specific gues session in TMDb.
  */
 exports.GuestSession = class extends section.Section {
 
     /**
-     * Initializes this GuestSession.
+     * Initializes this object.
      * @param {string} id 
      * @param {exports.GuestSessionSection} guestSessionSection 
      */
@@ -135,12 +135,12 @@ exports.GuestSession = class extends section.Section {
 }
 
 /**
- * Can get data about guest sessions from TMDB.
+ * A class that represents the guest session section in TMDb.
  */
 exports.GuestSessionSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

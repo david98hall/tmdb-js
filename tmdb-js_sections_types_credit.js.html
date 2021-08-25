@@ -95,12 +95,12 @@ const sections = tmdbUtils.sections;
 const section = require('../section');
 
 /**
- * Can get credit data from TMDB.
+ * A class that represents a specific credit in TMDb.
  */
 exports.Credit = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the credit.
      * @param {exports.CreditSection} creditSection The parent CreditSection.
      */
@@ -118,12 +118,12 @@ exports.Credit = class extends section.Section {
 }
 
 /**
- * Can get credit data from TMDB.
+ * A class that represents the credit section in TMDb.
  */
 exports.CreditSection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

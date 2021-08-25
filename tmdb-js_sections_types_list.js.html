@@ -97,12 +97,12 @@ const actionTypes = tmdbUtils.actionTypes;
 const section = require('../section');
 
 /**
- * Can get and handle list data on TMDB.
+ * A class that represents a specific list in TMDb.
  */
 exports.List = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the list.
      * @param {exports.ListSection} listSection The parent ListSection.
      */
@@ -180,12 +180,12 @@ exports.List = class extends section.Section {
 }
 
 /**
- * Can get data about lists in general from the TMDB API.
+ * A class that represents the list section in TMDb.
  */
 exports.ListSection = class extends section.Section {
     
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */

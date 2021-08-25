@@ -96,12 +96,12 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * Can get company data from TMDB.
+ * A class that represents a specific company in TMDb.
  */
 exports.Company = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} id The id of the review.
      * @param {exports.CompanySection} companySection The parent CompanySection.
      */
@@ -135,12 +135,12 @@ exports.Company = class extends section.Section {
 }
 
 /**
- * Can get company data from TMDB.
+ * A class that represents the company section in TMDb.
  */
 exports.CompanySection = class extends section.Section {
 
     /**
-     * Sets properties.
+     * Initializes this object.
      * @param {string} apiKey The TMDB API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
