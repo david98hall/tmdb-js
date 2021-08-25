@@ -221,6 +221,34 @@ exports.deleteAsync = async function(urlPath, urlParameters) {
 };
 
 /**
+ * Gets the changes of the movie in question.
+ * 
+ * @param {string} startDate The start date.
+ * @param {string} endDate The end date.
+ * @param {Number} page The page.
+ * 
+ * @returns A Promise of JSON data with movie changes.
+ */
+exports.getChangesAsync = async function(section, startDate = undefined, endDate = undefined, page = null) {
+    
+    let urlParameters = { ...this._getBaseUrlParameters() };
+
+    if (startDate) {
+        urlParameters["start_date"] = startDate;
+    }
+
+    if (endDate) {
+        urlParameters["end_date"] = endDate;
+    }
+    
+    if (page) {
+        urlParameters["page"] = page;
+    }
+
+    return await section.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
+}
+
+/**
  * The different external sources supported in TMDB.
  */
 exports.externalSources = Object.freeze({

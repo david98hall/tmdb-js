@@ -42,10 +42,15 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the changes of the person in question.
-     * @returns A Promise of this person's changes in JSON format.
+     * 
+     * @param {string} startDate The start date.
+     * @param {string} endDate The end date.
+     * @param {Number} page The page.
+     * 
+     * @returns A Promise of JSON data with person changes.
      */
-    async getChangesAsync() {
-        return await this.getChildQueryResultAsync(dataTypes.CHANGES);
+     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
     }
         
     /**
