@@ -8,7 +8,7 @@ const sections = tmdbUtils.sections;
 const Section = require('../section').Section;
 
 /**
- * A class that represents the settings of the discover section in TMDb.
+ * A class that represents the general settings of the discover section in TMDb.
  */
 class DiscoverSettings {
 
@@ -156,126 +156,259 @@ class DiscoverSettings {
     }
 }
 
+/**
+ * A class that represents the discover settings for movies.
+ */
 exports.DiscoverMovieSettings = class extends DiscoverSettings {
 
+    /**
+     * Sets the value of the region parameter.
+     * @param {string} region The parameter value.
+     */
     setRegion(region) {
         this._parameters["region"] = region;
     }
 
+    /**
+     * Sets the value of the certification_country parameter.
+     * @param {string} country The parameter value.
+     */
     setCertificationCountry(country) {
         this._parameters["certification_country"] = country;
     }
 
+    /**
+     * Sets the value of the certification parameter.
+     * @param {string} certification The parameter value.
+     */
     setCertification(certification) {
         this._parameters["certification"] = certification;
     }
 
+    /**
+     * Sets the value of the certification.lte parameter ("lte" stands for "less than or equal to").
+     * @param {string} limit The parameter value.
+     */
     setCertificationLte(limit) {
         this._parameters["certification.lte"] = limit;
     }
 
+    /**
+     * Sets the value of the certification.gte parameter ("gte" stands for "greater than or equal to").
+     * @param {string} limit The parameter value.
+     */
     setCertificationGte(limit) {
         this._parameters["certification.gte"] = limit;
     }
 
+    /**
+     * Sets the value of the include_adult parameter.
+     * @param {boolean} includeAdult The parameter value.
+     */
     setIncludeAdult(includeAdult) {
         this._parameters["include_adult"] = includeAdult;
     }
 
+    /**
+     * Sets the value of the include_video parameter.
+     * @param {boolean} includeVideo The parameter value.
+     */
     setIncludeVideo(includeVideo) {
         this._parameters["include_video"] = includeVideo;
     }
 
+    /**
+     * Sets the value of the primary_release_year parameter.
+     * @param {Number} year The parameter value.
+     */
     setPrimaryReleaseYear(year) {
         this._parameters["primary_release_year"] = year;
     }
 
+    /**
+     * Sets the value of the primary_release_year.lte parameter
+     * ("lte" stands for "less than or equal to").
+     * @param {Number} limit The parameter value.
+     */
     setPrimaryReleaseYearLte(limit) {
         this._parameters["primary_release_year.lte"] = limit;
     }
 
+    /**
+     * Sets the value of the primary_release_year.gte parameter
+     * ("gte" stands for "greater than or equal to").
+     * @param {Number} limit The parameter value.
+     */
     setPrimaryReleaseYearGte(limit) {
         this._parameters["primary_release_year.gte"] = limit;
     }
 
+    /**
+     * Sets the value of the release_date.gte parameter
+     * ("gte" stands for "greater than or equal to").
+     * @param {Number} limit The parameter value.
+     */
     setReleaseDateGte(limit) {
         this._parameters["release_date.gte"] = limit;
     }
 
+    /**
+     * Sets the value of the release_date.lte parameter
+     * ("lte" stands for "less than or equal to").
+     * @param {Number} limit The parameter value.
+     */
     setReleaseDateLte(limit) {
         this._parameters["release_date.lte"] = limit;
     }
 
+    /**
+     * Sets the value of the with_release_type parameter.
+     * @param {string} withReleaseType The parameter value.
+     */
     setWithReleaseType(withReleaseType) {
         this._parameters["with_release_type"] = withReleaseType;
     }
 
+    /**
+     * Sets the value of the year parameter.
+     * @param {Number} year The parameter value.
+     */
     setYear(year) {
         this._parameters["year"] = year;
     }
 
+    /**
+     * Sets the value of the vote_count.lte parameter
+     * ("lte" stands for "less than or equal to").
+     * @param {Number} limit The parameter value.
+     */
     setVoteCountLte(limit) {
         this._parameters["vote_count.lte"] = limit;
     }
 
+    /**
+     * Sets the value of the vote_average.lte parameter
+     * ("lte" stands for "less than or equal to").
+     * @param {Number} limit The parameter value.
+     */
     setVoteAverageLte(limit) {
         this._parameters["vote_average.lte"] = limit;
     }
 
+    /**
+     * Sets the value of the with_cast parameter based on the passed person IDs.
+     * This will determine which cast members to include in the discover results.
+     * @param  {...string} personIds The person IDs.
+     */
     setWithCast(...personIds) {
         this._setWithParameter("with_cast", personIds);
     }
 
+    /**
+     * Sets the value of the with_crew parameter based on the passed person IDs.
+     * This will determine which crew members to include in the discover results.
+     * @param  {...string} personIds The person IDs.
+     */
     setWithCrew(...personIds) {
         this._setWithParameter("with_crew", personIds);
     }
 
+    /**
+     * Sets the value of the with_people parameter based on the passed person IDs.
+     * This will determine which people to include in the discover results.
+     * @param  {...string} personIds The person IDs.
+     */
     setWithPeople(...personIds) {
         this._setWithParameter("with_people", personIds);
     }
 }
 
+/**
+ * A class that represents the discover settings for TV shows.
+ */
 exports.DiscoverTvShowSettings = class extends DiscoverSettings {
 
+    /**
+     * Sets the value of the air_date.gte parameter
+     * ("gte" stands for "greater than or equal to").
+     * @param {string} limit The parameter value.
+     */
     setAirDateGte(limit) {
         this._parameters["air_date.gte"] = limit;
     }
 
+    /**
+     * Sets the value of the air_date.lte parameter
+     * ("lte" stands for "less than or equal to").
+     * @param {string} limit The parameter value.
+     */
     setAirDateLte(limit) {
         this._parameters["air_date.lte"] = limit;
     }
 
+    /**
+     * Sets the value of the first_air_date.gte parameter
+     * ("gte" stands for "greater than or equal to").
+     * @param {string} limit The parameter value.
+     */
     setFirstAirDateGte(limit) {
         this._parameters["first_air_date.gte"] = limit;
     }
 
+    /**
+     * Sets the value of the first_air_date.lte parameter
+     * ("lte" stands for "less than or equal to").
+     * @param {string} limit The parameter value.
+     */
     setFirstAirDateLte(limit) {
         this._parameters["first_air_date.lte"] = limit;
     }
 
+    /**
+     * Sets the value of the first_air_date_year parameter
+     * @param {Number} limit The parameter value.
+     */
     setFirstAirDateYear(year) {
         this._parameters["first_air_date_year"] = year;
     }
 
+    /**
+     * Sets the value of the timezone parameter.
+     * @param {string} timezone The parameter value.
+     */
     setTimezone(timezone) {
         this._parameters["timezone"] = timezone;
     }
 
+    /**
+     * Sets the value of the with_networks parameter based on the passed network IDs.
+     * This will determine which networks to include in the discover results.
+     * @param  {...string} networkIds The network IDs.
+     */
     setWithNetworks(...networkIds) {
         this._setWithParameter("with_networks", networkIds);
     }
 
+    /**
+     * Sets the value of the include_null_first_air_dates parameter.
+     * @param {boolean} include The parameter value.
+     */
     setIncludeNullFirstAirDates(include) {
         this._parameters["include_null_first_air_dates"] = include;
     }
 
-
-
+    /**
+     * Sets the value of the screened_theatrically parameter.
+     * @param {boolean} screenedTheatrically The parameter value.
+     */
     setScreenedTheatrically(screenedTheatrically) {
         this._parameters["screened_theatrically"] = screenedTheatrically;
     }
 }
 
+/**
+ * A class that represents the discover section of TMDb.
+ */
 exports.DiscoverSection = class extends Section {
 
     /**
@@ -321,5 +454,4 @@ exports.DiscoverSection = class extends Section {
             ...discoverSettings.getAllParameters()
         };
     }
-
 }
