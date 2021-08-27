@@ -44,10 +44,10 @@ exports.TvShowEpisode = class extends section.RateableSection {
     /**
      * Gets account state data.
      * Only one of the IDs is allowed to be null or non-null in the same method call.
-     * 
+     *
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
-     * 
+     *
      * @returns A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
@@ -58,14 +58,14 @@ exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
      * Gets the changes of the TV show episode in question.
-     * 
+     *
      * @param {string} startDate The start date.
      * @param {string} endDate The end date.
      * @param {Number} page The page.
-     * 
+     *
      * @returns A Promise of JSON data with changes.
      */
-     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+    async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
     }
 
@@ -145,10 +145,10 @@ exports.TvShowSeason = class extends section.Section {
     /**
      * Gets account state data.
      * Only one of the IDs is allowed to be null or non-null in the same method call.
-     * 
+     *
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
-     * 
+     *
      * @returns A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
@@ -167,14 +167,14 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets the changes of the TV show season in question.
-     * 
+     *
      * @param {string} startDate The start date.
      * @param {string} endDate The end date.
      * @param {Number} page The page.
-     * 
+     *
      * @returns A Promise of JSON data with changes.
      */
-     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+    async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
     }
 
@@ -217,7 +217,7 @@ exports.TvShowSeason = class extends section.Section {
     async getVideosAsync() {
         return await this.getChildQueryResultAsync(dataTypes.VIDEOS);
     }
-    
+
     /**
      * Gets a TvShowEpisode object with the passed episode number.
      * @param {Number} episodeNumber The episode number.
@@ -240,16 +240,36 @@ exports.TvShowSeason = class extends section.Section {
      * @returns A Promise of an array with all episodes of this season.
      */
     async getEpisodesAsync() {
-               
+
         // Get the number of episodes
         let numberOfEpisodes = await this.getEpisodeCountAsync();
-        
+
         let episodes = [];
         for (let i = 1; i <= numberOfEpisodes; i++) {
             episodes.push(this.getEpisode(i));
         }
 
         return episodes;
+    }
+}
+
+exports.TvShowEpisodeGroup = class extends section.Section {
+
+    /**
+     * Initializes this object.
+     * @param {string} id The id of the episode group.
+     * @param {exports.TvShowSection} tvShowSection The parent TvShowSection.
+     */
+    constructor(id, tvShowSection) {
+        super(id, tvShowSection.createChild(sections.TV_SHOW_EPISODE_GROUP));
+    }
+
+    /**
+     * Gets the details about this episode group.
+     * @returns {Promise<*>} A Promise of JSON data.
+     */
+    async getDetailsAsync() {
+        return await this.getQueryResultAsync();
     }
 }
 
@@ -293,7 +313,7 @@ exports.TvShow = class extends section.RateableSection {
      * @returns A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
-        
+
         let child = this.createChild(dataTypes.ACCOUNT_STATES);
         return await tmdbUtils.getSessionDataAsync(child, sessionId, guestSessionId);
     }
@@ -309,14 +329,14 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the changes of the TV show in question.
-     * 
+     *
      * @param {string} startDate The start date.
      * @param {string} endDate The end date.
      * @param {Number} page The page.
-     * 
+     *
      * @returns A Promise of JSON data with changes.
      */
-     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+    async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
     }
 
@@ -340,9 +360,9 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the episode groups of the TV show in question.
-     * @returns A Promise of episode group data in JSON format.
+     * @returns {Promise<any>} A Promise of episode group data in JSON format.
      */
-   async getEpisodeGroupsAsync() {
+    async getEpisodeGroupsAsync() {
         let childSection = new section.Section(dataTypes.EPISODE_GROUPS, this);
         return await childSection.getQueryResultAsync();
     }
@@ -419,7 +439,7 @@ exports.TvShow = class extends section.RateableSection {
     /**
      * Gets the translations of the TV show in question.
      * @returns A Promise of translation data in JSON format.
-     */ 
+     */
     async getTranslationsAsync() {
         let childSection = new section.Section(dataTypes.TRANSLATIONS, this);
         return await childSection.getQueryResultAsync();
@@ -497,7 +517,7 @@ exports.TvShow = class extends section.RateableSection {
  * A class that represents the TV show section in TMDb.
  */
 exports.TvShowSection = class extends section.Section {
-    
+
     /**
      * Initializes this object.
      * @param {string} apiKey The TMDB API key.
@@ -510,10 +530,19 @@ exports.TvShowSection = class extends section.Section {
     /**
      * Gets a TvShow instance, based on the passed ID.
      * @param {string} id The TV show ID.
-     * @returns A TvShow object with the passed ID.
+     * @returns {exports.TvShow} A TvShow object with the passed ID.
      */
     getTvShow(id) {
         return new exports.TvShow(id, this);
+    }
+
+    /**
+     * Gets a TvShowEpisodeGroup instance, based on the passed ID.
+     * @param {string} id The ID of the episode group.
+     * @returns {exports.TvShowEpisodeGroup} A TvShowEpisodeGroup object with the passed ID.
+     */
+    getTvShowEpisodeGroup(id) {
+        return new exports.TvShowEpisodeGroup(id, this);
     }
 
     /**

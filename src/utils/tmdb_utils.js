@@ -16,7 +16,7 @@ exports.baseUrl = baseUrlValue;
  * @function
  * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDB API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
- * @returns A Promise of JSON data.
+ * @returns {Promise<any>} A Promise of JSON data.
  */
 exports.getDataAsync = async function(urlPath, urlParameters = {}) {
 
@@ -358,6 +358,7 @@ exports.sections = Object.freeze({
     TRENDING: 'trending',
     TV_SHOW: 'tv',
     TV_SHOW_EPISODE: 'episode',
+    TV_SHOW_EPISODE_GROUP: 'episode_group',
     TV_SHOW_SEASON: 'season'
 });
 
