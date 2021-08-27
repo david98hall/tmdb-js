@@ -45,7 +45,7 @@ exports.GuestSession = class extends section.Section {
      * (see tmdb_utils.sortingTypes, although only CREATED_AT.ASC and CREATED_AT_DESC are valid).
      * @returns A Promise of rated TV show data.
      */
-    async getRatedTvShowsAsync() {
+    async getRatedTvShowsAsync(sortBy = undefined) {
 
         let urlParameters = { ...this._getBaseUrlParameters() };
         if (sortBy) {
@@ -62,7 +62,7 @@ exports.GuestSession = class extends section.Section {
      * (see tmdb_utils.sortingTypes, although only CREATED_AT.ASC and CREATED_AT_DESC are valid).
      * @returns A Promise of rated TV show episode data.
      */
-    async getRatedTvShowEpisodesAsync() {
+    async getRatedTvShowEpisodesAsync(sortBy = undefined) {
 
         let urlParameters = { ...this._getBaseUrlParameters() };
         if (sortBy) {

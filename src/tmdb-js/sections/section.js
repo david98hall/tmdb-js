@@ -2,7 +2,6 @@
 
 const tmdbQuerier = require('../api/tmdb_querier');
 const tmdbUtils = require('../../utils/tmdb_utils');
-const actionTypes = tmdbUtils.actionTypes;
 
 /**
  * Template class for getting and handling general section data.
@@ -116,7 +115,7 @@ exports.RateableSection = class extends exports.Section {
      */
     async rateAsync(rating, sessionId, guestSessionId = undefined) {
 
-        let urlPath = this.createChild(actionTypes.RATING).toString();
+        let urlPath = this.createChild(tmdbUtils.actionTypes.RATING).toString();
 
         // Build the URL parameters
         let urlParameters = {
@@ -142,7 +141,7 @@ exports.RateableSection = class extends exports.Section {
      */
     async deleteRatingAsync(sessionId, guestSessionId = undefined) {
 
-        let urlPath = this.createChild(actionTypes.RATING).toString();
+        let urlPath = this.createChild(tmdbUtils.actionTypes.RATING).toString();
 
         // Build the URL parameters
         let urlParameters = {

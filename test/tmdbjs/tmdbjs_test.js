@@ -36,7 +36,7 @@ exports.runTest = () => {
             // Get a session id if possible
             let sessionId = undefined;
             if (!process.env.CI) {
-                sessionId = await tmdbUtils.createSessionAsync(apiKey);
+                sessionId = await tmdbUtils.createSessionAsync(apiKey, "chrome");
                 assert.ok(sessionId);
 
                 after(async () => {
