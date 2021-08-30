@@ -37,16 +37,22 @@ exports.runTest = () => {
             // Get a session id if possible
             let sessionId = undefined;
             if (!process.env.CI) {
+
+                // Create a session
                 sessionId = await tmdbUtils.createSessionAsync(apiKey, "chrome");
                 assert.ok(sessionId);
+                console.log("Successfully created a session.");
 
+                // After all tests have finished, delete the session
                 after(async () => {
                     await tmdbUtils.deleteSessionAsync(apiKey, sessionId);
+                    console.log("Successfully deleted the session.");
                 });
             }
 
+            // Run all tests
             tests.forEach(test => {
-                test.runTest(apiKey, sessionId);
+                test.runTest({ "apiKey": apiKey, "sessionId": sessionId });
             });
         });
     });

@@ -3,7 +3,9 @@ const Tmdb = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
 const tmdbUtils = require('../../../src/utils/tmdb_utils');
 const timeWindows = tmdbUtils.timeWindows;
 
-exports.runTest = (apiKey, sessionId = undefined) => {
+exports.runTest = (authentication) => {
+
+    let apiKey = authentication["apiKey"];
 
     const tmdb = new Tmdb(apiKey);
 

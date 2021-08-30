@@ -1,7 +1,10 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
 
-exports.runTest = (apiKey, sessionId) => {
+exports.runTest = (authentication) => {
+
+    let apiKey = authentication["apiKey"];
+    let sessionId = authentication["sessionId"];
 
     let tmdb = new Tmdb(apiKey);
 

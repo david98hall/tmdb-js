@@ -3,7 +3,9 @@ const Tmdb = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
 const tmdbUtils = require('../../../src/utils/tmdb_utils');
 const discover = require('../../../src/tmdb-js/sections/types/discover');
 
-exports.runTest = (apiKey, sessionId = undefined) => {
+exports.runTest = (authentication) => {
+
+    let apiKey = authentication["apiKey"];
 
     let tmdb = new Tmdb(apiKey);
 
