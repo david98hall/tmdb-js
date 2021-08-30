@@ -223,6 +223,19 @@ exports.PeopleSection = class extends section.Section {
     }
 
     /**
+     * Gets person changes.
+     *
+     * @param {string} startDate The start date.
+     * @param {string} endDate The end date.
+     * @param {Number} page The page.
+     *
+     * @returns {Promise&lt;*>} A Promise of JSON data with person changes.
+     */
+    async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
+    }
+
+    /**
      * Gets the latest created person.
      * @returns A Promise of JSON data with the latest people.
      */

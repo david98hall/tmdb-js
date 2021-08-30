@@ -306,6 +306,19 @@ exports.MovieSection = class extends section.Section {
     }
 
     /**
+     * Gets movie changes.
+     *
+     * @param {string} startDate The start date.
+     * @param {string} endDate The end date.
+     * @param {Number} page The page.
+     *
+     * @returns {Promise&lt;*>} A Promise of JSON data with movie changes.
+     */
+    async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
+    }
+
+    /**
      * Gets the latest movies.
      * @returns A Promise of JSON data with the latest movies.
      */
