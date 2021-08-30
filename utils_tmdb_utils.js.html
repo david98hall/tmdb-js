@@ -91,17 +91,16 @@ const open = require('open');
 const httpUtils = require('./http_utils');
 const httpMethod = httpUtils.httpMethod;
 const baseUrlValue = "https://api.themoviedb.org/3/";
-const section = require('../tmdb-js/sections/section');
 
  /**
-  * The TMDB API base URL.
+  * The TMDb API base URL.
   */
 exports.baseUrl = baseUrlValue;
 
 /**
  * Gets data as a JSON object.
  * @function
- * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDB API base URL.).
+ * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDb API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
  * @returns {Promise&lt;any>} A Promise of JSON data.
  */
@@ -114,7 +113,7 @@ exports.getDataAsync = async function(urlPath, urlParameters = {}) {
 
 /**
  * Builds the URL with the passed path and parameters.
- * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDB API base URL.).
+ * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDb API base URL.).
  * @param {Object} parameters The parameters of the URL.
  */
 exports.buildUrl = function(urlPath, parameters = {}) {
@@ -142,8 +141,8 @@ exports.buildUrl = function(urlPath, parameters = {}) {
 };
 
 /**
- * Gets a request token from TMDB.
- * @param {string} apiKey The API key to TMDB.
+ * Gets a request token from TMDb.
+ * @param {string} apiKey The API key to TMDb.
  * @returns A Promise of a request token string.
  */
 exports.getRequestTokenAsync = async function(apiKey) {
@@ -156,8 +155,8 @@ exports.getRequestTokenAsync = async function(apiKey) {
 }
 
 /**
- * Creates a session with login at TMDB.
- * @param {string} apiKey The API key to TMDB.
+ * Creates a session with login at TMDb.
+ * @param {string} apiKey The API key to TMDb.
  * @param {string} username The username to use to create a session.
  * @param {string} password The password to use to create a session.
  * @returns
@@ -185,8 +184,8 @@ exports.createLoginSessionAsync = async function(apiKey, username, password) {
 }
 
 /**
- * Creates a session at TMDB.
- * @param {string} apiKey The API key to TMDB.
+ * Creates a session at TMDb.
+ * @param {string} apiKey The API key to TMDb.
  * @param {string} permissionApp 
  * The name of the web browser app to use when the 
  * end-user has to approve the request token.
@@ -248,30 +247,6 @@ exports.deleteSessionAsync = async (apiKey, sessionId) => {
 }
 
 /**
- * Adds a session id parameter (regular or guest) to the passed parameters object.
- * The sessionId and guestSessionId parameters are mutually exclusive.
- * @param {Object} parameters The object to add to.
- * @param {string} sessionId The session ID.
- * @param {string} guestSessionId The guest session ID.
- */
-exports.addSessionIdParameter = (parameters, sessionId, guestSessionId = undefined) => {
-    
-    if (sessionId &amp;&amp; guestSessionId) {
-        throw "The sessionId and guestSessionId parameters are mutually exclusive."
-    }
-
-    if (!sessionId &amp;&amp; !guestSessionId) {
-        throw "Either sessionId or guestSessionId must be defined."
-    }
-
-    if (sessionId) {
-        parameters["session_id"] = sessionId;
-    } else if (guestSessionId) {
-        parameters["guest_session_id"] = sessionId;
-    }
-}
-
-/**
  * Posts to TMDB.
  * @param {string} urlPath The URL path from where data will be posted (excluding the TMDB API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
@@ -310,86 +285,6 @@ exports.deleteAsync = async function(urlPath, urlParameters) {
 
     return response &amp;&amp; response["status_code"] === 13;
 };
-
-/**
- * Gets the change data related to the passed section.
- * 
- * @param {section.Section} section The section to query.
- * @param {string} startDate The start date.
- * @param {string} endDate The end date.
- * @param {Number} page The page.
- * 
- * @returns A Promise of JSON data with changes.
- */
-exports.getChangesAsync = async function(section, startDate = undefined, endDate = undefined, page = null) {
-    
-    let urlParameters = { ...this._getBaseUrlParameters() };
-
-    if (startDate) {
-        urlParameters["start_date"] = startDate;
-    }
-
-    if (endDate) {
-        urlParameters["end_date"] = endDate;
-    }
-    
-    if (page) {
-        urlParameters["page"] = page;
-    }
-
-    return await section.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
-}
-
-/**
- * Gets data on the specified page.
- * @param {section.Section} section The section to query.
- * @param {Number} page The page.
- * @returns A Promise of JSON data obtained on the specified page.
- */
-exports.getPageDataAsync = async function(section, page = null) {
-
-    let urlParameters = { ...this._getBaseUrlParameters() };
-        
-    if (page) {
-        urlParameters["page"] = page;
-    }
-
-    return await section.getQueryResultAsync(urlParameters);
-}
-
-/**
- * Gets data on the specified page from the passed region.
- * @param {section.Section} section The section to query.
- * @param {Number} page The page.
- * @param {string} region The region.
- * @returns A Promise of JSON data.
- */
-exports.getRegionPageDataAsync = async function(section, page = null, region = undefined) {
-    let urlParameters = { ...this._getBaseUrlParameters() };
-
-    if (page) {
-        urlParameters["page"] = page;
-    }
-
-    if (region) {
-        urlParameters["region"] = region;
-    }
-
-    return await section.getQueryResultAsync(urlParameters);
-}
-
-/**
- * Gets data that is linked to a session.
- * @param {section.Section} section The section to query.
- * @param {string} sessionId The session ID.
- * @param {string} guestSessionId The guest session ID.
- * @returs A Promise of data in JSON format.
- */
-exports.getSessionDataAsync = async function(section, sessionId, guestSessionId = undefined) {
-    let urlParameters = { ...this._getBaseUrlParameters() };
-    exports.addSessionIdParameter(sessionId, guestSessionId);
-    return await section.getQueryResultAsync(urlParameters);
-}
 
 /**
  * The different external sources supported in TMDB.

@@ -124,12 +124,7 @@ exports.List = class extends section.Section {
      * @returns A Promise of item status data.
      */
     async getItemStatusAsync(movieId) {
-
-        let urlParameters = {
-            ...this._getBaseUrlParameters(),
-            "movie_id": movieId
-        };
-
+        let urlParameters = { "movie_id": movieId };
         return await this.getChildQueryResultAsync(dataTypes.ITEM_STATUS, urlParameters);
     }
 

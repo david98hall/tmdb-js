@@ -121,16 +121,8 @@ exports.FindSection = class extends Section {
      * @returns A Promise of JSON data.
      */
     async findAsync(externalId) {
-
-        let idChild = this.createChild(externalId);
-
-        let parameters = {
-            "api_key": this._apiKey,
-            "language": this._language,
-            "external_source": this._externalSource
-        };
-        
-        return await tmdbUtils.getDataAsync(idChild.toString(), parameters);
+        let parameters = { "external_source": this._externalSource };
+        return await this.getChildQueryResultAsync(externalId, parameters)
     }
 }</code></pre>
         </article>
