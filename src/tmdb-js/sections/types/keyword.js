@@ -6,6 +6,7 @@ const sections = tmdbUtils.sections;
 
 // Sections
 const section = require('../section');
+const {dataTypes} = require("../../../utils/tmdb_utils");
 
 /**
  * A class that represents a specific keyword in TMDb.
@@ -29,7 +30,15 @@ exports.Keyword = class extends section.Section {
         return await this.getQueryResultAsync();
     }
 
-    // TODO [david98hall, 2021-08-14]: Implement GET /keyword/{keyword_id}/movies? It is not recommended to be used.
+    /**
+     * Gets the movies that belong to this keyword.
+     * @param includeAdult A value indicating whether or not to include adult content.
+     * @returns {Promise<*>} A Promise of movie data in JSON format.
+     */
+    async getMovies(includeAdult = true) {
+        let urlParameters = { "include_adult": includeAdult };
+        return await this.getChildQueryResultAsync(dataTypes.MOVIES, urlParameters);
+    }
 }
 
 /**
