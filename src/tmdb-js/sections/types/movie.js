@@ -24,7 +24,7 @@ exports.Movie = class extends section.RateableSection {
 
     /**
      * Gets all details about this movie.
-     * @returns A Promise of movie details.
+     * @returns {Promise<*>} A Promise of movie details.
      */
     async getDetailsAsync(...appendToResponse) {
 
@@ -42,7 +42,7 @@ exports.Movie = class extends section.RateableSection {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      *
-     * @returns A Promise of account state JSON data.
+     * @returns {Promise<*>} A Promise of account state JSON data.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
         let urlParameters = {"session_id": sessionId, "guest_session_id": guestSessionId};
@@ -52,7 +52,7 @@ exports.Movie = class extends section.RateableSection {
     /**
      * Gets the alternative titles of the movie in question.
      * @param {string} country The country to get alternative titles from.
-     * @returns A Promise of JSON data with alternative titles.
+     * @returns {Promise<*>} A Promise of JSON data with alternative titles.
      */
     async getAlternativeTitlesAsync(country = undefined) {
         let urlParameters = {"country": country}
@@ -66,7 +66,7 @@ exports.Movie = class extends section.RateableSection {
      * @param {string} endDate The end date.
      * @param {Number} page The page.
      *
-     * @returns A Promise of JSON data with movie changes.
+     * @returns {Promise<*>} A Promise of JSON data with movie changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
@@ -75,7 +75,7 @@ exports.Movie = class extends section.RateableSection {
 
     /**
      * Gets the credits of the movie in question.
-     * @returns A Promise of JSON data with movie credits.
+     * @returns {Promise<*>} A Promise of JSON data with movie credits.
      */
     async getCreditsAsync() {
         let childSection = new section.Section(dataTypes.CREDITS, this);
@@ -84,7 +84,7 @@ exports.Movie = class extends section.RateableSection {
 
     /**
      * Gets the external IDs of the movie in question.
-     * @returns A Promise of JSON data with external IDs.
+     * @returns {Promise<*>} A Promise of JSON data with external IDs.
      */
     async getExternalIdsAsync() {
         let childSection = new section.Section(dataTypes.EXTERNAL_IDS, this);
@@ -94,7 +94,7 @@ exports.Movie = class extends section.RateableSection {
     /**
      * Gets the images of the movie in question.
      * @param {string} includeImageLanguage The include_image_language parameter.
-     * @returns A Promise of JSON data with movie images.
+     * @returns {Promise<*>} A Promise of JSON data with movie images.
      */
     async getImagesAsync(includeImageLanguage = undefined) {
         let urlParameters = {"include_image_language": includeImageLanguage}
@@ -103,7 +103,7 @@ exports.Movie = class extends section.RateableSection {
 
     /**
      * Gets the keywords of the movie in question.
-     * @returns A Promise of JSON data with movie keywords.
+     * @returns {Promise<*>} A Promise of JSON data with movie keywords.
      */
     async getKeywordsAsync() {
         let childSection = new section.Section(dataTypes.KEYWORDS, this);
@@ -112,7 +112,7 @@ exports.Movie = class extends section.RateableSection {
 
     /**
      * Gets the release dates of the movie in question.
-     * @returns A Promise of JSON data with movie release dates.
+     * @returns {Promise<*>} A Promise of JSON data with movie release dates.
      */
     async getReleaseDatesAsync() {
         let childSection = new section.Section(dataTypes.RELEASE_DATES, this);
@@ -121,7 +121,7 @@ exports.Movie = class extends section.RateableSection {
 
     /**
      * Gets the videos of the movie in question.
-     * @returns A Promise of JSON data with movie videos.
+     * @returns {Promise<*>} A Promise of JSON data with movie videos.
      */
     async getVideosAsync() {
         let childSection = new section.Section(dataTypes.VIDEOS, this);
@@ -130,7 +130,7 @@ exports.Movie = class extends section.RateableSection {
 
     /**
      * Gets the translations of the movie in question.
-     * @returns A Promise of JSON data with movie translations.
+     * @returns {Promise<*>} A Promise of JSON data with movie translations.
      */
     async getTranslationsAsync() {
         let childSection = new section.Section(dataTypes.TRANSLATIONS, this);
@@ -140,7 +140,7 @@ exports.Movie = class extends section.RateableSection {
     /**
      * Gets the recommendations based on the movie in question.
      * @param {Number} page The page.
-     * @returns A Promise of JSON data with recommendations.
+     * @returns {Promise<*>} A Promise of JSON data with recommendations.
      */
     async getRecommendationsAsync(page = null) {
         let urlParameters = {"page": page};
@@ -150,7 +150,7 @@ exports.Movie = class extends section.RateableSection {
     /**
      * Gets the similar movies to the movie in question.
      * @param {Number} page The page.
-     * @returns A Promise of JSON data with similar movies.
+     * @returns {Promise<*>} A Promise of JSON data with similar movies.
      */
     async getSimilarMoviesAsync(page = null) {
         let urlParameters = {"page": page};
@@ -160,7 +160,7 @@ exports.Movie = class extends section.RateableSection {
     /**
      * Gets the reviews of the movie in question.
      * @param {Number} page The page.
-     * @returns A Promise of JSON data with movie reviews.
+     * @returns {Promise<*>} A Promise of JSON data with movie reviews.
      */
     async getReviewsAsync(page = null) {
         let urlParameters = {"page": page};
@@ -170,7 +170,7 @@ exports.Movie = class extends section.RateableSection {
     /**
      * Gets the lists of the movie in question.
      * @param {Number} page The page.
-     * @returns A Promise of JSON data with lists.
+     * @returns {Promise<*>} A Promise of JSON data with lists.
      */
     async getListsAsync(page = null) {
         let urlParameters = {"page": page};
@@ -195,7 +195,7 @@ exports.MovieSection = class extends section.Section {
     /**
      * Gets a Movie instance, based on the passed ID.
      * @param {string} id The ID of the movie.
-     * @returns A Movie object with the passed ID.
+     * @returns {exports.Movie} A Movie object with the passed ID.
      */
     getMovie(id) {
         return new exports.Movie(id, this);
@@ -217,7 +217,7 @@ exports.MovieSection = class extends section.Section {
 
     /**
      * Gets the latest movies.
-     * @returns A Promise of JSON data with the latest movies.
+     * @returns {Promise<*>} A Promise of JSON data with the latest movies.
      */
     async getLatestAsync() {
         let childSection = new section.Section(dataTypes.LATEST, this);
@@ -228,7 +228,7 @@ exports.MovieSection = class extends section.Section {
      * Gets a list of movies currently playing in theatres.
      * @param {Number} page The page.
      * @param {string} region The region.
-     * @returns A Promise of JSON data with the movies that are currently playing.
+     * @returns {Promise<*>} A Promise of JSON data with the movies that are currently playing.
      */
     async getNowPlayingAsync(page = null, region = undefined) {
         let urlParameters = {"page": page, "region": region};
@@ -239,7 +239,7 @@ exports.MovieSection = class extends section.Section {
      * Gets popular movies.
      * @param {Number} page The page.
      * @param {string} region The region.
-     * @returns A Promise of JSON data with popular movies.
+     * @returns {Promise<*>} A Promise of JSON data with popular movies.
      */
     async getPopularAsync(page = null, region = undefined) {
         let urlParameters = {"page": page, "region": region};
@@ -250,7 +250,7 @@ exports.MovieSection = class extends section.Section {
      * Gets top rated movies.
      * @param {Number} page The page.
      * @param {string} region The region.
-     * @returns A Promise of JSON data with top rated movies.
+     * @returns {Promise<*>} A Promise of JSON data with top rated movies.
      */
     async getTopRatedAsync(page = null, region = undefined) {
         let urlParameters = {"page": page, "region": region};
@@ -261,7 +261,7 @@ exports.MovieSection = class extends section.Section {
      * Gets upcoming movies.
      * @param {Number} page The page.
      * @param {string} region The region.
-     * @returns A Promise of JSON data with upcoming movies.
+     * @returns {Promise<*>} A Promise of JSON data with upcoming movies.
      */
     async getUpcomingAsync(page = null, region = undefined) {
         let urlParameters = {"page": page, "region": region};
@@ -270,7 +270,7 @@ exports.MovieSection = class extends section.Section {
 
     /**
      * Gets movie certifications.
-     * @returns A Promise of JSON data with movie certifications.
+     * @returns {Promise<*>} A Promise of JSON data with movie certifications.
      */
     async getCertificationsAsync() {
         let certificationSection = new section.Section(sections.CERTIFICATION, null, this._apiKey, this._language);

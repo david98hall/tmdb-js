@@ -41,7 +41,7 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * @param {boolean} appendUrlParameters A value indicating whether to append
      * the passed URL parameters to the base set or to replace it.
      *
-     * @returns {Promise<any>} A Promise of JSON data based on this section.
+     * @returns {Promise<*>} A Promise of JSON data based on this section.
      */
     async getQueryResultAsync(urlParameters = {}, appendUrlParameters = true) {
 
@@ -58,7 +58,7 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
     /**
      * Returns this section in a string format.
      *
-     * @returns A string correpsonding to this object.
+     * @returns {string} This object as a string.
      */
     toString() {
         let parentString = this._parent == null
@@ -76,7 +76,7 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * @param {boolean} appendUrlParameters A value indicating whether to append
      * the passed URL parameters to the base set or to replace it.
      *
-     * @returns A Promise of JSON data based on the child section.
+     * @returns {Promise<*>} A Promise of JSON data based on the child section.
      */
     async getChildQueryResultAsync(childName, urlParameters = {}, appendUrlParameters = true) {
         return await this.createChild(childName).getQueryResultAsync(urlParameters, appendUrlParameters);
@@ -86,7 +86,7 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * Creates a new child section instance.
      * @param {string} name The name of the child section.
      *
-     * @returns A section that is a child of this one.
+     * @returns {exports.Section} A section that is a child of this one.
      */
     createChild(name) {
         return new exports.Section(name, this);
@@ -121,7 +121,7 @@ exports.RateableSection = class extends exports.Section {
      * @param {string} sessionId The session id.
      * @param {string} guestSessionId The guest session id.
      *
-     * @returns A Promise of a boolean value, which will be true
+     * @returns {Promise<boolean>} A Promise of a boolean value, which will be true
      * if the rating is successful.
      */
     async rateAsync(rating, sessionId, guestSessionId = undefined) {
@@ -149,7 +149,8 @@ exports.RateableSection = class extends exports.Section {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      *
-     * @returns A Promise of a boolean value, which will be true if the deletion was successful.
+     * @returns {Promise<boolean>} A Promise of a boolean value,
+     * which will be true if the deletion was successful.
      */
     async deleteRatingAsync(sessionId, guestSessionId = undefined) {
 

@@ -14,4 +14,4 @@ exports.TmdbApiUser = class {
     constructor(apiKey) {
         this._apiKey = apiKey;
     }
-}
+};

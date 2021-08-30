@@ -24,7 +24,7 @@ exports.Company = class extends section.Section {
 
     /**
      * Gets the company details based on the passed id.
-     * @returns A Promise of company details.
+     * @returns {Promise<*>}  A Promise of company details.
      */
     async getDetailsAsync() {
         return await this.getQueryResultAsync();
@@ -32,7 +32,7 @@ exports.Company = class extends section.Section {
 
     /**
      * Gets the alternative names of this company
-     * @returns A Promise of alternative names.
+     * @returns {Promise<*>}  A Promise of alternative names.
      */
     async getAlternativeNamesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.ALTERNATIVE_NAMES);
@@ -40,7 +40,7 @@ exports.Company = class extends section.Section {
 
     /**
      * Gets images of this company.
-     * @returns A Promise of company images.
+     * @returns {Promise<*>}  A Promise of company images.
      */
     async getImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.IMAGES);
@@ -64,7 +64,7 @@ exports.CompanySection = class extends section.Section {
     /**
      * Gets the company with the passed id.
      * @param {string} id The id of the review to get.
-     * @returns A Company instance with the passed id.
+     * @returns {exports.Company} A Company instance with the passed id.
      */
     getCompany(id) {
         return new exports.Company(id, this);

@@ -31,7 +31,7 @@ exports.FindSection = class extends Section {
     /**
      * Finds media with the passed ID in the external source in question.
      * @param {string} externalId The external ID of the media (see tmdb_utils.externalSources for valid values).
-     * @returns A Promise of JSON data.
+     * @returns {Promise<*>} A Promise of JSON data.
      */
     async findAsync(externalId) {
         let parameters = {"external_source": this._externalSource};

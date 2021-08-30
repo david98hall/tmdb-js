@@ -24,7 +24,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets all details about this person.
-     * @returns A Promise of this person's details in JSON format.
+     * @returns {Promise<*>} A Promise of this person's details in JSON format.
      */
     async getDetailsAsync(...appendToResponse) {
 
@@ -42,7 +42,7 @@ exports.Person = class extends section.Section {
      * @param {string} endDate The end date.
      * @param {Number} page The page.
      *
-     * @returns A Promise of JSON data with person changes.
+     * @returns {Promise<*>} A Promise of JSON data with person changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
@@ -51,7 +51,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the movie credits of this person.
-     * @returns A Promise of this person's movie credits in JSON format.
+     * @returns {Promise<*>} A Promise of this person's movie credits in JSON format.
      */
     async getMovieCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.MOVIE_CREDITS);
@@ -59,7 +59,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the TV credits of this person.
-     * @returns A Promise of this person's TV credits in JSON format.
+     * @returns {Promise<*>} A Promise of this person's TV credits in JSON format.
      */
     async getTvCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TV_CREDITS);
@@ -67,7 +67,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the combined credits of this person.
-     * @returns A Promise of this person's combined credits in JSON format.
+     * @returns {Promise<*>} A Promise of this person's combined credits in JSON format.
      */
     async getCombinedCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.COMBINED_CREDITS);
@@ -75,7 +75,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the external IDs of this person.
-     * @returns A Promise of this person's external IDs in JSON format.
+     * @returns {Promise<*>} A Promise of this person's external IDs in JSON format.
      */
     async getExternalIdsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.EXTERNAL_IDS)
@@ -83,7 +83,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the images of this person.
-     * @returns A Promise of images of this person in JSON format.
+     * @returns {Promise<*>} A Promise of images of this person in JSON format.
      */
     async getImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.IMAGES);
@@ -92,7 +92,7 @@ exports.Person = class extends section.Section {
     /**
      * Gets the tagged images of this person.
      * @param {Number} page The page.
-     * @returns A Promise of tagged images of this person in JSON format.
+     * @returns {Promise<*>} A Promise of tagged images of this person in JSON format.
      */
     async getTaggedImagesAsync(page = null) {
         let urlParameters = {"page": page};
@@ -101,7 +101,7 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the translations of this person.
-     * @returns A Promise of person translations in JSON format.
+     * @returns {Promise<*>} A Promise of person translations in JSON format.
      */
     async getTranslationsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
@@ -125,7 +125,7 @@ exports.PeopleSection = class extends section.Section {
     /**
      * Gets a Person instance with the passed ID.
      * @param {string} id The ID of the person.
-     * @returns A Person object with the passed ID.
+     * @returns {exports.Person} A Person object with the passed ID.
      */
     getPerson(id) {
         return new exports.Person(id, this);
@@ -147,7 +147,7 @@ exports.PeopleSection = class extends section.Section {
 
     /**
      * Gets the latest created person.
-     * @returns A Promise of JSON data with the latest people.
+     * @returns {Promise<*>} A Promise of JSON data with the latest people.
      */
     async getLatestAsync() {
         return await this.getChildQueryResultAsync(dataTypes.LATEST);
@@ -156,7 +156,7 @@ exports.PeopleSection = class extends section.Section {
     /**
      * Gets popular people.
      * @param {Number} page The page.
-     * @returns A Promise of JSON data with popular people.
+     * @returns {Promise<*>} A Promise of JSON data with popular people.
      */
     async getPopularAsync(page = null) {
         let urlParameters = {"page": page};

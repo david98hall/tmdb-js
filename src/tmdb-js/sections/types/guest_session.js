@@ -26,7 +26,7 @@ exports.GuestSession = class extends section.Section {
      * Gets the rated movies of this guest session.
      * @param {string} sortBy The sorting type
      * (see tmdb_utils.sortingTypes, although only CREATED_AT.ASC and CREATED_AT_DESC are valid).
-     * @returns A Promise of rated movie data.
+     * @returns {Promise<*>} A Promise of rated movie data.
      */
     async getRatedMoviesAsync(sortBy = undefined) {
 
@@ -40,7 +40,7 @@ exports.GuestSession = class extends section.Section {
      * Gets the rated TV shows of this guest session.
      * @param {string} sortBy The sorting type
      * (see tmdb_utils.sortingTypes, although only CREATED_AT.ASC and CREATED_AT_DESC are valid).
-     * @returns A Promise of rated TV show data.
+     * @returns {Promise<*>} A Promise of rated TV show data.
      */
     async getRatedTvShowsAsync(sortBy = undefined) {
 
@@ -54,7 +54,7 @@ exports.GuestSession = class extends section.Section {
      * Gets the rated TV show episodes of this guest session.
      * @param {string} sortBy The sorting type
      * (see tmdb_utils.sortingTypes, although only CREATED_AT.ASC and CREATED_AT_DESC are valid).
-     * @returns A Promise of rated TV show episode data.
+     * @returns {Promise<*>} A Promise of rated TV show episode data.
      */
     async getRatedTvShowEpisodesAsync(sortBy = undefined) {
 

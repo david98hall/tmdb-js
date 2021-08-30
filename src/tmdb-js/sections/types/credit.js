@@ -23,7 +23,7 @@ exports.Credit = class extends section.Section {
 
     /**
      * Gets the credit details.
-     * @returns A Promise of credit details.
+     * @returns {Promise<*>} A Promise of credit details.
      */
     async getDetailsAsync() {
         return await this.getQueryResultAsync();
@@ -46,7 +46,7 @@ exports.CreditSection = class extends section.Section {
 
     /**
      * Gets the credit with the passed id.
-     * @returns A Credit instance with the passed id.
+     * @returns {exports.Credit} A Credit instance with the passed id.
      */
     getCredit(id) {
         return new exports.Credit(id, this);

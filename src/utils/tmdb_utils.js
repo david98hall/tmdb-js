@@ -15,7 +15,7 @@ exports.baseUrl = baseUrlValue;
  * @function
  * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDb API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
- * @returns {Promise<any>} A Promise of JSON data.
+ * @returns {Promise<*>} A Promise of JSON data.
  */
 exports.getDataAsync = async function (urlPath, urlParameters = {}) {
 
@@ -56,7 +56,7 @@ exports.buildUrl = function (urlPath, parameters = {}) {
 /**
  * Gets a request token from TMDb.
  * @param {string} apiKey The API key to TMDb.
- * @returns A Promise of a request token string.
+ * @returns {Promise<string>} A Promise of a request token string.
  */
 exports.getRequestTokenAsync = async function (apiKey) {
 
@@ -72,8 +72,7 @@ exports.getRequestTokenAsync = async function (apiKey) {
  * @param {string} apiKey The API key to TMDb.
  * @param {string} username The username to use to create a session.
  * @param {string} password The password to use to create a session.
- * @returns
- * A Promise of a boolean value which is true if the login session creation was a success.
+ * @returns {Promise<boolean>} A Promise of a boolean value which is true if the login session creation was a success.
  */
 exports.createLoginSessionAsync = async function (apiKey, username, password) {
 
@@ -102,8 +101,7 @@ exports.createLoginSessionAsync = async function (apiKey, username, password) {
  * @param {string} permissionApp
  * The name of the web browser app to use when the
  * end-user has to approve the request token.
- * @returns
- * A Promise of a session ID.
+ * @returns {Promise<string>} A Promise of a session ID.
  */
 exports.createSessionAsync = async function (apiKey, permissionApp = undefined) {
 
@@ -132,7 +130,7 @@ exports.createSessionAsync = async function (apiKey, permissionApp = undefined) 
 /**
  * Creates a guest session at TMDb and returns the session ID.
  * @param {string} apiKey The TMDb API key.
- * @returns A Promise of a guest session ID.
+ * @returns {Promise<string>} A Promise of a guest session ID.
  */
 exports.createGuestSessionAsync = async (apiKey) => {
     let sessionUrl = baseUrlValue + "authentication/guest_session/new?api_key=" + apiKey;
@@ -144,8 +142,8 @@ exports.createGuestSessionAsync = async (apiKey) => {
  * Deletes (log outs of) a session.
  * @param {string} apiKey The TMDb API key.
  * @param {string} sessionId The ID of the session to delete.
- * @returns
- * A Promise of a boolean value, which will be true if the deletion is successful.
+ * @returns {Promise<boolean>} A Promise of a boolean value,
+ * which will be true if the deletion is successful.
  */
 exports.deleteSessionAsync = async (apiKey, sessionId) => {
     let sessionUrl = baseUrlValue + "authentication/session?api_key=" + apiKey;
@@ -164,7 +162,7 @@ exports.deleteSessionAsync = async (apiKey, sessionId) => {
  * @param {string} urlPath The URL path from where data will be posted (excluding the TMDb API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
  * @param {Object} requestBody The request body object.
- * @returns A Promise of a boolean value, which will be true if the rating is successful.
+ * @returns {Promise<boolean>} A Promise of a boolean value, which will be true if the rating is successful.
  */
 exports.postAsync = async function (urlPath, urlParameters, requestBody = null) {
 
@@ -183,7 +181,7 @@ exports.postAsync = async function (urlPath, urlParameters, requestBody = null) 
  * Deletes at the passed url.
  * @param {string} urlPath The URL path from where data will deleted (excluding the TMDb API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
- * @returns A Promise of a boolean value, which will be true if the deletion is successful.
+ * @returns {Promise<boolean>} A Promise of a boolean value, which will be true if the deletion is successful.
  */
 exports.deleteAsync = async function (urlPath, urlParameters) {
 

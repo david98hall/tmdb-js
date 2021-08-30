@@ -62,7 +62,7 @@ exports.httpRequest = (url, method, contentType = undefined, requestBody = undef
  * The function used to parse the request result.
  * @param {string} contentType The content type of the request
  * @param {string} requestBody The body of the request
- * @returns {Promise<any>} A Promise of a parsed response.
+ * @returns {Promise<*>} A Promise of a parsed response.
  */
 exports.parseHttpRequest = async function (url, method, parseFun, contentType = undefined, requestBody = undefined) {
     try {

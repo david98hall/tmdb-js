@@ -25,7 +25,7 @@ exports.List = class extends section.Section {
 
     /**
      * Gets all details about this list.
-     * @returns A Promise of list details.
+     * @returns {Promise<*>} A Promise of list details.
      */
     async getDetailsAsync() {
         return await this.getQueryResultAsync();
@@ -34,7 +34,7 @@ exports.List = class extends section.Section {
     /**
      * Gets the item status of a movie in relation to this list.
      * @param {string} movieId The ID of the movie to get the status about.
-     * @returns A Promise of item status data.
+     * @returns {Promise<*>} A Promise of item status data.
      */
     async getItemStatusAsync(movieId) {
         let urlParameters = {"movie_id": movieId};
@@ -45,7 +45,7 @@ exports.List = class extends section.Section {
      * Adds a movie to this list.
      * @param {Number} movieId The movie id.
      * @param {string} sessionId The session id.
-     * @returns A Promise of a boolean value indicating whether the addition was successful or not.
+     * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the addition was successful or not.
      */
     async addMovieAsync(movieId, sessionId) {
         let requestBody = {"media_id": movieId};
@@ -57,7 +57,7 @@ exports.List = class extends section.Section {
      * Removes a movie from this list.
      * @param {Number} movieId The movie id.
      * @param {string} sessionId The session id.
-     * @returns A Promise of a boolean value indicating whether the removal was successful or not.
+     * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the removal was successful or not.
      */
     async removeMovieAsync(movieId, sessionId) {
         let requestBody = {"media_id": movieId};
@@ -68,7 +68,7 @@ exports.List = class extends section.Section {
     /**
      * Clears this list.
      * @param {string} sessionId The session id.
-     * @returns A Promise of a boolean value indicating whether the clearing was successful or not.
+     * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the clearing was successful or not.
      */
     async clearAsync(sessionId) {
         let urlParameters = this._getUrlParameters(sessionId);
@@ -80,7 +80,7 @@ exports.List = class extends section.Section {
     /**
      * Deletes this list.
      * @param {string} sessionId The session id.
-     * @returns A Promise of a boolean value indicating whether the deletion was successful or not.
+     * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the deletion was successful or not.
      */
     async deleteAsync(sessionId) {
         return await tmdbUtils.deleteAsync(this.toString(), this._getUrlParameters(sessionId));
@@ -111,7 +111,7 @@ exports.ListSection = class extends section.Section {
     /**
      * Gets a List instance, based on the passed ID.
      * @param {string} id The ID of the list.
-     * @returns A List object with the passed ID.
+     * @returns {exports.List} A List object with the passed ID.
      */
     getList(id) {
         return new exports.List(id, this);
@@ -125,7 +125,7 @@ exports.ListSection = class extends section.Section {
      * @param {string} language The language of the list.
      * @param {string} sessionId The session ID.
      *
-     * @returns A Promise of a List instance representing the created list
+     * @returns {Promise<exports.List>} A Promise of a List instance representing the created list
      * (null if the creation was not successful).
      */
     async createListAsync(name, description, language = "en-US", sessionId) {

@@ -24,7 +24,7 @@ exports.Keyword = class extends section.Section {
 
     /**
      * Gets the keyword details based on the passed id.
-     * @returns A Promise of keyword details.
+     * @returns {Promise<*>} A Promise of keyword details.
      */
     async getDetailsAsync() {
         return await this.getQueryResultAsync();
@@ -58,7 +58,7 @@ exports.KeywordSection = class extends section.Section {
     /**
      * Gets the keyword with the passed id.
      * @param {string} id The id of the keyword to get.
-     * @returns A Keyword object with the passed id.
+     * @returns {exports.Keyword} A Keyword object with the passed id.
      */
     getKeyword(id) {
         return new exports.Keyword(id, this);

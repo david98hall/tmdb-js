@@ -24,7 +24,7 @@ exports.Account = class extends section.Section {
 
     /**
      * Gets the created lists of this account
-     * @returns A Promise of created lists.
+     * @returns {Promise<*>} A Promise of created lists.
      */
     async getCreatedListsAsync(sessionId, page) {
 
@@ -45,7 +45,7 @@ exports.Account = class extends section.Section {
      * (valid values: tmdb_utils.sortingTypes.CREATED_AT_ASC
      * and tmdb_utils.sortingTypes.CREATED_AT_DESC).
      *
-     * @returns A Promise of favorite movies.
+     * @returns {Promise<*>} A Promise of favorite movies.
      */
     async getFavoriteMoviesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.FAVORITE);
@@ -58,7 +58,7 @@ exports.Account = class extends section.Section {
      * @param {Number} page The page to retrieve data from.
      * @param {string} sortBy The sorting type to use (see tmdb_utils.sortingTypes).
      *
-     * @returns A Promise of favorite TV shows.
+     * @returns {Promise<*>} A Promise of favorite TV shows.
      */
     async getFavoriteTvShowsAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.FAVORITE);
@@ -72,7 +72,7 @@ exports.Account = class extends section.Section {
      * @param {Number} page The page to retrieve data from.
      * @param {string} sortBy The sorting type to use (see tmdb_utils.sortingTypes).
      *
-     * @returns A Promise of rated movies.
+     * @returns {Promise<*>} A Promise of rated movies.
      */
     async getRatedMoviesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.MOVIE, dataTypes.RATED);
@@ -85,7 +85,7 @@ exports.Account = class extends section.Section {
      * @param {Number} page The page to retrieve data from.
      * @param {string} sortBy The sorting type to use (see tmdb_utils.sortingTypes).
      *
-     * @returns A Promise of rated TV shows.
+     * @returns {Promise<*>} A Promise of rated TV shows.
      */
     async getRatedTvShowsAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.RATED);
@@ -98,7 +98,7 @@ exports.Account = class extends section.Section {
      * @param {Number} page The page to retrieve data from.
      * @param {string} sortBy The sorting type to use (see tmdb_utils.sortingTypes).
      *
-     * @returns A Promise of rated TV show episodes.
+     * @returns {Promise<*>} A Promise of rated TV show episodes.
      */
     async getRatedTvShowEpisodesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
 
@@ -120,7 +120,7 @@ exports.Account = class extends section.Section {
      * @param {Number} page The page to retrieve data from.
      * @param {string} sortBy The sorting type to use (see tmdb_utils.sortingTypes).
      *
-     * @returns A Promise of movies in this account's watchlist.
+     * @returns {Promise<*>} A Promise of movies in this account's watchlist.
      */
     async getMovieWatchlistAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.WATCHLIST);
@@ -133,7 +133,7 @@ exports.Account = class extends section.Section {
      * @param {Number} page The page to retrieve data from.
      * @param {string} sortBy The sorting type to use (see tmdb_utils.sortingTypes).
      *
-     * @returns A Promise of TV shows in this account's watchlist.
+     * @returns {Promise<*>} A Promise of TV shows in this account's watchlist.
      */
     async getTvShowWatchlistAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.WATCHLIST);
@@ -146,7 +146,7 @@ exports.Account = class extends section.Section {
      * @param {Number} mediaId The ID of the movie.
      * @param {boolean} favorite A value indicating whether the movie should be set as a favorite or not.
      *
-     * @returns A Promise of a boolean value indicating whether the favorite marking was successful or not.
+     * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the favorite marking was successful or not.
      */
     async setMovieFavoriteStatusAsync(sessionId, mediaId, favorite) {
         return await this.__setFavoriteStatusAsync(sessionId, tmdbUtils.mediaTypes.MOVIE, mediaId, favorite);
@@ -159,7 +159,7 @@ exports.Account = class extends section.Section {
      * @param {Number} mediaId The ID of the TV show.
      * @param {boolean} favorite A value indicating whether the TV show should be set as a favorite or not.
      *
-     * @returns A Promise of a boolean value indicating whether the favorite marking was successful or not.
+     * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the favorite marking was successful or not.
      */
     async setTvShowFavoriteStatusAsync(sessionId, mediaId, favorite) {
         return await this.__setFavoriteStatusAsync(sessionId, tmdbUtils.mediaTypes.TV, mediaId, favorite);
@@ -172,7 +172,7 @@ exports.Account = class extends section.Section {
      * @param {Number} mediaId The ID of the movie.
      * @param {boolean} watchlist A value indicating whether the movie should be in the watchlist or not.
      *
-     * @returns A Promise of a boolean value indicating whether the watchlist update was successful or not.
+     * @returns {Promise<boolean>}  A Promise of a boolean value indicating whether the watchlist update was successful or not.
      */
     async setMovieWatchlistStatusAsync(sessionId, mediaId, watchlist) {
         return await this.__setWatchlistStatusAsync(sessionId, tmdbUtils.mediaTypes.MOVIE, mediaId, watchlist);
@@ -185,7 +185,7 @@ exports.Account = class extends section.Section {
      * @param {Number} mediaId The ID of the TV show.
      * @param {boolean} watchlist A value indicating whether the TV show should be in the watchlist or not.
      *
-     * @returns A Promise of a boolean value indicating whether the watchlist update was successful or not.
+     * @returns {Promise<boolean>}  A Promise of a boolean value indicating whether the watchlist update was successful or not.
      */
     async setTvShowWatchlistStatusAsync(sessionId, mediaId, watchlist) {
         return await this.__setWatchlistStatusAsync(sessionId, tmdbUtils.mediaTypes.TV, mediaId, watchlist);
@@ -246,7 +246,7 @@ exports.AccountSection = class extends section.Section {
     /**
      * Gets the current account details.
      * @param sessionId The sessionId.
-     * @returns A Promise of account details.
+     * @returns {Promise<*>} A Promise of account details.
      */
     async getDetailsAsync(sessionId) {
         let urlParameters = {"session_id": sessionId};
@@ -256,7 +256,7 @@ exports.AccountSection = class extends section.Section {
     /**
      * Gets the account with the passed id.
      * @param {string} id The id of the review to get.
-     * @returns A Account instance with the passed id.
+     * @returns {exports.Account} A Account instance with the passed id.
      */
     getAccount(id) {
         return new exports.Account(id, this);

@@ -24,7 +24,7 @@ exports.ConfigurationSection = class extends Section {
 
     /**
      * Gets the system wide TMDb API configuration information.
-     * @returns A Promise of configuration data.
+     * @returns {Promise<*>}  A Promise of configuration data.
      */
     async getApiConfigurationAsync() {
         return await this.getQueryResultAsync();
@@ -32,7 +32,7 @@ exports.ConfigurationSection = class extends Section {
 
     /**
      * Gets the countries used in TMDb.
-     * @returns A Promise of country data.
+     * @returns {Promise<*>}  A Promise of country data.
      */
     async getCountriesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.COUNTRIES);
@@ -40,7 +40,7 @@ exports.ConfigurationSection = class extends Section {
 
     /**
      * Gets the jobs and departments used in TMDb.
-     * @returns A Promise of job/department data.
+     * @returns {Promise<*>}  A Promise of job/department data.
      */
     async getJobsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.JOBS);
@@ -48,7 +48,7 @@ exports.ConfigurationSection = class extends Section {
 
     /**
      * Gets the languages used in TMDb.
-     * @returns A Promise of language data.
+     * @returns {Promise<*>}  A Promise of language data.
      */
     async getLanguagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.LANGUAGES);
@@ -56,7 +56,7 @@ exports.ConfigurationSection = class extends Section {
 
     /**
      * Gets the officially supported translations in TMDb.
-     * @returns A Promise of translation data.
+     * @returns {Promise<*>}  A Promise of translation data.
      */
     async getPrimaryTranslationsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.PRIMARY_TRANSLATIONS);
@@ -64,7 +64,7 @@ exports.ConfigurationSection = class extends Section {
 
     /**
      * Gets the timezones used in TMDb.
-     * @returns A Promise of timezone data.
+     * @returns {Promise<*>}  A Promise of timezone data.
      */
     async getTimezonesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TIMEZONES);

@@ -29,7 +29,7 @@ exports.SearchSection = class extends Section {
      * @param {Number} pageCount
      * The number of search result pages to return data from. The default is 1.
      *
-     * @returns A Promise of JSON data with search results of companies.
+     * @returns {Promise<*>} A Promise of JSON data with search results of companies.
      */
     async searchCompaniesAsync(searchTerm, startPage = 1, pageCount = 1) {
         let companiesChild = this.createChild(searchType.COMPANIES);
@@ -52,7 +52,7 @@ exports.SearchSection = class extends Section {
      * @param {Number} pageCount
      * The number of search result pages to return data from. The default is 1.
      *
-     * @returns A Promise of JSON data with search results of collections.
+     * @returns {Promise<*>} A Promise of JSON data with search results of collections.
      */
     async searchCollectionsAsync(searchTerm, startPage = 1, pageCount = 1) {
         let collectionsChild = this.createChild(searchType.COLLECTIONS);
@@ -75,7 +75,7 @@ exports.SearchSection = class extends Section {
      * @param {Number} pageCount
      * The number of search result pages to return data from. The default is 1.
      *
-     * @returns A Promise of JSON data with search results of keywords.
+     * @returns {Promise<*>} A Promise of JSON data with search results of keywords.
      */
     async searchKeywordsAsync(searchTerm, startPage = 1, pageCount = 1) {
         let keywordsChild = this.createChild(searchType.KEYWORDS);
@@ -103,7 +103,7 @@ exports.SearchSection = class extends Section {
      * @param {Number} year The year.
      * @param {Number} primaryReleaseYear The primary release year.
      *
-     * @returns A Promise of JSON data with search results of movies.
+     * @returns {Promise<*>} A Promise of JSON data with search results of movies.
      */
     async searchMoviesAsync(searchTerm,
                             startPage = 1,
@@ -144,7 +144,7 @@ exports.SearchSection = class extends Section {
      * @param {Boolean} includeAdult
      * true if adult content will be included. The default is true.
      *
-     * @returns A Promise of JSON data with multi-search results.
+     * @returns {Promise<*>} A Promise of JSON data with multi-search results.
      */
     async multiSearchAsync(searchTerm, startPage = 1, pageCount = 1, includeAdult = true) {
 
@@ -172,7 +172,7 @@ exports.SearchSection = class extends Section {
      * true if adult content will be included. The default is true.
      * @param {string} region The region.
      *
-     * @returns A Promise of JSON data with search results of people.
+     * @returns {Promise<*>} A Promise of JSON data with search results of people.
      */
     async searchPeopleAsync(searchTerm,
                             startPage = 1,
@@ -208,7 +208,7 @@ exports.SearchSection = class extends Section {
      * true if adult content will be included. The default is true.
      * @param {Number} firstAirDateYear The first air date year.
      *
-     * @returns A Promise of JSON data with search results of TV shows.
+     * @returns {Promise<*>} A Promise of JSON data with search results of TV shows.
      */
     async searchTvShowsAsync(searchTerm,
                              startPage = 1,
@@ -262,7 +262,7 @@ const searchType = {
  * @param {Object} additionalInfo
  * Additional info to add to the search query.
  *
- * @returns A Promise of JSON data with search results.
+ * @returns {Promise<*>} A Promise of JSON data with search results.
  */
 async function searchPagesAsync(url, searchTerm, apiKey, startPage,
                                 pageCount, includeAdult = true, language = "en-US", additionalInfo = {}) {
@@ -321,7 +321,7 @@ async function searchPagesAsync(url, searchTerm, apiKey, startPage,
  * @param {Object} additionalInfo
  * Additional info to add to the search query.
  *
- * @returns A Promise of JSON data of the specified page.
+ * @returns {Promise<*>} A Promise of JSON data of the specified page.
  */
 async function searchPageAsync(url,
                                searchTerm,

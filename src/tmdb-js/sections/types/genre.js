@@ -23,7 +23,7 @@ exports.GenreSection = class extends Section {
 
     /**
      * Gets movie genres.
-     * @return A Promise of movie genre data.
+     * @returns {Promise<*>} A Promise of movie genre data.
      */
     async getMovieGenresAsync() {
         return await this.createChild(sections.MOVIE)
@@ -33,7 +33,7 @@ exports.GenreSection = class extends Section {
 
     /**
      * Gets TV show genres.
-     * @return A Promise of TV show genre data.
+     * @returns {Promise<*>} A Promise of TV show genre data.
      */
     async getTvShowGenresAsync() {
         return await this.createChild(sections.TV_SHOW)

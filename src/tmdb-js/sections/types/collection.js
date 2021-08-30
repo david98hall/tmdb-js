@@ -24,7 +24,7 @@ exports.Collection = class extends section.Section {
 
     /**
      * Gets the collection details based on the passed id.
-     * @returns A Promise of collection details.
+     * @returns {Promise<*>}  A Promise of collection details.
      */
     async getDetailsAsync() {
         return await this.getQueryResultAsync();
@@ -32,7 +32,7 @@ exports.Collection = class extends section.Section {
 
     /**
      * Gets the images of the collection in question.
-     * @returns A Promise of collection images.
+     * @returns {Promise<*>}  A Promise of collection images.
      */
     async getImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.IMAGES);
@@ -40,7 +40,7 @@ exports.Collection = class extends section.Section {
 
     /**
      * Gets the translations of the collection in question.
-     * @returns A Promise of collection translations.
+     * @returns {Promise<*>}  A Promise of collection translations.
      */
     async getTranslationsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
@@ -64,7 +64,7 @@ exports.CollectionSection = class extends section.Section {
     /**
      * Gets the collection with the passed id.
      * @param {string} id The id of the collection to get.
-     * @returns A Collection object with the passed id.
+     * @returns {exports.Collection} A Collection object with the passed id.
      */
     getCollection(id) {
         return new exports.Collection(id, this);

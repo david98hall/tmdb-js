@@ -24,8 +24,9 @@ exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
      * Gets details about this TV show episode.
-     * @param  {...string} appendToResponse Values of the append_to_response paramater used for making sub requests.
-     * @returns A Promise of TV show epsidode details in JSON format.
+     * @param  {...string} appendToResponse Values of the append_to_response
+     * parameter used for making sub requests.
+     * @returns {Promise<*>} A Promise of TV show episode details in JSON format.
      */
     async getDetailsAsync(...appendToResponse) {
         let urlParameters = appendToResponse.length > 0
@@ -41,7 +42,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      *
-     * @returns A Promise of account state data in JSON format.
+     * @returns {Promise<*>} A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
         let urlParameters = {"session_id": sessionId, "guest_session_id": guestSessionId};
@@ -55,7 +56,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
      * @param {string} endDate The end date.
      * @param {Number} page The page.
      *
-     * @returns A Promise of JSON data with changes.
+     * @returns {Promise<*>} A Promise of JSON data with changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
@@ -64,7 +65,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
      * Gets the credits of this TV show episode.
-     * @returns A Promise of credit data in JSON format.
+     * @returns {Promise<*>} A Promise of credit data in JSON format.
      */
     async getCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.CREDITS);
@@ -72,7 +73,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
      * Gets the external IDs of this TV show episode.
-     * @returns A Promise of external ID data in JSON format.
+     * @returns {Promise<*>} A Promise of external ID data in JSON format.
      */
     async getExternalIdsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.EXTERNAL_IDS);
@@ -80,7 +81,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
      * Gets the images of this TV show episode.
-     * @returns A Promise of image data in JSON format.
+     * @returns {Promise<*>} A Promise of image data in JSON format.
      */
     async getImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.IMAGES);
@@ -88,7 +89,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
      * Gets the translations of this TV show episode.
-     * @returns A Promise of translation data in JSON format.
+     * @returns {Promise<*>} A Promise of translation data in JSON format.
      */
     async getTranslationsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
@@ -96,7 +97,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
 
     /**
      * Gets the videos of this TV show episode.
-     * @returns A Promise of video data in JSON format.
+     * @returns {Promise<*>} A Promise of video data in JSON format.
      */
     async getVideosAsync() {
         return await this.getChildQueryResultAsync(dataTypes.VIDEOS);
@@ -119,7 +120,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets the details of this TV show season.
-     * @returns A Promise of season detail data in JSON format.
+     * @returns {Promise<*>} A Promise of season detail data in JSON format.
      */
     async getDetailsAsync(...appendToResponse) {
         let urlParameters = appendToResponse.length > 0
@@ -135,7 +136,7 @@ exports.TvShowSeason = class extends section.Section {
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
      *
-     * @returns A Promise of account state data in JSON format.
+     * @returns {Promise<*>} A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
         let urlParameters = {"session_id": sessionId, "guest_session_id": guestSessionId};
@@ -144,7 +145,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets aggregate credits data of this TV show season.
-     * @returns A Promise of aggregate credit data in JSON format.
+     * @returns {Promise<*>} A Promise of aggregate credit data in JSON format.
      */
     async getAggregateCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.AGGREGATE_CREDITS);
@@ -157,7 +158,7 @@ exports.TvShowSeason = class extends section.Section {
      * @param {string} endDate The end date.
      * @param {Number} page The page.
      *
-     * @returns A Promise of JSON data with changes.
+     * @returns {Promise<*>} A Promise of JSON data with changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
@@ -166,7 +167,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets the credits of this TV show season.
-     * @returns A Promise of credit data in JSON format.
+     * @returns {Promise<*>} A Promise of credit data in JSON format.
      */
     async getCreditsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.CREDITS);
@@ -174,7 +175,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets the external IDs of this TV show season.
-     * @returns A Promise of external ID data in JSON format.
+     * @returns {Promise<*>} A Promise of external ID data in JSON format.
      */
     async getExternalIdsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.EXTERNAL_IDS);
@@ -182,7 +183,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets the images of this TV show season.
-     * @returns A Promise of image data in JSON format.
+     * @returns {Promise<*>} A Promise of image data in JSON format.
      */
     async getImagesAsync() {
         return await this.getChildQueryResultAsync(dataTypes.IMAGES);
@@ -190,7 +191,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets the translations of this TV show season.
-     * @returns A Promise of translation data in JSON format.
+     * @returns {Promise<*>} A Promise of translation data in JSON format.
      */
     async getTranslationsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
@@ -198,7 +199,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets the videos of this TV show season.
-     * @returns A Promise of video data in JSON format.
+     * @returns {Promise<*>} A Promise of video data in JSON format.
      */
     async getVideosAsync() {
         return await this.getChildQueryResultAsync(dataTypes.VIDEOS);
@@ -207,7 +208,7 @@ exports.TvShowSeason = class extends section.Section {
     /**
      * Gets a TvShowEpisode object with the passed episode number.
      * @param {Number} episodeNumber The episode number.
-     * @returns A TvShowEpisode object with the passed episode number.
+     * @returns {exports.TvShowEpisode} A TvShowEpisode object with the passed episode number.
      */
     getEpisode(episodeNumber) {
         return new exports.TvShowEpisode(episodeNumber, this);
@@ -215,7 +216,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets the number of episodes in this season.
-     * @returns A Promise of an episode count.
+     * @returns {Promise<Number>} A Promise of an episode count.
      */
     async getEpisodeCountAsync() {
         return (await this.getDetailsAsync())["episodes"].length;
@@ -223,7 +224,7 @@ exports.TvShowSeason = class extends section.Section {
 
     /**
      * Gets all episodes of this TV show season.
-     * @returns A Promise of an array with all episodes of this season.
+     * @returns {Promise<exports.TvShowEpisode[]>} A Promise of an array with all episodes of this season.
      */
     async getEpisodesAsync() {
 
@@ -275,7 +276,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets all details about this TV show.
-     * @returns A Promise of TV show details.
+     * @returns {Promise<*>} A Promise of TV show details.
      */
     async getDetailsAsync(...appendToResponse) {
         let urlParameters = appendToResponse.length > 0
@@ -289,7 +290,7 @@ exports.TvShow = class extends section.RateableSection {
      * Only one of the IDs is allowed to be null or non-null in the same method call.
      * @param {string} sessionId The session ID.
      * @param {string} guestSessionId The guest session ID.
-     * @returns A Promise of account state data in JSON format.
+     * @returns {Promise<*>} A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
         let urlParameters = {"session_id": sessionId, "guest_session_id": guestSessionId};
@@ -298,7 +299,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the alternative titles of the TV show in question.
-     * @returns A Promise of alternative title data in JSON format.
+     * @returns {Promise<*>} A Promise of alternative title data in JSON format.
      */
     async getAlternativeTitlesAsync() {
         let childSection = new section.Section(dataTypes.ALTERNATIVE_TITLES, this);
@@ -312,7 +313,7 @@ exports.TvShow = class extends section.RateableSection {
      * @param {string} endDate The end date.
      * @param {Number} page The page.
      *
-     * @returns A Promise of JSON data with changes.
+     * @returns {Promise<*>} A Promise of JSON data with changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
@@ -321,7 +322,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the content ratings of the TV show in question.
-     * @returns A Promise of content rating data in JSON format.
+     * @returns {Promise<*>} A Promise of content rating data in JSON format.
      */
     async getContentRatingsAsync() {
         let childSection = new section.Section(dataTypes.CONTENT_RATINGS, this);
@@ -330,7 +331,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the credits of the TV show in question.
-     * @returns A Promise of credit data in JSON format.
+     * @returns {Promise<*>} A Promise of credit data in JSON format.
      */
     async getCreditsAsync() {
         let childSection = new section.Section(dataTypes.CREDITS, this);
@@ -339,7 +340,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the episode groups of the TV show in question.
-     * @returns {Promise<any>} A Promise of episode group data in JSON format.
+     * @returns {Promise<*>} {Promise<any>} A Promise of episode group data in JSON format.
      */
     async getEpisodeGroupsAsync() {
         let childSection = new section.Section(dataTypes.EPISODE_GROUPS, this);
@@ -348,7 +349,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the external IDs of the TV show in question.
-     * @returns A Promise of external ID data in JSON format.
+     * @returns {Promise<*>} A Promise of external ID data in JSON format.
      */
     async getExternalIdsAsync() {
         let childSection = new section.Section(dataTypes.EXTERNAL_IDS, this);
@@ -357,7 +358,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the images of the TV show in question.
-     * @returns A Promise of image data in JSON format.
+     * @returns {Promise<*>} A Promise of image data in JSON format.
      */
     async getImagesAsync() {
         let childSection = new section.Section(dataTypes.IMAGES, this);
@@ -366,7 +367,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the keywords of the TV show in question.
-     * @returns A Promise of keyword data in JSON format.
+     * @returns {Promise<*>} A Promise of keyword data in JSON format.
      */
     async getKeywordsAsync() {
         let childSection = new section.Section(dataTypes.KEYWORDS, this);
@@ -376,7 +377,7 @@ exports.TvShow = class extends section.RateableSection {
     /**
      * Gets the recommendations based on the TV show in question.
      * @param {Number} page The page to get data from (see the API documentation for the range)
-     * @returns A Promise of recommendation data in JSON format.
+     * @returns {Promise<*>} A Promise of recommendation data in JSON format.
      */
     async getRecommendationsAsync(page = null) {
         let urlParameters = {"page": page};
@@ -386,7 +387,7 @@ exports.TvShow = class extends section.RateableSection {
     /**
      * Gets the reviews of the TV show in question.
      * @param {Number} page The page to get data from (see the API documentation for the range)
-     * @returns A Promise of reviews in JSON format.
+     * @returns {Promise<*>} A Promise of reviews in JSON format.
      */
     async getReviewsAsync(page = null) {
         let urlParameters = {"page": page};
@@ -395,7 +396,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the a list of seasons or episodes of the TV show in question that were screened theatrically.
-     * @returns A Promise of data about theatrically screened episodes or seasons in JSON format.
+     * @returns {Promise<*>} A Promise of data about theatrically screened episodes or seasons in JSON format.
      */
     async getScreenedTheatricallyAsync() {
         let childSection = new section.Section(dataTypes.SCREENED_THEATRICALLY, this);
@@ -405,7 +406,7 @@ exports.TvShow = class extends section.RateableSection {
     /**
      * Gets the similar TV shows to the TV show in question.
      * @param {Number} page The page.
-     * @returns A Promise of similar TV shows in JSON format.
+     * @returns {Promise<*>} A Promise of similar TV shows in JSON format.
      */
     async getSimilarTvShowsAsync(page = null) {
         let urlParameters = {"page": page};
@@ -414,7 +415,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the translations of the TV show in question.
-     * @returns A Promise of translation data in JSON format.
+     * @returns {Promise<*>} A Promise of translation data in JSON format.
      */
     async getTranslationsAsync() {
         let childSection = new section.Section(dataTypes.TRANSLATIONS, this);
@@ -423,7 +424,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the videos of the TV show in question.
-     * @returns A Promise of video data in JSON format.
+     * @returns {Promise<*>} A Promise of video data in JSON format.
      */
     async getVideosAsync() {
         let childSection = new section.Section(dataTypes.VIDEOS, this);
@@ -433,7 +434,7 @@ exports.TvShow = class extends section.RateableSection {
     /**
      * Gets the season with the passed number.
      * @param {Number} seasonNumber The season number.
-     * @returns A TvShowSeason object.
+     * @returns {exports.TvShowSeason} A TvShowSeason object.
      */
     getSeason(seasonNumber) {
         return new exports.TvShowSeason(seasonNumber, this);
@@ -441,7 +442,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the number of seasons of this TV show.
-     * @returns A Promise of a season count.
+     * @returns {Promise<Number>} A Promise of a season count.
      */
     async getSeasonCountAsync() {
         return (await this.getDetailsAsync())["number_of_seasons"];
@@ -449,7 +450,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets all seasons.
-     * @returns An a Promise of an array of TvShowSeason objects.
+     * @returns {Promise<exports.TvShowSeason[]>} A Promise of an array of TvShowSeason objects.
      */
     async getSeasonsAsync() {
         let seasons = [];
@@ -474,7 +475,7 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets all episodes of this TV show.
-     * @returns A Promise of an array containing TvShowEpisode objects.
+     * @returns {Promise<exports.TvShowEpisode[]>} A Promise of an array containing TvShowEpisode objects.
      */
     async getAllEpisodesAsync() {
         let seasons = [];
@@ -537,7 +538,7 @@ exports.TvShowSection = class extends section.Section {
 
     /**
      * Gets the latest TV shows.
-     * @returns A Promise of the latest TV shows in JSON format.
+     * @returns {Promise<*>} A Promise of the latest TV shows in JSON format.
      */
     async getLatestAsync() {
         let childSection = new section.Section(dataTypes.LATEST, this);
@@ -547,7 +548,7 @@ exports.TvShowSection = class extends section.Section {
     /**
      * Gets TV shows airing today.
      * @param {Number} page The page.
-     * @returns A Promise of the TV shows airing today in JSON format.
+     * @returns {Promise<*>} A Promise of the TV shows airing today in JSON format.
      */
     async getTvAiringTodayAsync(page = null) {
         let urlParameters = {"page": page};
@@ -557,7 +558,7 @@ exports.TvShowSection = class extends section.Section {
     /**
      * Gets TV shows currently on the air.
      * @param {Number} page The page.
-     * @returns A Promise of TV shows that are on the air in JSON format.
+     * @returns {Promise<*>} A Promise of TV shows that are on the air in JSON format.
      */
     async getTvOnTheAirAsync(page = null) {
         let urlParameters = {"page": page};
@@ -567,7 +568,7 @@ exports.TvShowSection = class extends section.Section {
     /**
      * Gets popular TV shows.
      * @param {Number} page The page.
-     * @returns A Promise of popular TV show data in JSON format.
+     * @returns {Promise<*>} A Promise of popular TV show data in JSON format.
      */
     async getPopularAsync(page = null) {
         let urlParameters = {"page": page};
@@ -577,7 +578,7 @@ exports.TvShowSection = class extends section.Section {
     /**
      * Gets top rated TV shows.
      * @param {Number} page The page.
-     * @returns A Promise of top rated TV show data in JSON format.
+     * @returns {Promise<*>} A Promise of top rated TV show data in JSON format.
      */
     async getTopRatedAsync(page = null) {
         let urlParameters = {"page": page};
@@ -587,7 +588,7 @@ exports.TvShowSection = class extends section.Section {
     /**
      * Gets the episode group with the passed ID.
      * @param {string} episodeGroupId The ID of the episode group.
-     * @returns A Promise of episode group data in JSON format.
+     * @returns {Promise<*>} A Promise of episode group data in JSON format.
      */
     async getEpisodeGroupAsync(episodeGroupId) {
         let episodeGroupSection = new section.Section(
@@ -598,7 +599,7 @@ exports.TvShowSection = class extends section.Section {
 
     /**
      * Gets TV show certifications.
-     * @returns A Promise of TV show certification data in JSON format.
+     * @returns {Promise<*>} A Promise of TV show certification data in JSON format.
      */
     async getCertificationsAsync() {
         let certificationSection = new section.Section(sections.CERTIFICATION, null, this._apiKey, this._language);

@@ -33,7 +33,7 @@ exports.TrendingSection = class extends Section {
      * Gets the all trending media (movies, TV shows, people)
      * in the passed time window. See tmdb_utils.timeWindow for the valid types.
      *
-     * @returns A Promise of trending media data in JSON format.
+     * @returns {Promise<*>} A Promise of trending media data in JSON format.
      */
     async getAllAsync() {
         return await this.createChild(mediaTypes.ALL)
@@ -45,7 +45,7 @@ exports.TrendingSection = class extends Section {
      * Gets the trending movies in the passed time window.
      * See tmdb_utils.timeWindow for the valid types.
      *
-     * @return A Promise of trending movie data in JSON format .
+     * @returns {Promise<*>} A Promise of trending movie data in JSON format.
      */
     async getMoviesAsync() {
         return await this.createChild(mediaTypes.MOVIE)
@@ -57,7 +57,7 @@ exports.TrendingSection = class extends Section {
      * Gets the trending TV shows in the passed time window.
      * See tmdb_utils.timeWindow for the valid types.
      *
-     * @return A Promise of trending TV show data in JSON format.
+     * @returns {Promise<*>} A Promise of trending TV show data in JSON format.
      */
     async getTvShowsAsync() {
         return await this.createChild(mediaTypes.TV)
@@ -69,7 +69,7 @@ exports.TrendingSection = class extends Section {
      * Gets the trending people in the passed time window.
      * See tmdb_utils.timeWindow for the valid types.
      *
-     * @return A Promise of trending people data in JSON format.
+     * @returns {Promise<*>} A Promise of trending people data in JSON format.
      */
     async getPeopleAsync() {
         return await this.createChild(mediaTypes.PERSON)
