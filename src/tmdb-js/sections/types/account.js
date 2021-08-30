@@ -29,8 +29,7 @@ exports.Account = class extends section.Section {
     async getCreatedListsAsync(sessionId, page) {
         
         let urlParameters = {
-            ...this.__getBaseUrlParameters(sessionId),
-            "language": this._language,
+            "session_id": sessionId,
             "page": page,
         };
 
@@ -104,8 +103,7 @@ exports.Account = class extends section.Section {
     async getRatedTvShowEpisodesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
 
         let urlParameters = {
-            ...this.__getBaseUrlParameters(sessionId),
-            "language": this._language,
+            "session_id": sessionId,
             "sort_by": sortBy,
             "page": page
         };
@@ -205,7 +203,10 @@ exports.Account = class extends section.Section {
 
         let urlPath = this.createChild(statusType).toString();
 
-        let urlParameters = this.__getBaseUrlParameters(sessionId);
+        let urlParameters = {
+            "api_key": this._apiKey,
+            "session_id": sessionId
+        }
 
         let requestBody = {
             "media_type": mediaType,
@@ -218,21 +219,13 @@ exports.Account = class extends section.Section {
 
     async __getFilteredMediaAsync(sessionId, page, sortBy, mediaType, filter) {
         let urlParameters = {
-            ...this.__getBaseUrlParameters(sessionId),
-            "language": this._language,
+            "session_id": sessionId,
             "sort_by": sortBy,
             "page": page
         };
 
         return await this.createChild(filter)
                          .getChildQueryResultAsync(mediaType, urlParameters);
-    }
-
-    __getBaseUrlParameters(sessionId) {
-        return {
-            "api_key": this._apiKey,
-            "session_id": sessionId
-        };
     }
 }
     
@@ -256,12 +249,7 @@ exports.AccountSection = class extends section.Section {
      * @returns A Promise of account details.
      */
      async getDetailsAsync(sessionId) {
-
-        let urlParameters = {
-            "api_key": this._apiKey,
-            "session_id": sessionId
-        };
-
+        let urlParameters = { "session_id": sessionId };
         return await this.getQueryResultAsync(urlParameters);
     }
     

@@ -7,7 +7,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
     describe('Watch Providers Tests', () => {
 
-        it('Should movie provider data.', async () => {
+        it('Should get movie provider data.', async () => {
             let data = await tmdb.getWatchProvidersSection().getMovieProvidersAsync();
             assert.ok(data);
             assert.ok(data["results"])

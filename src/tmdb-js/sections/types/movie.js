@@ -28,14 +28,9 @@ exports.Movie = class extends section.RateableSection {
      */
     async getDetailsAsync(...appendToResponse) {
 
-        let urlParameters = null;
-
-        if (appendToResponse.length > 0) {
-            urlParameters = {
-                ...this._getBaseUrlParameters(),
-                "append_to_response": appendToResponse.join(",")
-            }
-        }
+        let urlParameters = appendToResponse.length > 0
+            ? { "append_to_response": appendToResponse.join(",") }
+            : {};
 
         return await this.getQueryResultAsync(urlParameters);
     }
@@ -50,9 +45,8 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of account state JSON data.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
-        
-        let child = this.createChild(dataTypes.ACCOUNT_STATES);
-        return await tmdbUtils.getSessionDataAsync(child, sessionId, guestSessionId);
+        let urlParameters = { "session_id": sessionId, "guest_session_id": guestSessionId };
+        return await this.getChildQueryResultAsync(dataTypes.ACCOUNT_STATES, urlParameters);
     }
 
     /**
@@ -61,13 +55,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of JSON data with alternative titles.
      */
     async getAlternativeTitlesAsync(country = undefined) {
-
-        let urlParameters = { ...this._getBaseUrlParameters() };
-        
-        if (country) {
-            urlParameters["country"] = country;
-        }
-
+        let urlParameters = { "country": country }
         return await this.getChildQueryResultAsync(dataTypes.ALTERNATIVE_TITLES, urlParameters);
     }
 
@@ -81,7 +69,8 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of JSON data with movie changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
+        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
         
     /**
@@ -108,13 +97,7 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of JSON data with movie images.
      */
     async getImagesAsync(includeImageLanguage = undefined) {
-        
-        let urlParameters = { ...this._getBaseUrlParameters() };
-        
-        if (include_image_language) {
-            urlParameters["include_image_language"] = includeImageLanguage;
-        }
-
+        let urlParameters = { "include_image_language": includeImageLanguage }
         return await this.getChildQueryResultAsync(dataTypes.IMAGES, urlParameters);
     }
 
@@ -160,8 +143,8 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of JSON data with recommendations.
      */
     async getRecommendationsAsync(page = null) {
-        let child = this.createChild(dataTypes.RECOMMENDATIONS);
-        return await tmdbUtils.getPageDataAsync(child, page);
+        let urlParameters = { "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.RECOMMENDATIONS, urlParameters);
     }
 
     /**
@@ -170,8 +153,8 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of JSON data with similar movies.
      */
     async getSimilarMoviesAsync(page = null) {
-        let child = this.createChild(dataTypes.SIMILAR_MOVIES);
-        return await tmdbUtils.getPageDataAsync(child, page);
+        let urlParameters = { "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.SIMILAR_MOVIES, urlParameters);
     }
 
     /**
@@ -180,8 +163,8 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of JSON data with movie reviews.
      */
     async getReviewsAsync(page = null) {
-        let child = this.createChild(dataTypes.REVIEWS);
-        return await tmdbUtils.getPageDataAsync(child, page);
+        let urlParameters = { "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.REVIEWS, urlParameters);
     }
 
     /**
@@ -190,8 +173,8 @@ exports.Movie = class extends section.RateableSection {
      * @returns A Promise of JSON data with lists.
      */
     async getListsAsync(page = null) {
-        let child = this.createChild(dataTypes.LISTS);
-        return await tmdbUtils.getPageDataAsync(child, page);
+        let urlParameters = { "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.LISTS, urlParameters);
     }
 }
 
@@ -228,7 +211,8 @@ exports.MovieSection = class extends section.Section {
      * @returns {Promise<*>} A Promise of JSON data with movie changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
+        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
     /**
@@ -247,8 +231,8 @@ exports.MovieSection = class extends section.Section {
      * @returns A Promise of JSON data with the movies that are currently playing.
      */
     async getNowPlayingAsync(page = null, region = undefined) {
-        let child = this.createChild(dataTypes.NOW_PLAYING);
-        return await tmdbUtils.getRegionPageDataAsync(child, page, region);
+        let urlParameters = { "page": page, "region": region };
+        return await this.getChildQueryResultAsync(dataTypes.NOW_PLAYING, urlParameters);
     }
 
     /**
@@ -258,26 +242,30 @@ exports.MovieSection = class extends section.Section {
      * @returns A Promise of JSON data with popular movies.
      */
     async getPopularAsync(page = null, region = undefined) {
-        let child = this.createChild(dataTypes.POPULAR);
-        return await tmdbUtils.getRegionPageDataAsync(child, page, region);
+        let urlParameters = { "page": page, "region": region };
+        return await this.getChildQueryResultAsync(dataTypes.POPULAR, urlParameters);
     }
 
     /**
      * Gets top rated movies.
+     * @param {Number} page The page.
+     * @param {string} region The region.
      * @returns A Promise of JSON data with top rated movies.
      */
-    async getTopRatedAsync() {
-        let child = this.createChild(dataTypes.TOP_RATED);
-        return await tmdbUtils.getRegionPageDataAsync(child, page, region);
+    async getTopRatedAsync(page = null, region = undefined) {
+        let urlParameters = { "page": page, "region": region };
+        return await this.getChildQueryResultAsync(dataTypes.TOP_RATED, urlParameters);
     }
 
     /**
      * Gets upcoming movies.
+     * @param {Number} page The page.
+     * @param {string} region The region.
      * @returns A Promise of JSON data with upcoming movies.
      */
-    async getUpcomingAsync() {
-        let child = this.createChild(dataTypes.UPCOMING);
-        return await tmdbUtils.getRegionPageDataAsync(child, page, region);
+    async getUpcomingAsync(page = null, region = undefined) {
+        let urlParameters = { "page": page, "region": region };
+        return await this.getChildQueryResultAsync(dataTypes.UPCOMING, urlParameters);
     }
 
     /**

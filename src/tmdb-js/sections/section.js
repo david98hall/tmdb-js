@@ -38,11 +38,20 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * Gets the section data from TMDb.
      * @param {Object} urlParameters The url parameters to use.
      * If null, the API key and language of this object will be used.
-     * 
+     * @param {boolean} appendUrlParameters A value indicating whether to append
+     * the passed URL parameters to the base set or to replace it.
+     *
      * @returns {Promise<any>} A Promise of JSON data based on this section.
      */
-    async getQueryResultAsync(urlParameters = null) {
-        urlParameters = urlParameters ? urlParameters : this._getBaseUrlParameters();
+    async getQueryResultAsync(urlParameters = {}, appendUrlParameters = true) {
+
+        if (appendUrlParameters) {
+            urlParameters = {
+                ...this._getBaseUrlParameters(),
+                ...urlParameters
+            };
+        }
+
         return await tmdbUtils.getDataAsync(this.toString(), urlParameters);
     }
 
@@ -64,11 +73,13 @@ exports.Section = class extends tmdbQuerier.TmdbQuerier {
      * @param {string} childName The name of the child section.
      * @param {Object} urlParameters The url parameters to use.
      * If null, the API key and language of this object will be used.
+     * @param {boolean} appendUrlParameters A value indicating whether to append
+     * the passed URL parameters to the base set or to replace it.
      * 
      * @returns A Promise of JSON data based on the child section.
      */
-    async getChildQueryResultAsync(childName, urlParameters = null) {
-        return await this.createChild(childName).getQueryResultAsync(urlParameters);
+    async getChildQueryResultAsync(childName, urlParameters = {}, appendUrlParameters = true) {
+        return await this.createChild(childName).getQueryResultAsync(urlParameters, appendUrlParameters);
     }
 
     /**
@@ -120,8 +131,9 @@ exports.RateableSection = class extends exports.Section {
         // Build the URL parameters
         let urlParameters = {
             "api_key": this._apiKey,
+            "session_id": sessionId,
+            "guest_session_id": guestSessionId
         }
-        tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId);
 
         // Ensure that the rating is in the acceptable range
         let requestBody = { "value": Math.min(Math.max(0.5, rating), 10) };
@@ -146,8 +158,9 @@ exports.RateableSection = class extends exports.Section {
         // Build the URL parameters
         let urlParameters = {
             "api_key": this._apiKey,
+            "session_id": sessionId,
+            "guest_session_id": guestSessionId
         }
-        tmdbUtils.addSessionIdParameter(urlParameters, sessionId, guestSessionId);
 
         return await tmdbUtils.deleteAsync(urlPath, urlParameters);
     }

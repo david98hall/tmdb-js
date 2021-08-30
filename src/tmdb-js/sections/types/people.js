@@ -28,14 +28,9 @@ exports.Person = class extends section.Section {
      */
     async getDetailsAsync(...appendToResponse) {
 
-        let urlParameters = null;
-
-        if (appendToResponse.length > 0) {
-            urlParameters = {
-                ...this._getBaseUrlParameters(),
-                "append_to_response": appendToResponse.join(",")
-            }
-        }
+        let urlParameters = appendToResponse.length > 0
+            ? { "append_to_response": appendToResponse.join(",") }
+            : {};
 
         return await this.getQueryResultAsync(urlParameters);
     }
@@ -50,7 +45,8 @@ exports.Person = class extends section.Section {
      * @returns A Promise of JSON data with person changes.
      */
      async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
+        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
         
     /**
@@ -99,8 +95,8 @@ exports.Person = class extends section.Section {
      * @returns A Promise of tagged images of this person in JSON format.
      */
     async getTaggedImagesAsync(page = null) {
-        let child = this.createChild(dataTypes.TAGGED_IMAGES);
-        return await tmdbUtils.getPageDataAsync(child, page);
+        let urlParameters = { "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.TAGGED_IMAGES, urlParameters);
     }
 
     /**
@@ -145,7 +141,8 @@ exports.PeopleSection = class extends section.Section {
      * @returns {Promise<*>} A Promise of JSON data with person changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
+        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
     /**
@@ -162,7 +159,7 @@ exports.PeopleSection = class extends section.Section {
      * @returns A Promise of JSON data with popular people.
      */
     async getPopularAsync(page = null) {
-        let child = this.createChild(dataTypes.POPULAR);
-        return await tmdbUtils.getPageDataAsync(child, page);
+        let urlParameters = { "page": page };
+        return await this.getChildQueryResultAsync(dataTypes.POPULAR, urlParameters);
     }
 }

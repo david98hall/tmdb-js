@@ -114,19 +114,11 @@ exports.SearchSection = class extends Section {
                  primaryReleaseYear = undefined) {
         
         // Additional optional query info
-        let additionalInfo = {};
-        
-        if (region) {
-            additionalInfo["region"] = region;
-        }
-        
-        if (year) {
-            additionalInfo["year"] = year;
-        }
-
-        if (primaryReleaseYear) {
-            additionalInfo["primary_release_year"] = primaryReleaseYear;
-        }
+        let additionalInfo = {
+            "region": region,
+            "year": year,
+            "primary_release_year": primaryReleaseYear
+        };
 
         let moviesChild = this.createChild(searchType.MOVIES);
         
@@ -189,10 +181,7 @@ exports.SearchSection = class extends Section {
         region = undefined) {
 
         // Additional optional query info
-        let additionalInfo = {};
-        if (region) {
-            additionalInfo["region"] = region;
-        }
+        let additionalInfo = { "region": region };
 
         let peopleChild = this.createChild(searchType.PEOPLE);
 
@@ -228,10 +217,7 @@ exports.SearchSection = class extends Section {
         firstAirDateYear = undefined) {
 
         // Additional optional query info
-        let additionalInfo = {};
-        if (firstAirDateYear) {
-            additionalInfo["first_air_date_year"] = firstAirDateYear;
-        }
+        let additionalInfo = { "first_air_date_year": firstAirDateYear };
 
         let tvShowChild = this.createChild(searchType.TV_SHOWS);
 

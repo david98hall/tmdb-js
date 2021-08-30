@@ -30,10 +30,7 @@ exports.GuestSession = class extends section.Section {
      */
     async getRatedMoviesAsync(sortBy = undefined) {
 
-        let urlParameters = { ...this._getBaseUrlParameters() };
-        if (sortBy) {
-            urlParameters["sort_by"] = sortBy;
-        }
+        let urlParameters = { "sort_by": sortBy };
 
         return await this.createChild(dataTypes.RATED)
                          .getChildQueryResultAsync(sections.MOVIE, urlParameters);
@@ -47,10 +44,7 @@ exports.GuestSession = class extends section.Section {
      */
     async getRatedTvShowsAsync(sortBy = undefined) {
 
-        let urlParameters = { ...this._getBaseUrlParameters() };
-        if (sortBy) {
-            urlParameters["sort_by"] = sortBy;
-        }
+        let urlParameters = { "sort_by": sortBy };
 
         return await this.createChild(dataTypes.RATED)
                          .getChildQueryResultAsync(sections.TV_SHOW, urlParameters);
@@ -64,10 +58,7 @@ exports.GuestSession = class extends section.Section {
      */
     async getRatedTvShowEpisodesAsync(sortBy = undefined) {
 
-        let urlParameters = { ...this._getBaseUrlParameters() };
-        if (sortBy) {
-            urlParameters["sort_by"] = sortBy;
-        }
+        let urlParameters = { "sort_by": sortBy };
         
         return await this.createChild(dataTypes.RATED)
                          .getChildQueryResultAsync(sections.EPISODES, urlParameters);

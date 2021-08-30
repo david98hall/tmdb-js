@@ -34,10 +34,7 @@ exports.WatchProvidersSection = class extends section.Section {
      * @returns {Promise<*>} A Promise of movie provider data in JSON format.
      */
     async getMovieProvidersAsync(watchRegion = undefined) {
-        let urlParameters = {
-            ...this._getBaseUrlParameters(),
-            "watch_region": watchRegion
-        }
+        let urlParameters = { "watch_region": watchRegion };
         return await this.getChildQueryResultAsync(sections.MOVIE, urlParameters);
     }
 
@@ -47,10 +44,7 @@ exports.WatchProvidersSection = class extends section.Section {
      * @returns {Promise<*>} A Promise of TV show provider data in JSON format.
      */
     async getTvShowProvidersAsync(watchRegion = undefined) {
-        let urlParameters = {
-            ...this._getBaseUrlParameters(),
-            "watch_region": watchRegion
-        }
+        let urlParameters = { "watch_region": watchRegion };
         return await this.getChildQueryResultAsync(sections.TV_SHOW, urlParameters);
     }
 }

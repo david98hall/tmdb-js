@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
