@@ -38,7 +38,10 @@ exports.buildUrl = function(urlPath, parameters = {}) {
         url += "?";
         
         for (const key in parameters) {
-            if (Object.hasOwnProperty.call(parameters, key)) {
+            if (Object.hasOwnProperty.call(parameters, key)
+                && parameters[key] != undefined
+                && parameters[key] != null) {
+
                 let uriParameter = encodeURI(parameters[key]);
                 url += `${key}=${uriParameter}&`;
             }
@@ -353,13 +356,15 @@ exports.sections = Object.freeze({
     MOVIE: 'movie',
     NETWORK: 'network',
     PERSON: 'person',
+    PROVIDERS: 'providers',
     REVIEW: 'review',
     SEARCH: 'search',
     TRENDING: 'trending',
     TV_SHOW: 'tv',
     TV_SHOW_EPISODE: 'episode',
     TV_SHOW_EPISODE_GROUP: 'episode_group',
-    TV_SHOW_SEASON: 'season'
+    TV_SHOW_SEASON: 'season',
+    WATCH: 'watch',
 });
 
 /**
@@ -393,6 +398,7 @@ exports.dataTypes = Object.freeze({
     PRIMARY_TRANSLATIONS: 'primary_translations',
     RATED: 'rated',
     RECOMMENDATIONS: 'recommendations',
+    REGIONS: 'regions',
     RELEASE_DATES: 'release_dates',
     REVIEWS: 'reviews',
     SCREENED_THEATRICALLY: "screened_theatrically",

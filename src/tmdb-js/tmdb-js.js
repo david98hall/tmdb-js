@@ -20,6 +20,7 @@ const SearchSection = require('./sections/types/search').SearchSection;
 const TmdbQuerier = require('./api/tmdb_querier').TmdbQuerier;
 const TrendingSection = require('./sections/types/trending').TrendingSection;
 const TvShowSection = require('./sections/types/tv_show').TvShowSection;
+const {WatchProvidersSection} = require('./sections/types/watch_provider');
 
 /**
  * Can handle and get TMDB data.
@@ -185,5 +186,14 @@ exports.TmdbClient = class extends TmdbQuerier {
      */
     getTvShowSection() {
         return new TvShowSection(this._apiKey, this._language)
+    }
+
+
+    /**
+     * Gets a WatchProvidersSection instance which can be used
+     * to get watch provider data from TMDb.
+     */
+    getWatchProvidersSection() {
+        return new WatchProvidersSection(this._apiKey, this._language);
     }
 };
