@@ -50,7 +50,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
             setImmediate(done);
         });
-    
+
         it('Should find multi search data of several pages.', done => {
             tmdb.getSearchSection().multiSearchAsync("Batman", 1, 3).then(pages => {
 

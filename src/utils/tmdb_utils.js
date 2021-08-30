@@ -5,9 +5,9 @@ const httpUtils = require('./http_utils');
 const httpMethod = httpUtils.httpMethod;
 const baseUrlValue = "https://api.themoviedb.org/3/";
 
- /**
-  * The TMDb API base URL.
-  */
+/**
+ * The TMDb API base URL.
+ */
 exports.baseUrl = baseUrlValue;
 
 /**
@@ -17,7 +17,7 @@ exports.baseUrl = baseUrlValue;
  * @param {Object} urlParameters The parameters of the URL.
  * @returns {Promise<any>} A Promise of JSON data.
  */
-exports.getDataAsync = async function(urlPath, urlParameters = {}) {
+exports.getDataAsync = async function (urlPath, urlParameters = {}) {
 
     // Create the url, based on this function's parameters
     let url = exports.buildUrl(urlPath, urlParameters);
@@ -29,13 +29,13 @@ exports.getDataAsync = async function(urlPath, urlParameters = {}) {
  * @param {string} urlPath The URL path from where data will be retrieved (excluding the TMDb API base URL.).
  * @param {Object} parameters The parameters of the URL.
  */
-exports.buildUrl = function(urlPath, parameters = {}) {
+exports.buildUrl = function (urlPath, parameters = {}) {
     let url = baseUrlValue + urlPath;
 
     // Apply URL parameters
     if (Object.keys(parameters).length > 0) {
         url += "?";
-        
+
         for (const key in parameters) {
             if (Object.hasOwnProperty.call(parameters, key)
                 && parameters[key] != undefined
@@ -48,7 +48,7 @@ exports.buildUrl = function(urlPath, parameters = {}) {
 
         // Remove last parameter separator
         url = url.substr(0, url.length - 1);
-    } 
+    }
 
     return url;
 };
@@ -58,8 +58,8 @@ exports.buildUrl = function(urlPath, parameters = {}) {
  * @param {string} apiKey The API key to TMDb.
  * @returns A Promise of a request token string.
  */
-exports.getRequestTokenAsync = async function(apiKey) {
-    
+exports.getRequestTokenAsync = async function (apiKey) {
+
     // GET a request token
     let requestTokenUrl = baseUrlValue + "authentication/token/new?api_key=" + apiKey;
     let tokenRequestResult =
@@ -75,16 +75,16 @@ exports.getRequestTokenAsync = async function(apiKey) {
  * @returns
  * A Promise of a boolean value which is true if the login session creation was a success.
  */
-exports.createLoginSessionAsync = async function(apiKey, username, password) {
+exports.createLoginSessionAsync = async function (apiKey, username, password) {
 
     let requestToken = await this.getRequestTokenAsync(apiKey);
 
     // Create a session
     let sessionUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
     let sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl, 
+        sessionUrl,
         httpMethod.POST,
-        JSON.parse, 
+        JSON.parse,
         httpUtils.jsonContentType,
         JSON.stringify({
             "username": username,
@@ -99,13 +99,13 @@ exports.createLoginSessionAsync = async function(apiKey, username, password) {
 /**
  * Creates a session at TMDb.
  * @param {string} apiKey The API key to TMDb.
- * @param {string} permissionApp 
- * The name of the web browser app to use when the 
+ * @param {string} permissionApp
+ * The name of the web browser app to use when the
  * end-user has to approve the request token.
  * @returns
  * A Promise of a session ID.
  */
-exports.createSessionAsync = async function(apiKey, permissionApp = undefined) {
+exports.createSessionAsync = async function (apiKey, permissionApp = undefined) {
 
     let connectionOptions = permissionApp ? {wait: true, app: permissionApp} : {wait: true};
 
@@ -116,9 +116,9 @@ exports.createSessionAsync = async function(apiKey, permissionApp = undefined) {
     // Create a session
     let sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey + "&request_token=" + requestToken;
     let sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl, 
-        httpMethod.GET, 
-        JSON.parse, 
+        sessionUrl,
+        httpMethod.GET,
+        JSON.parse,
         httpUtils.jsonContentType);
 
     if (!sessionResponse || !sessionResponse["success"]) {
@@ -130,8 +130,8 @@ exports.createSessionAsync = async function(apiKey, permissionApp = undefined) {
 }
 
 /**
- * Creates a guest session at TMDB and returns the session ID.
- * @param {string} apiKey The TMDB API key.
+ * Creates a guest session at TMDb and returns the session ID.
+ * @param {string} apiKey The TMDb API key.
  * @returns A Promise of a guest session ID.
  */
 exports.createGuestSessionAsync = async (apiKey) => {
@@ -142,9 +142,9 @@ exports.createGuestSessionAsync = async (apiKey) => {
 
 /**
  * Deletes (log outs of) a session.
- * @param {string} apiKey The TMDB API key.
+ * @param {string} apiKey The TMDb API key.
  * @param {string} sessionId The ID of the session to delete.
- * @returns 
+ * @returns
  * A Promise of a boolean value, which will be true if the deletion is successful.
  */
 exports.deleteSessionAsync = async (apiKey, sessionId) => {
@@ -154,19 +154,19 @@ exports.deleteSessionAsync = async (apiKey, sessionId) => {
         httpMethod.DELETE,
         JSON.parse,
         httpUtils.jsonContentType,
-        JSON.stringify({ "session_id": sessionId }));
+        JSON.stringify({"session_id": sessionId}));
 
     return sessionResponse["success"];
 }
 
 /**
- * Posts to TMDB.
- * @param {string} urlPath The URL path from where data will be posted (excluding the TMDB API base URL.).
+ * Posts to TMDb.
+ * @param {string} urlPath The URL path from where data will be posted (excluding the TMDb API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
  * @param {Object} requestBody The request body object.
  * @returns A Promise of a boolean value, which will be true if the rating is successful.
  */
-exports.postAsync = async function(urlPath, urlParameters, requestBody = null) {
+exports.postAsync = async function (urlPath, urlParameters, requestBody = null) {
 
     let url = exports.buildUrl(urlPath, urlParameters);
 
@@ -181,12 +181,12 @@ exports.postAsync = async function(urlPath, urlParameters, requestBody = null) {
 
 /**
  * Deletes at the passed url.
- * @param {string} urlPath The URL path from where data will deleted (excluding the TMDB API base URL.).
+ * @param {string} urlPath The URL path from where data will deleted (excluding the TMDb API base URL.).
  * @param {Object} urlParameters The parameters of the URL.
  * @returns A Promise of a boolean value, which will be true if the deletion is successful.
  */
-exports.deleteAsync = async function(urlPath, urlParameters) {
-    
+exports.deleteAsync = async function (urlPath, urlParameters) {
+
     let url = exports.buildUrl(urlPath, urlParameters);
 
     // Wait for a response
@@ -200,7 +200,7 @@ exports.deleteAsync = async function(urlPath, urlParameters) {
 };
 
 /**
- * The different external sources supported in TMDB.
+ * The different external sources supported in TMDb.
  */
 exports.externalSources = Object.freeze({
     IMDB_ID: 'imdb_id',
@@ -214,7 +214,7 @@ exports.externalSources = Object.freeze({
 });
 
 /**
- * The different time window types available at TMDB.
+ * The different time window types available at TMDb.
  */
 exports.timeWindows = Object.freeze({
     DAY: 'day',
@@ -222,7 +222,7 @@ exports.timeWindows = Object.freeze({
 });
 
 /**
- * The different media types available at TMDB.
+ * The different media types available at TMDb.
  */
 exports.mediaTypes = Object.freeze({
     ALL: 'all',
@@ -232,7 +232,7 @@ exports.mediaTypes = Object.freeze({
 });
 
 /**
- * The different types of sections available at TMDB.
+ * The different types of sections available at TMDb.
  */
 exports.sections = Object.freeze({
     ACCOUNT: 'account',
@@ -263,7 +263,7 @@ exports.sections = Object.freeze({
 });
 
 /**
- * The different types of data available at TMDB.
+ * The different types of data available at TMDb.
  */
 exports.dataTypes = Object.freeze({
     ACCOUNT_STATES: 'account_states',
@@ -313,7 +313,7 @@ exports.dataTypes = Object.freeze({
 });
 
 /**
- * The different types of actions available at TMDB.
+ * The different types of actions available at TMDb.
  */
 exports.actionTypes = Object.freeze({
     RATING: "rating",
@@ -323,7 +323,7 @@ exports.actionTypes = Object.freeze({
 });
 
 /**
- * The different types of sorting available at TMDB.
+ * The different types of sorting available at TMDb.
  */
 exports.sortingTypes = Object.freeze({
     CREATED_AT_ASC: 'created_at.asc',

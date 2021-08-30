@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 
@@ -111,7 +111,7 @@ class DiscoverSettings {
 
     /**
      * Sets the value of the with_original_language parameter.
-     * @param {string} withOriginalLanguage 
+     * @param {string} withOriginalLanguage
      */
     setWithOriginalLanguage(withOriginalLanguage) {
         this._parameters["with_original_language"] = withOriginalLanguage;
@@ -366,7 +366,7 @@ exports.DiscoverTvShowSettings = class extends DiscoverSettings {
 
     /**
      * Sets the value of the first_air_date_year parameter
-     * @param {Number} limit The parameter value.
+     * @param {Number} year The parameter value.
      */
     setFirstAirDateYear(year) {
         this._parameters["first_air_date_year"] = year;
@@ -413,7 +413,7 @@ exports.DiscoverSection = class extends Section {
 
     /**
      * Initializes this object.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
@@ -428,7 +428,7 @@ exports.DiscoverSection = class extends Section {
     async discoverMoviesAsync(settings) {
         let urlParameters = this.__buildUrlParameters(settings);
         return await this.createChild(sections.MOVIE)
-                         .getQueryResultAsync(urlParameters);
+            .getQueryResultAsync(urlParameters);
     }
 
     /**
@@ -439,7 +439,7 @@ exports.DiscoverSection = class extends Section {
     async discoverTvShowsAsync(settings) {
         let urlParameters = this.__buildUrlParameters(settings);
         return await this.createChild(sections.TV_SHOW)
-                         .getQueryResultAsync(urlParameters);
+            .getQueryResultAsync(urlParameters);
     }
 
     __buildUrlParameters(discoverSettings) {

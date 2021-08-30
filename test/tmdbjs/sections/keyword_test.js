@@ -15,8 +15,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
                 assert.strictEqual(json.name, keyword.name);
 
                 setImmediate(done);
-            })
-        })
-
+            });
+        });
     });
 }

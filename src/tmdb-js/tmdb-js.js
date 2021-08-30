@@ -29,7 +29,7 @@ exports.TmdbClient = class extends TmdbQuerier {
 
     /**
      * Sets properties.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The natural language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
@@ -45,8 +45,8 @@ exports.TmdbClient = class extends TmdbQuerier {
     }
 
     /**
-     * Gets an Authenticator instance which can 
-     * be used to handle TMDB authentications.
+     * Gets an Authenticator instance which can
+     * be used to handle TMDb authentications.
      */
     getAuthenticator() {
         return new Authenticator(this._apiKey);
@@ -70,7 +70,7 @@ exports.TmdbClient = class extends TmdbQuerier {
 
     /**
      * Gets a ConfigurationSection instance which can
-     * be used to get TMDB configuration data.
+     * be used to get TMDb configuration data.
      */
     getConfigurationSection() {
         return new ConfigurationSection(this._apiKey, this._language);
@@ -86,7 +86,7 @@ exports.TmdbClient = class extends TmdbQuerier {
 
     /**
      * Gets a DiscoverSection instance which can
-     * be used to discover media data on TMDB.
+     * be used to discover media data on TMDb.
      */
     getDiscoverSection() {
         return new DiscoverSection(this._apiKey, this._language);
@@ -95,8 +95,8 @@ exports.TmdbClient = class extends TmdbQuerier {
     /**
      * Gets a FindSection instance which can
      * be used to find media data based on external
-     * source IDs via TMDB.
-     * 
+     * source IDs via TMDb.
+     *
      * @param externalSource The external source (see tmdb_utils.externalSources).
      */
     getFindSection(externalSource) {
@@ -136,8 +136,8 @@ exports.TmdbClient = class extends TmdbQuerier {
     }
 
     /**
-     * Gets a MovieSection instance which can be used 
-     * to handle and get movie data on TMDB.
+     * Gets a MovieSection instance which can be used
+     * to handle and get movie data on TMDb.
      */
     getMovieSection() {
         return new MovieSection(this._apiKey, this._language);
@@ -166,14 +166,14 @@ exports.TmdbClient = class extends TmdbQuerier {
     }
 
     /**
-     * Gets a SearchSection instance which can be used to search TMDB.
+     * Gets a SearchSection instance which can be used to search TMDb.
      */
     getSearchSection() {
         return new SearchSection(this._apiKey, this._language);
     }
 
     /**
-     * Gets a TrendingSection which can be used to get trending media from TMDB.
+     * Gets a TrendingSection which can be used to get trending media from TMDb.
      * @param {string} timeWindow The time window (see tmdb_utils.timeWindows).
      */
     getTrendingSection(timeWindow) {
@@ -181,13 +181,12 @@ exports.TmdbClient = class extends TmdbQuerier {
     }
 
     /**
-     * Gets a TvShowSection instance which can be used 
-     * to handle and get TV show data on TMDB.
+     * Gets a TvShowSection instance which can be used
+     * to handle and get TV show data on TMDb.
      */
     getTvShowSection() {
         return new TvShowSection(this._apiKey, this._language)
     }
-
 
     /**
      * Gets a WatchProvidersSection instance which can be used

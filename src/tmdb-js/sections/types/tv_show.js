@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
@@ -29,7 +29,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
      */
     async getDetailsAsync(...appendToResponse) {
         let urlParameters = appendToResponse.length > 0
-            ? { "append_to_response": appendToResponse.join(",") }
+            ? {"append_to_response": appendToResponse.join(",")}
             : {};
         return await this.getQueryResultAsync(urlParameters);
     }
@@ -44,7 +44,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
      * @returns A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
-        let urlParameters = { "session_id": sessionId, "guest_session_id": guestSessionId };
+        let urlParameters = {"session_id": sessionId, "guest_session_id": guestSessionId};
         return await this.getChildQueryResultAsync(dataTypes.ACCOUNT_STATES, urlParameters);
     }
 
@@ -58,7 +58,7 @@ exports.TvShowEpisode = class extends section.RateableSection {
      * @returns A Promise of JSON data with changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
         return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
@@ -123,7 +123,7 @@ exports.TvShowSeason = class extends section.Section {
      */
     async getDetailsAsync(...appendToResponse) {
         let urlParameters = appendToResponse.length > 0
-            ? { "append_to_response": appendToResponse.join(",") }
+            ? {"append_to_response": appendToResponse.join(",")}
             : {};
         return await this.getQueryResultAsync(urlParameters);
     }
@@ -138,7 +138,7 @@ exports.TvShowSeason = class extends section.Section {
      * @returns A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
-        let urlParameters = { "session_id": sessionId, "guest_session_id": guestSessionId };
+        let urlParameters = {"session_id": sessionId, "guest_session_id": guestSessionId};
         return await this.getChildQueryResultAsync(dataTypes.ACCOUNT_STATES, urlParameters);
     }
 
@@ -160,7 +160,7 @@ exports.TvShowSeason = class extends section.Section {
      * @returns A Promise of JSON data with changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
         return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
@@ -279,7 +279,7 @@ exports.TvShow = class extends section.RateableSection {
      */
     async getDetailsAsync(...appendToResponse) {
         let urlParameters = appendToResponse.length > 0
-            ? { "append_to_response": appendToResponse.join(",") }
+            ? {"append_to_response": appendToResponse.join(",")}
             : {};
         return await this.getQueryResultAsync(urlParameters);
     }
@@ -292,7 +292,7 @@ exports.TvShow = class extends section.RateableSection {
      * @returns A Promise of account state data in JSON format.
      */
     async getAccountStatesAsync(sessionId = undefined, guestSessionId = undefined) {
-        let urlParameters = { "session_id": sessionId, "guest_session_id": guestSessionId };
+        let urlParameters = {"session_id": sessionId, "guest_session_id": guestSessionId};
         return await this.getChildQueryResultAsync(dataTypes.ACCOUNT_STATES, urlParameters);
     }
 
@@ -315,7 +315,7 @@ exports.TvShow = class extends section.RateableSection {
      * @returns A Promise of JSON data with changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
         return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
@@ -379,7 +379,7 @@ exports.TvShow = class extends section.RateableSection {
      * @returns A Promise of recommendation data in JSON format.
      */
     async getRecommendationsAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.RECOMMENDATIONS, urlParameters);
     }
 
@@ -389,7 +389,7 @@ exports.TvShow = class extends section.RateableSection {
      * @returns A Promise of reviews in JSON format.
      */
     async getReviewsAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.REVIEWS, urlParameters);
     }
 
@@ -408,7 +408,7 @@ exports.TvShow = class extends section.RateableSection {
      * @returns A Promise of similar TV shows in JSON format.
      */
     async getSimilarTvShowsAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.SIMILAR_TV_SHOWS, urlParameters);
     }
 
@@ -466,7 +466,7 @@ exports.TvShow = class extends section.RateableSection {
      * Gets the specified episode of the specified season.
      * @param {Number} seasonNumber The season number.
      * @param {Number} episodeNumber The episode number
-     * @returns A TvShowEpisode object based on the passed season and episode numbers.
+     * @returns {exports.TvShowEpisode} A TvShowEpisode object based on the passed season and episode numbers.
      */
     getEpisode(seasonNumber, episodeNumber) {
         return this.getSeason(seasonNumber).getEpisode(episodeNumber);
@@ -496,7 +496,7 @@ exports.TvShowSection = class extends section.Section {
 
     /**
      * Initializes this object.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
@@ -522,7 +522,7 @@ exports.TvShowSection = class extends section.Section {
      * @returns {Promise<*>} A Promise of JSON data with TV show changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
         return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
@@ -550,7 +550,7 @@ exports.TvShowSection = class extends section.Section {
      * @returns A Promise of the TV shows airing today in JSON format.
      */
     async getTvAiringTodayAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.TV_AIRING_TODAY, urlParameters);
     }
 
@@ -560,7 +560,7 @@ exports.TvShowSection = class extends section.Section {
      * @returns A Promise of TV shows that are on the air in JSON format.
      */
     async getTvOnTheAirAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.TV_ON_THE_AIR, urlParameters);
     }
 
@@ -570,7 +570,7 @@ exports.TvShowSection = class extends section.Section {
      * @returns A Promise of popular TV show data in JSON format.
      */
     async getPopularAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.POPULAR, urlParameters);
     }
 
@@ -580,7 +580,7 @@ exports.TvShowSection = class extends section.Section {
      * @returns A Promise of top rated TV show data in JSON format.
      */
     async getTopRatedAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.TOP_RATED, urlParameters);
     }
 

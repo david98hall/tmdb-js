@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
@@ -37,7 +37,7 @@ exports.List = class extends section.Section {
      * @returns A Promise of item status data.
      */
     async getItemStatusAsync(movieId) {
-        let urlParameters = { "movie_id": movieId };
+        let urlParameters = {"movie_id": movieId};
         return await this.getChildQueryResultAsync(dataTypes.ITEM_STATUS, urlParameters);
     }
 
@@ -48,7 +48,7 @@ exports.List = class extends section.Section {
      * @returns A Promise of a boolean value indicating whether the addition was successful or not.
      */
     async addMovieAsync(movieId, sessionId) {
-        let requestBody = { "media_id": movieId };
+        let requestBody = {"media_id": movieId};
         let addItemSection = this.createChild(actionTypes.ADD_ITEM);
         return await tmdbUtils.postAsync(addItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
     }
@@ -60,7 +60,7 @@ exports.List = class extends section.Section {
      * @returns A Promise of a boolean value indicating whether the removal was successful or not.
      */
     async removeMovieAsync(movieId, sessionId) {
-        let requestBody = { "media_id": movieId };
+        let requestBody = {"media_id": movieId};
         let removeItemSection = this.createChild(actionTypes.REMOVE_ITEM);
         return await tmdbUtils.postAsync(removeItemSection.toString(), this._getUrlParameters(sessionId), requestBody);
     }
@@ -98,10 +98,10 @@ exports.List = class extends section.Section {
  * A class that represents the list section in TMDb.
  */
 exports.ListSection = class extends section.Section {
-    
+
     /**
      * Initializes this object.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
@@ -119,12 +119,12 @@ exports.ListSection = class extends section.Section {
 
     /**
      * Creates a new list with the passed properties.
-     * 
+     *
      * @param {string} name The name of the list.
      * @param {string} description The description of the list.
      * @param {string} language The language of the list.
      * @param {string} sessionId The session ID.
-     * 
+     *
      * @returns A Promise of a List instance representing the created list
      * (null if the creation was not successful).
      */

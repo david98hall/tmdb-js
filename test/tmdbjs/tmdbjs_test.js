@@ -27,7 +27,7 @@ const tests = [
 
 exports.runTest = () => {
 
-    describe('TMDB API Wrapper', () => {
+    describe('TMDb API Wrapper', () => {
 
         it('Unit Tests', async () => {
 

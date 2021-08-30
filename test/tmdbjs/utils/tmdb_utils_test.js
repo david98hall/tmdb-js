@@ -1,13 +1,12 @@
 const assert = require('assert');
 const tmdbUtils = require('../../../src/utils/tmdb_utils');
 const tmdbTestUtils = require('./tmdb_test_utils');
-const {MovieSection} = require("../../../src/tmdb-js/sections/types/movie");
 const {WatchProvidersSection} = require("../../../src/tmdb-js/sections/types/watch_provider");
 const {sections} = require("../../../src/utils/tmdb_utils");
 
 exports.runTest = apiKey => {
 
-    describe('TMDB Utility Function Tests', () => {
+    describe('TMDb Utility Function Tests', () => {
 
         it('Should get a request token', async () => {
             const token = await tmdbUtils.getRequestTokenAsync(apiKey);
@@ -37,25 +36,25 @@ exports.runTest = apiKey => {
 
         // Not deterministic, don't run in CI
         if (!process.env.CI) {
-            
+
             xit('Should create a session without login.', async () => {
-                
+
                 // Create a session
                 const sessionId = await tmdbUtils.createSessionAsync(apiKey);
                 assert.ok(sessionId);
-    
+
                 // Delete the session
                 assert.ok(await tmdbUtils.deleteSessionAsync(apiKey, sessionId));
             }).timeout(15000);
-    
+
             // Avoid creating guest sessions since they can't be deleted (it seems)
             xit('Should create a guest session.', async () => {
                 const guestSessionID = await tmdbUtils.createGuestSessionAsync(apiKey);
                 assert.ok(guestSessionID);
-    
+
                 // assert.ok(await tmdb_utils.deleteSession(apiKey, guestSessionID));
             });
-    
+
             xit('Should create a session with login.', async () => {
                 const loginInfo = await tmdbTestUtils.getLoginInformationAsync();
                 const success = await tmdbUtils.createLoginSessionAsync(apiKey, loginInfo.username, loginInfo.password);

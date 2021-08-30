@@ -14,8 +14,8 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             assert.ok(guestSessionId);
 
             let ratedMovies = await tmdb.getGuestSessionSection()
-                                        .getGuestSession(guestSessionId)
-                                        .getRatedMoviesAsync();
+                .getGuestSession(guestSessionId)
+                .getRatedMoviesAsync();
             assert.ok(ratedMovies);
         });
 
@@ -25,8 +25,8 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             assert.ok(guestSessionId);
 
             let ratedTvShows = await tmdb.getGuestSessionSection()
-                                         .getGuestSession(guestSessionId)
-                                         .getRatedTvShowsAsync();
+                .getGuestSession(guestSessionId)
+                .getRatedTvShowsAsync();
             assert.ok(ratedTvShows);
         });
 
@@ -36,10 +36,9 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             assert.ok(guestSessionId);
 
             let ratedEpisodes = await tmdb.getGuestSessionSection()
-                                          .getGuestSession(guestSessionId)
-                                          .getRatedTvShowEpisodesAsync();
+                .getGuestSession(guestSessionId)
+                .getRatedTvShowEpisodesAsync();
             assert.ok(ratedEpisodes);
         });
-
     });
 }

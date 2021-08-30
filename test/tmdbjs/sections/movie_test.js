@@ -14,7 +14,7 @@ exports.runTest = (apiKey, sessionId) => {
 
         it('Should find data about a movie.', done => {
             tmdb.getMovieSection().getMovie(madMaxMovie.id).getDetailsAsync().then(json => {
-              
+
                 // Assert the results
                 assert.ok(json);
                 assert.strictEqual(json.title, madMaxMovie.title);
@@ -22,7 +22,7 @@ exports.runTest = (apiKey, sessionId) => {
                 assert.ok(!json.hasOwnProperty("images"));
 
                 setImmediate(done);
-            })
+            });
         });
 
         it('Should find data about a movie with "Append to Response".', done => {
@@ -35,25 +35,25 @@ exports.runTest = (apiKey, sessionId) => {
                 assert.ok(json.hasOwnProperty("images"));
 
                 setImmediate(done);
-            })
+            });
         });
 
         it('Should find movie credit data.', done => {
             tmdb.getMovieSection().getMovie(madMaxMovie.id).getCreditsAsync().then(json => {
-                
+
                 // Assert the results
                 assert.ok(json);
-                
+
                 setImmediate(done);
             });
         });
 
         it('Should find movie certification data.', done => {
             tmdb.getMovieSection().getCertificationsAsync().then(json => {
-                
+
                 // Assert the results
                 assert.ok(json);
-                
+
                 setImmediate(done);
             });
         });
@@ -63,7 +63,7 @@ exports.runTest = (apiKey, sessionId) => {
     if (!process.env.CI) {
 
         describe('Movie session query tests', () => {
-        
+
             it('Should rate and unrate a movie', async () => {
 
                 let movie = tmdb.getMovieSection().getMovie("16869");

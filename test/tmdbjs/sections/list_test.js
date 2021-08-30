@@ -49,7 +49,7 @@ exports.runTest = (apiKey, sessionId) => {
                 let list = await tmdb.getListSection()
                     .createListAsync(listObj.name, listObj.description, listObj.language, sessionId);
                 assert.ok(list); // TODO [david98hall, 2021-08-23]: Fix the error that occurs here
-                    
+
                 // Add a movie to the list and then remove it
                 const movieId = 18;
                 assert.ok(await list.addMovieAsync(movieId, sessionId));

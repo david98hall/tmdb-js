@@ -1,7 +1,7 @@
 const assert = require('assert');
 const Tmdb = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
 
-// TMDB utils
+// TMDb utils
 const tmdbUtils = require('../../../src/utils/tmdb_utils');
 const externalSources = tmdbUtils.externalSources;
 
@@ -17,7 +17,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
 
             let movie = {id: 'tt0074256', title: 'Bugsy Malone'};
             tmdb.getFindSection(externalSources.IMDB_ID).findAsync(movie.id).then(json => {
-            
+
                 assert.strictEqual(json["movie_results"][0]["title"], movie.title);
 
                 setImmediate(done);

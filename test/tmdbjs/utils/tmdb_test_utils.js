@@ -4,7 +4,7 @@ const Tmdb = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
 /**
  * Instantiates a TMDb object with an API key.
  */
-exports.getApiReadyTmdbAsync = async function() {
+exports.getApiReadyTmdbAsync = async function () {
     let apiKey = await exports.getApiKeyAsync();
     return new Tmdb(apiKey);
 };

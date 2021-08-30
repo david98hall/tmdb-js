@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
@@ -29,7 +29,7 @@ exports.Person = class extends section.Section {
     async getDetailsAsync(...appendToResponse) {
 
         let urlParameters = appendToResponse.length > 0
-            ? { "append_to_response": appendToResponse.join(",") }
+            ? {"append_to_response": appendToResponse.join(",")}
             : {};
 
         return await this.getQueryResultAsync(urlParameters);
@@ -37,18 +37,18 @@ exports.Person = class extends section.Section {
 
     /**
      * Gets the changes of the person in question.
-     * 
+     *
      * @param {string} startDate The start date.
      * @param {string} endDate The end date.
      * @param {Number} page The page.
-     * 
+     *
      * @returns A Promise of JSON data with person changes.
      */
-     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+    async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+        let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
         return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
-        
+
     /**
      * Gets the movie credits of this person.
      * @returns A Promise of this person's movie credits in JSON format.
@@ -95,14 +95,14 @@ exports.Person = class extends section.Section {
      * @returns A Promise of tagged images of this person in JSON format.
      */
     async getTaggedImagesAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.TAGGED_IMAGES, urlParameters);
     }
 
     /**
      * Gets the translations of this person.
      * @returns A Promise of person translations in JSON format.
-     */ 
+     */
     async getTranslationsAsync() {
         return await this.getChildQueryResultAsync(dataTypes.TRANSLATIONS);
     }
@@ -112,10 +112,10 @@ exports.Person = class extends section.Section {
  * A class that represents the people section in TMDb.
  */
 exports.PeopleSection = class extends section.Section {
-    
+
     /**
      * Initializes this object.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
@@ -141,7 +141,7 @@ exports.PeopleSection = class extends section.Section {
      * @returns {Promise<*>} A Promise of JSON data with person changes.
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
-        let urlParameters = { "start_date": startDate, "end_date": endDate, "page": page };
+        let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
         return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
@@ -159,7 +159,7 @@ exports.PeopleSection = class extends section.Section {
      * @returns A Promise of JSON data with popular people.
      */
     async getPopularAsync(page = null) {
-        let urlParameters = { "page": page };
+        let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.POPULAR, urlParameters);
     }
 }

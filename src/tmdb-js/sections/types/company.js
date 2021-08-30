@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
@@ -39,7 +39,7 @@ exports.Company = class extends section.Section {
     }
 
     /**
-     * Gets images of this company. 
+     * Gets images of this company.
      * @returns A Promise of company images.
      */
     async getImagesAsync() {
@@ -54,7 +54,7 @@ exports.CompanySection = class extends section.Section {
 
     /**
      * Initializes this object.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {

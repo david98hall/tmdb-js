@@ -9,7 +9,7 @@ exports.runTest = (apiKey, sessionId) => {
     if (!process.env.CI) {
 
         describe('Account GET tests', () => {
-        
+
             // TODO [david98hall, 2021-08-15]: Test all GET methods
 
             it('Should get account details.', async () => {
@@ -18,7 +18,7 @@ exports.runTest = (apiKey, sessionId) => {
                 assert.ok(accountDetails);
                 assert.strictEqual(9370799, accountDetails.id);
             });
-    
+
             it('Should get the favorite movies of an account.', async () => {
 
                 const page = 1;
@@ -30,7 +30,7 @@ exports.runTest = (apiKey, sessionId) => {
         });
 
         describe("Account SET tests", () => {
-            
+
             it('Should mark a movie as a favorite and then remove the marking.', async () => {
 
                 let account = tmdb.getAccountSection().getAccount("9370799");

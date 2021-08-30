@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 const dataTypes = tmdbUtils.dataTypes;
@@ -9,14 +9,14 @@ const dataTypes = tmdbUtils.dataTypes;
 const section = require('../section');
 
 /**
- * A class that represents a specific gues session in TMDb.
+ * A class that represents a specific guest session in TMDb.
  */
 exports.GuestSession = class extends section.Section {
 
     /**
      * Initializes this object.
-     * @param {string} id 
-     * @param {exports.GuestSessionSection} guestSessionSection 
+     * @param {string} id The guest session id.
+     * @param {exports.GuestSessionSection} guestSessionSection The parent guest session section.
      */
     constructor(id, guestSessionSection) {
         super(id, guestSessionSection);
@@ -30,10 +30,10 @@ exports.GuestSession = class extends section.Section {
      */
     async getRatedMoviesAsync(sortBy = undefined) {
 
-        let urlParameters = { "sort_by": sortBy };
+        let urlParameters = {"sort_by": sortBy};
 
         return await this.createChild(dataTypes.RATED)
-                         .getChildQueryResultAsync(sections.MOVIE, urlParameters);
+            .getChildQueryResultAsync(sections.MOVIE, urlParameters);
     }
 
     /**
@@ -44,10 +44,10 @@ exports.GuestSession = class extends section.Section {
      */
     async getRatedTvShowsAsync(sortBy = undefined) {
 
-        let urlParameters = { "sort_by": sortBy };
+        let urlParameters = {"sort_by": sortBy};
 
         return await this.createChild(dataTypes.RATED)
-                         .getChildQueryResultAsync(sections.TV_SHOW, urlParameters);
+            .getChildQueryResultAsync(sections.TV_SHOW, urlParameters);
     }
 
     /**
@@ -58,10 +58,10 @@ exports.GuestSession = class extends section.Section {
      */
     async getRatedTvShowEpisodesAsync(sortBy = undefined) {
 
-        let urlParameters = { "sort_by": sortBy };
-        
+        let urlParameters = {"sort_by": sortBy};
+
         return await this.createChild(dataTypes.RATED)
-                         .getChildQueryResultAsync(sections.EPISODES, urlParameters);
+            .getChildQueryResultAsync(sections.EPISODES, urlParameters);
     }
 }
 
@@ -72,7 +72,7 @@ exports.GuestSessionSection = class extends section.Section {
 
     /**
      * Initializes this object.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {

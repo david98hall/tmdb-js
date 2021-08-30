@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 
@@ -20,7 +20,7 @@ exports.FindSection = class extends Section {
     /**
      * Initializes this object.
      * @param {string} externalSource The time window of this trending section (see tmdb_utils.externalSources).
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(externalSource, apiKey, language = "en-US") {
@@ -30,11 +30,11 @@ exports.FindSection = class extends Section {
 
     /**
      * Finds media with the passed ID in the external source in question.
-     * @param {string} externalId The external ID of the media (see tmdb_utils.externalSources for valid values). 
+     * @param {string} externalId The external ID of the media (see tmdb_utils.externalSources for valid values).
      * @returns A Promise of JSON data.
      */
     async findAsync(externalId) {
-        let parameters = { "external_source": this._externalSource };
+        let parameters = {"external_source": this._externalSource};
         return await this.getChildQueryResultAsync(externalId, parameters)
     }
 }

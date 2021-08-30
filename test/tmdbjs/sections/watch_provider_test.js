@@ -12,7 +12,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
             assert.ok(data);
             assert.ok(data["results"])
             assert.ok(data["results"].length > 0)
-        })
+        });
 
         // TODO [david98hall, 2021-08-30]: Test the remaining methods
     });

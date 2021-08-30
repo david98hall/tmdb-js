@@ -12,25 +12,25 @@ exports.runTest = (apiKey, sessionId = undefined) => {
         // TODO [david98hall, 2021-08-14]: Test all GET query methods
 
         it('Should find any trending media (time window: day).', done => {
-            
+
             tmdb.getTrendingSection(timeWindows.DAY).getAllAsync().then(json => {
-              
+
                 // Assert the results
                 assert.ok(json);
-                
+
                 setImmediate(done);
-            })
+            });
         });
 
         it('Should find any trending media (time window: week).', done => {
-            
+
             tmdb.getTrendingSection(timeWindows.WEEK).getAllAsync().then(json => {
-              
+
                 // Assert the results
                 assert.ok(json);
-                
+
                 setImmediate(done);
-            })
+            });
         });
     });
 }

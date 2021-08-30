@@ -14,7 +14,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
                 assert.ok(json);
 
                 setImmediate(done);
-            })
+            });
         });
 
         it('Get TV show genre list.', done => {
@@ -24,7 +24,7 @@ exports.runTest = (apiKey, sessionId = undefined) => {
                 assert.ok(json);
 
                 setImmediate(done);
-            })
+            });
         });
     });
 }

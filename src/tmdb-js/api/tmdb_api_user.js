@@ -1,7 +1,7 @@
 /**@module tmdb-js/api */
 
 /**
- * A user of the TMBD API.
+ * A user of the TMDb API.
  */
 exports.TmdbApiUser = class {
 
@@ -9,7 +9,7 @@ exports.TmdbApiUser = class {
 
     /**
      * Initializes this object.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      */
     constructor(apiKey) {
         this._apiKey = apiKey;

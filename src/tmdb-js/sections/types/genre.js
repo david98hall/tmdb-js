@@ -1,6 +1,6 @@
 /**@module tmdb-js/sections/types */
 
-// TMDB utilities
+// TMDb utilities
 const tmdbUtils = require('../../../utils/tmdb_utils');
 const sections = tmdbUtils.sections;
 
@@ -14,7 +14,7 @@ exports.GenreSection = class extends Section {
 
     /**
      * Initializes this object.
-     * @param {string} apiKey The TMDB API key.
+     * @param {string} apiKey The TMDb API key.
      * @param {string} language The language of queries, the default is "en-US".
      */
     constructor(apiKey, language = "en-US") {
@@ -27,8 +27,8 @@ exports.GenreSection = class extends Section {
      */
     async getMovieGenresAsync() {
         return await this.createChild(sections.MOVIE)
-                         .createChild(sections.LIST)
-                         .getQueryResultAsync();
+            .createChild(sections.LIST)
+            .getQueryResultAsync();
     }
 
     /**
@@ -37,7 +37,7 @@ exports.GenreSection = class extends Section {
      */
     async getTvShowGenresAsync() {
         return await this.createChild(sections.TV_SHOW)
-                         .createChild(sections.LIST)
-                         .getQueryResultAsync();
+            .createChild(sections.LIST)
+            .getQueryResultAsync();
     }
 }
