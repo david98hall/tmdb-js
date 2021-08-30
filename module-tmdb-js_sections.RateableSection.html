@@ -382,7 +382,7 @@
         
         <span class="code-name">
             
-                deleteRatingAsync<span class="signature">(sessionId, guestSessionId)</span><span class="type-signature"></span>
+                deleteRatingAsync<span class="signature">(sessionId, guestSessionId)</span><span class="type-signature"> &rarr; {Promise.&lt;boolean>}</span>
             
         </span>
     </h4>
@@ -519,7 +519,7 @@ The sessionId and guestSessionId parameters are mutually exclusive.
         <p class="tag-source">
             <a href="tmdb-js_sections_section.js.html" class="button">View Source</a>
             <span>
-                <a href="tmdb-js_sections_section.js.html">tmdb-js/sections/section.js</a>, <a href="tmdb-js_sections_section.js.html#line154">line 154</a>
+                <a href="tmdb-js_sections_section.js.html">tmdb-js/sections/section.js</a>, <a href="tmdb-js_sections_section.js.html#line155">line 155</a>
             </span>
         </p>
     
@@ -550,8 +550,17 @@ The sessionId and guestSessionId parameters are mutually exclusive.
 
 <div class="columns">
     
-    <div class='param-desc column is-7'>A Promise of a boolean value, which will be true if the deletion was successful.</div>
+    <div class='param-desc column is-7'>A Promise of a boolean value,
+which will be true if the deletion was successful.</div>
     
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Promise.&lt;boolean></span>
+
+
+    </div>
     
 </div>
 
@@ -577,7 +586,7 @@ The sessionId and guestSessionId parameters are mutually exclusive.
         
         <span class="code-name">
             
-                rateAsync<span class="signature">(rating, sessionId, guestSessionId)</span><span class="type-signature"></span>
+                rateAsync<span class="signature">(rating, sessionId, guestSessionId)</span><span class="type-signature"> &rarr; {Promise.&lt;boolean>}</span>
             
         </span>
     </h4>
@@ -773,6 +782,14 @@ guestSessionId are mutually exclusive.
     <div class='param-desc column is-7'>A Promise of a boolean value, which will be true
 if the rating is successful.</div>
     
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Promise.&lt;boolean></span>
+
+
+    </div>
     
 </div>
 
