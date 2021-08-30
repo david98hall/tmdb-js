@@ -130,18 +130,18 @@ exports.ListSection = class extends section.Section {
      */
     async createListAsync(name, description, language = "en-US", sessionId) {
 
-        const requestBody = {
+        let requestBody = {
             "name": name,
             "description": description,
             "language": language
         };
 
-        const urlParameters = {
+        let urlParameters = {
             "api_key": this._apiKey,
             "session_id": sessionId
         };
 
-        const response = await tmdbUtils.postAsync(this.toString(), urlParameters, requestBody);
+        let response = await tmdbUtils.postAsync(this.toString(), urlParameters, requestBody);
 
         if (response && response["success"]) {
             return new exports.List(response["list_id"], this);

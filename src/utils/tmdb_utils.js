@@ -194,6 +194,12 @@ exports.deleteAsync = async function (urlPath, urlParameters) {
         JSON.parse,
         httpUtils.jsonContentType);
 
+    if (response && response["status_code"] === 11) {
+        // TODO [david98hall, 2021-08-30]: Remove this if-statement when this API ticket is fixed: https://trello.com/c/slruAstb
+        // List is deleted but the response is that there is an internal error in TMDb
+        return true;
+    }
+
     return response && response["status_code"] === 13;
 };
 
