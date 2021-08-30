@@ -14,7 +14,7 @@ const tests = [
     require('./sections/genre_test'),
     require('./sections/guest_session_test'),
     require('./sections/keyword_test'),
-    // require('./sections/list_test'), // TODO [david98hall, 2021-08-30]: Figure out what is wrong with lists
+    require('./sections/list_test'),
     require('./sections/movie_test'),
     require('./sections/network_test'),
     require('./sections/people_test'),
