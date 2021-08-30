@@ -119,27 +119,27 @@ exports.httpMethod = Object.freeze({
  */
 exports.httpRequest = (url, method, contentType = undefined, requestBody = undefined) =>
     new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-        xhr.open(method, url);
-        let rejectFun = function() {
-            reject(new Error(`There was an error when doing a ${method} request!`));
-        };
-        xhr.onload = function() {
-            if (xhr.readyState === 4) {
-                resolve(xhr.responseText);
-            } else {
-                rejectFun();
+            let xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            let rejectFun = function () {
+                reject(new Error(`There was an error when doing a ${method} request!`));
+            };
+            xhr.onload = function () {
+                if (xhr.readyState === 4) {
+                    resolve(xhr.responseText);
+                } else {
+                    rejectFun();
+                }
+            };
+            xhr.onerror = rejectFun;
+
+            if (contentType) {
+                xhr.setRequestHeader("Content-Type", contentType);
             }
-        };
-        xhr.onerror = rejectFun;
 
-        if (contentType) {
-            xhr.setRequestHeader("Content-Type", contentType);
+            xhr.send(requestBody);
         }
-
-        xhr.send(requestBody);
-    }
-);
+    );
 
 /**
  * Makes an HTTP request on the given URL and parses the result.
@@ -151,13 +151,12 @@ exports.httpRequest = (url, method, contentType = undefined, requestBody = undef
  * @param {string} requestBody The body of the request
  * @returns {Promise&lt;any>} A Promise of a parsed response.
  */
-exports.parseHttpRequest = async function(url, method, parseFun, contentType = undefined, requestBody = undefined) {
+exports.parseHttpRequest = async function (url, method, parseFun, contentType = undefined, requestBody = undefined) {
     try {
         // Await the HTTP request and return its parsed results
         let response = await exports.httpRequest(url, method, contentType, requestBody);
         return parseFun(response);
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error);
     }
 };</code></pre>
