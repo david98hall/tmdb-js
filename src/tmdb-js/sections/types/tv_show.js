@@ -537,6 +537,19 @@ exports.TvShowSection = class extends section.Section {
     }
 
     /**
+     * Gets TV show changes.
+     *
+     * @param {string} startDate The start date.
+     * @param {string} endDate The end date.
+     * @param {Number} page The page.
+     *
+     * @returns {Promise<*>} A Promise of JSON data with TV show changes.
+     */
+    async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
+        return await tmdbUtils.getChangesAsync(this, startDate, endDate, page);
+    }
+
+    /**
      * Gets a TvShowEpisodeGroup instance, based on the passed ID.
      * @param {string} id The ID of the episode group.
      * @returns {exports.TvShowEpisodeGroup} A TvShowEpisodeGroup object with the passed ID.
