@@ -62,17 +62,13 @@ exports.runTest = (authentication) => {
         });
     });
 
-    // Don't test non-deterministic functions on the CI
-    if (!process.env.CI) {
+    describe('Movie session query tests', () => {
 
-        describe('Movie session query tests', () => {
+        it('Should rate a movie and then remove the rating', async () => {
 
-            it('Should rate and unrate a movie', async () => {
-
-                let movie = tmdb.getMovieSection().getMovie("16869");
-                assert.ok(await movie.rateAsync(10, sessionId));
-                assert.ok(await movie.deleteRatingAsync(sessionId));
-            });
+            let movie = tmdb.getMovieSection().getMovie("16869");
+            assert.ok(await movie.rateAsync(10, sessionId));
+            assert.ok(await movie.deleteRatingAsync(sessionId));
         });
-    }
+    });
 }

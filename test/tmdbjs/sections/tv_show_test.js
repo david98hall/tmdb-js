@@ -73,24 +73,20 @@ exports.runTest = (authentication) => {
         });
     });
 
-    // Don't test non-deterministic functions on the CI
-    if (!process.env.CI) {
+    describe('TV show session query tests', () => {
 
-        describe('TV show session query tests', () => {
+        it('Should rate a TV show and then remove the rating', async () => {
 
-            it('Should rate and unrate a TV show', async () => {
-
-                let tvShow = tmdb.getTvShowSection().getTvShow("1399");
-                assert.ok(await tvShow.rateAsync(10, sessionId));
-                assert.ok(await tvShow.deleteRatingAsync(sessionId));
-            });
-
-            it('Should rate and unrate a TV show episode', async () => {
-
-                let tvShowEpisode = tmdb.getTvShowSection().getTvShow("1399").getEpisode(1, 1);
-                assert.ok(await tvShowEpisode.rateAsync(10, sessionId));
-                assert.ok(await tvShowEpisode.deleteRatingAsync(sessionId));
-            });
+            let tvShow = tmdb.getTvShowSection().getTvShow("1399");
+            assert.ok(await tvShow.rateAsync(10, sessionId));
+            assert.ok(await tvShow.deleteRatingAsync(sessionId));
         });
-    }
+
+        it('Should rate a TV show episode and then remove the rating', async () => {
+
+            let tvShowEpisode = tmdb.getTvShowSection().getTvShow("1399").getEpisode(1, 1);
+            assert.ok(await tvShowEpisode.rateAsync(10, sessionId));
+            assert.ok(await tvShowEpisode.deleteRatingAsync(sessionId));
+        });
+    });
 }
