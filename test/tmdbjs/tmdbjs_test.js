@@ -1,5 +1,6 @@
 const assert = require('assert');
 const tmdbUtils = require('../../src/utils/tmdb_utils');
+const tmdbTestUtils = require('./utils/tmdb_test_utils');
 const getApiKey = require('./utils/tmdb_test_utils').getApiKeyAsync;
 
 const tests = [
@@ -34,21 +35,19 @@ exports.runTest = () => {
             let apiKey = await getApiKey();
             assert.ok(apiKey);
 
-            // Get a session id if possible
-            let sessionId = undefined;
-            if (!process.env.CI) {
+            // Get login information
+            let loginInfo = await tmdbTestUtils.getLoginInformationAsync();
 
-                // Create a session
-                sessionId = await tmdbUtils.createSessionAsync(apiKey, "chrome");
-                assert.ok(sessionId);
-                console.log("Successfully created a session.");
+            // Create a session
+            let sessionId = await tmdbUtils.createLoginSessionAsync(apiKey, loginInfo.username, loginInfo.password);
+            assert.ok(sessionId);
+            console.log("Successfully created a session.");
 
-                // After all tests have finished, delete the session
-                after(async () => {
-                    await tmdbUtils.deleteSessionAsync(apiKey, sessionId);
-                    console.log("Successfully deleted the session.");
-                });
-            }
+            // After all tests have finished, delete the session
+            after(async () => {
+                await tmdbUtils.deleteSessionAsync(apiKey, sessionId);
+                console.log("Successfully deleted the session.");
+            });
 
             // Run all tests
             tests.forEach(test => {

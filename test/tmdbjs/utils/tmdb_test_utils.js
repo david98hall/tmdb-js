@@ -1,13 +1,4 @@
 const fs = require('fs').promises;
-const Tmdb = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
-
-/**
- * Instantiates a TMDb object with an API key.
- */
-exports.getApiReadyTmdbAsync = async function () {
-    let apiKey = await exports.getApiKeyAsync();
-    return new Tmdb(apiKey);
-};
 
 /**
  * Gets the API key from the file system.
@@ -29,6 +20,14 @@ exports.getApiKeyAsync = async () => {
  * @returns {Promise<{password: string, username: string}>}
  */
 exports.getLoginInformationAsync = async () => {
+
+    if (process.env.TMDB_USERNAME && process.env.TMDB_PASSWORD) {
+        return {
+            "username": process.env.TMDB_USERNAME,
+            "password": process.env.TMDB_PASSWORD
+        }
+    }
+
     let credentials = await getCredentialsJsonAsync();
     return {
         "username": credentials.username,
@@ -36,6 +35,10 @@ exports.getLoginInformationAsync = async () => {
     };
 };
 
+/**
+ * Gets a session ID.
+ * @returns {Promise<string>} A Promise of a session ID string.
+ */
 exports.getSessionIdAsync = async () => {
     return process.env.TMDB_SESSION_ID
         ? process.env.TMDB_SESSION_ID
@@ -44,6 +47,7 @@ exports.getSessionIdAsync = async () => {
 
 /**
  * Gets the credentials JSON from the file system.
+ * @returns {Promise<*>} A Promise of credential data in JSON format.
  */
 getCredentialsJsonAsync = async () => {
     let credentials = await fs.readFile('././credentials.json');

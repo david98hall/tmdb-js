@@ -36,10 +36,20 @@ exports.runTest = (authentication) => {
             assert.strictEqual(url2, expected2)
         });
 
-        // Not deterministic, don't run in CI
+        xit('Should create a guest session.', async () => {
+            const guestSessionID = await tmdbUtils.createGuestSessionAsync(apiKey);
+            assert.ok(guestSessionID);
+        });
+
+        xit('Should create a session with login.', async () => {
+            const loginInfo = await tmdbTestUtils.getLoginInformationAsync();
+            const sessionId = await tmdbUtils.createLoginSessionAsync(apiKey, loginInfo.username, loginInfo.password);
+            assert.ok(sessionId);
+            assert.ok(await tmdbUtils.deleteSessionAsync(apiKey, sessionId));
+        });
+
         if (!process.env.CI) {
 
-            // Commented out since it is already tested before running the tests in this file
             xit('Should create a session without login.', async () => {
 
                 // Create a session
@@ -49,17 +59,6 @@ exports.runTest = (authentication) => {
                 // Delete the session
                 assert.ok(await tmdbUtils.deleteSessionAsync(apiKey, sessionId));
             }).timeout(15000);
-
-            it('Should create a guest session.', async () => {
-                const guestSessionID = await tmdbUtils.createGuestSessionAsync(apiKey);
-                assert.ok(guestSessionID);
-            });
-
-            it('Should create a session with login.', async () => {
-                const loginInfo = await tmdbTestUtils.getLoginInformationAsync();
-                const success = await tmdbUtils.createLoginSessionAsync(apiKey, loginInfo.username, loginInfo.password);
-                assert.ok(success);
-            });
         }
     });
 };
