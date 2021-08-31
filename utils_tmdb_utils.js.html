@@ -165,10 +165,10 @@ exports.createLoginSessionAsync = async function (apiKey, username, password) {
 
     let requestToken = await this.getRequestTokenAsync(apiKey);
 
-    // Create a session
-    let sessionUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
-    let sessionResponse = await httpUtils.parseHttpRequest(
-        sessionUrl,
+    // Approve request token
+    let authUrl = baseUrlValue + "authentication/token/validate_with_login?api_key=" + apiKey;
+    let authResponse = await httpUtils.parseHttpRequest(
+        authUrl,
         httpMethod.POST,
         JSON.parse,
         httpUtils.jsonContentType,
@@ -178,7 +178,7 @@ exports.createLoginSessionAsync = async function (apiKey, username, password) {
             "request_token": requestToken
         }));
 
-    if (!sessionResponse || !sessionResponse["success"]) {
+    if (!authResponse || !authResponse["success"]) {
         // Log in and approval of request token was unsuccessful
         return undefined;
     }
@@ -198,7 +198,7 @@ exports.createSessionAsync = async function (apiKey, permissionApp = undefined) 
 
     let connectionOptions = permissionApp ? {wait: true, app: permissionApp} : {wait: true};
 
-    // Get request token and approve it
+    // Get request token and let the user approve it
     let requestToken = await this.getRequestTokenAsync(apiKey);
     await open('https://www.themoviedb.org/authenticate/' + requestToken, connectionOptions);
 
