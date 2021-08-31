@@ -23,7 +23,11 @@ Here is a simple example of how to use this wrapper:
 ```javascript
 const {TmdbClient} = require('../../../src/tmdb-js/tmdb-js');
 
-doStuff = async function() {
+doStuff = async function(authentication) {
+
+   let apiKey = authentication.apiKey;
+   let username = authentication.username;
+   let password = authentication.password;
 
    let tmdb = new TmdbClient(apiKey);
 
