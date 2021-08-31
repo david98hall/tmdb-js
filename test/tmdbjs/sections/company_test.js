@@ -19,8 +19,7 @@ exports.runTest = (authentication) => {
                 assert.strictEqual(json.name, company.name);
 
                 setImmediate(done);
-            })
-        })
-
+            });
+        });
     });
 }

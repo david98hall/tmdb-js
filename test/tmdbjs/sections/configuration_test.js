@@ -19,7 +19,7 @@ exports.runTest = (authentication) => {
                 assert.ok(json);
 
                 setImmediate(done);
-            })
+            });
         });
 
         it('Should find country configuration data.', done => {
@@ -30,7 +30,7 @@ exports.runTest = (authentication) => {
                 assert.ok(json);
 
                 setImmediate(done);
-            })
+            });
         });
 
         it('Should find job configuration data.', done => {
@@ -41,7 +41,7 @@ exports.runTest = (authentication) => {
                 assert.ok(json);
 
                 setImmediate(done);
-            })
+            });
         });
 
         it('Should find language configuration data.', done => {
@@ -52,7 +52,7 @@ exports.runTest = (authentication) => {
                 assert.ok(json);
 
                 setImmediate(done);
-            })
+            });
         });
 
         it('Should find primary translation configuration data.', done => {
@@ -63,7 +63,7 @@ exports.runTest = (authentication) => {
                 assert.ok(json);
 
                 setImmediate(done);
-            })
+            });
         });
 
         it('Should find timezone configuration data.', done => {
@@ -74,7 +74,7 @@ exports.runTest = (authentication) => {
                 assert.ok(json);
 
                 setImmediate(done);
-            })
+            });
         });
     });
 }

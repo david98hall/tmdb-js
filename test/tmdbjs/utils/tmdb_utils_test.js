@@ -48,6 +48,7 @@ exports.runTest = (authentication) => {
             assert.ok(await tmdbUtils.deleteSessionAsync(apiKey, sessionId));
         });
 
+        // Tests that do not work in CIs
         if (!process.env.CI) {
 
             xit('Should create a session without login.', async () => {
