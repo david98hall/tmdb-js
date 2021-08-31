@@ -21,24 +21,38 @@ npm i tmdb-js
 #### Usage
 Here is a simple example of how to use this wrapper:
 ```javascript
-const TmdbClient = require('../../../src/tmdb-js/tmdb-js').TmdbClient;
+const {TmdbClient} = require('../../../src/tmdb-js/tmdb-js');
 
-var tmdb = new TmdbClient(apiKey);
+doStuff = async function() {
 
-// Get movie data example
-var oceansElevenMovie = tmdb.getMovieSection().getMovie(161);
-oceansElevenMovie.getDetailsAsync().then(json => {
-  console.log("A great movie: " + json.title);
-});
+   let tmdb = new TmdbClient(apiKey);
 
-// Rate movie example
-oceansElevenMovie.rateAsync(10, sessionId);
+   // Get movie data example
+   let oceansElevenMovie = tmdb.getMovieSection().getMovie("161");
+   let oceansDetails = await oceansElevenMovie.getDetailsAsync();
+   let oceansImages = await oceansElevenMovie.getImagesAsync();
+   console.log("A great movie: " + json.title);
+   
+   // Rate movie example
+   let sessionId = await tmdb.getAuthenticator().createSessionAsync("chrome"); // One way of getting a session ID
+   let ratingSuccessful1 = await oceansElevenMovie.rateAsync(10, sessionId);
 
-// Search TMDB examples
-tmdb.getSearchSection().searchMoviesAsync("Ocean's").then(resultPageJsons => { console.log(resultPageJsons.length) });
-tmdb.getSearchSection().searchMoviesAsync("Ocean's", 1, 1).then(resultPageJsons => { console.log(resultPageJsons.length) });
-tmdb.getSearchSection().multiSearchAsync("Ocean's").then(resultPageJsons => { console.log(resultPageJsons.length) });
-tmdb.getSearchSection().multiSearchAsync("Ocean's", 1, 2).then(resultPageJsons => { console.log(resultPageJsons.length) });
+   // Rate TV show episode example
+   let loginSessionId = await tmdb.getAuthenticator().createLoginSessionAsync(username, password); // Another way of getting a session ID
+   let gameOfThronesTvShow = tmdb.getTvShowSection().getTvShow("1399");
+   let ratingSuccessful2 = await gameOfThronesTvShow.getEpisode(3, 9).rateAsync(10, sessionId);
+
+   // Rate TV show as a guest example
+   let guestSessionId = await tmdb.getAuthenticator().createGuestSessionAsync();
+   let ratingSuccessful3 = await gameOfThronesTvShow.rateAsync(10, undefined, guestSessionId);
+
+   // Search TMDB examples
+   let searchSection = tmdb.getSearchSection();
+   let searchResult1 = await searchSection.searchMoviesAsync("Ocean's");
+   let searchResult2 = await searchSection.searchMoviesAsync("Ocean's", 1, 1);
+   let searchResult3 = await searchSection.multiSearchAsync("Ocean's");
+   let searchResult4 = await searchSection.multiSearchAsync("Ocean's", 1, 2);
+}
 ```
 
 See the [documentation](https://david98hall.github.io/tmdb-js/) for more info.
