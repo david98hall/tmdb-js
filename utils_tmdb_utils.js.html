@@ -159,7 +159,7 @@ exports.getRequestTokenAsync = async function (apiKey) {
  * @param {string} apiKey The API key to TMDb.
  * @param {string} username The username to use to create a session.
  * @param {string} password The password to use to create a session.
- * @returns {Promise&lt;boolean>} A Promise of a boolean value which is true if the login session creation was a success.
+ * @returns {Promise&lt;string>} A Promise of a session ID string (undefined if the operation is not successful).
  */
 exports.createLoginSessionAsync = async function (apiKey, username, password) {
 
@@ -178,8 +178,12 @@ exports.createLoginSessionAsync = async function (apiKey, username, password) {
             "request_token": requestToken
         }));
 
-    // Return true if the session creation was successful
-    return sessionResponse &amp;&amp; sessionResponse["success"];
+    if (!sessionResponse || !sessionResponse["success"]) {
+        // Log in and approval of request token was unsuccessful
+        return undefined;
+    }
+
+    return await getSessionIdAsync(apiKey, requestToken);
 }
 
 /**
@@ -188,7 +192,7 @@ exports.createLoginSessionAsync = async function (apiKey, username, password) {
  * @param {string} permissionApp
  * The name of the web browser app to use when the
  * end-user has to approve the request token.
- * @returns {Promise&lt;string>} A Promise of a session ID.
+ * @returns {Promise&lt;string>} A Promise of a session ID string (undefined if the operation is not successful).
  */
 exports.createSessionAsync = async function (apiKey, permissionApp = undefined) {
 
@@ -197,6 +201,17 @@ exports.createSessionAsync = async function (apiKey, permissionApp = undefined) 
     // Get request token and approve it
     let requestToken = await this.getRequestTokenAsync(apiKey);
     await open('https://www.themoviedb.org/authenticate/' + requestToken, connectionOptions);
+
+    return await getSessionIdAsync(apiKey, requestToken);
+}
+
+/**
+ * Gets a session ID based on the approved request token and API key.
+ * @param apiKey The TMDb API key.
+ * @param requestToken The approved request token.
+ * @returns {Promise&lt;string>} A Promise of a session ID string (undefined if the operation is not successful).
+ */
+getSessionIdAsync = async function(apiKey, requestToken) {
 
     // Create a session
     let sessionUrl = baseUrlValue + "authentication/session/new?api_key=" + apiKey + "&amp;request_token=" + requestToken;
@@ -222,6 +237,11 @@ exports.createSessionAsync = async function (apiKey, permissionApp = undefined) 
 exports.createGuestSessionAsync = async (apiKey) => {
     let sessionUrl = baseUrlValue + "authentication/guest_session/new?api_key=" + apiKey;
     let sessionResponse = await httpUtils.parseHttpRequest(sessionUrl, httpMethod.GET, JSON.parse);
+
+    if (!sessionResponse || !sessionResponse["success"]) {
+        return undefined;
+    }
+
     return sessionResponse["guest_session_id"];
 }
 
