@@ -19,5 +19,17 @@ exports.runTest = (authentication) => {
                 setImmediate(done);
             })
         })
+
+        it("Should get image data.", async () => {
+            let imageData = await tmdb.getCollectionSection().getCollection(collection.id).getImagesAsync();
+            assert.ok(imageData);
+            assert.ok(imageData["id"]);
+        });
+
+        it("Should get translation data.", async () => {
+            let data = await tmdb.getCollectionSection().getCollection(collection.id).getTranslationsAsync();
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
     });
 }

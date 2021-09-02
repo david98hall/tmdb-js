@@ -9,12 +9,9 @@ exports.runTest = (authentication) => {
 
     describe('Network GET query tests', () => {
 
-        // TODO [david98hall, 2021-08-14]:  Test all GET query methods
+        let network = {id: "19", name: "FOX"};
 
-        it('Should find data about a network.', done => {
-
-            // Look for movie data
-            let network = {id: "19", name: "FOX"};
+        it('Should get detail data.', done => {
 
             tmdb.getNetworkSection().getNetwork(network.id).getDetailsAsync().then(json => {
 
@@ -23,6 +20,24 @@ exports.runTest = (authentication) => {
 
                 setImmediate(done);
             });
+        });
+
+        it("Should get alternative name data.", async () => {
+
+            let section = tmdb.getNetworkSection().getNetwork(network.id);
+            let data = await section.getAlternativeNamesAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get image data.", async () => {
+
+            let section = tmdb.getNetworkSection().getNetwork(network.id);
+            let data = await section.getImagesAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
         });
     });
 }

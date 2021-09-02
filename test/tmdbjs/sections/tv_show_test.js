@@ -10,12 +10,9 @@ exports.runTest = (authentication) => {
 
     describe('TV show GET query tests', () => {
 
-        // TODO [David Hall, 2020-06-27]: Test all specific GET query methods
-
         it('Should find details about a TV show.', done => {
 
-            // Look for TV show data
-            let tvShow = {id: 66732, name: "Stranger Things"};
+            let tvShow = {id: "66732", name: "Stranger Things"};
 
             tmdb.getTvShowSection().getTvShow(tvShow.id).getDetailsAsync().then(json => {
 
@@ -28,9 +25,7 @@ exports.runTest = (authentication) => {
 
         it('Should find Swedish details about a TV show.', done => {
 
-            // Look for TV show data
-            let tvShow = {id: 34, name: "Skenet bedrar"};
-
+            let tvShow = {id: "34", name: "Skenet bedrar"};
             let tmdbSwedish = new Tmdb(apiKey, "sv-SE");
 
             tmdbSwedish.getTvShowSection().getTvShow(tvShow.id).getDetailsAsync().then(json => {
@@ -57,23 +52,388 @@ exports.runTest = (authentication) => {
             assert.strictEqual(lastEpisodeDetails.name, lastGotEpisode.name);
         });
 
+        it("Should get aggregate credit data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getAggregateCreditsAsync();
+
+            assert.ok(data);
+            assert.ok(data["cast"]);
+        });
+
+        it("Should get alternative title data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getAlternativeTitlesAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get change data for a specific TV show.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getChangesAsync();
+
+            assert.ok(data);
+            assert.ok(data["changes"]);
+        });
+
+        it("Should get content rating data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getContentRatingsAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get credit data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getCreditsAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get episode group data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getEpisodeGroupDataAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get external id data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getExternalIdsAsync();
+
+            assert.ok(data);
+            assert.ok(data["imdb_id"]);
+        });
+
+        it("Should get image data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getImagesAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get keyword data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getKeywordsAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get recommendation data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getRecommendationsAsync();
+
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it("Should get review data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getReviewsAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get screened theatrically data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getScreenedTheatricallyAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get similar TV show data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getSimilarTvShowsAsync();
+
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it("Should get translation data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getTranslationsAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get video data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getVideosAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get content rating data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getContentRatingsAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+    });
+
+    describe("TV Show Season tests", () => {
+
+        let gotTvShow = {id: 1399, seasonCount: 8, episodeCount: 73};
+
+        it("Should get detail data.", async () => {
+            let section = tmdb.getTvShowSection().getTvShow(gotTvShow.id).getSeason(1);
+            let data = await section.getDetailsAsync();
+
+            assert.ok(data);
+            assert.ok(data["air_date"]);
+        });
+
+        it("Should get aggregate credit data.", async () => {
+            let section = tmdb.getTvShowSection().getTvShow(gotTvShow.id).getSeason(1);
+            let data = await section.getAggregateCreditsAsync();
+
+            assert.ok(data);
+            assert.ok(data["cast"]);
+        });
+
+        it("Should get change data.", async () => {
+            let section = tmdb.getTvShowSection().getTvShow(gotTvShow.id).getSeason(1);
+            let data = await section.getChangesAsync();
+            assert.ok(data);
+            assert.ok(data["changes"]);
+        });
+
+        it("Should get credit data.", async () => {
+            let section = tmdb.getTvShowSection().getTvShow(gotTvShow.id).getSeason(1);
+            let data = await section.getCreditsAsync();
+
+            assert.ok(data);
+            assert.ok(data["cast"]);
+        });
+
+        it("Should get external ID data.", async () => {
+            let section = tmdb.getTvShowSection().getTvShow(gotTvShow.id).getSeason(1);
+            let data = await section.getExternalIdsAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get image data.", async () => {
+            let section = tmdb.getTvShowSection().getTvShow(gotTvShow.id).getSeason(1);
+            let data = await section.getImagesAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get translation data.", async () => {
+            let section = tmdb.getTvShowSection().getTvShow(gotTvShow.id).getSeason(1);
+            let data = await section.getTranslationsAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get image data.", async () => {
+            let section = tmdb.getTvShowSection().getTvShow(gotTvShow.id).getSeason(1);
+            let data = await section.getVideosAsync();
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+    });
+
+    describe("TV Show Episode tests", () => {
+
+        it("Should get detail data.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+            let data = await section.getDetailsAsync();
+            assert.ok(data);
+            assert.ok(data["air_date"]);
+        });
+
+        it("Should get change data.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+            let data = await section.getChangesAsync();
+            assert.ok(data);
+            assert.ok(data["changes"]);
+        });
+
+        it("Should get credit data.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+            let data = await section.getCreditsAsync();
+            assert.ok(data);
+            assert.ok(data["cast"]);
+        });
+
+        it("Should get external ID data.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+            let data = await section.getExternalIdsAsync();
+            assert.ok(data);
+            assert.ok(data["imdb_id"]);
+        });
+
+        it("Should get image data.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+            let data = await section.getImagesAsync();
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get translation data.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+            let data = await section.getTranslationsAsync();
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get video data.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+            let data = await section.getVideosAsync();
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
     });
 
     describe('General TV show GET query tests', () => {
-        // TODO [David Hall, 2020-06-28]: Test all general GET query methods
 
-        it('Should find movie certification data.', done => {
-            tmdb.getTvShowSection().getCertificationsAsync().then(json => {
+        it('Should get latest TV show data.', async () => {
+            let data = await tmdb.getTvShowSection().getLatestAsync();
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
 
-                // Assert the results
-                assert.ok(json);
+        it('Should get TV airing today data.', async () => {
+            let data = await tmdb.getTvShowSection().getTvAiringTodayAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
 
-                setImmediate(done);
-            });
+        it('Should get TV on the air TV show data.', async () => {
+            let data = await tmdb.getTvShowSection().getTvOnTheAirAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it('Should get popular data.', async () => {
+            let data = await tmdb.getTvShowSection().getPopularAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it('Should get top rated data.', async () => {
+            let data = await tmdb.getTvShowSection().getTopRatedAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it('Should get episode group data.', async () => {
+            const episodeGroupId = "5af83d88c3a3682ac8007b28";
+            let section = tmdb.getTvShowSection().getTvShowEpisodeGroup(episodeGroupId);
+            let data = await section.getDetailsAsync();
+            assert.ok(data);
+            assert.ok(data["group_count"]);
+        });
+
+        it('Should find movie certification data.', async () => {
+            let data = await tmdb.getTvShowSection().getCertificationsAsync();
+            assert.ok(data);
+            assert.ok(data["certifications"]);
         });
     });
 
     describe('TV show session query tests', () => {
+
+        it("Should get TV show account state data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id);
+            let data = await section.getAccountStatesAsync(sessionId);
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get TV show season account state data.", async () => {
+
+            let tvShow = {id: "66732", name: "Stranger Things"};
+
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getSeason(1);
+            let data = await section.getAccountStatesAsync(sessionId);
+
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
+
+        it("Should get TV show episode account state data.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+            let data = await section.getAccountStatesAsync(sessionId);
+            assert.ok(data);
+            assert.ok(data["id"]);
+        });
 
         it('Should rate a TV show and then remove the rating', async () => {
 
@@ -87,6 +447,14 @@ exports.runTest = (authentication) => {
             let tvShowEpisode = tmdb.getTvShowSection().getTvShow("1399").getEpisode(1, 1);
             assert.ok(await tvShowEpisode.rateAsync(10, sessionId));
             assert.ok(await tvShowEpisode.deleteRatingAsync(sessionId));
+        });
+
+        it("Should rate a TV show episode and then remove the rating.", async () => {
+            const tvShow = {id: "66732", name: "Stranger Things"};
+            let section = tmdb.getTvShowSection().getTvShow(tvShow.id).getEpisode(1, 1);
+
+            assert.ok(await section.rateAsync(10, sessionId));
+            assert.ok(await section.deleteRatingAsync(sessionId));
         });
     });
 }

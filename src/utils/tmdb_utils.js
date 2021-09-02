@@ -292,6 +292,7 @@ exports.sections = Object.freeze({
 exports.dataTypes = Object.freeze({
     ACCOUNT_STATES: 'account_states',
     AGGREGATE_CREDITS: 'aggregate_credits',
+    AIRING_TODAY: 'airing_today',
     ALTERNATIVE_NAMES: 'alternative_names',
     ALTERNATIVE_TITLES: 'alternative_titles',
     CHANGES: 'changes',
@@ -313,6 +314,7 @@ exports.dataTypes = Object.freeze({
     MOVIES: 'movies',
     MOVIE_CREDITS: 'movie_credits',
     NOW_PLAYING: 'now_playing',
+    ON_THE_AIR: 'on_the_air',
     POPULAR: 'popular',
     PRIMARY_TRANSLATIONS: 'primary_translations',
     RATED: 'rated',
@@ -322,6 +324,7 @@ exports.dataTypes = Object.freeze({
     REVIEWS: 'reviews',
     SCREENED_THEATRICALLY: "screened_theatrically",
     SEASON: 'season',
+    SIMILAR: 'similar',
     SIMILAR_MOVIES: 'similar_movies',
     SIMILAR_TV_SHOWS: "similar_tv_shows",
     TAGGED_IMAGES: 'tagged_images',

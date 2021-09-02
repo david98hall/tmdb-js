@@ -35,31 +35,5 @@ exports.runTest = (authentication) => {
             let expected2 = expected1 + "&watch_region=New%20York";
             assert.strictEqual(url2, expected2)
         });
-
-        xit('Should create a guest session.', async () => {
-            const guestSessionID = await tmdbUtils.createGuestSessionAsync(apiKey);
-            assert.ok(guestSessionID);
-        });
-
-        xit('Should create a session with login.', async () => {
-            const loginInfo = await tmdbTestUtils.getLoginInformationAsync();
-            const sessionId = await tmdbUtils.createLoginSessionAsync(apiKey, loginInfo.username, loginInfo.password);
-            assert.ok(sessionId);
-            assert.ok(await tmdbUtils.deleteSessionAsync(apiKey, sessionId));
-        });
-
-        // Tests that do not work in CIs
-        if (!process.env.CI) {
-
-            xit('Should create a session without login.', async () => {
-
-                // Create a session
-                const sessionId = await tmdbUtils.createSessionAsync(apiKey, "chrome");
-                assert.ok(sessionId);
-
-                // Delete the session
-                assert.ok(await tmdbUtils.deleteSessionAsync(apiKey, sessionId));
-            }).timeout(15000);
-        }
     });
 };

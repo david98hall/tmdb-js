@@ -9,6 +9,13 @@ exports.runTest = (authentication) => {
 
     describe('Watch Providers Tests', () => {
 
+        it('Should get available region data.', async () => {
+            let data = await tmdb.getWatchProvidersSection().getAvailableRegionsAsync();
+            assert.ok(data);
+            assert.ok(data["results"])
+            assert.ok(data["results"].length > 0)
+        });
+
         it('Should get movie provider data.', async () => {
             let data = await tmdb.getWatchProvidersSection().getMovieProvidersAsync();
             assert.ok(data);
@@ -16,6 +23,11 @@ exports.runTest = (authentication) => {
             assert.ok(data["results"].length > 0)
         });
 
-        // TODO [david98hall, 2021-08-30]: Test the remaining methods
+        it('Should get TV show provider data.', async () => {
+            let data = await tmdb.getWatchProvidersSection().getTvShowProvidersAsync();
+            assert.ok(data);
+            assert.ok(data["results"])
+            assert.ok(data["results"].length > 0)
+        });
     });
 }

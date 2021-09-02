@@ -9,8 +9,6 @@ exports.runTest = (authentication) => {
 
     describe('Configuration GET query tests', () => {
 
-        // TODO [david98hall, 2021-08-14]: Test all GET query methods
-
         it('Should find API configuration data.', done => {
 
             tmdb.getConfigurationSection().getApiConfigurationAsync().then(json => {

@@ -26,7 +26,7 @@ exports.Account = class extends section.Section {
      * Gets the created lists of this account
      * @returns {Promise<*>} A Promise of created lists.
      */
-    async getCreatedListsAsync(sessionId, page) {
+    async getCreatedListsAsync(sessionId, page = 1) {
 
         let urlParameters = {
             "session_id": sessionId,
@@ -47,7 +47,7 @@ exports.Account = class extends section.Section {
      *
      * @returns {Promise<*>} A Promise of favorite movies.
      */
-    async getFavoriteMoviesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+    async getFavoriteMoviesAsync(sessionId, page = 1, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.FAVORITE);
     }
 
@@ -60,7 +60,7 @@ exports.Account = class extends section.Section {
      *
      * @returns {Promise<*>} A Promise of favorite TV shows.
      */
-    async getFavoriteTvShowsAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+    async getFavoriteTvShowsAsync(sessionId, page = 1, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.FAVORITE);
     }
 
@@ -74,8 +74,8 @@ exports.Account = class extends section.Section {
      *
      * @returns {Promise<*>} A Promise of rated movies.
      */
-    async getRatedMoviesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
-        return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.MOVIE, dataTypes.RATED);
+    async getRatedMoviesAsync(sessionId, page = 1, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+        return await this.__getFilteredMediaAsync(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.RATED);
     }
 
     /**
@@ -87,7 +87,7 @@ exports.Account = class extends section.Section {
      *
      * @returns {Promise<*>} A Promise of rated TV shows.
      */
-    async getRatedTvShowsAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+    async getRatedTvShowsAsync(sessionId, page = 1, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.RATED);
     }
 
@@ -100,7 +100,7 @@ exports.Account = class extends section.Section {
      *
      * @returns {Promise<*>} A Promise of rated TV show episodes.
      */
-    async getRatedTvShowEpisodesAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+    async getRatedTvShowEpisodesAsync(sessionId, page = 1, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
 
         let urlParameters = {
             "session_id": sessionId,
@@ -122,7 +122,7 @@ exports.Account = class extends section.Section {
      *
      * @returns {Promise<*>} A Promise of movies in this account's watchlist.
      */
-    async getMovieWatchlistAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+    async getMovieWatchlistAsync(sessionId, page = 1, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, dataTypes.MOVIES, dataTypes.WATCHLIST);
     }
 
@@ -135,7 +135,7 @@ exports.Account = class extends section.Section {
      *
      * @returns {Promise<*>} A Promise of TV shows in this account's watchlist.
      */
-    async getTvShowWatchlistAsync(sessionId, page, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
+    async getTvShowWatchlistAsync(sessionId, page = 1, sortBy = tmdbUtils.sortingTypes.CREATED_AT_ASC) {
         return await this.__getFilteredMediaAsync(sessionId, page, sortBy, sections.TV_SHOW, dataTypes.WATCHLIST);
     }
 
@@ -143,7 +143,7 @@ exports.Account = class extends section.Section {
      * Sets the favorite status of the movie with the specified ID.
      *
      * @param {string} sessionId The session ID.
-     * @param {Number} mediaId The ID of the movie.
+     * @param {string} mediaId The ID of the movie.
      * @param {boolean} favorite A value indicating whether the movie should be set as a favorite or not.
      *
      * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the favorite marking was successful or not.
@@ -156,7 +156,7 @@ exports.Account = class extends section.Section {
      * Sets the favorite status of the TV show with the specified ID.
      *
      * @param {string} sessionId The session ID.
-     * @param {Number} mediaId The ID of the TV show.
+     * @param {string} mediaId The ID of the TV show.
      * @param {boolean} favorite A value indicating whether the TV show should be set as a favorite or not.
      *
      * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the favorite marking was successful or not.
@@ -169,7 +169,7 @@ exports.Account = class extends section.Section {
      * Sets the watchlist status of the movie with the specified ID.
      *
      * @param {string} sessionId The session ID.
-     * @param {Number} mediaId The ID of the movie.
+     * @param {string} mediaId The ID of the movie.
      * @param {boolean} watchlist A value indicating whether the movie should be in the watchlist or not.
      *
      * @returns {Promise<boolean>}  A Promise of a boolean value indicating whether the watchlist update was successful or not.
@@ -182,7 +182,7 @@ exports.Account = class extends section.Section {
      * Sets the watchlist status of the TV show with the specified ID.
      *
      * @param {string} sessionId The session ID.
-     * @param {Number} mediaId The ID of the TV show.
+     * @param {string} mediaId The ID of the TV show.
      * @param {boolean} watchlist A value indicating whether the TV show should be in the watchlist or not.
      *
      * @returns {Promise<boolean>}  A Promise of a boolean value indicating whether the watchlist update was successful or not.

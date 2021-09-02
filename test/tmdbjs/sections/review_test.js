@@ -10,7 +10,8 @@ exports.runTest = (authentication) => {
     describe('Review GET tests', () => {
 
         let review = {id: "59ac9ea4c3a3682cc80389e0", author: "Reno"};
-        it('Should get review data.', done => {
+
+        it('Should get detail data.', done => {
             tmdb.getReviewSection().getReview(review.id).getDetailsAsync().then(json => {
                 // Assert the results
                 assert.strictEqual(json.author, review.author);

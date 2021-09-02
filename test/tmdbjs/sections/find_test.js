@@ -13,8 +13,6 @@ exports.runTest = (authentication) => {
 
     describe('Find query tests.', () => {
 
-        // TODO [david98hall, 2021-08-14]: Test the other external sources
-
         it('Find movie in external Source: IMDB.', done => {
 
             let movie = {id: 'tt0074256', title: 'Bugsy Malone'};

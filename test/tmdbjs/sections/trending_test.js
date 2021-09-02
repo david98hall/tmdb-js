@@ -11,28 +11,60 @@ exports.runTest = (authentication) => {
 
     describe('Trending media GET query tests', () => {
 
-        // TODO [david98hall, 2021-08-14]: Test all GET query methods
+        it('Should find any trending media (time window: day).', async () => {
 
-        it('Should find any trending media (time window: day).', done => {
-
-            tmdb.getTrendingSection(timeWindows.DAY).getAllAsync().then(json => {
-
-                // Assert the results
-                assert.ok(json);
-
-                setImmediate(done);
-            });
+            let data = await tmdb.getTrendingSection(timeWindows.DAY).getAllAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
         });
 
-        it('Should find any trending media (time window: week).', done => {
+        it('Should find any trending media (time window: week).', async () => {
 
-            tmdb.getTrendingSection(timeWindows.WEEK).getAllAsync().then(json => {
+            let data = await tmdb.getTrendingSection(timeWindows.WEEK).getAllAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
 
-                // Assert the results
-                assert.ok(json);
+        it('Should find trending movies (time window: day).', async () => {
 
-                setImmediate(done);
-            });
+            let data = await tmdb.getTrendingSection(timeWindows.DAY).getMoviesAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it('Should find trending movies (time window: week).', async () => {
+
+            let data = await tmdb.getTrendingSection(timeWindows.WEEK).getMoviesAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it('Should find trending TV shows (time window: day).', async () => {
+
+            let data = await tmdb.getTrendingSection(timeWindows.DAY).getTvShowsAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it('Should find trending TV shows (time window: week).', async () => {
+
+            let data = await tmdb.getTrendingSection(timeWindows.WEEK).getTvShowsAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it('Should find trending people (time window: day).', async () => {
+
+            let data = await tmdb.getTrendingSection(timeWindows.DAY).getPeopleAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
+
+        it('Should find trending people (time window: week).', async () => {
+
+            let data = await tmdb.getTrendingSection(timeWindows.WEEK).getPeopleAsync();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
         });
     });
 }

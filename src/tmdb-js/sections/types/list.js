@@ -43,7 +43,7 @@ exports.List = class extends section.Section {
 
     /**
      * Adds a movie to this list.
-     * @param {Number} movieId The movie id.
+     * @param {string} movieId The movie id.
      * @param {string} sessionId The session id.
      * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the addition was successful or not.
      */
@@ -55,7 +55,7 @@ exports.List = class extends section.Section {
 
     /**
      * Removes a movie from this list.
-     * @param {Number} movieId The movie id.
+     * @param {string} movieId The movie id.
      * @param {string} sessionId The session id.
      * @returns {Promise<boolean>} A Promise of a boolean value indicating whether the removal was successful or not.
      */

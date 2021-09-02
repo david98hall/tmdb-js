@@ -8,15 +8,9 @@ exports.runTest = (authentication) => {
 
     let tmdb = new Tmdb(apiKey);
 
-    describe('List GET query tests', () => {
+    describe('List query tests', () => {
 
-        // TODO [david98hall, 2021-08-15]: Add tests
-
-    });
-
-    describe('List session query tests', () => {
-
-        xit('Create and delete a list.', async () => {
+        xit('Should create a list, get data from it and then delete it.', async () => {
 
             let uniqueIdentifier = (+new Date).toString(36);
             let listObj = {
@@ -53,9 +47,20 @@ exports.runTest = (authentication) => {
             assert.ok(list);
 
             // Add a movie to the list and then remove it
-            const movieId = 18;
+            const movieId = "18";
             assert.ok(await list.addMovieAsync(movieId, sessionId));
+
+            // Assert the status of the movie
+            let movieStatus = await list.getItemStatusAsync(movieId);
+            assert.ok(movieStatus);
+            assert.ok(movieStatus["item_present"]);
+
+            // Remove the movie
             assert.ok(await list.removeMovieAsync(movieId, sessionId));
+
+            // Add a movie to the list and then remove it by clearing the list
+            assert.ok(await list.addMovieAsync(movieId, sessionId));
+            assert.ok(await list.clearAsync(sessionId));
 
             // Delete list
             assert.ok(await list.deleteAsync(sessionId));

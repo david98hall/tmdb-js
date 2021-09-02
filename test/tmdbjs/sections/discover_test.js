@@ -11,8 +11,6 @@ exports.runTest = (authentication) => {
 
     describe('Discover GET tests', () => {
 
-        // TODO [david98hall, 2021-08-15]: Test all GET methods
-
         it('Should discover movie data.', async () => {
 
             let discoverSettings = new discover.DiscoverMovieSettings();

@@ -95,7 +95,7 @@ exports.Person = class extends section.Section {
      * @returns {Promise<*>} A Promise of tagged images of this person in JSON format.
      */
     async getTaggedImagesAsync(page = null) {
-        let urlParameters = {"page": page};
+        let urlParameters = { "page": page };
         return await this.getChildQueryResultAsync(dataTypes.TAGGED_IMAGES, urlParameters);
     }
 

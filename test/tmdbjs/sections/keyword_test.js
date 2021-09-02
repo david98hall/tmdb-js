@@ -19,5 +19,11 @@ exports.runTest = (authentication) => {
                 setImmediate(done);
             });
         });
+
+        it("Should get data of movies with a certain keyword.", async () => {
+            let data = await tmdb.getKeywordSection().getKeyword(keyword.id).getMovies();
+            assert.ok(data);
+            assert.ok(data["total_pages"]);
+        });
     });
 }
