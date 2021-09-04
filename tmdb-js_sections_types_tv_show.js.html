@@ -147,7 +147,11 @@ exports.TvShowEpisode = class extends section.RateableSection {
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
-        return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
+        let id = (await this.getDetailsAsync())["id"];
+        return await new exports.TvShowSection(this._apiKey, this._language)
+            .createChild(dataTypes.EPISODE)
+            .createChild(id)
+            .getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
     /**
@@ -249,7 +253,11 @@ exports.TvShowSeason = class extends section.Section {
      */
     async getChangesAsync(startDate = undefined, endDate = undefined, page = null) {
         let urlParameters = {"start_date": startDate, "end_date": endDate, "page": page};
-        return await this.getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
+        let id = (await this.getDetailsAsync())["id"];
+        return await new exports.TvShowSection(this._apiKey, this._language)
+            .createChild(dataTypes.SEASON)
+            .createChild(id)
+            .getChildQueryResultAsync(dataTypes.CHANGES, urlParameters);
     }
 
     /**
@@ -385,6 +393,14 @@ exports.TvShow = class extends section.RateableSection {
     }
 
     /**
+     * Gets aggregate credits data of this TV show.
+     * @returns {Promise&lt;*>} A Promise of aggregate credit data in JSON format.
+     */
+    async getAggregateCreditsAsync() {
+        return await this.getChildQueryResultAsync(dataTypes.AGGREGATE_CREDITS);
+    }
+
+    /**
      * Gets the alternative titles of the TV show in question.
      * @returns {Promise&lt;*>} A Promise of alternative title data in JSON format.
      */
@@ -427,9 +443,9 @@ exports.TvShow = class extends section.RateableSection {
 
     /**
      * Gets the episode groups of the TV show in question.
-     * @returns {Promise&lt;*>} {Promise&lt;any>} A Promise of episode group data in JSON format.
+     * @returns {Promise&lt;*>} A Promise of episode group data in JSON format.
      */
-    async getEpisodeGroupsAsync() {
+    async getEpisodeGroupDataAsync() {
         let childSection = new section.Section(dataTypes.EPISODE_GROUPS, this);
         return await childSection.getQueryResultAsync();
     }
@@ -497,7 +513,7 @@ exports.TvShow = class extends section.RateableSection {
      */
     async getSimilarTvShowsAsync(page = null) {
         let urlParameters = {"page": page};
-        return await this.getChildQueryResultAsync(dataTypes.SIMILAR_TV_SHOWS, urlParameters);
+        return await this.getChildQueryResultAsync(dataTypes.SIMILAR, urlParameters);
     }
 
     /**
@@ -639,7 +655,7 @@ exports.TvShowSection = class extends section.Section {
      */
     async getTvAiringTodayAsync(page = null) {
         let urlParameters = {"page": page};
-        return await this.getChildQueryResultAsync(dataTypes.TV_AIRING_TODAY, urlParameters);
+        return await this.getChildQueryResultAsync(dataTypes.AIRING_TODAY, urlParameters);
     }
 
     /**
@@ -649,7 +665,7 @@ exports.TvShowSection = class extends section.Section {
      */
     async getTvOnTheAirAsync(page = null) {
         let urlParameters = {"page": page};
-        return await this.getChildQueryResultAsync(dataTypes.TV_ON_THE_AIR, urlParameters);
+        return await this.getChildQueryResultAsync(dataTypes.ON_THE_AIR, urlParameters);
     }
 
     /**
@@ -670,18 +686,6 @@ exports.TvShowSection = class extends section.Section {
     async getTopRatedAsync(page = null) {
         let urlParameters = {"page": page};
         return await this.getChildQueryResultAsync(dataTypes.TOP_RATED, urlParameters);
-    }
-
-    /**
-     * Gets the episode group with the passed ID.
-     * @param {string} episodeGroupId The ID of the episode group.
-     * @returns {Promise&lt;*>} A Promise of episode group data in JSON format.
-     */
-    async getEpisodeGroupAsync(episodeGroupId) {
-        let episodeGroupSection = new section.Section(
-            episodeGroupId,
-            new section.Section(dataTypes.EPISODE_GROUPS, this));
-        return await episodeGroupSection.getQueryResultAsync();
     }
 
     /**
