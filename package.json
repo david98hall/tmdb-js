@@ -1,6 +1,6 @@
 {
   "name": "tmdb-js",
-  "version": "v0.1.2-alpha",
+  "version": "v1.0.0",
   "description": "A JavaScript wrapper package for The Movie Database API.",
   "main": "src/tmdbjs/tmdbjs.js",
   "scripts": {
