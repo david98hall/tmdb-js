@@ -125,7 +125,7 @@ exports.buildUrl = function (urlPath, parameters = {}) {
 
         for (const key in parameters) {
             if (Object.hasOwnProperty.call(parameters, key)
-                &amp;&amp; parameters[key] != undefined
+                &amp;&amp; parameters[key] !== undefined
                 &amp;&amp; parameters[key] != null) {
 
                 let uriParameter = encodeURI(parameters[key]);
