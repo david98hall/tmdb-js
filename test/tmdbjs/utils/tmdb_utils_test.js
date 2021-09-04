@@ -1,6 +1,5 @@
 const assert = require('assert');
 const tmdbUtils = require('../../../src/utils/tmdb_utils');
-const tmdbTestUtils = require('./tmdb_test_utils');
 const {WatchProvidersSection} = require("../../../src/tmdb-js/sections/types/watch_provider");
 const {sections} = require("../../../src/utils/tmdb_utils");
 
