@@ -6,10 +6,10 @@ An unofficial JavaScript wrapper for The Movie Database API.
 
 [<img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" width="33%">](https://www.themoviedb.org/)
 
-### [Installation](https://github.com/david98hall/tmdb-js/packages/303001)
+### Installation
 
 ```
-npm install @david98hall/tmdb-js
+npm install tmdb-js-wrapper
 ```
 
 #### Usage
