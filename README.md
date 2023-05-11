@@ -29,7 +29,7 @@ doStuff = async function(authentication) {
    let oceansElevenMovie = tmdb.getMovieSection().getMovie("161");
    let oceansDetails = await oceansElevenMovie.getDetailsAsync();
    let oceansImages = await oceansElevenMovie.getImagesAsync();
-   console.log("A great movie: " + json.title);
+   console.log("A great movie: " + oceansDetails.title);
    
    // Rate movie example
    let sessionId = await tmdb.getAuthenticator().createSessionAsync("chrome"); // One way of getting a session ID
