@@ -38,6 +38,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - run: npm install --save-dev better-docs
+
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -49,7 +51,7 @@ jobs:
           recurse: true
           # config_file: conf.json
           # template: minami
-          template: better-docs
+          template: "node_modules/better-docs"
           front_page: README.md
 
       - name: Deploy
