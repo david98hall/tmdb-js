@@ -1,5 +1,5 @@
 # [tmdb-js](https://github.com/david98hall/tmdb-js)
-[![Node.js CI](https://github.com/david98hall/tmdb-js/actions/workflows/node.js.yml/badge.svg)](https://github.com/david98hall/tmdb-js/actions/workflows/node.js.yml)
+[![Node.js CI](https://github.com/david98hall/tmdb-js/actions/workflows/node.js.yml/badge.svg)](https://github.com/david98hall/tmdb-js/actions/workflows/node.js.yml) &nbsp;&nbsp;&nbsp; [<img src="https://github.com/npm/logos/blob/master/npm%20logo/npm-logo-red.svg" width="5%">](https://www.npmjs.com/package/tmdb-js-wrapper)
 
 An unofficial JavaScript wrapper for The Movie Database API.
 
