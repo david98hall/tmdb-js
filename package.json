@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/david98hall/tmdb-js#readme",
   "dependencies": {
+    "mocha": "^10.2.0",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
