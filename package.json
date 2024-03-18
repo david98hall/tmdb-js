@@ -3,6 +3,7 @@
   "version": "v1.0.4",
   "description": "A JavaScript wrapper package for The Movie Database API.",
   "main": "./src/tmdb-js/tmdb-js.js",
+  "private": true,
   "scripts": {
     "test": "mocha test/test.js --timeout 30000"
   },
