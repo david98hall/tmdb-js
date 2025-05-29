@@ -16,7 +16,7 @@ npm install tmdb-js-wrapper
 #### Usage
 Here is a simple example of how to use this wrapper:
 ```javascript
-const {TmdbClient} = require('../../../src/tmdb-js/tmdb-js');
+import { TmdbClient } from 'tmdb-js-wrapper'
 
 doStuff = async function(authentication) {
 
